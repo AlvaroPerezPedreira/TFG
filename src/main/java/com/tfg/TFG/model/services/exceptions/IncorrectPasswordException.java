@@ -1,4 +1,4 @@
-package com.tfg.TFG.model.common.exceptions;
+package com.tfg.TFG.model.services.exceptions;
 
 /**
  * The Class IncorrectPasswordException.

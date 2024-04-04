@@ -2,6 +2,7 @@ package com.tfg.TFG.model.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -10,11 +11,7 @@ import jakarta.persistence.Table;
 public class User {
 
     public enum RoleType {
-        USER, PROPERTY_OWNER, ADMIN
-    }
-
-    public enum GenreType {
-        MALE, FEMALE, NON_BINARY
+        USER, ADMIN
     }
 
     @Id
@@ -28,9 +25,9 @@ public class User {
     private String name;
     private String lastname;
     private String phone;
-    private String birthDate;
+    private String birthdate;
     private String country;
-    private GenreType genre;
+    private String genre;
     private String address;
     private String passport;
     private String avatar;
@@ -39,41 +36,25 @@ public class User {
     public User() {
     }
 
-    public User(String email, String password, String rol, String username, String name, String lastname, String phone,
-            String birthDate, String country, String genre, String address, String passport, String avatar) {
+    public User(String email, String password, String username, String name, String lastname, String phone,
+            String birthdate, String country, String genre, String address, String passport, String avatar) {
         this.email = email;
         this.password = password;
-
-        if (rol.equals("USER")) {
-            this.role = RoleType.USER;
-        }
-        if (rol.equals("PROPERTY_OWNER")) {
-            this.role = RoleType.PROPERTY_OWNER;
-        }
-
         this.username = username;
         this.name = name;
         this.lastname = lastname;
         this.phone = phone;
-        this.birthDate = birthDate;
+        this.birthdate = birthdate;
         this.country = country;
-
-        if (genre.equals("MALE")) {
-            this.genre = GenreType.MALE;
-        }
-        if (genre.equals("FEMALE")) {
-            this.genre = GenreType.FEMALE;
-        }
-        if (genre.equals("NON_BINARY")) {
-            this.genre = GenreType.NON_BINARY;
-        }
-
+        this.genre = genre;
         this.address = address;
         this.passport = passport;
         this.avatar = avatar;
     }
 
     // Id
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }
@@ -101,11 +82,11 @@ public class User {
     }
 
     // Role
-    public RoleType getRol() {
+    public RoleType getRole() {
         return role;
     }
 
-    public void setRol(RoleType role) {
+    public void setRole(RoleType role) {
         this.role = role;
     }
 
@@ -145,13 +126,13 @@ public class User {
         this.phone = phone;
     }
 
-    // BirthDate
-    public String getBirthDate() {
-        return birthDate;
+    // Birthdate
+    public String getBirthdate() {
+        return birthdate;
     }
 
-    public void setBirthDate(String birthDate) {
-        this.birthDate = birthDate;
+    public void setBirthdate(String birthdate) {
+        this.birthdate = birthdate;
     }
 
     // Country
@@ -164,11 +145,11 @@ public class User {
     }
 
     // Genre
-    public GenreType getGenre() {
+    public String getGenre() {
         return genre;
     }
 
-    public void setGenre(GenreType genre) {
+    public void setGenre(String genre) {
         this.genre = genre;
     }
 
