@@ -1,0 +1,19 @@
+.navbar-container {
+    width: 100%;
+    background-color: var(--grey-color1);
+    display: flex;
+    padding: 2rem;
+}
+
+.navbar-title {
+    display: flex;
+    flex: 1;
+    height: 100%;
+}
+
+.navbar-button {
+    border-radius: 36px;
+    border: 2px solid darkslategrey;
+    padding: 8px;
+}
+

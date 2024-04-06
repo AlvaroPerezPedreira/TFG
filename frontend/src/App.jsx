@@ -1,38 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
-import { useEffect, useState} from 'react';
+import "./App.css";
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import Home from "./components/Home";
+import Auth from "./components/Auth";
+import Navbar from "./components/Navbar";
+import Register from "./components/Register";
 
 function App() {
-  
-  const [clients, setClients] = useState([]);
-
-  useEffect(() => {
-    const fetchClients = async () => {
-      const response = await fetch('/clients');
-      const body = await response.json();
-      setClients(body)
-    }
-
-    fetchClients();
-  }, [])
-
-  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Clientes
-          {
-            clients.map(client => (
-              <>
-                <div key={client.id}>{client.name}</div>
-              </>
-            ))
-          }
-        </p>
-      </header>
-    </div>
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/auth" element={<Auth />} />
+        <Route path="/register" element={<Register />} />
+      </Routes>
+    </>
   );
 }
 
