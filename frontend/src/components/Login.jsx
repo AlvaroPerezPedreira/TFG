@@ -67,7 +67,7 @@ const Auth = () => {
                       i18n.changeLanguage("es");
                     }}
                   >
-                    <div className="flag-container">
+                    <div className="login-flag-container">
                       <SpainIcon />
                       <span>Spain</span>
                     </div>
@@ -78,7 +78,7 @@ const Auth = () => {
                       i18n.changeLanguage("en");
                     }}
                   >
-                    <div className="flag-container">
+                    <div className="login-flag-container">
                       <UKIcon />
                       <span>United Kingdom</span>
                     </div>
@@ -89,7 +89,7 @@ const Auth = () => {
                       i18n.changeLanguage("fr");
                     }}
                   >
-                    <div className="flag-container">
+                    <div className="login-flag-container">
                       <FranceIcon />
                       <span>France</span>
                     </div>
@@ -99,8 +99,8 @@ const Auth = () => {
             </div>
           </div>
           <form className="login-form" onSubmit={handleSubmit}>
-            <div className="input-container">
-              <div className="title-container">
+            <div className="login-input-container">
+              <div className="login-title-container">
                 <p className="login-form-subtitle">{t("slogan")}</p>
                 <p className="login-form-title">{t("login")}</p>
               </div>
@@ -108,7 +108,7 @@ const Auth = () => {
               <Input
                 name="email"
                 text={t("email")}
-                variant="flat"
+                variant="underlined"
                 textColor="white"
                 labelColor="white"
                 underlineColor="white"
@@ -119,7 +119,7 @@ const Auth = () => {
                 name="password"
                 text={t("passwd")}
                 textColor="white"
-                variant="flat"
+                variant="underlined"
                 labelColor="white"
                 underlineColor="white"
                 type="password"
@@ -133,7 +133,7 @@ const Auth = () => {
           </form>
           <div className="login-footer">
             {t("haveAccount")}{" "}
-            <a href="/register" className="register-link">
+            <a href="/register" className="login-register-link">
               {t("signUp")}
             </a>
           </div>

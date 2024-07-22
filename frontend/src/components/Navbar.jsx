@@ -95,7 +95,7 @@ const Navbar = () => {
                 i18n.changeLanguage("es");
               }}
             >
-              <div className="flag-container">
+              <div className="navbar-flag-container">
                 <SpainIcon />
                 <span>Spain</span>
               </div>
@@ -106,7 +106,7 @@ const Navbar = () => {
                 i18n.changeLanguage("en");
               }}
             >
-              <div className="flag-container">
+              <div className="navbar-flag-container">
                 <UKIcon />
                 <span>United Kingdom</span>
               </div>
@@ -117,7 +117,7 @@ const Navbar = () => {
                 i18n.changeLanguage("fr");
               }}
             >
-              <div className="flag-container">
+              <div className="navbar-flag-container">
                 <FranceIcon />
                 <span>France</span>
               </div>
