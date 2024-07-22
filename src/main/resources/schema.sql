@@ -21,5 +21,5 @@ CREATE TABLE User (
     genre VARCHAR(255) NOT NULL,
     address VARCHAR(255) NOT NULL,
     passport VARCHAR(255) NOT NULL,
-    avatar VARCHAR(350) NOT NULL
+    avatar VARCHAR(350)
 );

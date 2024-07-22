@@ -16,19 +16,24 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 
 /**
  * The Class SecurityConfig.
  */
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
+	/**
+	 * The jwt filter.
+	 */
 	@Autowired
 	private JwtFilter jwtFilter;
 
 	/**
-	 * Configure.
+	 * Security filter chain.
 	 *
 	 * @param http the http
 	 * @return the security filter chain
@@ -36,25 +41,24 @@ public class SecurityConfig {
 	 */
 	@Bean
 	protected SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-
 		// @formatter:off
-        http.cors(cors -> cors.disable()).csrf(csrf -> csrf.disable())
-            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-            .authorizeHttpRequests(authorize -> authorize
-                .requestMatchers(antMatcher("/*")).permitAll()
-                .requestMatchers(antMatcher("/static/**")).permitAll()
-                .requestMatchers(antMatcher("/assets/**")).permitAll()
-                .requestMatchers(antMatcher("/api/hello")).permitAll()
-                .requestMatchers(antMatcher("/api/users/signUp")).permitAll()
-                .requestMatchers(antMatcher("/api/users/login")).permitAll()
-                .requestMatchers(antMatcher(HttpMethod.GET, "/api/posts/")).permitAll()
-                .requestMatchers(antMatcher(HttpMethod.POST, "/api/posts/")).authenticated()
-                .requestMatchers(antMatcher("/api/users/loginFromServiceToken")).permitAll()
-                .requestMatchers(antMatcher("/h2-console/*")).permitAll()
-                .anyRequest().permitAll()
-            )
-            .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
-        // @formatter:on
+		 http.cors(cors -> cors.disable()).csrf(csrf -> csrf.disable())
+				 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+				 .authorizeHttpRequests(authorize -> authorize
+						 .requestMatchers(antMatcher("/*")).permitAll()
+						 .requestMatchers(antMatcher(HttpMethod.POST, "/users/signUp")).permitAll()
+						 .requestMatchers(antMatcher(HttpMethod.POST, "/users/login")).permitAll()
+						 .requestMatchers(antMatcher(HttpMethod.GET, "/catalog/categories")).permitAll()
+						 .requestMatchers(antMatcher(HttpMethod.GET, "/catalog/products/*")).permitAll()
+						 .requestMatchers(antMatcher(HttpMethod.GET, "/catalog/products")).permitAll()
+						 .requestMatchers(antMatcher(HttpMethod.POST, "/users/loginFromServiceToken")).permitAll()
+						 .requestMatchers(antMatcher(HttpMethod.PUT, "/users/*")).hasAnyRole("SELLER", "SHOPPER")
+						 .requestMatchers(antMatcher(HttpMethod.POST, "/seller/*/postProduct")).hasRole("SELLER")
+						 .requestMatchers(antMatcher(HttpMethod.POST, "/users/*/changePassword")).hasAnyRole("SELLER", "SHOPPER")
+						 .anyRequest().permitAll()
+				 )
+				 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+		 // @formatter:on
 		http.headers((headers) -> headers.frameOptions((frameOptions) -> frameOptions.sameOrigin()));
 		return http.build();
 	}
@@ -77,21 +81,42 @@ public class SecurityConfig {
 	 *
 	 * @return the cors configuration source
 	 */
+
 	@Bean
 	public CorsConfigurationSource corsConfigurationSource() {
-
 		CorsConfiguration config = new CorsConfiguration();
 		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-
+		config.addAllowedOrigin("http://localhost:3000");
 		config.setAllowCredentials(true);
 		config.addAllowedOrigin("*");
 		config.addAllowedHeader("*");
 		config.addAllowedMethod("*");
+		source.registerCorsConfiguration("/**", config);
+		return source;
+	}
 
+	@Bean
+	public CorsFilter corsFilter() {
+		CorsConfiguration config = new CorsConfiguration();
+		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+
+		// Permitir todas las solicitudes de origen desde http://localhost:3000
+		config.addAllowedOrigin("http://localhost:3000");
+
+		// Permitir todas las cabeceras
+		config.addAllowedHeader("*");
+
+		// Permitir todos los métodos (GET, POST, PUT, DELETE, etc.)
+		config.addAllowedMethod("*");
+
+		// Permitir las credenciales
+		config.setAllowCredentials(true);
+
+		// Registrar la configuración para todas las rutas
 		source.registerCorsConfiguration("/**", config);
 
-		return source;
-
+		// Retornar un filtro CORS
+		return new CorsFilter(source);
 	}
 
 }

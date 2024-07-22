@@ -1,23 +1,130 @@
 import React from "react";
 import "./styles/navbar.css";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import UserIcon from "../icons/UserIcon";
+import SpainIcon from "../icons/SpainIcon";
+import UKIcon from "../icons/UKIcon";
+import FranceIcon from "../icons/FranceIcon";
+import {
+  Button,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownTrigger,
+} from "@mirakle-ui/react";
+import { useAuthContext } from "../context/AuthContext";
 
 const Navbar = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
+  const [t, i18n] = useTranslation(["navbar"]);
+  const currentLanguage = i18n.language;
+  const { setAuthUser } = useAuthContext();
 
-  const handleClick = () => {
-    navigate("/auth");
+  console.log(currentLanguage);
+
+  const getFlagIcon = (currentLanguage) => {
+    if (currentLanguage === "es") {
+      return <SpainIcon />;
+    } else if (currentLanguage === "en") {
+      return <UKIcon />;
+    } else {
+      return <FranceIcon />;
+    }
+  };
+
+  const logOut = () => {
+    localStorage.removeItem("authUser");
+    setAuthUser(null);
   };
 
   return (
     <div className="navbar-container">
-      <h1 className="navbar-title">Booking</h1>
-      {location.pathname === "/" && (
-        <button onClick={handleClick} className="navbar-button">
-          Regístrate o inicia sesión
-        </button>
-      )}
+      <h1 className="navbar-title">DeepDive</h1>
+      <div className="navbar-dropdown">
+        <Dropdown>
+          <DropdownTrigger>
+            <Button
+              radius="md"
+              variant="bordered"
+              color="default"
+              isIconOnly
+              customRippleColor="black"
+            >
+              <UserIcon />
+            </Button>
+          </DropdownTrigger>
+          <DropdownMenu
+            position={"bottom-end"}
+            offset={0}
+            aria-label="Static Actions"
+          >
+            <DropdownItem textColor="aqua" key="new">
+              New file
+            </DropdownItem>
+            <DropdownItem key="copy">Copy link</DropdownItem>
+            <DropdownItem key="edit">Edit file</DropdownItem>
+            <DropdownItem
+              key="logout"
+              color="danger"
+              variant="solid"
+              onClick={logOut}
+            >
+              {t("logOut")}
+            </DropdownItem>
+          </DropdownMenu>
+        </Dropdown>{" "}
+        <Dropdown>
+          <DropdownTrigger>
+            <Button
+              radius="md"
+              variant="bordered"
+              color="default"
+              isIconOnly
+              customRippleColor="black"
+            >
+              {getFlagIcon(currentLanguage)}
+            </Button>
+          </DropdownTrigger>
+          <DropdownMenu
+            position={"bottom-end"}
+            offset={0}
+            aria-label="Static Actions"
+          >
+            <DropdownItem
+              key="ES_FLAG"
+              onClick={() => {
+                i18n.changeLanguage("es");
+              }}
+            >
+              <div className="flag-container">
+                <SpainIcon />
+                <span>Spain</span>
+              </div>
+            </DropdownItem>
+            <DropdownItem
+              key="EN_FLAG"
+              onClick={() => {
+                i18n.changeLanguage("en");
+              }}
+            >
+              <div className="flag-container">
+                <UKIcon />
+                <span>United Kingdom</span>
+              </div>
+            </DropdownItem>
+            <DropdownItem
+              key="FR_FLAG"
+              onClick={() => {
+                i18n.changeLanguage("fr");
+              }}
+            >
+              <div className="flag-container">
+                <FranceIcon />
+                <span>France</span>
+              </div>
+            </DropdownItem>
+          </DropdownMenu>
+        </Dropdown>{" "}
+      </div>
     </div>
   );
 };

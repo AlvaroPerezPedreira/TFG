@@ -37,6 +37,21 @@ public class User {
     }
 
     public User(String email, String password, String username, String name, String lastname, String phone,
+            String birthdate, String country, String genre, String address, String passport) {
+        this.email = email;
+        this.password = password;
+        this.username = username;
+        this.name = name;
+        this.lastname = lastname;
+        this.phone = phone;
+        this.birthdate = birthdate;
+        this.country = country;
+        this.genre = genre;
+        this.address = address;
+        this.passport = passport;
+    }
+
+    public User(String email, String password, String username, String name, String lastname, String phone,
             String birthdate, String country, String genre, String address, String passport, String avatar) {
         this.email = email;
         this.password = password;

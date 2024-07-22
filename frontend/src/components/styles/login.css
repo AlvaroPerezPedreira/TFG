@@ -1,0 +1,167 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .login-wrapper {
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    padding: 20px;
+  }
+  
+  .login-container {
+    border: 1px solid black;
+    width: 100%;
+    height: 100%;
+    display: flex;
+  }
+  
+  .login-form-container {
+    width: 35%;
+    background-color: black;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .login-logo {
+    width: 100%;
+    height: 50px;
+    font-weight: bold;
+    font-size: 32px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    flex: 1;
+    font-size: 18px;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+  }
+  
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 350px;
+  
+    border: 1px solid white;
+    padding: 25px;
+    border-radius: 8px;
+  }
+  
+  .title-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: start;
+    margin-bottom: 25px;
+  
+    .login-form-subtitle {
+      font-weight: bold;
+      color: #FFDB58;
+      font-size: 16px;
+    }
+  
+    .login-form-title {
+      font-weight: bold;
+      font-size: 24px;
+      color: white;
+    }
+  }
+  
+  .login-button-container {
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .login-footer {
+    color: rgb(41, 40, 40);
+    font-size: 14px;
+    display: flex;
+    gap: 3px;
+    padding: 15px;
+  }
+
+  .register-link {
+    text-decoration: none;
+    color: #006fee;
+  }
+
+  .flag-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 16px;
+  }
+  
+  /* RIGHT */
+  .login-slider {
+    width: 65%;
+    background-color: white;
+  }
+  
+  /* SLIDER */
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+  
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .mySwiper .swiper-pagination-bullet {
+    background-color: #FFFFFF !important;
+  }
+
+  .mySwiper .swiper-pagination-bullet-active {
+    background-color: #FFDB58 !important;
+  }
+
+
+  .login-header-container {
+    display: flex;
+    padding: 0px 10px;
+  }
+  
+  .login-dropdown-container {
+    min-width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  @media (width <= 1200px) {
+    .login-form-container {
+      width: 50%;
+    }
+    .login-slider {
+      width: 50%;
+    }
+  }

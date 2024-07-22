@@ -1,19 +1,28 @@
-import "./App.css";
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
-import Auth from "./components/Auth";
-import Navbar from "./components/Navbar";
+import Login from "./components/Login";
 import Register from "./components/Register";
+import { useAuthContext } from "./context/AuthContext";
 
 function App() {
+  const { authUser } = useAuthContext();
+
   return (
     <>
-      <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/auth" element={<Auth />} />
-        <Route path="/register" element={<Register />} />
+        <Route
+          path="/"
+          element={!authUser ? <Navigate to="/login" /> : <Home />}
+        />
+        <Route
+          path="/login"
+          element={authUser ? <Navigate to="/" /> : <Login />}
+        />
+        <Route
+          path="/register"
+          element={authUser ? <Navigate to="/" /> : <Register />}
+        />
       </Routes>
     </>
   );

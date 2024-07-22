@@ -70,9 +70,25 @@ public class UserDto {
 	}
 
 	public UserDto(String email, String password, String role, String username, String name, String lastname,
+			String phone, String birthdate, String country, String genre, String address, String passport) {
+		this.email = email;
+		this.password = password;
+		this.role = role;
+		this.username = username;
+		this.name = name;
+		this.lastname = lastname;
+		this.phone = phone;
+		this.birthdate = birthdate;
+		this.country = country;
+		this.genre = genre;
+		this.address = address;
+		this.passport = passport;
+		this.avatar = null;
+	}
+
+	public UserDto(String email, String password, String role, String username, String name, String lastname,
 			String phone, String birthdate, String country, String genre, String address, String passport,
 			String avatar) {
-		super();
 		this.email = email;
 		this.password = password;
 		this.role = role;
@@ -86,25 +102,6 @@ public class UserDto {
 		this.address = address;
 		this.passport = passport;
 		this.avatar = avatar;
-	}
-
-	public UserDto(Long id, String email, String role, String username, String name, String lastname,
-			String phone, String birthdate, String country, String genre, String address, String passport,
-			String avatar) {
-
-		this.id = id;
-		this.email = email != null ? email.trim() : null;
-		this.role = role;
-		this.username = username.trim();
-		this.name = name.trim();
-		this.lastname = lastname.trim();
-		this.phone = phone.trim();
-		this.birthdate = birthdate.trim();
-		this.country = country.trim();
-		this.genre = genre;
-		this.address = address.trim();
-		this.passport = passport.trim();
-		this.avatar = avatar.trim();
 	}
 
 	public Long getId() {
@@ -245,7 +242,6 @@ public class UserDto {
 	}
 
 	// Avatar
-	@NotNull(groups = { AllValidations.class, UpdateValidations.class })
 	@Size(min = 1, max = 350, groups = { AllValidations.class, UpdateValidations.class })
 	public String getAvatar() {
 		return avatar;

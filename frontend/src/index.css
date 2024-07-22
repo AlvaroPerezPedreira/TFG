@@ -1,15 +1,59 @@
+@font-face {
+  font-family: 'Poppins';
+  src: url('./fonts/Poppins-Regular.ttf') format('ttf');
+  font-style: normal;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 :root {
-  --grey-color1: #a2adc2;
+  --black-color1: #333333;
+  --black-color2: #2C2C2C;
+  --black-color3: #262626;
+  --black-color4: #1F1F1F;
+  --black-color5: #191919;
+  --black-color6: #121212;
+  --black-color7: #0C0C0C;
+  --black-color8: #050505;
 
-  --grey-color2: #a2adc2;
-  --grey-color3: #a2adc2;
+  --grey-color1: #CCCCCC;
+  --grey-color2: #B2B2B2;
+  --grey-color3: #999999;
+  --grey-color4: #808080;
+  --grey-color5: #666666;
+  --grey-color6: #4D4D4D;
+  --grey-color7: #333333;
+  --grey-color8: #1A1A1A;
 
+  --white-color1: #F5F5F5;
+  --white-color2: #E5E5E5;
+  --white-color3: #CCCCCC;
+  --white-color4: #B2B2B2;
+  --white-color5: #999999;
+  --white-color6: #7F7F7F;
+  --white-color7: #666666;
+  --white-color8: #4C4C4C;
 
-/* Gris, blanco, negro (sin ser negro), azul oscuro*/
+  --darkblue-color1: #1F4068;
+  --darkblue-color2: #1B3660;
+  --darkblue-color3: #173056;
+  --darkblue-color4: #12264D;
+  --darkblue-color5: #0E1C45;
+  --darkblue-color6: #0B133D;
+  --darkblue-color7: #070933;
+  --darkblue-color8: #03042B;
+
+  --lightblue-color1: #CAECFF;
+  --lightblue-color2: #B5D8FF;
+  --lightblue-color3: #A1C3FF;
+  --lightblue-color4: #8CAFFF;
+  --lightblue-color5: #79ABFF;
+  --lightblue-color6: #6C9CFF;
+  --lightblue-color7: #5E8DFF;
+  --lightblue-color8: #518DFF;
 }
