@@ -20,24 +20,33 @@ public class User {
 
     private String email;
     private String password;
-    private RoleType role = RoleType.USER;
+    private RoleType role = null;
     private String username;
-    private String name;
-    private String lastname;
-    private String phone;
+    private String name = null;
+    private String lastname = null;
+    private String phone = null;
     private String birthdate;
-    private String country;
-    private String genre;
-    private String address;
-    private String passport;
-    private String avatar;
+    private String country = null;
+    private String gender;
+    private String address = null;
+    private String passport = null;
+    private String avatar = null;
 
     // Constructores
     public User() {
     }
 
+    public User(String email, String password, String username, String birthdate, String gender) {
+        this.email = email;
+        this.password = password;
+        this.username = username;
+        this.birthdate = birthdate;
+        this.gender = gender;
+    }
+
+    // Constructor sin ID, ni Avatar
     public User(String email, String password, String username, String name, String lastname, String phone,
-            String birthdate, String country, String genre, String address, String passport) {
+            String birthdate, String country, String gender, String address, String passport) {
         this.email = email;
         this.password = password;
         this.username = username;
@@ -46,13 +55,14 @@ public class User {
         this.phone = phone;
         this.birthdate = birthdate;
         this.country = country;
-        this.genre = genre;
+        this.gender = gender;
         this.address = address;
         this.passport = passport;
     }
 
+    // Constructor sin ID
     public User(String email, String password, String username, String name, String lastname, String phone,
-            String birthdate, String country, String genre, String address, String passport, String avatar) {
+            String birthdate, String country, String gender, String address, String passport, String avatar) {
         this.email = email;
         this.password = password;
         this.username = username;
@@ -61,7 +71,7 @@ public class User {
         this.phone = phone;
         this.birthdate = birthdate;
         this.country = country;
-        this.genre = genre;
+        this.gender = gender;
         this.address = address;
         this.passport = passport;
         this.avatar = avatar;
@@ -159,13 +169,13 @@ public class User {
         this.country = country;
     }
 
-    // Genre
-    public String getGenre() {
-        return genre;
+    // gender
+    public String getGender() {
+        return gender;
     }
 
-    public void setGenre(String genre) {
-        this.genre = genre;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     // Address

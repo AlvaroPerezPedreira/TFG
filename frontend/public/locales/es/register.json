@@ -1,0 +1,15 @@
+{
+    "slogan": "Comienza tu viaje",
+    "register": "Registrate en DeepDive",
+    "email": "Correo electrónico",
+    "passwd": "Contraseña",
+    "retype_passwd": "Repite la contraseña",
+    "birthdate": "Fecha de nacimiento",
+    "gender": "Género",
+    "male": "Hombre",
+    "female": "Mujer",
+    "non_binary": "No binario",
+    "continue": "Continuar",
+    "alreadySignup": "¿Ya tienes una cuenta?",
+    "login": "Inicia sesión"
+}

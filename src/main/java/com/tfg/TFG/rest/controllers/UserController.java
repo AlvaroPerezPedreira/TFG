@@ -154,7 +154,7 @@ public class UserController {
 
 		return toUserDto(
 				userService.updateProfile(id, userDto.getUsername(), userDto.getName(), userDto.getLastname(),
-						userDto.getPhone(), userDto.getBirthdate(), userDto.getCountry(), userDto.getGenre(),
+						userDto.getPhone(), userDto.getBirthdate(), userDto.getCountry(), userDto.getGender(),
 						userDto.getAddress(), userDto.getPassport()));
 
 	}

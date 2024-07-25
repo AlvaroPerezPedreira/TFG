@@ -13,7 +13,8 @@ public interface UserService {
         User loginFromId(Long id) throws InstanceNotFoundException;
 
         User updateProfile(Long id, String userName, String name, String lastName, String phone, String birthDateString,
-                        String country, String genre, String address, String passport) throws InstanceNotFoundException;
+                        String country, String gender, String address, String passport)
+                        throws InstanceNotFoundException;
 
         void changePassword(Long id, String oldPassword, String newPassword)
                         throws InstanceNotFoundException, IncorrectPasswordException;

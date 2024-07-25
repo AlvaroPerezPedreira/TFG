@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import "./styles/login.css";
 import useLogin from "../hooks/useLogin";
 import LoginSlider from "./Slider";
@@ -127,10 +126,16 @@ const Auth = () => {
               />
 
               <div className="login-button-container">
-                <Button radius="none" customWidth="100%" type="submit" />
+                <Button
+                  radius="none"
+                  customWidth="100%"
+                  type="submit"
+                  children={t("continue")}
+                />
               </div>
             </div>
           </form>
+
           <div className="login-footer">
             {t("haveAccount")}{" "}
             <a href="/register" className="login-register-link">

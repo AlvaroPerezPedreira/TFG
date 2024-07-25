@@ -1,0 +1,158 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .register-wrapper {
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    padding: 20px;
+  }
+  
+  .register-container {
+    border: 1px solid black;
+    width: 100%;
+    height: 100%;
+    display: flex;
+  }
+  
+  .register-form-container {
+    width: 40%;
+    background-color: black;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .register-logo {
+    width: 100%;
+    height: 50px;
+    font-weight: bold;
+    font-size: 32px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .register-form {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    flex: 1;
+    font-size: 18px;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+  }
+  
+  .register-input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 350px;
+    border: 1px solid white;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .register-title-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-align: start;
+  
+    .register-form-subtitle {
+      font-weight: bold;
+      color: #FFDB58;
+      font-size: 16px;
+    }
+  
+    .register-form-title {
+      font-weight: bold;
+      font-size: 24px;
+      color: white;
+    }
+  }
+  
+  .register-button-container {
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .register-footer {
+    color: rgb(41, 40, 40);
+    font-size: 14px;
+    display: flex;
+    gap: 3px;
+    padding: 15px;
+  }
+
+  .register-login-link {
+    text-decoration: none;
+    color: #006fee;
+  }
+
+  .register-flag-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 16px;
+  }
+  
+  /* RIGHT */
+  .register-slider {
+    width: 65%;
+    background-color: white;
+  }
+
+  .register-header-container {
+    display: flex;
+    padding: 0px 10px;
+  }
+  
+  .register-dropdown-container {
+    min-width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  /* 
+    register-birthdate-form-group
+    register-genre-form-group
+    register-genre-checkbox-container
+    register-genre-checkbox     
+  */
+
+  /* Mios */
+
+  .register-genre-checkbox-container {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    color: white;
+  }
+
+  .register-genre-checkbox {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+  }
+
+
+
+  @media (width <= 1200px) {
+    .register-form-container {
+      width: 50%;
+    }
+    .register-slider {
+      width: 50%;
+    }
+  }
+
+  

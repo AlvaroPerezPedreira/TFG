@@ -4,5 +4,6 @@
     "haveAccount": "Tu as un compte?",
     "signUp": "Crée un compte",
     "email": "Courrier électronique",
-    "passwd": "Mot de passe"
+    "passwd": "Mot de passe",
+    "continue": "Continuer"
 }

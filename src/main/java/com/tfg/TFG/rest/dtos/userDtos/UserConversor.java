@@ -20,9 +20,10 @@ public class UserConversor {
 	 * @return the user dto
 	 */
 	public static final UserDto toUserDto(User user) {
-		return new UserDto(user.getEmail(), user.getRole().toString(), user.getUsername(), user.getName(),
+		return new UserDto(user.getEmail(), user.getPassword(), user.getRole().toString(), user.getUsername(),
+				user.getName(),
 				user.getLastname(),
-				user.getPhone(), user.getBirthdate(), user.getCountry(), user.getGenre(), user.getAddress(),
+				user.getPhone(), user.getBirthdate(), user.getCountry(), user.getGender(), user.getAddress(),
 				user.getPassport(), user.getAvatar());
 	}
 
@@ -35,7 +36,7 @@ public class UserConversor {
 	public static final User toUser(UserDto userDto) {
 		return new User(userDto.getEmail(), userDto.getPassword(), userDto.getUsername(), userDto.getName(),
 				userDto.getLastname(), userDto.getPhone(), userDto.getBirthdate(),
-				userDto.getCountry(), userDto.getGenre(), userDto.getAddress(), userDto.getPassport(),
+				userDto.getCountry(), userDto.getGender(), userDto.getAddress(), userDto.getPassport(),
 				userDto.getAvatar());
 	}
 

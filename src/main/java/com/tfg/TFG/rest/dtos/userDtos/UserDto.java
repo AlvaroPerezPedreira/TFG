@@ -39,8 +39,8 @@ public class UserDto {
 	/** The user country. */
 	private String country;
 
-	/** The user genre. */
-	private String genre;
+	/** The user gender. */
+	private String gender;
 
 	/** The user address. */
 	private String address;
@@ -70,7 +70,7 @@ public class UserDto {
 	}
 
 	public UserDto(String email, String password, String role, String username, String name, String lastname,
-			String phone, String birthdate, String country, String genre, String address, String passport) {
+			String phone, String birthdate, String country, String gender, String address, String passport) {
 		this.email = email;
 		this.password = password;
 		this.role = role;
@@ -80,14 +80,14 @@ public class UserDto {
 		this.phone = phone;
 		this.birthdate = birthdate;
 		this.country = country;
-		this.genre = genre;
+		this.gender = gender;
 		this.address = address;
 		this.passport = passport;
 		this.avatar = null;
 	}
 
 	public UserDto(String email, String password, String role, String username, String name, String lastname,
-			String phone, String birthdate, String country, String genre, String address, String passport,
+			String phone, String birthdate, String country, String gender, String address, String passport,
 			String avatar) {
 		this.email = email;
 		this.password = password;
@@ -98,7 +98,7 @@ public class UserDto {
 		this.phone = phone;
 		this.birthdate = birthdate;
 		this.country = country;
-		this.genre = genre;
+		this.gender = gender;
 		this.address = address;
 		this.passport = passport;
 		this.avatar = avatar;
@@ -121,7 +121,9 @@ public class UserDto {
 	}
 
 	public void setEmail(String email) {
-		this.email = email.trim();
+		if (email != null) {
+			this.email = email.trim();
+		}
 	}
 
 	// Password
@@ -152,40 +154,48 @@ public class UserDto {
 	}
 
 	public void setUsername(String username) {
-		this.username = username.trim();
+		if (username != null) {
+			this.username = username.trim();
+		}
+
 	}
 
 	// Name
-	@NotNull(groups = { AllValidations.class, UpdateValidations.class })
 	@Size(min = 1, max = 60, groups = { AllValidations.class, UpdateValidations.class })
 	public String getName() {
 		return name;
 	}
 
 	public void setName(String name) {
-		this.name = name.trim();
+		if (name != null) {
+			this.name = name.trim();
+		}
+
 	}
 
 	// Lastname
-	@NotNull(groups = { AllValidations.class, UpdateValidations.class })
 	@Size(min = 1, max = 60, groups = { AllValidations.class, UpdateValidations.class })
 	public String getLastname() {
 		return lastname;
 	}
 
 	public void setLastname(String lastname) {
-		this.lastname = lastname.trim();
+		if (lastname != null) {
+			this.lastname = lastname.trim();
+		}
+
 	}
 
 	// Phone
-	@NotNull(groups = { AllValidations.class, UpdateValidations.class })
 	@Size(min = 1, max = 15, groups = { AllValidations.class, UpdateValidations.class })
 	public String getPhone() {
 		return phone;
 	}
 
 	public void setPhone(String phone) {
-		this.phone = phone.trim();
+		if (phone != null) {
+			this.phone = phone.trim();
+		}
 	}
 
 	// Birthdate
@@ -196,49 +206,55 @@ public class UserDto {
 	}
 
 	public void setBirthdate(String birthdate) {
-		this.birthdate = birthdate.trim();
+		if (birthdate != null) {
+			this.birthdate = birthdate.trim();
+		}
 	}
 
 	// Country
-	@NotNull(groups = { AllValidations.class, UpdateValidations.class })
 	@Size(min = 1, max = 80, groups = { AllValidations.class, UpdateValidations.class })
 	public String getCountry() {
 		return country;
 	}
 
 	public void setCountry(String country) {
-		this.country = country.trim();
+		if (country != null) {
+			this.country = country.trim();
+		}
+
 	}
 
-	// Genre
-	public String getGenre() {
-		return genre;
+	// Gender
+	public String getGender() {
+		return gender;
 	}
 
-	public void setGenre(String genre) {
-		this.genre = genre;
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 
 	// Address
-	@NotNull(groups = { AllValidations.class, UpdateValidations.class })
 	@Size(min = 1, max = 300, groups = { AllValidations.class, UpdateValidations.class })
 	public String getAddress() {
 		return address;
 	}
 
 	public void setAddress(String address) {
-		this.address = address.trim();
+		if (address != null) {
+			this.address = address.trim();
+		}
 	}
 
 	// Passport
-	@NotNull(groups = { AllValidations.class, UpdateValidations.class })
 	@Size(min = 1, max = 15, groups = { AllValidations.class, UpdateValidations.class })
 	public String getPassport() {
 		return passport;
 	}
 
 	public void setPassport(String passport) {
-		this.passport = passport.trim();
+		if (passport != null) {
+			this.passport = passport.trim();
+		}
 	}
 
 	// Avatar
@@ -248,7 +264,9 @@ public class UserDto {
 	}
 
 	public void setAvatar(String avatar) {
-		this.avatar = avatar.trim();
+		if (avatar != null) {
+			this.avatar = avatar.trim();
+		}
 	}
 
 }
