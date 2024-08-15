@@ -1,0 +1,15 @@
+{
+    "username": "Nombre de usuario",
+    "name": "Nombre",
+    "lastname": "Apellidos",
+    "phone": "Teléfono",
+    "birthdate": "Fecha de nacimiento",
+    "country": "País",
+    "gender": "Género",
+    "male": "Hombre",
+    "female": "Mujer",
+    "non_binary": "No binario",
+    "address": "Dirección",
+    "passport": "Pasaporte",
+    "update": "Actualizar el perfil"
+}

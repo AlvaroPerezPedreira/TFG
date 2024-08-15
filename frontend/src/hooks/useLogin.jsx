@@ -23,7 +23,6 @@ const useLogin = (e) => {
     });
 
     const finalData = await response.json();
-    console.log(finalData);
 
     if (finalData.globalError) {
       return;

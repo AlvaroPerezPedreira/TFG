@@ -31,10 +31,15 @@
     height: 50px;
     font-weight: bold;
     font-size: 32px;
-    color: white;
+    color: #FFDB58;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+  }
+
+  .login-logo-img {
+    margin-right: 10px;
+    height: auto;
+    width: 45px;
   }
   
   .login-form {
@@ -92,9 +97,18 @@
     padding: 15px;
   }
 
-  .login-register-link {
+  .login-register-button {
+    background-color: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
     text-decoration: none;
-    color: #006fee;
+    color: #FFDB58;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-left: 5px;
   }
 
   .login-flag-container {
@@ -161,5 +175,15 @@
     }
     .login-slider {
       width: 50%;
+    }
+  }
+
+  @media (width <= 620px) {
+    .login-form-container {
+      width: 100%;
+    }
+    
+    .login-slider {
+      display: none;
     }
   }

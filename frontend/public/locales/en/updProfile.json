@@ -1,0 +1,15 @@
+{
+    "username": "Username",
+    "name": "Name",
+    "lastname": "Lastname",
+    "phone": "Phone",
+    "birthdate": "Birthdate",
+    "country": "Country",
+    "gender": "Gender",
+    "male": "Male",
+    "female": "Female",
+    "non_binary": "Non binary",
+    "address": "Address",
+    "passport": "Passport",
+    "update": "Update profile"
+}

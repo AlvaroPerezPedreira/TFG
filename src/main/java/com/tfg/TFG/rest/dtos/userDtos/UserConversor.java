@@ -27,6 +27,11 @@ public class UserConversor {
 				user.getPassport(), user.getAvatar());
 	}
 
+	public static final UpdatedUserDto toUpdatedUserDto(User user) {
+		return new UpdatedUserDto(user.getUsername(), user.getName(), user.getLastname(), user.getPhone(),
+				user.getBirthdate(), user.getCountry(), user.getGender(), user.getAddress(), user.getPassport());
+	}
+
 	/**
 	 * To user.
 	 *

@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import UpdateProfile from "./components/UpdateProfile";
 import { useAuthContext } from "./context/AuthContext";
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           path="/register"
           element={authUser ? <Navigate to="/" /> : <Register />}
         />
+        <Route path="/updateProfile" element={<UpdateProfile />} />
       </Routes>
     </>
   );

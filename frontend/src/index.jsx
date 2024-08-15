@@ -1,4 +1,4 @@
-import './mirakle-ui.css';
+import "./mirakle-ui.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";

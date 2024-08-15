@@ -31,10 +31,15 @@
     height: 50px;
     font-weight: bold;
     font-size: 32px;
-    color: white;
+    color: #FFDB58;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+  }
+
+  .register-logo-img {
+    margin-right: 10px;
+    height: auto;
+    width: 45px;
   }
   
   .register-form {
@@ -91,9 +96,18 @@
     padding: 15px;
   }
 
-  .register-login-link {
+  .register-login-button {
+    background-color: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
     text-decoration: none;
-    color: #006fee;
+    color: #FFDB58;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-left: 5px;
   }
 
   .register-flag-container {
@@ -123,22 +137,21 @@
 
 
   /* 
-    register-birthdate-form-group
-    register-genre-form-group
-    register-genre-checkbox-container
-    register-genre-checkbox     
+    register-gender-form-group
+    register-gender-checkbox-container
+    register-gender-checkbox     
   */
 
   /* Mios */
 
-  .register-genre-checkbox-container {
+  .register-gender-checkbox-container {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
     color: white;
   }
 
-  .register-genre-checkbox {
+  .register-gender-checkbox {
     display: flex;
     gap: 5px;
     align-items: center;
@@ -155,4 +168,13 @@
     }
   }
 
+  @media (width <= 620px) {
+    .register-form-container {
+      width: 100%;
+    }
+    
+    .register-slider {
+      display: none;
+    }
+  }
   

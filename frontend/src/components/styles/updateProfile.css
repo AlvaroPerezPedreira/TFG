@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .updProfile-container {
+    border: 1px solid black;
+    width: 100%;
+    height: 100%;
+    display: flex;
+  }
+  
+  .updProfile-form-container {
+    width: 100%;
+    background-color: black;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .updProfile-header-container {
+    display: flex;
+    padding: 0px 10px;
+  }
+  
+  .updProfile-logo {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+  
+  .updProfile-deepdive-link {
+    color: #FFDB58;
+    font-size: 32px;
+    font-weight: bold;
+    text-decoration: none;
+    align-items: center;
+  }
+
+  .updProfile-logo-img {
+    margin-right: 10px;
+    height: auto;
+    width: 45px;
+  }
+
+  .updProfile-dropdown-container {
+    min-width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .updProfile-flag-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 16px;
+  }
+
+  .updProfile-form {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    flex: 1;
+    font-size: 18px;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+  }
+
+  /* 
+    register-gender-form-group
+    register-gender-checkbox-container
+    register-gender-checkbox     
+  */
+
+  .updProfile-gender-checkbox-container {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    color: white;
+  }
+
+  .updProfile-gender-checkbox {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+  }

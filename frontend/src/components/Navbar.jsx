@@ -13,13 +13,14 @@ import {
   DropdownTrigger,
 } from "@mirakle-ui/react";
 import { useAuthContext } from "../context/AuthContext";
+import { startTransition, Suspense } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [t, i18n] = useTranslation(["navbar"]);
   const currentLanguage = i18n.language;
   const { setAuthUser } = useAuthContext();
-
-  console.log(currentLanguage);
+  let navigate = useNavigate();
 
   const getFlagIcon = (currentLanguage) => {
     if (currentLanguage === "es") {
@@ -37,95 +38,110 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar-container">
-      <h1 className="navbar-title">DeepDive</h1>
-      <div className="navbar-dropdown">
-        <Dropdown>
-          <DropdownTrigger>
-            <Button
-              radius="md"
-              variant="bordered"
-              color="default"
-              isIconOnly
-              customRippleColor="black"
+    <Suspense fallback="loading">
+      <div className="navbar-container">
+        <h1 className="navbar-title">DeepDive</h1>
+        <div className="navbar-dropdown">
+          <Dropdown>
+            <DropdownTrigger>
+              <Button
+                radius="md"
+                variant="bordered"
+                color="default"
+                isIconOnly
+                customRippleColor="black"
+              >
+                <UserIcon />
+              </Button>
+            </DropdownTrigger>
+            <DropdownMenu
+              position={"bottom-end"}
+              offset={0}
+              aria-label="Static Actions"
             >
-              <UserIcon />
-            </Button>
-          </DropdownTrigger>
-          <DropdownMenu
-            position={"bottom-end"}
-            offset={0}
-            aria-label="Static Actions"
-          >
-            <DropdownItem textColor="aqua" key="new">
-              New file
-            </DropdownItem>
-            <DropdownItem key="copy">Copy link</DropdownItem>
-            <DropdownItem key="edit">Edit file</DropdownItem>
-            <DropdownItem
-              key="logout"
-              color="danger"
-              variant="solid"
-              onClick={logOut}
+              <DropdownItem textColor="#FFDB58" key="new" variant="solid">
+                New file
+              </DropdownItem>
+              <DropdownItem key="copy" textColor="#FFDB58" variant="solid">
+                Copy link
+              </DropdownItem>
+              <DropdownItem
+                key="updateProfile"
+                textColor="#FFDB58"
+                variant="solid"
+                onClick={() => {
+                  startTransition(() => {
+                    navigate("/updateProfile");
+                  });
+                }}
+              >
+                {t("updProfile")}
+              </DropdownItem>
+              <DropdownItem
+                key="logout"
+                color="danger"
+                variant="solid"
+                onClick={logOut}
+              >
+                {t("logOut")}
+              </DropdownItem>
+            </DropdownMenu>
+          </Dropdown>{" "}
+          <Dropdown>
+            <DropdownTrigger>
+              <Button
+                radius="md"
+                variant="bordered"
+                color="default"
+                isIconOnly
+                customRippleColor="black"
+              >
+                {getFlagIcon(currentLanguage)}
+              </Button>
+            </DropdownTrigger>
+            <DropdownMenu
+              position={"bottom-end"}
+              offset={0}
+              aria-label="Static Actions"
             >
-              {t("logOut")}
-            </DropdownItem>
-          </DropdownMenu>
-        </Dropdown>{" "}
-        <Dropdown>
-          <DropdownTrigger>
-            <Button
-              radius="md"
-              variant="bordered"
-              color="default"
-              isIconOnly
-              customRippleColor="black"
-            >
-              {getFlagIcon(currentLanguage)}
-            </Button>
-          </DropdownTrigger>
-          <DropdownMenu
-            position={"bottom-end"}
-            offset={0}
-            aria-label="Static Actions"
-          >
-            <DropdownItem
-              key="ES_FLAG"
-              onClick={() => {
-                i18n.changeLanguage("es");
-              }}
-            >
-              <div className="navbar-flag-container">
-                <SpainIcon />
-                <span>Spain</span>
-              </div>
-            </DropdownItem>
-            <DropdownItem
-              key="EN_FLAG"
-              onClick={() => {
-                i18n.changeLanguage("en");
-              }}
-            >
-              <div className="navbar-flag-container">
-                <UKIcon />
-                <span>United Kingdom</span>
-              </div>
-            </DropdownItem>
-            <DropdownItem
-              key="FR_FLAG"
-              onClick={() => {
-                i18n.changeLanguage("fr");
-              }}
-            >
-              <div className="navbar-flag-container">
-                <FranceIcon />
-                <span>France</span>
-              </div>
-            </DropdownItem>
-          </DropdownMenu>
-        </Dropdown>{" "}
+              <DropdownItem
+                key="ES_FLAG"
+                onClick={() => {
+                  i18n.changeLanguage("es");
+                }}
+              >
+                <div className="navbar-flag-container">
+                  <SpainIcon />
+                  <span>Spain</span>
+                </div>
+              </DropdownItem>
+              <DropdownItem
+                key="EN_FLAG"
+                onClick={() => {
+                  i18n.changeLanguage("en");
+                }}
+              >
+                <div className="navbar-flag-container">
+                  <UKIcon />
+                  <span>United Kingdom</span>
+                </div>
+              </DropdownItem>
+              <DropdownItem
+                key="FR_FLAG"
+                onClick={() => {
+                  i18n.changeLanguage("fr");
+                }}
+              >
+                <div className="navbar-flag-container">
+                  <FranceIcon />
+                  <span>France</span>
+                </div>
+              </DropdownItem>
+            </DropdownMenu>
+          </Dropdown>{" "}
+        </div>
       </div>
-    </div>
+    </Suspense>
   );
 };
 

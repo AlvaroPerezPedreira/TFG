@@ -14,7 +14,7 @@ const useRegister = (e) => {
       repeat_password: form.get("repeat_password"),
       username: form.get("username"),
       birthdate: birthdate,
-      genre: activeLabel,
+      gender: activeLabel,
     };
 
     const response = await fetch("http://localhost:8080/api/users/signUp", {
@@ -27,9 +27,8 @@ const useRegister = (e) => {
     });
 
     const finalData = await response.json();
-    console.log(finalData);
 
-    if (finalData.globalError) {
+    if (finalData.globalError || finalData.error || finalData.fieldErrors) {
       return;
     }
 

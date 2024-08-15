@@ -2,6 +2,7 @@
     "slogan": "Comienza tu viaje",
     "register": "Registrate en DeepDive",
     "email": "Correo electrónico",
+    "username": "Nombre de usuario",
     "passwd": "Contraseña",
     "retype_passwd": "Repite la contraseña",
     "birthdate": "Fecha de nacimiento",
@@ -11,5 +12,9 @@
     "non_binary": "No binario",
     "continue": "Continuar",
     "alreadySignup": "¿Ya tienes una cuenta?",
-    "login": "Inicia sesión"
+    "login": "Inicia sesión",
+    "day": "Día",
+    "month": "Mes",
+    "year": "Año",
+    "birthDateModal": "Fecha de nacimiento"
 }

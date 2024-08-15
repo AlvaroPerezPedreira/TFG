@@ -33,6 +33,7 @@ import com.tfg.TFG.rest.dtos.userDtos.AuthenticatedUserDto;
 import com.tfg.TFG.rest.dtos.userDtos.ChangePasswordParamsDto;
 import com.tfg.TFG.rest.dtos.userDtos.LoginParamsDto;
 import com.tfg.TFG.rest.dtos.userDtos.UserDto;
+import com.tfg.TFG.rest.dtos.userDtos.UpdatedUserDto;
 
 /**
  * The Class UserController.
@@ -144,18 +145,20 @@ public class UserController {
 	 * @throws PermissionException       the permission exception
 	 */
 	@PutMapping("/{id}")
-	public UserDto updateProfile(@RequestAttribute Long userId, @PathVariable("id") Long id,
-			@Validated({ UserDto.UpdateValidations.class }) @RequestBody UserDto userDto)
+	public UpdatedUserDto updateProfile(@RequestAttribute Long userId, @PathVariable("id") Long id,
+			@Validated({ UserDto.UpdateValidations.class }) @RequestBody UpdatedUserDto updatedUserDto)
 			throws InstanceNotFoundException, PermissionException {
 
 		if (!id.equals(userId)) {
 			throw new PermissionException();
 		}
 
-		return toUserDto(
-				userService.updateProfile(id, userDto.getUsername(), userDto.getName(), userDto.getLastname(),
-						userDto.getPhone(), userDto.getBirthdate(), userDto.getCountry(), userDto.getGender(),
-						userDto.getAddress(), userDto.getPassport()));
+		return toUpdatedUserDto(
+				userService.updateProfile(id, updatedUserDto.getUsername(), updatedUserDto.getName(),
+						updatedUserDto.getLastname(),
+						updatedUserDto.getPhone(), updatedUserDto.getBirthdate(), updatedUserDto.getCountry(),
+						updatedUserDto.getGender(),
+						updatedUserDto.getAddress(), updatedUserDto.getPassport()));
 
 	}
 
