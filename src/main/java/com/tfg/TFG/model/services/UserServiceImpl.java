@@ -110,4 +110,9 @@ public class UserServiceImpl implements UserService {
         User user = permissionChecker.checkUser(id);
         user.setAvatar(newAvatar);
     }
+
+    @Override
+    public User findById(Long id) throws InstanceNotFoundException {
+        return userDao.findById(id).orElseThrow(() -> new InstanceNotFoundException("project.entities.user", id));
+    }
 }

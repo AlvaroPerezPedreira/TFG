@@ -21,4 +21,6 @@ public interface UserService {
 
         void changeAvatar(Long id, String url) throws InstanceNotFoundException;
 
+        User findById(Long id) throws InstanceNotFoundException;
+
 }

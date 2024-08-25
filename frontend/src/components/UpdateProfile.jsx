@@ -12,8 +12,10 @@ import SpainIcon from "../icons/SpainIcon";
 import UKIcon from "../icons/UKIcon";
 import FranceIcon from "../icons/FranceIcon";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DateModal from "./DateModal";
+import useUpdateProfile from "../hooks/useUpdateProfile";
+import { useAuthContext } from "../context/AuthContext";
 
 const Auth = () => {
   const [t, i18n] = useTranslation(["updProfile"]);
@@ -22,6 +24,12 @@ const Auth = () => {
   const [activeLabel, setActiveLabel] = useState("");
   const [activeCheckbox, setActiveCheckbox] = useState(null);
   const [showDateModal, setShowDateModal] = useState(false);
+
+  const { authUser } = useAuthContext();
+  const userId = authUser?.id;
+
+  const { userData, updateProfile } = useUpdateProfile(userId);
+
   const [formData, setFormData] = useState({
     username: "",
     name: "",
@@ -33,6 +41,25 @@ const Auth = () => {
     address: "",
     passport: "",
   });
+
+  useEffect(() => {
+    if (userData) {
+      setFormData({
+        username: userData.username || "",
+        name: userData.name || "",
+        lastname: userData.lastname || "",
+        phone: userData.phone || "",
+        birthdate: userData.birthdate || "",
+        country: userData.country || "",
+        gender: userData.gender || "",
+        address: userData.address || "",
+        passport: userData.passport || "",
+      });
+      setActiveLabel(userData.gender);
+      setActiveCheckbox(userData.gender);
+      setBirthdate(userData.birthdate);
+    }
+  }, [userData]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -155,6 +182,7 @@ const Auth = () => {
             underlineColor="white"
             customWidth="100%"
             width="full"
+            placeholder={formData.username}
           />
 
           <Input
@@ -168,6 +196,7 @@ const Auth = () => {
             underlineColor="white"
             customWidth="100%"
             width="full"
+            placeholder={formData.name}
           />
 
           <Input
@@ -181,6 +210,7 @@ const Auth = () => {
             underlineColor="white"
             customWidth="100%"
             width="full"
+            placeholder={formData.lastname}
           />
 
           <Input
@@ -194,6 +224,7 @@ const Auth = () => {
             underlineColor="white"
             customWidth="100%"
             width="full"
+            placeholder={formData.phone}
           />
 
           <div className="register-birthdate-form-group">
@@ -224,6 +255,7 @@ const Auth = () => {
             underlineColor="white"
             customWidth="100%"
             width="full"
+            placeholder={formData.country}
           />
 
           <div className="updProfile-gender-form-group">
@@ -272,6 +304,7 @@ const Auth = () => {
             underlineColor="white"
             customWidth="100%"
             width="full"
+            placeholder={formData.address}
           />
 
           <Input
@@ -285,6 +318,7 @@ const Auth = () => {
             underlineColor="white"
             customWidth="100%"
             width="full"
+            placeholder={formData.passport}
           />
 
           <div className="updProfile-button-container">
