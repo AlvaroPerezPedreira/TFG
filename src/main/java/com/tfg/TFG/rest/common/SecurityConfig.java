@@ -45,15 +45,14 @@ public class SecurityConfig {
 		 http.cors(cors -> cors.disable()).csrf(csrf -> csrf.disable())
 				 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 				 .authorizeHttpRequests(authorize -> authorize
+				 		 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+  					     .requestMatchers(antMatcher(HttpMethod.OPTIONS, "/**")).permitAll()
 						 .requestMatchers(antMatcher("/*")).permitAll()
 						 .requestMatchers(antMatcher(HttpMethod.POST, "/users/signUp")).permitAll()
 						 .requestMatchers(antMatcher(HttpMethod.POST, "/users/login")).permitAll()
-						 .requestMatchers(antMatcher(HttpMethod.GET, "/catalog/categories")).permitAll()
-						 .requestMatchers(antMatcher(HttpMethod.GET, "/catalog/products/*")).permitAll()
-						 .requestMatchers(antMatcher(HttpMethod.GET, "/catalog/products")).permitAll()
+						 .requestMatchers(antMatcher(HttpMethod.PUT, "/users/updateUser")).permitAll()
 						 .requestMatchers(antMatcher(HttpMethod.POST, "/users/loginFromServiceToken")).permitAll()
 						 .requestMatchers(antMatcher(HttpMethod.PUT, "/users/*")).hasAnyRole("SELLER", "SHOPPER")
-						 .requestMatchers(antMatcher(HttpMethod.POST, "/seller/*/postProduct")).hasRole("SELLER")
 						 .requestMatchers(antMatcher(HttpMethod.POST, "/users/*/changePassword")).hasAnyRole("SELLER", "SHOPPER")
 						 .anyRequest().permitAll()
 				 )
@@ -86,12 +85,13 @@ public class SecurityConfig {
 	public CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration config = new CorsConfiguration();
 		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-		config.addAllowedOrigin("http://localhost:3000");
+		config.addAllowedOrigin("http://localhost:3000/*");
 		config.setAllowCredentials(true);
 		config.addAllowedOrigin("*");
 		config.addAllowedHeader("*");
 		config.addAllowedMethod("*");
 		source.registerCorsConfiguration("/**", config);
+
 		return source;
 	}
 
@@ -102,6 +102,12 @@ public class SecurityConfig {
 
 		// Permitir todas las solicitudes de origen desde http://localhost:3000
 		config.addAllowedOrigin("http://localhost:3000");
+		config.addAllowedOrigin("http://localhost:3000/*");
+		config.addAllowedOrigin("http://*");
+
+		config.addAllowedOrigin("https://localhost:3000");
+		config.addAllowedOrigin("https://localhost:3000/*");
+		config.addAllowedOrigin("https://*");
 
 		// Permitir todas las cabeceras
 		config.addAllowedHeader("*");

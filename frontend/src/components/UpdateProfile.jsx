@@ -26,44 +26,27 @@ const Auth = () => {
   const [showDateModal, setShowDateModal] = useState(false);
 
   const { authUser } = useAuthContext();
-  const userId = authUser?.id;
+  console.log(authUser);
 
-  const { userData, updateProfile } = useUpdateProfile(userId);
+  const { updateProfile } = useUpdateProfile();
 
   const [formData, setFormData] = useState({
-    username: "",
-    name: "",
-    lastname: "",
-    phone: "",
-    birthdate: "",
-    country: "",
-    gender: "",
-    address: "",
-    passport: "",
+    username: authUser.user?.username || "",
+    name: authUser.user?.name || "",
+    lastname: authUser.user?.lastname || "",
+    phone: authUser.user?.phone || "",
+    birthdate: authUser.user?.birthdate || "",
+    country: authUser.user?.country || "",
+    gender: authUser.user?.gender || "",
+    address: authUser.user?.address || "",
+    passport: authUser.user?.passport || "",
   });
 
-  useEffect(() => {
-    if (userData) {
-      setFormData({
-        username: userData.username || "",
-        name: userData.name || "",
-        lastname: userData.lastname || "",
-        phone: userData.phone || "",
-        birthdate: userData.birthdate || "",
-        country: userData.country || "",
-        gender: userData.gender || "",
-        address: userData.address || "",
-        passport: userData.passport || "",
-      });
-      setActiveLabel(userData.gender);
-      setActiveCheckbox(userData.gender);
-      setBirthdate(userData.birthdate);
-    }
-  }, [userData]);
+  console.log(formData.username);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    //await updateUserProfile(formData);
+    await updateProfile(e, birthdate, activeLabel);
   };
 
   const getFlagIcon = (currentLanguage) => {

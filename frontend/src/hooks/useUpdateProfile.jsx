@@ -2,33 +2,13 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../context/AuthContext";
 
-const useUpdateProfile = (userId) => {
+const useUpdateProfile = () => {
   let navigate = useNavigate();
-  const { setAuthUser } = useAuthContext();
+  const { authUser, setAuthUser } = useAuthContext();
   const [userData, setUserData] = useState(null);
 
-  useEffect(() => {
-    const fetchUserData = async () => {
-      const response = await fetch(
-        `http://localhost:8080/api/users/${userId}`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-            Authorization: `Bearer ${localStorage.getItem("authUser")}.token`,
-          },
-        }
-      );
-
-      const data = await response.json();
-      setUserData(data);
-    };
-
-    if (userId) {
-      fetchUserData();
-    }
-  }, [userId]);
+  const token = JSON.parse(localStorage.getItem("authUser")).serviceToken;
+  console.log(token);
 
   const updateProfile = async (e, birthdate, activeLabel) => {
     e.preventDefault();
@@ -46,24 +26,30 @@ const useUpdateProfile = (userId) => {
       country: form.get("country"),
     };
 
-    const response = await fetch(`http://localhost:8080/api/users/${userId}`, {
+    const response = await fetch(`http://localhost:8080/api/users/updateUser`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
-        Authorization: `Bearer ${localStorage.getItem("authUser")}.token`,
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(data),
     });
 
     const finalData = await response.json();
+    console.log(finalData);
 
     if (finalData.globalError || finalData.error || finalData.fieldErrors) {
       return;
     }
 
-    localStorage.setItem("authUser", JSON.stringify(finalData));
-    setAuthUser(finalData);
+    const updatedAuthUser = {
+      ...authUser,
+      user: finalData,
+    };
+
+    localStorage.setItem("authUser", JSON.stringify(updatedAuthUser));
+    setAuthUser(updatedAuthUser);
     navigate("/");
   };
 
