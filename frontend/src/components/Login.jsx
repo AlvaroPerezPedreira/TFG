@@ -8,7 +8,7 @@ import {
   DropdownMenu,
   DropdownTrigger,
   Input,
-} from "@mirakle-ui/react";
+} from "@miracle-ui/react";
 import { useTranslation } from "react-i18next";
 import SpainIcon from "../icons/SpainIcon";
 import UKIcon from "../icons/UKIcon";

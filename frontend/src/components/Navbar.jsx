@@ -11,7 +11,7 @@ import {
   DropdownItem,
   DropdownMenu,
   DropdownTrigger,
-} from "@mirakle-ui/react";
+} from "@miracle-ui/react";
 import { useAuthContext } from "../context/AuthContext";
 import { startTransition, Suspense } from "react";
 import { useNavigate } from "react-router-dom";

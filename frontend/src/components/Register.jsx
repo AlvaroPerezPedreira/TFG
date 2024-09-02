@@ -7,14 +7,15 @@ import {
   DropdownItem,
   DropdownMenu,
   DropdownTrigger,
+  Modal,
   Input,
-} from "@mirakle-ui/react";
+} from "@miracle-ui/react";
 import { useTranslation } from "react-i18next";
 import SpainIcon from "../icons/SpainIcon";
 import UKIcon from "../icons/UKIcon";
 import FranceIcon from "../icons/FranceIcon";
 import LoginSlider from "./Slider";
-import DateModal from "./DateModal";
+import ModalContent from "./ModalContent";
 import { useNavigate } from "react-router-dom";
 
 const Register = () => {
@@ -24,7 +25,6 @@ const Register = () => {
   const { register } = useRegister();
   const [t, i18n] = useTranslation(["register"]);
   const currentLanguage = i18n.language;
-  const [showDateModal, setShowDateModal] = useState(false);
   let navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -49,14 +49,6 @@ const Register = () => {
     } else {
       return <FranceIcon />;
     }
-  };
-
-  const openModal = () => {
-    setShowDateModal(true);
-  };
-
-  const closeModal = () => {
-    setShowDateModal(false);
   };
 
   return (
@@ -180,20 +172,31 @@ const Register = () => {
                 />
 
                 <div className="register-birthdate-form-group">
-                  <Button
-                    onClick={openModal}
-                    children={t("birthdate")}
-                    radius="none"
-                    customWidth="100%"
-                    customColor="#FFDB58"
-                    customRippleColor="black"
-                    blackText
-                  />
-                  <DateModal
-                    showModal={showDateModal}
-                    closeModal={closeModal}
-                    handleDateChange={handleDateChange}
-                  />
+                  <Modal
+                    backdrop="blur"
+                    button={
+                      <Button
+                        radius="none"
+                        color="default"
+                        variant="bordered"
+                        customWidth="100%"
+                        customRippleColor="black"
+                        blackText
+                        customColor="#FFDB58"
+                        children={t("birthdate")}
+                      ></Button>
+                    }
+                  >
+                    {({ closeModal }) => (
+                      <div>
+                        <ModalContent
+                          closeModal={closeModal}
+                          handleDateChange={handleDateChange}
+                          birthdate={birthdate}
+                        />
+                      </div>
+                    )}
+                  </Modal>
                 </div>
 
                 <div className="register-gender-form-group">

@@ -6,16 +6,17 @@ import {
   DropdownMenu,
   DropdownTrigger,
   Input,
-} from "@mirakle-ui/react";
+  Modal,
+} from "@miracle-ui/react";
 import { useTranslation } from "react-i18next";
 import SpainIcon from "../icons/SpainIcon";
 import UKIcon from "../icons/UKIcon";
 import FranceIcon from "../icons/FranceIcon";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import DateModal from "./DateModal";
+import { useState } from "react";
 import useUpdateProfile from "../hooks/useUpdateProfile";
 import { useAuthContext } from "../context/AuthContext";
+import ModalContent from "./ModalContent";
 
 const Auth = () => {
   const [t, i18n] = useTranslation(["updProfile"]);
@@ -23,7 +24,6 @@ const Auth = () => {
   const [birthdate, setBirthdate] = useState("");
   const [activeLabel, setActiveLabel] = useState("");
   const [activeCheckbox, setActiveCheckbox] = useState(null);
-  const [showDateModal, setShowDateModal] = useState(false);
 
   const { authUser } = useAuthContext();
   console.log(authUser);
@@ -74,14 +74,6 @@ const Auth = () => {
   const handleChangeCheckbox = (label, id) => {
     setActiveLabel(label);
     setActiveCheckbox(id);
-  };
-
-  const openModal = () => {
-    setShowDateModal(true);
-  };
-
-  const closeModal = () => {
-    setShowDateModal(false);
   };
 
   return (
@@ -153,156 +145,178 @@ const Auth = () => {
             </Dropdown>{" "}
           </div>
         </div>
+
         <form className="updProfile-form" onSubmit={handleSubmit}>
-          <Input
-            name="username"
-            value={formData.username}
-            onChange={handleInputChange}
-            text={t("username")}
-            variant="underlined"
-            textColor="white"
-            labelColor="white"
-            underlineColor="white"
-            customWidth="100%"
-            width="full"
-            placeholder={formData.username}
-          />
+          <div className="updProfile-personal-data">
+            <div className="updProfile-personal-data-1">
+              <Input
+                name="username"
+                value={formData.username}
+                onChange={handleInputChange}
+                text={t("username")}
+                variant="underlined"
+                textColor="white"
+                labelColor="white"
+                underlineColor="white"
+                customWidth="100%"
+                width="full"
+                placeholder={formData.username}
+              />
 
-          <Input
-            name="name"
-            value={formData.name}
-            onChange={handleInputChange}
-            text={t("name")}
-            variant="underlined"
-            textColor="white"
-            labelColor="white"
-            underlineColor="white"
-            customWidth="100%"
-            width="full"
-            placeholder={formData.name}
-          />
+              <Input
+                name="name"
+                value={formData.name}
+                onChange={handleInputChange}
+                text={t("name")}
+                variant="underlined"
+                textColor="white"
+                labelColor="white"
+                underlineColor="white"
+                customWidth="100%"
+                width="full"
+                placeholder={formData.name}
+              />
 
-          <Input
-            name="lastname"
-            value={formData.lastname}
-            onChange={handleInputChange}
-            text={t("lastname")}
-            variant="underlined"
-            textColor="white"
-            labelColor="white"
-            underlineColor="white"
-            customWidth="100%"
-            width="full"
-            placeholder={formData.lastname}
-          />
+              <Input
+                name="lastname"
+                value={formData.lastname}
+                onChange={handleInputChange}
+                text={t("lastname")}
+                variant="underlined"
+                textColor="white"
+                labelColor="white"
+                underlineColor="white"
+                customWidth="100%"
+                width="full"
+                placeholder={formData.lastname}
+              />
 
-          <Input
-            name="phone"
-            value={formData.phone}
-            onChange={handleInputChange}
-            text={t("phone")}
-            variant="underlined"
-            textColor="white"
-            labelColor="white"
-            underlineColor="white"
-            customWidth="100%"
-            width="full"
-            placeholder={formData.phone}
-          />
-
-          <div className="register-birthdate-form-group">
-            <Button
-              onClick={openModal}
-              children={t("birthdate")}
-              radius="none"
-              customWidth="100%"
-              customColor="#FFDB58"
-              customRippleColor="black"
-              blackText
-            />
-            <DateModal
-              showModal={showDateModal}
-              closeModal={closeModal}
-              handleDateChange={handleDateChange}
-            />
+              <Input
+                name="phone"
+                value={formData.phone}
+                onChange={handleInputChange}
+                text={t("phone")}
+                variant="underlined"
+                textColor="white"
+                labelColor="white"
+                underlineColor="white"
+                customWidth="100%"
+                width="full"
+                placeholder={formData.phone}
+              />
+            </div>
+            <div className="updProfile-personal-data-2"></div>
           </div>
 
-          <Input
-            name="country"
-            value={formData.country}
-            onChange={handleInputChange}
-            text={t("country")}
-            variant="underlined"
-            textColor="white"
-            labelColor="white"
-            underlineColor="white"
-            customWidth="100%"
-            width="full"
-            placeholder={formData.country}
-          />
+          <div className="register-birthdate-form-group">
+            <Modal
+              backdrop="blur"
+              button={
+                <Button
+                  radius="none"
+                  color="default"
+                  variant="bordered"
+                  customWidth="100%"
+                  customRippleColor="black"
+                  blackText
+                  customColor="#FFDB58"
+                  children={t("birthdate")}
+                ></Button>
+              }
+            >
+              {({ closeModal }) => (
+                <div>
+                  <ModalContent
+                    closeModal={closeModal}
+                    handleDateChange={handleDateChange}
+                    birthdate={birthdate}
+                  />
+                </div>
+              )}
+            </Modal>
+          </div>
 
-          <div className="updProfile-gender-form-group">
-            <label htmlFor="gender">{t("gender")}</label>
-            <div className="updProfile-gender-checkbox-container">
-              <div className="updProfile-gender-checkbox">
-                <label htmlFor="male">{t("male")}:</label>
-                <input
-                  type="checkbox"
-                  id="male"
-                  checked={activeCheckbox === "male"}
-                  onChange={() => handleChangeCheckbox("male", "male")}
-                />
-              </div>
-              <div className="updProfile-gender-checkbox">
-                <label htmlFor="female">{t("female")}:</label>
-                <input
-                  type="checkbox"
-                  id="female"
-                  checked={activeCheckbox === "female"}
-                  onChange={() => handleChangeCheckbox("female", "female")}
-                />
-              </div>
-              <div className="updProfile-gender-checkbox">
-                <label htmlFor="non-binary">{t("non_binary")}:</label>
-                <input
-                  type="checkbox"
-                  id="non-binary"
-                  checked={activeCheckbox === "non-binary"}
-                  onChange={() =>
-                    handleChangeCheckbox("non-binary", "non-binary")
-                  }
-                />
+          <div className="updProfile-personal-data-3">
+            <div className="updProfile-personal-data-4">
+              <Input
+                name="country"
+                value={formData.country}
+                onChange={handleInputChange}
+                text={t("country")}
+                variant="underlined"
+                textColor="white"
+                labelColor="white"
+                underlineColor="white"
+                customWidth="100%"
+                width="full"
+                placeholder={formData.country}
+              />
+
+              <Input
+                name="address"
+                value={formData.address}
+                onChange={handleInputChange}
+                text={t("address")}
+                variant="underlined"
+                textColor="white"
+                labelColor="white"
+                underlineColor="white"
+                customWidth="100%"
+                width="full"
+                placeholder={formData.address}
+              />
+
+              <Input
+                name="passport"
+                value={formData.passport}
+                onChange={handleInputChange}
+                text={t("passport")}
+                variant="underlined"
+                textColor="white"
+                labelColor="white"
+                underlineColor="white"
+                customWidth="100%"
+                width="full"
+                placeholder={formData.passport}
+              />
+            </div>
+            <div className="updProfile-personal-data-5">
+              <div className="updProfile-gender-form-group">
+                <label htmlFor="gender">{t("gender")}</label>
+                <div className="updProfile-gender-checkbox-container">
+                  <div className="updProfile-gender-checkbox">
+                    <label htmlFor="male">{t("male")}:</label>
+                    <input
+                      type="checkbox"
+                      id="male"
+                      checked={activeCheckbox === "male"}
+                      onChange={() => handleChangeCheckbox("male", "male")}
+                    />
+                  </div>
+                  <div className="updProfile-gender-checkbox">
+                    <label htmlFor="female">{t("female")}:</label>
+                    <input
+                      type="checkbox"
+                      id="female"
+                      checked={activeCheckbox === "female"}
+                      onChange={() => handleChangeCheckbox("female", "female")}
+                    />
+                  </div>
+                  <div className="updProfile-gender-checkbox">
+                    <label htmlFor="non-binary">{t("non_binary")}:</label>
+                    <input
+                      type="checkbox"
+                      id="non-binary"
+                      checked={activeCheckbox === "non-binary"}
+                      onChange={() =>
+                        handleChangeCheckbox("non-binary", "non-binary")
+                      }
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-
-          <Input
-            name="address"
-            value={formData.address}
-            onChange={handleInputChange}
-            text={t("address")}
-            variant="underlined"
-            textColor="white"
-            labelColor="white"
-            underlineColor="white"
-            customWidth="100%"
-            width="full"
-            placeholder={formData.address}
-          />
-
-          <Input
-            name="passport"
-            value={formData.passport}
-            onChange={handleInputChange}
-            text={t("passport")}
-            variant="underlined"
-            textColor="white"
-            labelColor="white"
-            underlineColor="white"
-            customWidth="100%"
-            width="full"
-            placeholder={formData.passport}
-          />
 
           <div className="updProfile-button-container">
             <Button

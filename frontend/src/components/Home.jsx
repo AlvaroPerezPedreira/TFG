@@ -1,7 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import Navbar from "./Navbar";
-import { Divider, Input } from "@mirakle-ui/react";
+import { Divider, Input } from "@miracle-ui/react";
 import "./styles/home.css";
 
 const Home = () => {
