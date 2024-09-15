@@ -8,16 +8,15 @@ const useUpdateProfile = () => {
   const [userData, setUserData] = useState(null);
 
   const token = JSON.parse(localStorage.getItem("authUser")).serviceToken;
-  console.log(token);
 
-  const updateProfile = async (e, birthdate, activeLabel) => {
+  const updateProfile = async (e, birthdate, gender) => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     const data = {
       email: form.get("email"),
       username: form.get("username"),
       birthdate: birthdate,
-      gender: activeLabel,
+      gender: gender,
       name: form.get("name"),
       lastname: form.get("lastname"),
       phone: form.get("phone"),

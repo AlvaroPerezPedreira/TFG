@@ -1,6 +1,7 @@
 import "./styles/updateProfile.css";
 import {
   Button,
+  Checkbox,
   Dropdown,
   DropdownItem,
   DropdownMenu,
@@ -22,11 +23,8 @@ const Auth = () => {
   const [t, i18n] = useTranslation(["updProfile"]);
   const currentLanguage = i18n.language;
   const [birthdate, setBirthdate] = useState("");
-  const [activeLabel, setActiveLabel] = useState("");
-  const [activeCheckbox, setActiveCheckbox] = useState(null);
 
   const { authUser } = useAuthContext();
-  console.log(authUser);
 
   const { updateProfile } = useUpdateProfile();
 
@@ -42,11 +40,22 @@ const Auth = () => {
     passport: authUser.user?.passport || "",
   });
 
+  const [male, setMale] = useState(
+    authUser.user?.gender === "male" ? true : false
+  );
+  const [female, setFemale] = useState(
+    authUser.user?.gender === "female" ? true : false
+  );
+  const [nonbi, setNonbi] = useState(
+    authUser.user?.gender === "non-binary" ? true : false
+  );
+  const [gender, setGender] = useState("male");
+
   console.log(formData.username);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await updateProfile(e, birthdate, activeLabel);
+    await updateProfile(e, birthdate, gender);
   };
 
   const getFlagIcon = (currentLanguage) => {
@@ -71,9 +80,15 @@ const Auth = () => {
     setBirthdate(date);
   };
 
-  const handleChangeCheckbox = (label, id) => {
-    setActiveLabel(label);
-    setActiveCheckbox(id);
+  const handleCustomChange = (gender_prop) => {
+    if (gender_prop === gender) {
+      setGender(null);
+    }
+
+    setGender(gender_prop);
+    setMale("male" === gender_prop ? true : false);
+    setFemale("female" === gender_prop ? true : false);
+    setNonbi("non_binary" === gender_prop ? true : false);
   };
 
   return (
@@ -282,37 +297,28 @@ const Auth = () => {
             </div>
             <div className="updProfile-personal-data-5">
               <div className="updProfile-gender-form-group">
-                <label htmlFor="gender">{t("gender")}</label>
+                <label className="updProfile-gender-label" htmlFor="gender">
+                  {t("gender")}
+                </label>
                 <div className="updProfile-gender-checkbox-container">
-                  <div className="updProfile-gender-checkbox">
-                    <label htmlFor="male">{t("male")}:</label>
-                    <input
-                      type="checkbox"
-                      id="male"
-                      checked={activeCheckbox === "male"}
-                      onChange={() => handleChangeCheckbox("male", "male")}
-                    />
-                  </div>
-                  <div className="updProfile-gender-checkbox">
-                    <label htmlFor="female">{t("female")}:</label>
-                    <input
-                      type="checkbox"
-                      id="female"
-                      checked={activeCheckbox === "female"}
-                      onChange={() => handleChangeCheckbox("female", "female")}
-                    />
-                  </div>
-                  <div className="updProfile-gender-checkbox">
-                    <label htmlFor="non-binary">{t("non_binary")}:</label>
-                    <input
-                      type="checkbox"
-                      id="non-binary"
-                      checked={activeCheckbox === "non-binary"}
-                      onChange={() =>
-                        handleChangeCheckbox("non-binary", "non-binary")
-                      }
-                    />
-                  </div>
+                  <Checkbox
+                    name="male_chbox"
+                    text={t("male")}
+                    onChange={() => handleCustomChange("male")}
+                    externalState={[male, setMale]}
+                  />
+                  <Checkbox
+                    name="female_chbox"
+                    text={t("female")}
+                    onChange={() => handleCustomChange("female")}
+                    externalState={[female, setFemale]}
+                  />
+                  <Checkbox
+                    name="nonbi_chbox"
+                    text={t("non_binary")}
+                    onChange={() => handleCustomChange("non-binary")}
+                    externalState={[nonbi, setNonbi]}
+                  />
                 </div>
               </div>
             </div>
