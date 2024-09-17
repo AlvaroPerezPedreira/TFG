@@ -9,6 +9,7 @@ import {
   DropdownTrigger,
   Modal,
   Input,
+  Checkbox,
 } from "@miracle-ui/react";
 import { useTranslation } from "react-i18next";
 import SpainIcon from "../icons/SpainIcon";
@@ -20,25 +21,34 @@ import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [birthdate, setBirthdate] = useState("");
-  const [activeLabel, setActiveLabel] = useState("");
-  const [activeCheckbox, setActiveCheckbox] = useState(null);
   const { register } = useRegister();
   const [t, i18n] = useTranslation(["register"]);
   const currentLanguage = i18n.language;
   let navigate = useNavigate();
 
+  const [male, setMale] = useState("");
+  const [female, setFemale] = useState("");
+  const [nonbi, setNonbi] = useState("");
+  const [gender, setGender] = useState("male");
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await register(e, birthdate, activeLabel);
+    await register(e, birthdate, gender);
   };
 
   const handleDateChange = (date) => {
     setBirthdate(date);
   };
 
-  const handleChangeCheckbox = (label, id) => {
-    setActiveLabel(label);
-    setActiveCheckbox(id);
+  const handleCustomChange = (gender_prop) => {
+    if (gender_prop === gender) {
+      setGender(null);
+    }
+
+    setGender(gender_prop);
+    setMale("male" === gender_prop ? true : false);
+    setFemale("female" === gender_prop ? true : false);
+    setNonbi("non_binary" === gender_prop ? true : false);
   };
 
   const getFlagIcon = (currentLanguage) => {
@@ -202,37 +212,24 @@ const Register = () => {
                 <div className="register-gender-form-group">
                   <label htmlFor="gender">{t("gender")}</label>
                   <div className="register-gender-checkbox-container">
-                    <div className="register-gender-checkbox">
-                      <label htmlFor="male">{t("male")}:</label>
-                      <input
-                        type="checkbox"
-                        id="male"
-                        checked={activeCheckbox === "male"}
-                        onChange={() => handleChangeCheckbox("male", "male")}
-                      ></input>
-                    </div>
-                    <div className="register-gender-checkbox">
-                      <label htmlFor="female">{t("female")}:</label>
-                      <input
-                        type="checkbox"
-                        id="female"
-                        checked={activeCheckbox === "female"}
-                        onChange={() =>
-                          handleChangeCheckbox("female", "female")
-                        }
-                      ></input>
-                    </div>
-                    <div className="register-gender-checkbox">
-                      <label htmlFor="non-binary">{t("non_binary")}:</label>
-                      <input
-                        type="checkbox"
-                        id="non-binary"
-                        checked={activeCheckbox === "non-binary"}
-                        onChange={() =>
-                          handleChangeCheckbox("non-binary", "non-binary")
-                        }
-                      ></input>
-                    </div>
+                    <Checkbox
+                      name="male_chbox"
+                      text={t("male")}
+                      onChange={() => handleCustomChange("male")}
+                      externalState={[male, setMale]}
+                    />
+                    <Checkbox
+                      name="female_chbox"
+                      text={t("female")}
+                      onChange={() => handleCustomChange("female")}
+                      externalState={[female, setFemale]}
+                    />
+                    <Checkbox
+                      name="nonbi_chbox"
+                      text={t("non_binary")}
+                      onChange={() => handleCustomChange("non-binary")}
+                      externalState={[nonbi, setNonbi]}
+                    />
                   </div>
                 </div>
 

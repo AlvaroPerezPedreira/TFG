@@ -145,10 +145,13 @@
   /* Mios */
 
   .register-gender-checkbox-container {
+    margin-top: 10px;
     display: flex;
-    gap: 10px;
+    flex-direction: column;
+    gap: 5px;
     flex-wrap: wrap;
     color: white;
+    font-size: 24px;
   }
 
   .register-gender-checkbox {
