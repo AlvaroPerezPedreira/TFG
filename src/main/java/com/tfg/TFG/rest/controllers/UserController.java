@@ -62,7 +62,7 @@ public class UserController {
 	private UserService userService;
 
 	@ExceptionHandler(IncorrectLoginException.class)
-	@ResponseStatus(HttpStatus.NOT_FOUND)
+	@ResponseStatus(HttpStatus.UNAUTHORIZED)
 	@ResponseBody
 	public ErrorsDto handleIncorrectLoginException(IncorrectLoginException exception, Locale locale) {
 
@@ -74,7 +74,7 @@ public class UserController {
 	}
 
 	@ExceptionHandler(IncorrectPasswordException.class)
-	@ResponseStatus(HttpStatus.NOT_FOUND)
+	@ResponseStatus(HttpStatus.UNAUTHORIZED)
 	@ResponseBody
 	public ErrorsDto handleIncorrectPasswordException(IncorrectPasswordException exception, Locale locale) {
 
