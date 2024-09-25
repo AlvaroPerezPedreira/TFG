@@ -2,24 +2,34 @@ import "./styles/register.css";
 import { startTransition, Suspense, useState } from "react";
 import useRegister from "../hooks/useRegister";
 import {
-  Button,
   Dropdown,
-  DropdownItem,
-  DropdownMenu,
   DropdownTrigger,
+  DropdownMenu,
+  DropdownSection,
+  DropdownItem,
+} from "@nextui-org/dropdown";
+import { Button, ButtonGroup } from "@nextui-org/button";
+import { Input } from "@nextui-org/input";
+import {
   Modal,
-  Input,
-  Checkbox,
-} from "@miracle-ui/react";
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  useDisclosure,
+} from "@nextui-org/modal";
+import { Checkbox } from "@nextui-org/checkbox";
 import { useTranslation } from "react-i18next";
 import SpainIcon from "../icons/SpainIcon";
 import UKIcon from "../icons/UKIcon";
 import FranceIcon from "../icons/FranceIcon";
 import LoginSlider from "./Slider";
-import ModalContent from "./ModalContent";
+import ModalContentBirthdate from "./ModalContentBirthdate";
 import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
   const [birthdate, setBirthdate] = useState("");
   const { register } = useRegister();
   const [t, i18n] = useTranslation(["register"]);
@@ -76,23 +86,18 @@ const Register = () => {
                 <span>DeepDive</span>
               </div>
               <div className="register-dropdown-container">
-                <Dropdown>
+                <Dropdown placement="bottom-end">
                   <DropdownTrigger>
                     <Button
                       radius="md"
                       variant="bordered"
                       color="default"
                       isIconOnly
-                      customRippleColor="black"
                     >
                       {getFlagIcon(currentLanguage)}
                     </Button>
                   </DropdownTrigger>
-                  <DropdownMenu
-                    position={"bottom-end"}
-                    offset={10}
-                    aria-label="Static Actions"
-                  >
+                  <DropdownMenu aria-label="Static Actions">
                     <DropdownItem
                       key="ES_FLAG"
                       onClick={() => {
@@ -139,73 +144,50 @@ const Register = () => {
 
                 <Input
                   name="email"
-                  text={t("email")}
+                  placeholder={t("email")}
                   variant="underlined"
-                  textColor="white"
-                  labelColor="white"
-                  underlineColor="white"
-                  customWidth="100%"
-                  width="full"
                 />
 
                 <Input
                   name="username"
-                  text={t("username")}
+                  placeholder={t("username")}
                   variant="underlined"
-                  textColor="white"
-                  labelColor="white"
-                  underlineColor="white"
-                  customWidth="100%"
-                  width="full"
                 />
 
                 <Input
                   name="password"
-                  text={t("passwd")}
-                  textColor="white"
+                  placeholder={t("passwd")}
                   variant="underlined"
-                  labelColor="white"
-                  underlineColor="white"
                   type="password"
-                  width="full"
                 />
 
                 <Input
                   name="retype_password"
-                  text={t("retype_passwd")}
-                  textColor="white"
+                  placeholder={t("retype_passwd")}
                   variant="underlined"
-                  labelColor="white"
-                  underlineColor="white"
                   type="password"
-                  width="full"
                 />
 
                 <div className="register-birthdate-form-group">
-                  <Modal
-                    backdrop="blur"
-                    button={
-                      <Button
-                        radius="none"
-                        color="default"
-                        variant="bordered"
-                        customWidth="100%"
-                        customRippleColor="black"
-                        blackText
-                        customColor="#FFDB58"
-                        children={t("birthdate")}
-                      ></Button>
-                    }
-                  >
-                    {({ closeModal }) => (
-                      <div>
-                        <ModalContent
-                          closeModal={closeModal}
-                          handleDateChange={handleDateChange}
-                          birthdate={birthdate}
-                        />
-                      </div>
-                    )}
+                  <Button
+                    onPress={onOpen}
+                    className="bg-[#FFDB58] text-black w-full"
+                    radius="none"
+                    type="submit"
+                    children={t("birthdate")}
+                  />
+                  <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+                    <ModalContent>
+                      {(onClose) => (
+                        <>
+                          <ModalContentBirthdate
+                            handleDateChange={handleDateChange}
+                            birthdate={birthdate}
+                            onClose={onClose}
+                          />
+                        </>
+                      )}
+                    </ModalContent>
                   </Modal>
                 </div>
 
@@ -214,19 +196,19 @@ const Register = () => {
                   <div className="register-gender-checkbox-container">
                     <Checkbox
                       name="male_chbox"
-                      text={t("male")}
+                      children={t("male")}
                       onChange={() => handleCustomChange("male")}
                       externalState={[male, setMale]}
                     />
                     <Checkbox
                       name="female_chbox"
-                      text={t("female")}
+                      children={t("female")}
                       onChange={() => handleCustomChange("female")}
                       externalState={[female, setFemale]}
                     />
                     <Checkbox
                       name="nonbi_chbox"
-                      text={t("non_binary")}
+                      children={t("non_binary")}
                       onChange={() => handleCustomChange("non-binary")}
                       externalState={[nonbi, setNonbi]}
                     />
@@ -235,12 +217,9 @@ const Register = () => {
 
                 <div className="register-button-container">
                   <Button
+                    className="bg-[#FFDB58] text-black w-full"
                     radius="none"
-                    customWidth="100%"
                     type="submit"
-                    customColor="#FFDB58"
-                    blackText
-                    customRippleColor="black"
                     children={t("continue")}
                   />
                 </div>

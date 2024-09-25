@@ -6,12 +6,13 @@ import SpainIcon from "../icons/SpainIcon";
 import UKIcon from "../icons/UKIcon";
 import FranceIcon from "../icons/FranceIcon";
 import {
-  Button,
   Dropdown,
-  DropdownItem,
-  DropdownMenu,
   DropdownTrigger,
-} from "@miracle-ui/react";
+  DropdownMenu,
+  DropdownSection,
+  DropdownItem,
+} from "@nextui-org/dropdown";
+import { Button, ButtonGroup } from "@nextui-org/button";
 import { useAuthContext } from "../context/AuthContext";
 import { startTransition, Suspense } from "react";
 import { useNavigate } from "react-router-dom";
@@ -42,7 +43,7 @@ const Navbar = () => {
       <div className="navbar-container">
         <h1 className="navbar-title">DeepDive</h1>
         <div className="navbar-dropdown">
-          <Dropdown>
+          <Dropdown placement="bottom-end">
             <DropdownTrigger>
               <Button
                 radius="md"
@@ -54,20 +55,16 @@ const Navbar = () => {
                 <UserIcon />
               </Button>
             </DropdownTrigger>
-            <DropdownMenu
-              position={"bottom-end"}
-              offset={0}
-              aria-label="Static Actions"
-            >
-              <DropdownItem textColor="#FFDB58" key="new" variant="solid">
+            <DropdownMenu aria-label="Static Actions">
+              <DropdownItem key="new" variant="solid">
                 New file
               </DropdownItem>
-              <DropdownItem key="copy" textColor="#FFDB58" variant="solid">
+              <DropdownItem key="copy" variant="solid">
                 Copy link
               </DropdownItem>
               <DropdownItem
+                className="text-[#FFDB58] w-full"
                 key="updateProfile"
-                textColor="#FFDB58"
                 variant="solid"
                 onClick={() => {
                   startTransition(() => {
@@ -77,40 +74,25 @@ const Navbar = () => {
               >
                 {t("updProfile")}
               </DropdownItem>
-              <DropdownItem
-                key="logout"
-                color="danger"
-                variant="solid"
-                onClick={logOut}
-              >
+              <DropdownItem key="logout" variant="solid" onClick={logOut}>
                 {t("logOut")}
               </DropdownItem>
             </DropdownMenu>
           </Dropdown>{" "}
-          <Dropdown>
+          <Dropdown placement="bottom-end">
             <DropdownTrigger>
-              <Button
-                radius="md"
-                variant="bordered"
-                color="default"
-                isIconOnly
-                customRippleColor="black"
-              >
+              <Button radius="md" variant="bordered" color="default" isIconOnly>
                 {getFlagIcon(currentLanguage)}
               </Button>
             </DropdownTrigger>
-            <DropdownMenu
-              position={"bottom-end"}
-              offset={0}
-              aria-label="Static Actions"
-            >
+            <DropdownMenu aria-label="Static Actions">
               <DropdownItem
                 key="ES_FLAG"
                 onClick={() => {
                   i18n.changeLanguage("es");
                 }}
               >
-                <div className="navbar-flag-container">
+                <div className="register-flag-container">
                   <SpainIcon />
                   <span>Spain</span>
                 </div>
@@ -121,7 +103,7 @@ const Navbar = () => {
                   i18n.changeLanguage("en");
                 }}
               >
-                <div className="navbar-flag-container">
+                <div className="register-flag-container">
                   <UKIcon />
                   <span>United Kingdom</span>
                 </div>
@@ -132,7 +114,7 @@ const Navbar = () => {
                   i18n.changeLanguage("fr");
                 }}
               >
-                <div className="navbar-flag-container">
+                <div className="register-flag-container">
                   <FranceIcon />
                   <span>France</span>
                 </div>

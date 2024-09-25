@@ -3,11 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@miracle-ui/react": "^0.0.23",
+    "@nextui-org/button": "^2.0.38",
+    "@nextui-org/checkbox": "^2.1.5",
+    "@nextui-org/dropdown": "^2.1.31",
+    "@nextui-org/input": "^2.2.5",
+    "@nextui-org/modal": "^2.0.41",
+    "@nextui-org/system": "^2.2.6",
+    "@nextui-org/theme": "^2.2.11",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "flag-icons": "^7.2.3",
+    "framer-motion": "^11.7.0",
     "frontend": "file:",
     "i18next": "^23.12.1",
     "i18next-http-backend": "^2.5.2",
@@ -44,5 +51,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.13"
   }
 }

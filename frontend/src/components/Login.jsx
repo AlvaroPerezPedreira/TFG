@@ -1,14 +1,15 @@
 import "./styles/login.css";
 import useLogin from "../hooks/useLogin";
-import LoginSlider from "./Slider";
 import {
-  Button,
   Dropdown,
-  DropdownItem,
-  DropdownMenu,
   DropdownTrigger,
-  Input,
-} from "@miracle-ui/react";
+  DropdownMenu,
+  DropdownSection,
+  DropdownItem,
+} from "@nextui-org/dropdown";
+import { Button, ButtonGroup } from "@nextui-org/button";
+import { Input } from "@nextui-org/input";
+import LoginSlider from "./Slider";
 import { useTranslation } from "react-i18next";
 import SpainIcon from "../icons/SpainIcon";
 import UKIcon from "../icons/UKIcon";
@@ -52,23 +53,18 @@ const Auth = () => {
                 <span>DeepDive</span>
               </div>
               <div className="login-dropdown-container">
-                <Dropdown>
+                <Dropdown placement="bottom-end">
                   <DropdownTrigger>
                     <Button
                       radius="md"
                       variant="bordered"
                       color="default"
                       isIconOnly
-                      customRippleColor="black"
                     >
                       {getFlagIcon(currentLanguage)}
                     </Button>
                   </DropdownTrigger>
-                  <DropdownMenu
-                    position={"bottom-end"}
-                    offset={10}
-                    aria-label="Static Actions"
-                  >
+                  <DropdownMenu aria-label="Static Actions">
                     <DropdownItem
                       key="ES_FLAG"
                       onClick={() => {
@@ -115,33 +111,21 @@ const Auth = () => {
 
                 <Input
                   name="email"
-                  text={t("email")}
+                  placeholder={t("email")}
                   variant="underlined"
-                  textColor="white"
-                  labelColor="white"
-                  underlineColor="white"
-                  customWidth="100%"
-                  width="full"
                 />
                 <Input
                   name="password"
-                  text={t("passwd")}
-                  textColor="white"
+                  placeholder={t("passwd")}
                   variant="underlined"
-                  labelColor="white"
-                  underlineColor="white"
                   type="password"
-                  width="full"
                 />
 
                 <div className="login-button-container">
                   <Button
+                    className="bg-[#FFDB58] text-black w-full"
                     radius="none"
-                    customWidth="100%"
                     type="submit"
-                    customColor="#FFDB58"
-                    blackText
-                    customRippleColor="black"
                     children={t("continue")}
                   />
                 </div>

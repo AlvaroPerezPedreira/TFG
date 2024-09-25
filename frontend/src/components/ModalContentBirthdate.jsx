@@ -1,10 +1,11 @@
-import { Button, Input } from "@miracle-ui/react";
+import { Button, ButtonGroup } from "@nextui-org/button";
+import { Input } from "@nextui-org/input";
 import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import "./styles/dateModal.css";
 
-export default function ModalContent({
-  closeModal,
+export default function ModalContentBirthdate({
+  onClose,
   handleDateChange,
   birthdate,
 }) {
@@ -43,7 +44,7 @@ export default function ModalContent({
   const handleContinue = () => {
     if (day.length === 2 && month.length === 2 && year.length === 4) {
       handleDateChange(`${day}-${month}-${year}`);
-      closeModal();
+      onClose();
     } else {
       alert("Por favor, complete todos los campos correctamente.");
     }
@@ -54,12 +55,8 @@ export default function ModalContent({
       <h2>{t("birthDateModal")}</h2>
       <Input
         name="day"
-        text={t("day")}
-        textColor="white"
+        placeholder={t("day")}
         variant="underlined"
-        labelColor="white"
-        underlineColor="#FFDB58"
-        width="50px"
         value={day}
         onChange={(e) =>
           handleInputChange(setDay, e.target.value, 2, dayInputRef)
@@ -67,13 +64,8 @@ export default function ModalContent({
       />
       <Input
         name="month"
-        text={t("month")}
-        textColor="white"
+        placeholder={t("month")}
         variant="underlined"
-        labelColor="white"
-        underlineColor="#FFDB58"
-        width="50px"
-        customWidth
         value={month}
         onChange={(e) =>
           handleInputChange(setMonth, e.target.value, 2, monthInputRef)
@@ -81,13 +73,8 @@ export default function ModalContent({
       />
       <Input
         name="year"
-        text={t("year")}
-        textColor="white"
+        placeholder={t("year")}
         variant="underlined"
-        labelColor="white"
-        underlineColor="#FFDB58"
-        width="50px"
-        customWidth
         value={year}
         onChange={(e) =>
           handleInputChange(setYear, e.target.value, 4, yearInputRef)
@@ -95,13 +82,11 @@ export default function ModalContent({
       />
       <div className="register-modal-button">
         <Button
-          onClick={() => handleContinue(closeModal())}
+          onPress={handleContinue}
           children={t("continue")}
+          className="bg-[#FFDB58] text-black w-full"
           radius="none"
-          customWidth="100%"
-          customColor="#FFDB58"
-          blackText
-          customRippleColor="black"
+          type="submit"
         ></Button>
       </div>
     </div>
