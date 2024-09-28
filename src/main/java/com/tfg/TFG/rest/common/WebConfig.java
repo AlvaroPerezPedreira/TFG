@@ -11,7 +11,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         // Configuración para servir imágenes desde una carpeta local
-        registry.addResourceHandler("/images/**")
-                .addResourceLocations("/images/");
+        registry.addResourceHandler("/images/**").addResourceLocations("file:uploads/images/");
+
     }
 }

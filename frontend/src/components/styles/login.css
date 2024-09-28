@@ -171,10 +171,10 @@
 
   @media (width <= 1200px) {
     .login-form-container {
-      width: 50%;
+      width: 60%;
     }
     .login-slider {
-      width: 50%;
+      width: 40%;
     }
   }
 
