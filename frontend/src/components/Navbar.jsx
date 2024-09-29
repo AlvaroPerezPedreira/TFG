@@ -1,7 +1,6 @@
 import React from "react";
 import "./styles/navbar.css";
 import { useTranslation } from "react-i18next";
-import UserIcon from "../icons/UserIcon";
 import SpainIcon from "../icons/SpainIcon";
 import UKIcon from "../icons/UKIcon";
 import FranceIcon from "../icons/FranceIcon";
@@ -20,7 +19,7 @@ import { useNavigate } from "react-router-dom";
 const Navbar = () => {
   const [t, i18n] = useTranslation(["navbar"]);
   const currentLanguage = i18n.language;
-  const { setAuthUser } = useAuthContext();
+  const { authUser, setAuthUser } = useAuthContext();
   let navigate = useNavigate();
 
   const getFlagIcon = (currentLanguage) => {
@@ -52,7 +51,11 @@ const Navbar = () => {
                 isIconOnly
                 customRippleColor="black"
               >
-                <UserIcon />
+                <img
+                  src={`http://localhost:8080/images/${authUser.user.avatar}`}
+                  alt=""
+                  className="navbar-avatar"
+                />
               </Button>
             </DropdownTrigger>
             <DropdownMenu aria-label="Static Actions">

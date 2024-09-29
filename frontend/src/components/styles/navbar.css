@@ -28,3 +28,10 @@
     display: flex;
     gap: 10px;
 }
+
+.navbar-avatar {
+    height: 24px;
+    width: 24px;
+    object-fit: cover;
+    border-radius: 9999px;
+}

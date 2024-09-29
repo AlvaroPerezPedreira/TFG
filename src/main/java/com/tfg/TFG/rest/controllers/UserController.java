@@ -162,13 +162,13 @@ public class UserController {
 	 * @throws PermissionException       the permission exception
 	 */
 	@PutMapping("/updateUser")
-	public UpdatedUserDto updateProfile(@RequestAttribute Long userId,
+	public UserDto updateProfile(@RequestAttribute Long userId,
 			@Validated({ UserDto.UpdateValidations.class }) @RequestBody UpdatedUserDto updatedUserDto)
 			throws InstanceNotFoundException, PermissionException {
 
 		System.out.println("update profile");
 
-		return toUpdatedUserDto(
+		return toUserDto(
 				userService.updateProfile(userId, updatedUserDto.getUsername(), updatedUserDto.getName(),
 						updatedUserDto.getLastname(),
 						updatedUserDto.getPhone(), updatedUserDto.getBirthdate(), updatedUserDto.getCountry(),

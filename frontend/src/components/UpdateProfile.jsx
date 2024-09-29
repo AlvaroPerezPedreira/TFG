@@ -17,7 +17,7 @@ import {
   ModalFooter,
   useDisclosure,
 } from "@nextui-org/modal";
-import { Checkbox } from "@nextui-org/checkbox";
+import { Checkbox, CheckboxGroup } from "@nextui-org/checkbox";
 import { useTranslation } from "react-i18next";
 import SpainIcon from "../icons/SpainIcon";
 import UKIcon from "../icons/UKIcon";
@@ -53,18 +53,7 @@ const Auth = () => {
     passport: authUser.user?.passport || "",
   });
 
-  const [male, setMale] = useState(
-    authUser.user?.gender === "male" ? true : false
-  );
-  const [female, setFemale] = useState(
-    authUser.user?.gender === "female" ? true : false
-  );
-  const [nonbi, setNonbi] = useState(
-    authUser.user?.gender === "non-binary" ? true : false
-  );
   const [gender, setGender] = useState("male");
-
-  console.log(formData.username);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -99,9 +88,6 @@ const Auth = () => {
     }
 
     setGender(gender_prop);
-    setMale("male" === gender_prop ? true : false);
-    setFemale("female" === gender_prop ? true : false);
-    setNonbi("non_binary" === gender_prop ? true : false);
   };
 
   const handleFileChange = async (e) => {
@@ -147,6 +133,9 @@ const Auth = () => {
   const handleDivClick = () => {
     fileInputRef.current.click(); // Simular click en el input
   };
+
+  console.log(authUser.user.avatar);
+  console.log(authUser);
 
   return (
     <Suspense fallback="loading">
@@ -283,28 +272,6 @@ const Auth = () => {
               </div>
             </div>
 
-            <div className="register-birthdate-form-group">
-              <Button
-                onPress={onOpen}
-                className="bg-[#FFDB58] text-black w-full"
-                radius="none"
-                children={t("birthdate")}
-              />
-              <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
-                <ModalContent>
-                  {(onClose) => (
-                    <>
-                      <ModalContentBirthdate
-                        handleDateChange={handleDateChange}
-                        birthdate={birthdate}
-                        onClose={onClose}
-                      />
-                    </>
-                  )}
-                </ModalContent>
-              </Modal>
-            </div>
-
             <div className="updProfile-personal-data-3">
               <div className="updProfile-personal-data-4">
                 <Input
@@ -333,7 +300,30 @@ const Auth = () => {
                   variant="underlined"
                   label={formData.passport ? t("passport") : ""}
                 />
+
+                <div className="updProfile-birthdate-form-group">
+                  <Button
+                    onPress={onOpen}
+                    className="bg-[#FFDB58] text-black w-full"
+                    radius="none"
+                    children={t("birthdate")}
+                  />
+                  <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+                    <ModalContent>
+                      {(onClose) => (
+                        <>
+                          <ModalContentBirthdate
+                            handleDateChange={handleDateChange}
+                            birthdate={birthdate}
+                            onClose={onClose}
+                          />
+                        </>
+                      )}
+                    </ModalContent>
+                  </Modal>
+                </div>
               </div>
+
               <div className="updProfile-personal-data-5">
                 <div className="updProfile-gender-form-group">
                   <label className="updProfile-gender-label" htmlFor="gender">
@@ -344,19 +334,16 @@ const Auth = () => {
                       name="male_chbox"
                       children={t("male")}
                       onChange={() => handleCustomChange("male")}
-                      externalState={[male, setMale]}
                     />
                     <Checkbox
                       name="female_chbox"
                       children={t("female")}
                       onChange={() => handleCustomChange("female")}
-                      externalState={[female, setFemale]}
                     />
                     <Checkbox
                       name="nonbi_chbox"
                       children={t("non_binary")}
                       onChange={() => handleCustomChange("non-binary")}
-                      externalState={[nonbi, setNonbi]}
                     />
                   </div>
                 </div>
