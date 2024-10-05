@@ -26,34 +26,34 @@ import { Link } from "react-router-dom";
 import useUpdateProfile from "../hooks/useUpdateProfile";
 import { useAuthContext } from "../context/AuthContext";
 import ModalContentBirthdate from "./ModalContentBirthdate";
+import UpdateProfileDatePicker from "./UpdateProfileDatePicker";
+import GenderRadioGroup from "./GenderRadioGroup";
 
 const Auth = () => {
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const { updateProfile } = useUpdateProfile();
 
   const [t, i18n] = useTranslation(["updProfile"]);
   const currentLanguage = i18n.language;
-  const [birthdate, setBirthdate] = useState("");
   const [message, setMessage] = useState(""); // Para mostrar mensajes de éxito o error del avatar
   const [selectedFile, setSelectedFile] = useState(null);
   const fileInputRef = useRef(null); // Crear una referencia al input
 
   const { authUser, setAuthUser } = useAuthContext();
 
-  const { updateProfile } = useUpdateProfile();
+  const [birthdate, setBirthdate] = useState(authUser.user?.birthdate || "");
+  const [gender, setGender] = useState(authUser.user?.gender || "male");
 
   const [formData, setFormData] = useState({
     username: authUser.user?.username || "",
     name: authUser.user?.name || "",
     lastname: authUser.user?.lastname || "",
     phone: authUser.user?.phone || "",
-    birthdate: authUser.user?.birthdate || "",
+    birthdate: birthdate,
     country: authUser.user?.country || "",
-    gender: authUser.user?.gender || "",
+    gender: gender,
     address: authUser.user?.address || "",
     passport: authUser.user?.passport || "",
   });
-
-  const [gender, setGender] = useState("male");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -76,10 +76,6 @@ const Auth = () => {
       ...prev,
       [name]: value,
     }));
-  };
-
-  const handleDateChange = (date) => {
-    setBirthdate(date);
   };
 
   const handleCustomChange = (gender_prop) => {
@@ -302,50 +298,16 @@ const Auth = () => {
                 />
 
                 <div className="updProfile-birthdate-form-group">
-                  <Button
-                    onPress={onOpen}
-                    className="bg-[#FFDB58] text-black w-full"
-                    radius="none"
-                    children={t("birthdate")}
+                  <UpdateProfileDatePicker
+                    birthdate={birthdate}
+                    setBirthdate={setBirthdate}
                   />
-                  <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
-                    <ModalContent>
-                      {(onClose) => (
-                        <>
-                          <ModalContentBirthdate
-                            handleDateChange={handleDateChange}
-                            birthdate={birthdate}
-                            onClose={onClose}
-                          />
-                        </>
-                      )}
-                    </ModalContent>
-                  </Modal>
                 </div>
               </div>
 
               <div className="updProfile-personal-data-5">
                 <div className="updProfile-gender-form-group">
-                  <label className="updProfile-gender-label" htmlFor="gender">
-                    {t("gender")}
-                  </label>
-                  <div className="updProfile-gender-checkbox-container">
-                    <Checkbox
-                      name="male_chbox"
-                      children={t("male")}
-                      onChange={() => handleCustomChange("male")}
-                    />
-                    <Checkbox
-                      name="female_chbox"
-                      children={t("female")}
-                      onChange={() => handleCustomChange("female")}
-                    />
-                    <Checkbox
-                      name="nonbi_chbox"
-                      children={t("non_binary")}
-                      onChange={() => handleCustomChange("non-binary")}
-                    />
-                  </div>
+                  <GenderRadioGroup gender={gender} setGender={setGender} />
                 </div>
               </div>
             </div>
@@ -353,6 +315,7 @@ const Auth = () => {
             <div className="updProfile-button-container">
               <Button
                 className="bg-[#FFDB58] text-black w-full"
+                color="deepdive"
                 type="submit"
                 children={t("update")}
                 radius="none"

@@ -26,10 +26,10 @@ import FranceIcon from "../icons/FranceIcon";
 import LoginSlider from "./Slider";
 import ModalContentBirthdate from "./ModalContentBirthdate";
 import { useNavigate } from "react-router-dom";
+import UpdateProfileDatePicker from "./UpdateProfileDatePicker";
+import GenderRadioGroup from "./GenderRadioGroup";
 
 const Register = () => {
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
-
   const [birthdate, setBirthdate] = useState("");
   const { register } = useRegister();
   const [t, i18n] = useTranslation(["register"]);
@@ -44,10 +44,6 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await register(e, birthdate, gender);
-  };
-
-  const handleDateChange = (date) => {
-    setBirthdate(date);
   };
 
   const handleCustomChange = (gender_prop) => {
@@ -169,50 +165,14 @@ const Register = () => {
                 />
 
                 <div className="register-birthdate-form-group">
-                  <Button
-                    onPress={onOpen}
-                    className="bg-[#FFDB58] text-black w-full"
-                    radius="none"
-                    type="submit"
-                    children={t("birthdate")}
+                  <UpdateProfileDatePicker
+                    birthdate={birthdate}
+                    setBirthdate={setBirthdate}
                   />
-                  <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
-                    <ModalContent>
-                      {(onClose) => (
-                        <>
-                          <ModalContentBirthdate
-                            handleDateChange={handleDateChange}
-                            birthdate={birthdate}
-                            onClose={onClose}
-                          />
-                        </>
-                      )}
-                    </ModalContent>
-                  </Modal>
                 </div>
 
                 <div className="register-gender-form-group">
-                  <label htmlFor="gender">{t("gender")}</label>
-                  <div className="register-gender-checkbox-container">
-                    <Checkbox
-                      name="male_chbox"
-                      children={t("male")}
-                      onChange={() => handleCustomChange("male")}
-                      externalState={[male, setMale]}
-                    />
-                    <Checkbox
-                      name="female_chbox"
-                      children={t("female")}
-                      onChange={() => handleCustomChange("female")}
-                      externalState={[female, setFemale]}
-                    />
-                    <Checkbox
-                      name="nonbi_chbox"
-                      children={t("non_binary")}
-                      onChange={() => handleCustomChange("non-binary")}
-                      externalState={[nonbi, setNonbi]}
-                    />
-                  </div>
+                  <GenderRadioGroup gender={gender} setGender={setGender} />
                 </div>
 
                 <div className="register-button-container">
