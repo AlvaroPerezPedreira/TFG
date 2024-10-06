@@ -78,7 +78,7 @@ public class UserServiceImpl implements UserService {
         User user = permissionChecker.checkUser(id);
 
         user.setUsername(userName);
-        user.setName(lastName);
+        user.setName(name);
         user.setLastname(lastName);
         user.setPhone(phone);
         user.setBirthdate(birthdate);

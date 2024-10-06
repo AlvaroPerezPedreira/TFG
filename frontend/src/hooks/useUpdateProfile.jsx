@@ -13,7 +13,6 @@ const useUpdateProfile = () => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     const data = {
-      email: form.get("email"),
       username: form.get("username"),
       birthdate: birthdate,
       gender: gender,
@@ -36,7 +35,7 @@ const useUpdateProfile = () => {
     });
 
     const finalData = await response.json();
-    console.log(finalData);
+    //console.log(finalData);
 
     if (finalData.globalError || finalData.error || finalData.fieldErrors) {
       return;

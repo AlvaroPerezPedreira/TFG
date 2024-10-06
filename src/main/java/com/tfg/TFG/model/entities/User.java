@@ -20,17 +20,17 @@ public class User {
 
     private String email;
     private String password;
-    private RoleType role = null;
+    private RoleType role;
     private String username;
-    private String name = null;
-    private String lastname = null;
-    private String phone = null;
+    private String name;
+    private String lastname;
+    private String phone;
     private String birthdate;
-    private String country = null;
+    private String country;
     private String gender;
-    private String address = null;
-    private String passport = null;
-    private String avatar = null;
+    private String address;
+    private String passport;
+    private String avatar;
 
     // Constructores
     public User() {

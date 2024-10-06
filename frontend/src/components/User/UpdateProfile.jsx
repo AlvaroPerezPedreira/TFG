@@ -5,12 +5,14 @@ import { Button } from "@nextui-org/button";
 import { Input } from "@nextui-org/input";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import useUpdateProfile from "../hooks/useUpdateProfile";
-import { useAuthContext } from "../context/AuthContext";
+import useUpdateProfile from "../../hooks/useUpdateProfile";
+import { useAuthContext } from "../../context/AuthContext";
 
-import UpdateProfileDatePicker from "./User/UpdateProfileComponents/UpdateProfileDatePicker";
-import GenderRadioGroup from "./GenderRadioGroup";
-import FlagDropdown from "./FlagDropdown";
+import UpdateProfileDatePicker from "./UpdateProfileComponents/UpdateProfileDatePicker";
+import GenderRadioGroup from "./UserComponents/GenderRadioGroup";
+import FlagDropdown from "../FlagDropdown";
+import UpdateProfileFirstInputs from "./UpdateProfileComponents/UpdateProfileFirstInputs";
+import UpdateProfileSecondInputs from "./UpdateProfileComponents/UpdateProfileSecondInputs";
 
 const Auth = () => {
   const { updateProfile } = useUpdateProfile();
@@ -39,6 +41,7 @@ const Auth = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(formData);
     await updateProfile(e, birthdate, gender);
   };
 
@@ -94,9 +97,6 @@ const Auth = () => {
     fileInputRef.current.click(); // Simular click en el input
   };
 
-  console.log(authUser.user.avatar);
-  console.log(authUser);
-
   return (
     <Suspense fallback="loading">
       <div className="updProfile-container">
@@ -110,50 +110,19 @@ const Auth = () => {
                   className="updProfile-logo-img"
                 />
                 <span>DeepDive</span>
-              </Link>{" "}
+              </Link>
             </div>
             <div className="updProfile-dropdown-container">
-              <FlagDropdown />{" "}
+              <FlagDropdown />
             </div>
           </div>
 
           <form className="updProfile-form" onSubmit={handleSubmit}>
             <div className="updProfile-personal-data">
               <div className="updProfile-personal-data-1">
-                <Input
-                  name="username"
-                  value={formData.username}
-                  onChange={handleInputChange}
-                  placeholder={t("username")}
-                  variant="underlined"
-                  label={formData.username ? t("username") : ""}
-                />
-
-                <Input
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  placeholder={t("name")}
-                  variant="underlined"
-                  label={formData.name ? t("name") : ""}
-                />
-
-                <Input
-                  name="lastname"
-                  value={formData.lastname}
-                  onChange={handleInputChange}
-                  placeholder={t("lastname")}
-                  variant="underlined"
-                  label={formData.lastname ? t("lastname") : ""}
-                />
-
-                <Input
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  placeholder={t("phone")}
-                  variant="underlined"
-                  label={formData.phone ? t("phone") : ""}
+                <UpdateProfileFirstInputs
+                  formData={formData}
+                  handleInputChange={handleInputChange}
                 />
               </div>
               <div className="updProfile-personal-data-2">
@@ -183,31 +152,9 @@ const Auth = () => {
 
             <div className="updProfile-personal-data-3">
               <div className="updProfile-personal-data-4">
-                <Input
-                  name="country"
-                  value={formData.country}
-                  onChange={handleInputChange}
-                  placeholder={t("country")}
-                  variant="underlined"
-                  label={formData.country ? t("country") : ""}
-                />
-
-                <Input
-                  name="address"
-                  value={formData.address}
-                  onChange={handleInputChange}
-                  placeholder={t("address")}
-                  variant="underlined"
-                  label={formData.address ? t("address") : ""}
-                />
-
-                <Input
-                  name="passport"
-                  value={formData.passport}
-                  onChange={handleInputChange}
-                  placeholder={t("passport")}
-                  variant="underlined"
-                  label={formData.passport ? t("passport") : ""}
+                <UpdateProfileSecondInputs
+                  formData={formData}
+                  handleInputChange={handleInputChange}
                 />
 
                 <div className="updProfile-birthdate-form-group">

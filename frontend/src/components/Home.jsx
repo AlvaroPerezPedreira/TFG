@@ -5,8 +5,10 @@ import "./styles/home.css";
 import { useAuthContext } from "../context/AuthContext";
 
 import { Button } from "@nextui-org/button";
-import { RadioGroup, Radio } from "@nextui-org/radio";
-import GenderRadioGroup from "./GenderRadioGroup";
+import GenderRadioGroup from "./User/UserComponents/GenderRadioGroup";
+import UpdateProfileFirstInputs from "./User/UpdateProfileComponents/UpdateProfileFirstInputs";
+import UpdateProfileSecondInputs from "./User/UpdateProfileComponents/UpdateProfileSecondInputs";
+import LoginInputs from "./User/LoginComponents/LoginInputs";
 
 const Home = () => {
   const [t] = useTranslation(["welcome"]);
@@ -25,12 +27,16 @@ const Home = () => {
     passport: authUser.user?.passport || "",
   });
 
-  const handleClick = () => {
-    console.log("Button clicked", gender);
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
-  const handleRadioChange = (e) => {
-    setGender(e.target.value);
+  const handleClick = () => {
+    console.log("Button clicked", formData);
   };
 
   return (
@@ -47,6 +53,8 @@ const Home = () => {
       <div>
         <GenderRadioGroup gender={gender} setGender={setGender} />
       </div>
+      <br />
+      <div></div>
 
       <br />
       <Button onClick={handleClick}>Pulsa</Button>

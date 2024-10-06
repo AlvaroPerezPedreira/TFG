@@ -14,6 +14,6 @@ export function stringToCalendarDate(dateString) {
 
   // Crear un nuevo CalendarDate (CalendarDate usa mes basado en 1, así que month ya está correcto)
   const calendarDate = new CalendarDate(year, month, day);
-  console.log("CalendarDate creado:", calendarDate);
+
   return calendarDate;
 }
