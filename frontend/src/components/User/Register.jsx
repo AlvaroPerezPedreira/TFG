@@ -32,7 +32,7 @@ const Register = () => {
             <div className="register-header-container">
               <div className="register-logo">
                 <img
-                  src="/images/logo/Logo1op4.jpg"
+                  src="/images/logo/LogoBlanco.jpg"
                   alt="Logo"
                   className="register-logo-img"
                 />

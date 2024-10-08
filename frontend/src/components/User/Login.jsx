@@ -1,7 +1,6 @@
 import "./styles/login.css";
 import useLogin from "../../hooks/useLogin";
 import { Button } from "@nextui-org/button";
-import { Input } from "@nextui-org/input";
 import LoginSlider from "./LoginComponents/Slider";
 import { useTranslation } from "react-i18next";
 
@@ -28,7 +27,7 @@ const Auth = () => {
             <div className="login-header-container">
               <div className="login-logo">
                 <img
-                  src="/images/logo/Logo1op4.jpg"
+                  src="/images/logo/LogoBlanco.jpg"
                   alt="Logo"
                   className="login-logo-img"
                 />

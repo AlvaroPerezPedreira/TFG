@@ -1,3 +1,4 @@
+import "../styles/updateProfile.css";
 import React, { useState } from "react";
 import { useAuthContext } from "../../../context/AuthContext";
 import { useRef } from "react";
