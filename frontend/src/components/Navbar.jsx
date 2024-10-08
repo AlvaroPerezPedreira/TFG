@@ -12,7 +12,8 @@ import { Button } from "@nextui-org/button";
 import { useAuthContext } from "../context/AuthContext";
 import { startTransition, Suspense } from "react";
 import { useNavigate } from "react-router-dom";
-import FlagDropdown from "./FlagDropdown";
+import FlagDropdown from "./GlobalComponents/FlagDropdown";
+import NavBarLink from "./GlobalComponents/NavBarLink";
 
 const Navbar = () => {
   const [t, i18n] = useTranslation(["navbar"]);
@@ -27,7 +28,9 @@ const Navbar = () => {
   return (
     <Suspense fallback="loading">
       <div className="navbar-container">
-        <h1 className="navbar-title">DeepDive</h1>
+        <h1 className="navbar-title">
+          <NavBarLink />
+        </h1>
         <div className="navbar-dropdown">
           <Dropdown placement="bottom-end">
             <DropdownTrigger>

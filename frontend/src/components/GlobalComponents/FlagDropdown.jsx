@@ -8,9 +8,9 @@ import {
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-import SpainIcon from "../icons/SpainIcon";
-import UKIcon from "../icons/UKIcon";
-import FranceIcon from "../icons/FranceIcon";
+import SpainIcon from "../../icons/SpainIcon";
+import UKIcon from "../../icons/UKIcon";
+import FranceIcon from "../../icons/FranceIcon";
 
 const getFlagIcon = (currentLanguage) => {
   if (currentLanguage === "es") {

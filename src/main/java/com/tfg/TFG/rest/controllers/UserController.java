@@ -187,17 +187,15 @@ public class UserController {
 	 * @throws InstanceNotFoundException  the instance not found exception
 	 * @throws IncorrectPasswordException the incorrect password exception
 	 */
-	@PostMapping("/{id}/changePassword")
-	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void changePassword(@RequestAttribute Long userId, @PathVariable Long id,
+	@PostMapping("/changePassword")
+	@ResponseStatus(HttpStatus.OK)
+	public void changePassword(@RequestAttribute Long userId,
 			@Validated @RequestBody ChangePasswordParamsDto params)
 			throws PermissionException, InstanceNotFoundException, IncorrectPasswordException {
 
-		if (!id.equals(userId)) {
-			throw new PermissionException();
-		}
+		System.out.println("change password");
 
-		userService.changePassword(id, params.getOldPassword(), params.getNewPassword());
+		userService.changePassword(userId, params.getOldPassword(), params.getNewPassword());
 
 	}
 

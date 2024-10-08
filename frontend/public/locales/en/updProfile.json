@@ -4,7 +4,7 @@
     "lastname": "Lastname",
     "phone": "Phone",
     "birthdate": "Birthdate",
-    "country": "Country",
+    "country": "Country (in english)",
     "gender": "Gender",
     "male": "Male",
     "female": "Female",

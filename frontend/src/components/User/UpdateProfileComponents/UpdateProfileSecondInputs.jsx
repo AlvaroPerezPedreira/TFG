@@ -1,40 +1,36 @@
 import { Input } from "@nextui-org/input";
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { useAuthContext } from "../../../context/AuthContext";
 
-export default function UpdateProfileSecondInputs({
-  formData,
-  handleInputChange,
-}) {
+export default function UpdateProfileSecondInputs({}) {
   const [t, i18n] = useTranslation(["updProfile"]);
+  const { authUser } = useAuthContext();
 
   return (
     <>
       <Input
         name="country"
-        value={formData.country}
-        onChange={handleInputChange}
         placeholder={t("country")}
         variant="underlined"
-        label={formData.country ? t("country") : ""}
+        defaultValue={authUser.user?.country || ""}
+        label={authUser.user?.country ? t("country") : ""}
       />
 
       <Input
         name="address"
-        value={formData.address}
-        onChange={handleInputChange}
         placeholder={t("address")}
         variant="underlined"
-        label={formData.address ? t("address") : ""}
+        defaultValue={authUser.user?.address || ""}
+        label={authUser.user?.address ? t("address") : ""}
       />
 
       <Input
         name="passport"
-        value={formData.passport}
-        onChange={handleInputChange}
         placeholder={t("passport")}
         variant="underlined"
-        label={formData.passport ? t("passport") : ""}
+        defaultValue={authUser.user?.passport || ""}
+        label={authUser.user?.passport ? t("passport") : ""}
       />
     </>
   );

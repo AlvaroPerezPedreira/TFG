@@ -5,6 +5,7 @@ import Login from "./components/User/Login";
 import Register from "./components/User/Register";
 import UpdateProfile from "./components/User/UpdateProfile";
 import { useAuthContext } from "./context/AuthContext";
+import ChangePassword from "./components/User/ChangePassword";
 
 function App() {
   const { authUser } = useAuthContext();
@@ -25,6 +26,7 @@ function App() {
           element={authUser ? <Navigate to="/" /> : <Register />}
         />
         <Route path="/updateProfile" element={<UpdateProfile />} />
+        <Route path="/changePassword" element={<ChangePassword />} />
       </Routes>
     </>
   );

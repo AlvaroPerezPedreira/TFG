@@ -1,6 +1,6 @@
 .navbar-container {
     width: 100%;
-    background-color: var(--grey-color1);
+    background-color: var(  --white-color4);
     display: flex;
     padding: 2rem;
 }
@@ -23,6 +23,19 @@
     justify-content: center;
     gap: 0.5rem;
 }
+
+.navbar-logo-img {
+    margin-right: 10px;
+    height: auto;
+    width: 45px;
+}
+
+.navbar-deepdive-link {
+    background-color: red;
+    display: flex;
+    
+}
+
 
 .navbar-dropdown {
     display: flex;

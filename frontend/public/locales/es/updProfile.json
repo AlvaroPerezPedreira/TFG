@@ -4,7 +4,7 @@
     "lastname": "Apellidos",
     "phone": "Teléfono",
     "birthdate": "Fecha de nacimiento",
-    "country": "País",
+    "country": "País (en inglés)",
     "gender": "Género",
     "male": "Hombre",
     "female": "Mujer",

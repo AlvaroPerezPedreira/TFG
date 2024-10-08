@@ -7,8 +7,8 @@ import { useTranslation } from "react-i18next";
 
 import { useNavigate } from "react-router-dom";
 import { startTransition, Suspense } from "react";
-import FlagDropdown from "../FlagDropdown";
 import LoginInputs from "./LoginComponents/LoginInputs";
+import FlagDropdown from "../GlobalComponents/FlagDropdown";
 
 const Auth = () => {
   const { login } = useLogin();

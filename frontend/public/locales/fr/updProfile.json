@@ -1,15 +1,15 @@
 {
-    "username": "Username FR",
-    "name": "Name Frances",
-    "lastname": "Lastname FR",
-    "phone": "PhoneFR",
-    "birthdate": "FRBirthdate",
-    "country": " FRCountry",
+    "username": "FR Username",
+    "name": "FR Name",
+    "lastname": "FR Lastname",
+    "phone": "FR Phone",
+    "birthdate": "Date de naissance",
+    "country": "FR Country (en inglés)",
     "gender": "FR Gender",
-    "male": "Male FR",
-    "female": "FemaleFR",
-    "non_binary": " FRNon  binary",
-    "address": " FRAddress",
+    "male": "Homme",
+    "female": "Femme",
+    "non_binary": "Non binaire",
+    "address": " FR Address",
     "passport": "FR Passport",
-    "update": "Update profile FRFR "
+    "update": "FR Update profile"
 }

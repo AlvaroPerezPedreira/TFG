@@ -1,49 +1,44 @@
 import { Input } from "@nextui-org/input";
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { useAuthContext } from "../../../context/AuthContext";
 
-export default function UpdateProfileFirstInputs({
-  formData,
-  handleInputChange,
-}) {
+export default function UpdateProfileFirstInputs({}) {
   const [t, i18n] = useTranslation(["updProfile"]);
+  const { authUser } = useAuthContext();
 
   return (
     <>
       <Input
         name="username"
-        value={formData.username}
-        onChange={handleInputChange}
         placeholder={t("username")}
         variant="underlined"
-        label={formData.username ? t("username") : ""}
+        defaultValue={authUser.user?.username || ""}
+        label={authUser.user?.username ? t("username") : ""}
       />
 
       <Input
         name="name"
-        value={formData.name}
-        onChange={handleInputChange}
         placeholder={t("name")}
         variant="underlined"
-        label={formData.name ? t("name") : ""}
+        defaultValue={authUser.user?.name || ""}
+        label={authUser.user?.name ? t("name") : ""}
       />
 
       <Input
         name="lastname"
-        value={formData.lastname}
-        onChange={handleInputChange}
         placeholder={t("lastname")}
         variant="underlined"
-        label={formData.lastname ? t("lastname") : ""}
+        defaultValue={authUser.user?.lastname || ""}
+        label={authUser.user?.lastname ? t("lastname") : ""}
       />
 
       <Input
         name="phone"
-        value={formData.phone}
-        onChange={handleInputChange}
         placeholder={t("phone")}
         variant="underlined"
-        label={formData.phone ? t("phone") : ""}
+        defaultValue={authUser.user?.phone || ""}
+        label={authUser.user?.phone ? t("phone") : ""}
       />
     </>
   );

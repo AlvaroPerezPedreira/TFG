@@ -8,8 +8,8 @@ import LoginSlider from "./LoginComponents/Slider";
 import { useNavigate } from "react-router-dom";
 import UpdateProfileDatePicker from "./UpdateProfileComponents/UpdateProfileDatePicker";
 import GenderRadioGroup from "./UserComponents/GenderRadioGroup";
-import FlagDropdown from "../FlagDropdown";
 import RegisterInputs from "./RegisterComponents/RegisterInputs";
+import FlagDropdown from "../GlobalComponents/FlagDropdown";
 
 const Register = () => {
   const [birthdate, setBirthdate] = useState("");
