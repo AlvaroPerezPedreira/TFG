@@ -9,6 +9,7 @@ import GenderRadioGroup from "./User/UserComponents/GenderRadioGroup";
 import UpdateProfileFirstInputs from "./User/UpdateProfileComponents/UpdateProfileFirstInputs";
 import UpdateProfileSecondInputs from "./User/UpdateProfileComponents/UpdateProfileSecondInputs";
 import LoginInputs from "./User/LoginComponents/LoginInputs";
+import UpdateProfileAvatar from "./User/UpdateProfileComponents/UpdateProfileAvatar";
 
 const Home = () => {
   const [t] = useTranslation(["welcome"]);
@@ -54,7 +55,9 @@ const Home = () => {
         <GenderRadioGroup gender={gender} setGender={setGender} />
       </div>
       <br />
-      <div></div>
+      <div>
+        <UpdateProfileAvatar />
+      </div>
 
       <br />
       <Button onClick={handleClick}>Pulsa</Button>
