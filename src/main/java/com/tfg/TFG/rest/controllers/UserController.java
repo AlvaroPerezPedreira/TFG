@@ -213,27 +213,4 @@ public class UserController {
 
 	}
 
-	@PostMapping("/{id}/changeAvatar")
-	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void changeAvatar(@RequestAttribute Long userId, @PathVariable Long id,
-			@Validated @RequestBody String imageUrl) throws PermissionException, InstanceNotFoundException {
-
-		if (!id.equals(userId)) {
-			throw new PermissionException();
-		}
-
-		userService.changeAvatar(id, imageUrl);
-	}
-
-	@PostMapping("/{id}/changeAvatar/{url}")
-	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void changeAvatar2(@RequestAttribute Long userId, @PathVariable Long id, @PathVariable String url)
-			throws PermissionException, InstanceNotFoundException {
-
-		if (!id.equals(userId)) {
-			throw new PermissionException();
-		}
-
-		userService.changeAvatar(id, url);
-	}
 }

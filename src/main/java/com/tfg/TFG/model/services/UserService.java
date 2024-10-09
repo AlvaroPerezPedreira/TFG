@@ -19,8 +19,6 @@ public interface UserService {
         void changePassword(Long id, String oldPassword, String newPassword)
                         throws InstanceNotFoundException, IncorrectPasswordException;
 
-        void changeAvatar(Long id, String url) throws InstanceNotFoundException;
-
         User findById(Long id) throws InstanceNotFoundException;
 
 }

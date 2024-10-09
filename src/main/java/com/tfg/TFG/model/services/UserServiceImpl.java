@@ -105,14 +105,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void changeAvatar(Long id, String newAvatar)
-            throws InstanceNotFoundException {
-
-        User user = permissionChecker.checkUser(id);
-        user.setAvatar(newAvatar);
-    }
-
-    @Override
     public User findById(Long id) throws InstanceNotFoundException {
         return userDao.findById(id).orElseThrow(() -> new InstanceNotFoundException("project.entities.user", id));
     }

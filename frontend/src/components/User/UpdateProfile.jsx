@@ -30,7 +30,7 @@ const Auth = () => {
 
     const country = form.get("country");
 
-    if (!CountryList.includes(country)) {
+    if (country && !CountryList.includes(country)) {
       setCountryError(t("invalidCountry"));
       return;
     } else {
