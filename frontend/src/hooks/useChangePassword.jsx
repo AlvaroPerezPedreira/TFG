@@ -1,15 +1,13 @@
-import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuthContext } from "../context/AuthContext";
+import { useTranslation } from "react-i18next";
 
 const useChangePassword = () => {
   let navigate = useNavigate();
-  const { authUser, setAuthUser } = useAuthContext();
-  const [userData, setUserData] = useState(null);
+  const [t] = useTranslation(["changePassword"]);
 
   const token = JSON.parse(localStorage.getItem("authUser")).serviceToken;
 
-  const changePassword = async (e, birthdate, gender) => {
+  const changePassword = async (e, setPasswordError) => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     const data = {
@@ -31,24 +29,20 @@ const useChangePassword = () => {
       }
     );
 
-    const finalData = await response.json();
-    //console.log(finalData);
+    if (!response.ok) {
+      const finalData = await response.json();
 
-    if (finalData.globalError || finalData.error || finalData.fieldErrors) {
+      if (finalData.globalError) {
+        setPasswordError(t("oldPwdIncorrect"));
+      } else {
+        setPasswordError(t("pwdError")); // Mensaje genérico por defecto
+      }
       return;
     }
 
-    const updatedAuthUser = {
-      ...authUser,
-      user: finalData,
-    };
-
-    localStorage.setItem("authUser", JSON.stringify(updatedAuthUser));
-    setAuthUser(updatedAuthUser);
     navigate("/");
   };
-
-  return { userData, changePassword };
+  return { changePassword };
 };
 
 export default useChangePassword;

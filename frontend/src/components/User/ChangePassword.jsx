@@ -1,7 +1,7 @@
 import "./styles/changePassword.css";
 import { Button } from "@nextui-org/button";
 import { Input } from "@nextui-org/input";
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import UpdateProfileHeaderLink from "./UpdateProfileComponents/UpdateProfileHeaderLink";
 import useChangePassword from "../../hooks/useChangePassword";
@@ -11,10 +11,21 @@ import { Suspense } from "react";
 export default function ChangePassword() {
   const [t] = useTranslation(["changePassword"]);
   const { changePassword } = useChangePassword();
+  const [passwordError, setPasswordError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await changePassword(e);
+    const form = new FormData(e.currentTarget);
+    const newPwd = form.get("newPassword");
+    const rptPwd = form.get("repeatPassword");
+
+    if (newPwd !== rptPwd) {
+      setPasswordError(t("passwordsNotMatch"));
+      return;
+    } else {
+      setPasswordError("");
+    }
+    await changePassword(e, setPasswordError);
   };
 
   return (
@@ -50,6 +61,11 @@ export default function ChangePassword() {
               type="password"
               className="changePassword-form-input"
             />
+
+            {passwordError && (
+              <div className="changePassword-error-msg">{passwordError}</div>
+            )}
+
             <Button
               className="bg-[#FFDB58] text-black w-full mt-4"
               children={t("save")}
