@@ -11,5 +11,6 @@
     "non_binary": "Non binaire",
     "address": " FR Address",
     "passport": "FR Passport",
-    "update": "FR Update profile"
+    "update": "FR Update profile",
+    "invalidCountry": "Il semble que le pays saisi n'est pas reconnu. Veuillez sélectionner un pays valide"
 }

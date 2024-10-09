@@ -13,17 +13,30 @@ import UpdateProfileSecondInputs from "./UpdateProfileComponents/UpdateProfileSe
 import UpdateProfileAvatar from "./UpdateProfileComponents/UpdateProfileAvatar";
 import FlagDropdown from "../GlobalComponents/FlagDropdown";
 import UpdateProfileHeaderLink from "./UpdateProfileComponents/UpdateProfileHeaderLink";
+import { CountryList } from "../../utils/CountryListConstant";
 
 const Auth = () => {
   const { updateProfile } = useUpdateProfile();
   const [t, i18n] = useTranslation(["updProfile"]);
-  const { authUser, setAuthUser } = useAuthContext();
+  const { authUser } = useAuthContext();
 
   const [birthdate, setBirthdate] = useState(authUser.user?.birthdate || "");
   const [gender, setGender] = useState(authUser.user?.gender || "male");
+  const [countryError, setCountryError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const form = new FormData(e.currentTarget);
+
+    const country = form.get("country");
+
+    if (!CountryList.includes(country)) {
+      setCountryError(t("invalidCountry"));
+      return;
+    } else {
+      setCountryError("");
+    }
+
     await updateProfile(e, birthdate, gender);
   };
 
@@ -68,6 +81,10 @@ const Auth = () => {
                 </div>
               </div>
             </div>
+
+            {countryError && (
+              <div className="updProfile-error-msg">{countryError}</div>
+            )}
 
             <div className="updProfile-button-container">
               <Button

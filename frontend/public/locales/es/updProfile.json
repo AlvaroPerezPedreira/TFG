@@ -11,5 +11,6 @@
     "non_binary": "No binario",
     "address": "Dirección",
     "passport": "Pasaporte",
-    "update": "Actualizar el perfil"
+    "update": "Actualizar el perfil",
+    "invalidCountry": "Parece que el país ingresado no es reconocido. Por favor, selecciona un país válido"
 }

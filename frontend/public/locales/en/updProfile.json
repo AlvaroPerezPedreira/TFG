@@ -11,5 +11,6 @@
     "non_binary": "Non binary",
     "address": "Address",
     "passport": "Passport",
-    "update": "Update profile"
+    "update": "Update profile",
+    "invalidCountry": "It seems the country entered is not recognized. Please select a valid country"
 }

@@ -31,14 +31,14 @@ export default function ChangePassword() {
             </div>
             <Input
               name="oldPassword"
-              placeholder={t("oldPasswd")}
+              placeholder={t("oldPassword")}
               variant="underlined"
               type="password"
               className="changePassword-form-input"
             />
             <Input
               name="newPassword"
-              placeholder={t("newPasswd")}
+              placeholder={t("newPassword")}
               variant="underlined"
               type="password"
               className="changePassword-form-input"
