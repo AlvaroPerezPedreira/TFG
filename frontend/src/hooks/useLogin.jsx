@@ -1,11 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../context/AuthContext";
+import { useTranslation } from "react-i18next";
 
 const useLogin = (e) => {
+  const [t, i18n] = useTranslation(["login"]);
+
   let navigate = useNavigate();
   const { setAuthUser } = useAuthContext();
 
-  const login = async (e) => {
+  const login = async (e, setLoginError) => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     const data = {
@@ -24,7 +27,18 @@ const useLogin = (e) => {
 
     const finalData = await response.json();
 
-    if (finalData.globalError) {
+    // if (finalData.globalError) {
+    //   return;
+    // }
+
+    if (!response.ok) {
+      console.log(finalData);
+
+      if (finalData.globalError) {
+        setLoginError(t("LoginIncorrect"));
+      } else {
+        setLoginError(t("LoginGenericError")); // Mensaje genérico por defecto
+      }
       return;
     }
 

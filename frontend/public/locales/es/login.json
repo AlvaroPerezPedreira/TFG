@@ -5,5 +5,7 @@
     "signUp": "Regístrate",
     "email": "Correo electrónico",
     "passwd": "Contraseña",
-    "continue": "Continuar"
+    "continue": "Continuar",
+    "LoginIncorrect": "Correo electrónico o contraseña incorrectos",
+    "LoginGenericError": "Ocurrió un error, por favor, inténtalo de nuevo más tarde"
 }

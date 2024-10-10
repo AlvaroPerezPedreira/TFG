@@ -5,5 +5,7 @@
     "signUp": "Sign up",
     "email": "Email",
     "passwd": "Password",
-    "continue": "Continue"
+    "continue": "Continue",
+    "LoginIncorrect": "Incorrect email or password",
+    "LoginGenericError": "An error occurred, please try again later"
 }

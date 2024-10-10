@@ -5,7 +5,7 @@ import LoginSlider from "./LoginComponents/Slider";
 import { useTranslation } from "react-i18next";
 
 import { useNavigate } from "react-router-dom";
-import { startTransition, Suspense } from "react";
+import { startTransition, Suspense, useState } from "react";
 import LoginInputs from "./LoginComponents/LoginInputs";
 import FlagDropdown from "../GlobalComponents/FlagDropdown";
 
@@ -13,10 +13,11 @@ const Auth = () => {
   const { login } = useLogin();
   const [t, i18n] = useTranslation(["login"]);
   let navigate = useNavigate();
+  const [loginError, setLoginError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await login(e);
+    await login(e, setLoginError);
   };
 
   return (
@@ -45,6 +46,10 @@ const Auth = () => {
                 </div>
 
                 <LoginInputs />
+
+                {loginError && (
+                  <div className="login-error-msg">{loginError}</div>
+                )}
 
                 <div className="login-button-container">
                   <Button
