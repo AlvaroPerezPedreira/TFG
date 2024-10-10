@@ -3,10 +3,11 @@ package com.tfg.TFG.model.services;
 import com.tfg.TFG.model.entities.User;
 import com.tfg.TFG.model.services.exceptions.IncorrectLoginException;
 import com.tfg.TFG.model.services.exceptions.IncorrectPasswordException;
+import com.tfg.TFG.model.services.exceptions.InvalidEmailException;
 import com.tfg.TFG.model.common.exceptions.*;
 
 public interface UserService {
-        void signUp(User user) throws DuplicateInstanceException;
+        void signUp(User user) throws DuplicateInstanceException, InvalidEmailException;
 
         User login(String email, String password) throws IncorrectLoginException;
 

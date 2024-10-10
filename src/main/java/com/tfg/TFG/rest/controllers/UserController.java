@@ -49,6 +49,9 @@ public class UserController {
 	/** The Constant INCORRECT_PASSWORD_EXCEPTION_CODE. */
 	private static final String INCORRECT_PASS_EXCEPTION_CODE = "project.exceptions.IncorrectPasswordException";
 
+	/** The Constant INVALID_EMAIL_EXCEPTION_CODE. */
+	private static final String INVALID_EMAIL_EXCEPTION_CODE = "project.exceptions.InvalidEmailException";
+
 	/** The message source. */
 	@Autowired
 	private MessageSource messageSource;
@@ -85,6 +88,20 @@ public class UserController {
 
 	}
 
+	@ExceptionHandler(InvalidEmailException.class)
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	@ResponseBody
+	public ErrorsDto handleInvalidEmailException(InvalidEmailException exception, Locale locale) {
+
+		System.out.println("Manejador de InvalidEmailException" + exception.getMessage());
+
+		String errorMessage = messageSource.getMessage(INVALID_EMAIL_EXCEPTION_CODE, null,
+				INVALID_EMAIL_EXCEPTION_CODE, locale);
+
+		return new ErrorsDto(errorMessage);
+
+	}
+
 	@GetMapping("/{id}")
 	public ResponseEntity<UserDto> getUser(@RequestAttribute Long userId, @PathVariable Long id)
 			throws InstanceNotFoundException, PermissionException {
@@ -104,7 +121,7 @@ public class UserController {
 	@PostMapping("/signUp")
 	public ResponseEntity<AuthenticatedUserDto> signUp(
 			@Validated({ UserDto.AllValidations.class }) @RequestBody UserDto userDto)
-			throws DuplicateInstanceException {
+			throws DuplicateInstanceException, InvalidEmailException {
 		System.out.println("signUp");
 		User user = toUser(userDto);
 

@@ -15,5 +15,9 @@
     "login": "Inicia sesión",
     "day": "Día",
     "month": "Mes",
-    "year": "Año"
+    "year": "Año",
+    "InvalidEmail": "Dirección de correo no válida",
+    "EmailAlreadyExists": "Este correo ya está en uso",
+    "RegisterGenericError": "Ocurrió un error, por favor inténtalo más tarde",
+    "RegisterFieldError": "Por favor, completa todos los campos obligatorios"
 }

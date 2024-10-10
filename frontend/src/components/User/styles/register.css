@@ -160,7 +160,11 @@
     align-items: center;
   }
 
-
+  .register-error-msg {
+    color: #dc2626;
+    margin-top: 10px;
+    font-size: 1rem;
+  }
 
   @media (width <= 1200px) {
     .register-form-container {

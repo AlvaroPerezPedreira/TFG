@@ -15,5 +15,9 @@
     "login": "Log in",
     "day": "Day",
     "month": "Month",
-    "year": "Year"
+    "year": "Year",
+    "InvalidEmail": "Invalid email address",
+    "EmailAlreadyExists": "This email is already in use",
+    "RegisterGenericError": "An error occurred, please try again later",
+    "RegisterFieldError": "Please fill in all required fields"
 }

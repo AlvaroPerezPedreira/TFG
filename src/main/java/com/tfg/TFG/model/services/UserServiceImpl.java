@@ -33,10 +33,15 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao;
 
     @Override
-    public void signUp(User user) throws DuplicateInstanceException {
+    public void signUp(User user) throws DuplicateInstanceException, InvalidEmailException {
 
         if (userDao.existsByEmail(user.getEmail())) {
             throw new DuplicateInstanceException("project.entities.user", user.getEmail());
+        }
+
+        if (!user.getEmail().matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$")) {
+            System.out.println("Invalid email: " + user.getEmail());
+            throw new InvalidEmailException(user.getEmail());
         }
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));

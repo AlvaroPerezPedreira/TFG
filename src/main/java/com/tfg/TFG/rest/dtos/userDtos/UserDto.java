@@ -115,7 +115,6 @@ public class UserDto {
 	// Email
 	@NotNull(groups = { AllValidations.class, UpdateValidations.class })
 	@Size(min = 1, max = 60, groups = { AllValidations.class, UpdateValidations.class })
-	@Email(groups = { AllValidations.class, UpdateValidations.class })
 	public String getEmail() {
 		return email;
 	}

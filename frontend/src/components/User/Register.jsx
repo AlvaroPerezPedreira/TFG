@@ -17,11 +17,12 @@ const Register = () => {
   const [t, i18n] = useTranslation(["register"]);
   let navigate = useNavigate();
 
+  const [registerError, setRegisterError] = useState("");
   const [gender, setGender] = useState("male");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await register(e, birthdate, gender);
+    await register(e, birthdate, gender, setRegisterError);
   };
 
   return (
@@ -61,6 +62,10 @@ const Register = () => {
                 <div className="register-gender-form-group">
                   <GenderRadioGroup gender={gender} setGender={setGender} />
                 </div>
+
+                {registerError && (
+                  <div className="register-error-msg">{registerError}</div>
+                )}
 
                 <div className="register-button-container">
                   <Button

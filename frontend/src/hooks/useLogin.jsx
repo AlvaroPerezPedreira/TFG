@@ -27,10 +27,6 @@ const useLogin = (e) => {
 
     const finalData = await response.json();
 
-    // if (finalData.globalError) {
-    //   return;
-    // }
-
     if (!response.ok) {
       console.log(finalData);
 

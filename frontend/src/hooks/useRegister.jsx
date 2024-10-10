@@ -1,11 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../context/AuthContext";
+import { useTranslation } from "react-i18next";
 
 const useRegister = (e) => {
   let navigate = useNavigate();
+  const [t, i18n] = useTranslation(["register"]);
+
   const { setAuthUser } = useAuthContext();
 
-  const register = async (e, birthdate, activeLabel) => {
+  const register = async (e, birthdate, activeLabel, setRegisterError) => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     const data = {
@@ -28,7 +31,25 @@ const useRegister = (e) => {
 
     const finalData = await response.json();
 
-    if (finalData.globalError || finalData.error || finalData.fieldErrors) {
+    if (!response.ok) {
+      console.log(finalData);
+
+      if (finalData.globalError) {
+        if (
+          finalData.globalError === "project.exceptions.InvalidEmailException"
+        ) {
+          setRegisterError(t("InvalidEmail"));
+        } else if (
+          finalData.globalError ===
+          "project.exceptions.DuplicateInstanceException"
+        ) {
+          setRegisterError(t("EmailAlreadyExists"));
+        } else {
+          setRegisterError(t("RegisterGenericError"));
+        }
+      } else {
+        setRegisterError(t("RegisterFieldError"));
+      }
       return;
     }
 
