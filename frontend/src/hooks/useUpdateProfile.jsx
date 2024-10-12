@@ -35,7 +35,6 @@ const useUpdateProfile = () => {
     });
 
     const finalData = await response.json();
-    //console.log(finalData);
 
     if (finalData.globalError || finalData.error || finalData.fieldErrors) {
       return;

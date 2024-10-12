@@ -79,28 +79,10 @@
     register-gender-checkbox     
   */
 
-.updProfile-gender-form-group {
-  margin-left: 10px;
-}
+
 
 .updProfile-gender-label {
   font-size: 32px;
-}
-
-.updProfile-gender-checkbox-container {
-  margin-top: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  flex-wrap: wrap;
-  color: white;
-  font-size: 24px;
-}
-
-.updProfile-gender-checkbox {
-  display: flex;
-  gap: 5px;
-  align-items: center;
 }
 
 .updProfile-error-msg {
@@ -122,6 +104,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 75px;
   width: 60%;
+  margin-top: 20px;
 }
 
 .updProfile-personal-data-2 {
@@ -162,11 +145,36 @@
   color: white;
 }
 
+.updProfile-gender-form-group {
+  margin-left: 10px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
 .updProfile-birthdate-form-group {
   margin-top: 50px;
 }
 
+.updProfile-changePwd-link {
+  display: flex;
+  justify-content: start;
+  margin-top: 75px;
+}
 
+.updProfile-changePassword-button {
+  background-color: transparent;
+  border: none;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  text-decoration: none;
+  color: #FFDB58;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-left: 5px;
+}
 
 @media screen and (max-width: 768px) {
   .updProfile-personal-data {
@@ -177,11 +185,17 @@
   .updProfile-personal-data-3 {
     grid-template-columns: 1fr;
     width: 100%;
-
+    margin-top: 0px;
+    gap: 50px;
   }
 
   .updProfile-gender-checkbox-container {
     flex-direction: row;
     margin-top: 0px;
+  }
+
+  .updProfile-changePwd-link {
+    justify-content: end;
+    margin-top: 40px;
   }
 }

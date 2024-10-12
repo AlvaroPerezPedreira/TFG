@@ -32,8 +32,6 @@ const useRegister = (e) => {
     const finalData = await response.json();
 
     if (!response.ok) {
-      console.log(finalData);
-
       if (finalData.globalError) {
         if (
           finalData.globalError === "project.exceptions.InvalidEmailException"

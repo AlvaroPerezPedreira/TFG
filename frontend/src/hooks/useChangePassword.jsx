@@ -35,7 +35,7 @@ const useChangePassword = () => {
       if (finalData.globalError) {
         setPasswordError(t("oldPwdIncorrect"));
       } else {
-        setPasswordError(t("pwdError")); // Mensaje genérico por defecto
+        setPasswordError(t("pwdError"));
       }
       return;
     }

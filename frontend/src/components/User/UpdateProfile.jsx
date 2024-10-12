@@ -1,5 +1,5 @@
 import "./styles/updateProfile.css";
-import { Suspense, useState } from "react";
+import { Suspense, useState, startTransition } from "react";
 
 import { Button } from "@nextui-org/button";
 import { useTranslation } from "react-i18next";
@@ -14,11 +14,13 @@ import UpdateProfileAvatar from "./UpdateProfileComponents/UpdateProfileAvatar";
 import FlagDropdown from "../GlobalComponents/FlagDropdown";
 import UpdateProfileHeaderLink from "./UpdateProfileComponents/UpdateProfileHeaderLink";
 import { CountryList } from "../../utils/CountryListConstant";
+import { useNavigate } from "react-router-dom";
 
 const Auth = () => {
   const { updateProfile } = useUpdateProfile();
   const [t, i18n] = useTranslation(["updProfile"]);
   const { authUser } = useAuthContext();
+  let navigate = useNavigate();
 
   const [birthdate, setBirthdate] = useState(authUser.user?.birthdate || "");
   const [gender, setGender] = useState(authUser.user?.gender || "male");
@@ -78,6 +80,19 @@ const Auth = () => {
               <div className="updProfile-personal-data-5">
                 <div className="updProfile-gender-form-group">
                   <GenderRadioGroup gender={gender} setGender={setGender} />
+                </div>
+
+                <div className="updProfile-changePwd-link">
+                  <button
+                    onClick={() => {
+                      startTransition(() => {
+                        navigate("/changePassword");
+                      });
+                    }}
+                    className="updProfile-changePassword-button"
+                  >
+                    {t("changePassword")}
+                  </button>
                 </div>
               </div>
             </div>
