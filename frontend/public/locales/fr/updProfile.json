@@ -1,16 +1,18 @@
 {
-    "username": "FR Username",
-    "name": "FR Name",
-    "lastname": "FR Lastname",
-    "phone": "FR Phone",
+    "username": "Nom d’utilisateur", 
+    "name": "Nom",
+    "lastname": "Prénom",
+    "phone": "Téléphone",
     "birthdate": "Date de naissance",
-    "country": "FR Country (en inglés)",
-    "gender": "FR Gender",
+    "country": "Pays (En anglais)",
+    "gender": "Genre",
     "male": "Homme",
     "female": "Femme",
     "non_binary": "Non binaire",
-    "address": " FR Address",
-    "passport": "FR Passport",
-    "update": "FR Update profile",
-    "invalidCountry": "Il semble que le pays saisi n'est pas reconnu. Veuillez sélectionner un pays valide"
+    "address": "Adresse",
+    "passport": "Passeport",
+    "update": "Mise à jour du profile",
+    "invalidCountry": "Il semble que le pays saisi n'est pas reconnu. Veuillez sélectionner un pays valide",
+    "changePassword": "Changer le mot de passe"
+
 }

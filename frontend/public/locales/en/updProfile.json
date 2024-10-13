@@ -12,5 +12,6 @@
     "address": "Address",
     "passport": "Passport",
     "update": "Update profile",
-    "invalidCountry": "It seems the country entered is not recognized. Please select a valid country"
+    "invalidCountry": "It seems the country entered is not recognized. Please select a valid country",
+    "changePassword": "Change password"
 }

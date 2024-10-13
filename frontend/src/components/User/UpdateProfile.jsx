@@ -84,6 +84,7 @@ const Auth = () => {
 
                 <div className="updProfile-changePwd-link">
                   <button
+                    type="button"
                     onClick={() => {
                       startTransition(() => {
                         navigate("/changePassword");
