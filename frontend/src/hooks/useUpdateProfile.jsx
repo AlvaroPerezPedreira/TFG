@@ -1,15 +1,17 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../context/AuthContext";
+import { useTranslation } from "react-i18next";
 
 const useUpdateProfile = () => {
   let navigate = useNavigate();
+  const [t, i18n] = useTranslation(["register"]);
   const { authUser, setAuthUser } = useAuthContext();
   const [userData, setUserData] = useState(null);
 
   const token = JSON.parse(localStorage.getItem("authUser")).serviceToken;
 
-  const updateProfile = async (e, birthdate, gender) => {
+  const updateProfile = async (e, birthdate, gender, setErrorMessage) => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     const data = {
@@ -36,7 +38,19 @@ const useUpdateProfile = () => {
 
     const finalData = await response.json();
 
-    if (finalData.globalError || finalData.error || finalData.fieldErrors) {
+    if (!response.ok) {
+      if (finalData.globalError) {
+        if (
+          finalData.globalError ===
+          "project.exceptions.InvalidBirthdateException"
+        ) {
+          setErrorMessage(t("InvalidBirthdate"));
+        } else {
+          setErrorMessage(t("RegisterGenericError"));
+        }
+      } else {
+        setErrorMessage(t("RegisterGenericError"));
+      }
       return;
     }
 

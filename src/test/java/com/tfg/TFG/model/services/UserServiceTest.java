@@ -8,6 +8,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.tfg.TFG.model.entities.UserDao;
 import com.tfg.TFG.model.services.exceptions.IncorrectLoginException;
 import com.tfg.TFG.model.services.exceptions.IncorrectPasswordException;
+import com.tfg.TFG.model.services.exceptions.InvalidBirthdateException;
 import com.tfg.TFG.model.services.exceptions.InvalidEmailException;
 import com.tfg.TFG.model.common.exceptions.DuplicateInstanceException;
 import com.tfg.TFG.model.common.exceptions.InstanceNotFoundException;
@@ -38,7 +39,8 @@ public class UserServiceTest {
 
     @Test
     public void testSignUpAndLoginFromId()
-            throws DuplicateInstanceException, InstanceNotFoundException, InvalidEmailException {
+            throws DuplicateInstanceException, InstanceNotFoundException, InvalidEmailException,
+            InvalidBirthdateException {
         User user = createUser5Args("user1");
         userService.signUp(user);
         User loggedUser = userService.loginFromId(user.getId());
@@ -47,7 +49,8 @@ public class UserServiceTest {
     }
 
     @Test
-    public void testUserAlreadyExists() throws DuplicateInstanceException, InvalidEmailException {
+    public void testUserAlreadyExists()
+            throws DuplicateInstanceException, InvalidEmailException, InvalidBirthdateException {
         User user = createUser5Args("user2");
         userService.signUp(user);
 
@@ -56,7 +59,8 @@ public class UserServiceTest {
     }
 
     @Test
-    public void testIncorrectLoginUser() throws DuplicateInstanceException, InvalidEmailException {
+    public void testIncorrectLoginUser()
+            throws DuplicateInstanceException, InvalidEmailException, InvalidBirthdateException {
         User user = createUser5Args("user3");
         userService.signUp(user);
 
@@ -65,7 +69,8 @@ public class UserServiceTest {
     }
 
     @Test
-    public void testIncorrectPassword() throws DuplicateInstanceException, InvalidEmailException {
+    public void testIncorrectPassword()
+            throws DuplicateInstanceException, InvalidEmailException, InvalidBirthdateException {
         User user = createUser5Args("user4");
         userService.signUp(user);
 
@@ -74,7 +79,8 @@ public class UserServiceTest {
     }
 
     @Test
-    public void testIncorrectOldPassword() throws DuplicateInstanceException, InvalidEmailException {
+    public void testIncorrectOldPassword()
+            throws DuplicateInstanceException, InvalidEmailException, InvalidBirthdateException {
         User user = createUser5Args("user5");
         userService.signUp(user);
 
@@ -84,7 +90,8 @@ public class UserServiceTest {
 
     @Test
     public void testUpdateProfile()
-            throws DuplicateInstanceException, InstanceNotFoundException, InvalidEmailException {
+            throws DuplicateInstanceException, InstanceNotFoundException, InvalidEmailException,
+            InvalidBirthdateException {
         User user = createUser5Args("user6");
         userService.signUp(user);
 
@@ -107,5 +114,13 @@ public class UserServiceTest {
 
         assertThrows(InvalidEmailException.class,
                 () -> userService.signUp(new User("invalidEmail", "password", "username", "01-01-2000", "female")));
+    }
+
+    @Test
+    public void testInvalidBirthdate()
+            throws DuplicateInstanceException, InvalidEmailException, InvalidBirthdateException {
+
+        assertThrows(InvalidBirthdateException.class,
+                () -> userService.signUp(new User("a@udc.es", "password", "username", "01-01-2022", "male")));
     }
 }

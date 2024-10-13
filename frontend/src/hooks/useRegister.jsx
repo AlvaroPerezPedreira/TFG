@@ -42,6 +42,11 @@ const useRegister = (e) => {
           "project.exceptions.DuplicateInstanceException"
         ) {
           setRegisterError(t("EmailAlreadyExists"));
+        } else if (
+          finalData.globalError ===
+          "project.exceptions.InvalidBirthdateException"
+        ) {
+          setRegisterError(t("InvalidBirthdate"));
         } else {
           setRegisterError(t("RegisterGenericError"));
         }

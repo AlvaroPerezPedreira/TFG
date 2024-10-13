@@ -18,9 +18,9 @@ public class InvalidEmailException extends Exception {
     }
 
     /**
-     * Gets the user name.
+     * Gets the email.
      *
-     * @return the user name
+     * @return the email
      */
     public String getEmail() {
         return email;

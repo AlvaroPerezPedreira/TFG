@@ -3,11 +3,12 @@ package com.tfg.TFG.model.services;
 import com.tfg.TFG.model.entities.User;
 import com.tfg.TFG.model.services.exceptions.IncorrectLoginException;
 import com.tfg.TFG.model.services.exceptions.IncorrectPasswordException;
+import com.tfg.TFG.model.services.exceptions.InvalidBirthdateException;
 import com.tfg.TFG.model.services.exceptions.InvalidEmailException;
 import com.tfg.TFG.model.common.exceptions.*;
 
 public interface UserService {
-        void signUp(User user) throws DuplicateInstanceException, InvalidEmailException;
+        void signUp(User user) throws DuplicateInstanceException, InvalidEmailException, InvalidBirthdateException;
 
         User login(String email, String password) throws IncorrectLoginException;
 
@@ -15,7 +16,7 @@ public interface UserService {
 
         User updateProfile(Long id, String userName, String name, String lastName, String phone, String birthDateString,
                         String country, String gender, String address, String passport)
-                        throws InstanceNotFoundException;
+                        throws InstanceNotFoundException, InvalidBirthdateException;
 
         void changePassword(Long id, String oldPassword, String newPassword)
                         throws InstanceNotFoundException, IncorrectPasswordException;

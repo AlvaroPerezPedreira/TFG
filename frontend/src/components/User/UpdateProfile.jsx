@@ -24,7 +24,7 @@ const Auth = () => {
 
   const [birthdate, setBirthdate] = useState(authUser.user?.birthdate || "");
   const [gender, setGender] = useState(authUser.user?.gender || "male");
-  const [countryError, setCountryError] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,13 +33,13 @@ const Auth = () => {
     const country = form.get("country");
 
     if (country && !CountryList.includes(country)) {
-      setCountryError(t("invalidCountry"));
+      setErrorMessage(t("invalidCountry"));
       return;
     } else {
-      setCountryError("");
+      setErrorMessage("");
     }
 
-    await updateProfile(e, birthdate, gender);
+    await updateProfile(e, birthdate, gender, setErrorMessage);
   };
 
   return (
@@ -98,8 +98,8 @@ const Auth = () => {
               </div>
             </div>
 
-            {countryError && (
-              <div className="updProfile-error-msg">{countryError}</div>
+            {errorMessage && (
+              <div className="updProfile-error-msg">{errorMessage}</div>
             )}
 
             <div className="updProfile-button-container">

@@ -52,6 +52,9 @@ public class UserController {
 	/** The Constant INVALID_EMAIL_EXCEPTION_CODE. */
 	private static final String INVALID_EMAIL_EXCEPTION_CODE = "project.exceptions.InvalidEmailException";
 
+	/** The Constant INVALID_BIRTHDATE_EXCEPTION_CODE. */
+	private static final String INVALID_BIRTHDATE_EXCEPTION_CODE = "project.exceptions.InvalidBirthdateException";
+
 	/** The message source. */
 	@Autowired
 	private MessageSource messageSource;
@@ -93,13 +96,22 @@ public class UserController {
 	@ResponseBody
 	public ErrorsDto handleInvalidEmailException(InvalidEmailException exception, Locale locale) {
 
-		System.out.println("Manejador de InvalidEmailException" + exception.getMessage());
-
 		String errorMessage = messageSource.getMessage(INVALID_EMAIL_EXCEPTION_CODE, null,
 				INVALID_EMAIL_EXCEPTION_CODE, locale);
 
 		return new ErrorsDto(errorMessage);
 
+	}
+
+	@ExceptionHandler(InvalidBirthdateException.class)
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	@ResponseBody
+	public ErrorsDto handleInvalidBirthdateException(InvalidBirthdateException exception, Locale locale) {
+
+		String errorMessage = messageSource.getMessage(INVALID_BIRTHDATE_EXCEPTION_CODE, null,
+				INVALID_BIRTHDATE_EXCEPTION_CODE, locale);
+
+		return new ErrorsDto(errorMessage);
 	}
 
 	@GetMapping("/{id}")
@@ -121,7 +133,7 @@ public class UserController {
 	@PostMapping("/signUp")
 	public ResponseEntity<AuthenticatedUserDto> signUp(
 			@Validated({ UserDto.AllValidations.class }) @RequestBody UserDto userDto)
-			throws DuplicateInstanceException, InvalidEmailException {
+			throws DuplicateInstanceException, InvalidEmailException, InvalidBirthdateException {
 		System.out.println("signUp");
 		User user = toUser(userDto);
 
@@ -181,7 +193,7 @@ public class UserController {
 	@PutMapping("/updateUser")
 	public UserDto updateProfile(@RequestAttribute Long userId,
 			@Validated({ UserDto.UpdateValidations.class }) @RequestBody UpdatedUserDto updatedUserDto)
-			throws InstanceNotFoundException, PermissionException {
+			throws InstanceNotFoundException, InvalidBirthdateException, PermissionException {
 
 		System.out.println("update profile");
 

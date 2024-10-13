@@ -19,5 +19,6 @@
     "InvalidEmail": "Invalid email address",
     "EmailAlreadyExists": "This email is already in use",
     "RegisterGenericError": "An error occurred, please try again later",
-    "RegisterFieldError": "Please fill in all required fields"
+    "RegisterFieldError": "Please fill in all required fields",
+    "InvalidBirthdate": "Year must be between 1900 and 2013"
 }

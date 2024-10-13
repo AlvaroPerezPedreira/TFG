@@ -19,5 +19,6 @@
     "InvalidEmail": "Dirección de correo no válida",
     "EmailAlreadyExists": "Este correo ya está en uso",
     "RegisterGenericError": "Ocurrió un error, por favor inténtalo más tarde",
-    "RegisterFieldError": "Por favor, completa todos los campos obligatorios"
+    "RegisterFieldError": "Por favor, completa todos los campos obligatorios",
+    "InvalidBirthdate": "El año debe ser entre 1900 y 2013"
 }
