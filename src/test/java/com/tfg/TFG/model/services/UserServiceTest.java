@@ -27,100 +27,124 @@ import jakarta.transaction.Transactional;
 @Transactional
 public class UserServiceTest {
 
-    @Autowired
-    private UserDao userDao;
+        @Autowired
+        private UserDao userDao;
 
-    @Autowired
-    private UserService userService;
+        @Autowired
+        private UserService userService;
 
-    private User createUser5Args(String userName) {
-        return new User(userName + "@" + userName + ".com", "password", "username", "01-01-2000", "male");
-    }
+        private User createUser5Args(String userName) {
+                return new User(userName + "@" + userName + ".com", "password", "username", "01-01-2000", "male");
+        }
 
-    @Test
-    public void testSignUpAndLoginFromId()
-            throws DuplicateInstanceException, InstanceNotFoundException, InvalidEmailException,
-            InvalidBirthdateException {
-        User user = createUser5Args("user1");
-        userService.signUp(user);
-        User loggedUser = userService.loginFromId(user.getId());
-        assertEquals(user, loggedUser);
-        assertEquals(User.RoleType.USER, loggedUser.getRole());
-    }
+        @Test
+        public void testSignUpAndLoginFromId()
+                        throws DuplicateInstanceException, InstanceNotFoundException, InvalidEmailException,
+                        InvalidBirthdateException {
+                User user = createUser5Args("user1");
+                userService.signUp(user);
+                User loggedUser = userService.loginFromId(user.getId());
+                assertEquals(user, loggedUser);
+                assertEquals(User.RoleType.USER, loggedUser.getRole());
+        }
 
-    @Test
-    public void testUserAlreadyExists()
-            throws DuplicateInstanceException, InvalidEmailException, InvalidBirthdateException {
-        User user = createUser5Args("user2");
-        userService.signUp(user);
+        @Test
+        public void testUserAlreadyExists()
+                        throws DuplicateInstanceException, InvalidEmailException, InvalidBirthdateException {
+                User user = createUser5Args("user2");
+                userService.signUp(user);
 
-        assertThrows(DuplicateInstanceException.class,
-                () -> userService.signUp(user));
-    }
+                assertThrows(DuplicateInstanceException.class,
+                                () -> userService.signUp(user));
+        }
 
-    @Test
-    public void testIncorrectLoginUser()
-            throws DuplicateInstanceException, InvalidEmailException, InvalidBirthdateException {
-        User user = createUser5Args("user3");
-        userService.signUp(user);
+        @Test
+        public void testIncorrectLoginUser()
+                        throws DuplicateInstanceException, InvalidEmailException, InvalidBirthdateException {
+                User user = createUser5Args("user3");
+                userService.signUp(user);
 
-        assertThrows(IncorrectLoginException.class,
-                () -> userService.login("UserError", "password"));
-    }
+                assertThrows(IncorrectLoginException.class,
+                                () -> userService.login("UserError", "password"));
+        }
 
-    @Test
-    public void testIncorrectPassword()
-            throws DuplicateInstanceException, InvalidEmailException, InvalidBirthdateException {
-        User user = createUser5Args("user4");
-        userService.signUp(user);
+        @Test
+        public void testIncorrectPassword()
+                        throws DuplicateInstanceException, InvalidEmailException, InvalidBirthdateException {
+                User user = createUser5Args("user4");
+                userService.signUp(user);
 
-        assertThrows(IncorrectLoginException.class,
-                () -> userService.login(user.getEmail(), "passwordError"));
-    }
+                assertThrows(IncorrectLoginException.class,
+                                () -> userService.login(user.getEmail(), "passwordError"));
+        }
 
-    @Test
-    public void testIncorrectOldPassword()
-            throws DuplicateInstanceException, InvalidEmailException, InvalidBirthdateException {
-        User user = createUser5Args("user5");
-        userService.signUp(user);
+        @Test
+        public void testIncorrectOldPassword()
+                        throws DuplicateInstanceException, InvalidEmailException, InvalidBirthdateException {
+                User user = createUser5Args("user5");
+                userService.signUp(user);
 
-        assertThrows(IncorrectPasswordException.class,
-                () -> userService.changePassword(user.getId(), "passwordError", "newPassword"));
-    }
+                assertThrows(IncorrectPasswordException.class,
+                                () -> userService.changePassword(user.getId(), "passwordError", "newPassword"));
+        }
 
-    @Test
-    public void testUpdateProfile()
-            throws DuplicateInstanceException, InstanceNotFoundException, InvalidEmailException,
-            InvalidBirthdateException {
-        User user = createUser5Args("user6");
-        userService.signUp(user);
+        @Test
+        public void testUpdateProfile()
+                        throws DuplicateInstanceException, InstanceNotFoundException, InvalidEmailException,
+                        InvalidBirthdateException {
+                User user = createUser5Args("user6");
+                userService.signUp(user);
 
-        User updatedUser = userService.updateProfile(user.getId(), "newUserName", "newName", "newLastName", "newPhone",
-                "01-01-1999", "newCountry", "female", "newAddress", "newPassport");
+                User updatedUser = userService.updateProfile(user.getId(), "newUserName", "newName", "newLastName",
+                                "newPhone",
+                                "01-01-1999", "newCountry", "female", "newAddress", "newPassport");
 
-        assertEquals("newUserName", updatedUser.getUsername());
-        assertEquals("newName", updatedUser.getName());
-        assertEquals("newLastName", updatedUser.getLastname());
-        assertEquals("newPhone", updatedUser.getPhone());
-        assertEquals("01-01-1999", updatedUser.getBirthdate());
-        assertEquals("newCountry", updatedUser.getCountry());
-        assertEquals("female", updatedUser.getGender());
-        assertEquals("newAddress", updatedUser.getAddress());
-        assertEquals("newPassport", updatedUser.getPassport());
-    }
+                assertEquals("newUserName", updatedUser.getUsername());
+                assertEquals("newName", updatedUser.getName());
+                assertEquals("newLastName", updatedUser.getLastname());
+                assertEquals("newPhone", updatedUser.getPhone());
+                assertEquals("01-01-1999", updatedUser.getBirthdate());
+                assertEquals("newCountry", updatedUser.getCountry());
+                assertEquals("female", updatedUser.getGender());
+                assertEquals("newAddress", updatedUser.getAddress());
+                assertEquals("newPassport", updatedUser.getPassport());
+        }
 
-    @Test
-    public void testInvalidEmail() throws DuplicateInstanceException, InvalidEmailException {
+        @Test
+        public void testFindById() throws DuplicateInstanceException, InstanceNotFoundException, InvalidEmailException,
+                        InvalidBirthdateException {
+                User user = createUser5Args("user7");
+                userService.signUp(user);
 
-        assertThrows(InvalidEmailException.class,
-                () -> userService.signUp(new User("invalidEmail", "password", "username", "01-01-2000", "female")));
-    }
+                User foundUser = userService.findById(user.getId());
+                assertEquals(user, foundUser);
+        }
 
-    @Test
-    public void testInvalidBirthdate()
-            throws DuplicateInstanceException, InvalidEmailException, InvalidBirthdateException {
+        @Test
+        public void testFindByEmail()
+                        throws DuplicateInstanceException, InstanceNotFoundException, InvalidEmailException,
+                        InvalidBirthdateException {
+                User user = createUser5Args("user8");
+                userService.signUp(user);
 
-        assertThrows(InvalidBirthdateException.class,
-                () -> userService.signUp(new User("a@udc.es", "password", "username", "01-01-2022", "male")));
-    }
+                User foundUser = userService.findByEmail(user.getEmail());
+                assertEquals(user, foundUser);
+        }
+
+        @Test
+        public void testInvalidEmail() throws DuplicateInstanceException, InvalidEmailException {
+
+                assertThrows(InvalidEmailException.class,
+                                () -> userService.signUp(new User("invalidEmail", "password", "username", "01-01-2000",
+                                                "female")));
+        }
+
+        @Test
+        public void testInvalidBirthdate()
+                        throws DuplicateInstanceException, InvalidEmailException, InvalidBirthdateException {
+
+                assertThrows(InvalidBirthdateException.class,
+                                () -> userService.signUp(
+                                                new User("a@udc.es", "password", "username", "01-01-2022", "male")));
+        }
 }

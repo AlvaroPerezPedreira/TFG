@@ -114,20 +114,34 @@ public class UserController {
 		return new ErrorsDto(errorMessage);
 	}
 
-	@GetMapping("/{id}")
-	public ResponseEntity<UserDto> getUser(@RequestAttribute Long userId, @PathVariable Long id)
+	/*
+	 * @GetMapping("/{id}")
+	 * public ResponseEntity<UserDto> getUser(@RequestAttribute Long
+	 * userId, @PathVariable Long id)
+	 * throws InstanceNotFoundException, PermissionException {
+	 * 
+	 * System.out.println("getUser");
+	 * 
+	 * if (!id.equals(userId)) {
+	 * throw new PermissionException();
+	 * }
+	 * 
+	 * User user = userService.findById(id);
+	 * 
+	 * return ResponseEntity.ok(toUserDto(user));
+	 * 
+	 * }
+	 */
+
+	@GetMapping("/{email}")
+	public ResponseEntity<UserDto> getUserByEmail(@RequestAttribute Long userId, @PathVariable String email)
 			throws InstanceNotFoundException, PermissionException {
 
-		System.out.println("getUser");
+		System.out.println("getUserByEmail");
 
-		if (!id.equals(userId)) {
-			throw new PermissionException();
-		}
-
-		User user = userService.findById(id);
+		User user = userService.findByEmail(email);
 
 		return ResponseEntity.ok(toUserDto(user));
-
 	}
 
 	@PostMapping("/signUp")

@@ -23,4 +23,5 @@ public interface UserService {
 
         User findById(Long id) throws InstanceNotFoundException;
 
+        User findByEmail(String email) throws InstanceNotFoundException;
 }

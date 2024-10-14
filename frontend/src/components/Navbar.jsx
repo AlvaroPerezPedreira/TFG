@@ -14,6 +14,7 @@ import { startTransition, Suspense } from "react";
 import { useNavigate } from "react-router-dom";
 import FlagDropdown from "./GlobalComponents/FlagDropdown";
 import NavBarLink from "./GlobalComponents/NavBarLink";
+import { Avatar } from "@nextui-org/avatar";
 
 const Navbar = () => {
   const [t, i18n] = useTranslation(["navbar"]);
@@ -32,29 +33,22 @@ const Navbar = () => {
           <NavBarLink />
         </h1>
         <div className="navbar-dropdown">
+          <FlagDropdown />
           <Dropdown placement="bottom-end">
             <DropdownTrigger>
-              <Button
-                radius="md"
-                variant="bordered"
-                color="default"
-                isIconOnly
-                customRippleColor="black"
-              >
-                <img
-                  src={`http://localhost:8080/images/${authUser.user.avatar}`}
-                  alt=""
-                  className="navbar-avatar"
-                />
-              </Button>
+              <Avatar
+                isBordered
+                as="button"
+                className="transition-transform"
+                src={`http://localhost:8080/images/${authUser.user.avatar}`}
+              />
             </DropdownTrigger>
-            <DropdownMenu aria-label="Static Actions">
-              <DropdownItem key="new" variant="solid">
-                New file
+            <DropdownMenu aria-label="Profile Actions" variant="flat">
+              <DropdownItem key="profile" className="h-14 gap-2">
+                <p className="font-semibold">{t("signed")}</p>
+                <p className="font-semibold">{authUser.user.email}</p>
               </DropdownItem>
-              <DropdownItem key="copy" variant="solid">
-                Copy link
-              </DropdownItem>
+              <DropdownItem key="settings">Test</DropdownItem>
               <DropdownItem
                 className="text-[#FFDB58] w-full"
                 key="updateProfile"
@@ -72,7 +66,6 @@ const Navbar = () => {
               </DropdownItem>
             </DropdownMenu>
           </Dropdown>
-          <FlagDropdown />
         </div>
       </div>
     </Suspense>

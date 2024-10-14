@@ -126,4 +126,10 @@ public class UserServiceImpl implements UserService {
     public User findById(Long id) throws InstanceNotFoundException {
         return userDao.findById(id).orElseThrow(() -> new InstanceNotFoundException("project.entities.user", id));
     }
+
+    @Override
+    public User findByEmail(String email) throws InstanceNotFoundException {
+        return userDao.findByEmail(email)
+                .orElseThrow(() -> new InstanceNotFoundException("project.entities.user", email));
+    }
 }

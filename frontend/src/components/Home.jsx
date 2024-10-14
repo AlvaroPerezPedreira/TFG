@@ -1,43 +1,37 @@
-import React, { startTransition, Suspense, useState } from "react";
+import React, { startTransition, Suspense } from "react";
 import { useTranslation } from "react-i18next";
 import Navbar from "./Navbar";
 import "./styles/home.css";
 import { useAuthContext } from "../context/AuthContext";
 
 import { Button } from "@nextui-org/button";
-import GenderRadioGroup from "./User/UserComponents/GenderRadioGroup";
 
+import {
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownTrigger,
+} from "@nextui-org/dropdown";
+import { Avatar, AvatarGroup, AvatarIcon } from "@nextui-org/avatar";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [t] = useTranslation(["welcome"]);
-  const { authUser } = useAuthContext();
-  const [gender, setGender] = useState(authUser.user?.gender || "");
+  const { authUser, setAuthUser } = useAuthContext();
   let navigate = useNavigate();
 
-  const [formData, setFormData] = useState({
-    username: authUser.user?.username || "",
-    name: authUser.user?.name || "",
-    lastname: authUser.user?.lastname || "",
-    phone: authUser.user?.phone || "",
-    birthdate: authUser.user?.birthdate || "",
-    country: authUser.user?.country || "",
-    gender: gender,
-    address: authUser.user?.address || "",
-    passport: authUser.user?.passport || "",
-  });
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
   const handleClick = () => {
-    console.log("Button clicked", authUser);
+    startTransition(() => {
+      navigate("/users/a@udc.es");
+    });
   };
+
+  const logOut = () => {
+    localStorage.removeItem("authUser");
+    setAuthUser(null);
+  };
+
+  console.log(authUser);
 
   return (
     <>
@@ -52,23 +46,43 @@ const Home = () => {
         <br />
 
         <div>
-          <GenderRadioGroup gender={gender} setGender={setGender} />
-        </div>
-        <br />
-        <div>
-          <button
-            onClick={() => {
-              startTransition(() => {
-                navigate("/changePassword");
-              });
-            }}
-            className="updProfile-changePassword-Link"
-          >
-            {t("changePassword")}
-          </button>
+          <Dropdown placement="bottom-end">
+            <DropdownTrigger>
+              <Avatar
+                isBordered
+                as="button"
+                className="transition-transform"
+                src={`http://localhost:8080/images/${authUser.user.avatar}`}
+              />
+            </DropdownTrigger>
+            <DropdownMenu aria-label="Profile Actions" variant="flat">
+              <DropdownItem key="profile" className="h-14 gap-2">
+                <p className="font-semibold">{t("signed")}</p>
+                <p className="font-semibold">{authUser.user.email}</p>
+              </DropdownItem>
+              <DropdownItem key="settings">Test</DropdownItem>
+              <DropdownItem
+                className="text-[#FFDB58] w-full"
+                key="updateProfile"
+                variant="solid"
+                onClick={() => {
+                  startTransition(() => {
+                    navigate("/updateProfile");
+                  });
+                }}
+              >
+                {t("updProfile")}
+              </DropdownItem>
+              <DropdownItem key="logout" variant="solid" onClick={logOut}>
+                {t("logOut")}
+              </DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
         </div>
 
         <br />
+        <br />
+
         <Button onClick={handleClick}>Pulsa</Button>
       </Suspense>
     </>
