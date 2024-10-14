@@ -15,6 +15,7 @@ import FlagDropdown from "../GlobalComponents/FlagDropdown";
 import UpdateProfileHeaderLink from "./UpdateProfileComponents/UpdateProfileHeaderLink";
 import { CountryList } from "../../utils/CountryListConstant";
 import { useNavigate } from "react-router-dom";
+import { Autocomplete, AutocompleteItem } from "@nextui-org/autocomplete";
 
 const Auth = () => {
   const { updateProfile } = useUpdateProfile();
@@ -24,22 +25,15 @@ const Auth = () => {
 
   const [birthdate, setBirthdate] = useState(authUser.user?.birthdate || "");
   const [gender, setGender] = useState(authUser.user?.gender || "male");
+  const [country, setCountry] = useState(authUser.user?.country || "");
   const [errorMessage, setErrorMessage] = useState("");
+
+  console.log("country", country);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const form = new FormData(e.currentTarget);
 
-    const country = form.get("country");
-
-    if (country && !CountryList.includes(country)) {
-      setErrorMessage(t("invalidCountry"));
-      return;
-    } else {
-      setErrorMessage("");
-    }
-
-    await updateProfile(e, birthdate, gender, setErrorMessage);
+    await updateProfile(e, birthdate, gender, country, setErrorMessage);
   };
 
   return (
@@ -68,6 +62,23 @@ const Auth = () => {
             <div className="updProfile-personal-data-3">
               <div className="updProfile-personal-data-4">
                 <UpdateProfileSecondInputs />
+
+                <div className="updProfile-country">
+                  <Autocomplete
+                    defaultItems={CountryList}
+                    placeholder={t("country")}
+                    variant="underlined"
+                    className="max-w"
+                    defaultInputValue={country || ""}
+                    onInputChange={setCountry}
+                  >
+                    {(country) => (
+                      <AutocompleteItem key={country.value}>
+                        {country.label}
+                      </AutocompleteItem>
+                    )}
+                  </Autocomplete>
+                </div>
 
                 <div className="updProfile-birthdate-form-group">
                   <UpdateProfileDatePicker

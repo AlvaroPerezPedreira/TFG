@@ -198,4 +198,4 @@ export const CountryList = [
     "Yemen",
     "Zambia",
     "Zimbabwe"
-];
+].map(country => ({ label: country, value: country}));

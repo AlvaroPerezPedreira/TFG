@@ -67,7 +67,7 @@
   font-size: 18px;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: 20px;
 }
 
 .updProfile-button-container {
@@ -99,12 +99,22 @@
   width: 60%;
 }
 
+.updProfile-personal-data-4 {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
 .updProfile-personal-data-3 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 75px;
   width: 60%;
   margin-top: 20px;
+}
+
+.updProfile-country {
+  margin-top: 10px;
 }
 
 .updProfile-personal-data-2 {

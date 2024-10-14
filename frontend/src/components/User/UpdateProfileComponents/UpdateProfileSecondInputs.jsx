@@ -3,20 +3,12 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { useAuthContext } from "../../../context/AuthContext";
 
-export default function UpdateProfileSecondInputs({}) {
+export default function UpdateProfileSecondInputs() {
   const [t, i18n] = useTranslation(["updProfile"]);
   const { authUser } = useAuthContext();
 
   return (
     <>
-      <Input
-        name="country"
-        placeholder={t("country")}
-        variant="underlined"
-        defaultValue={authUser.user?.country || ""}
-        label={authUser.user?.country ? t("country") : ""}
-      />
-
       <Input
         name="address"
         placeholder={t("address")}

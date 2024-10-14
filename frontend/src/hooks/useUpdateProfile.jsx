@@ -11,7 +11,13 @@ const useUpdateProfile = () => {
 
   const token = JSON.parse(localStorage.getItem("authUser")).serviceToken;
 
-  const updateProfile = async (e, birthdate, gender, setErrorMessage) => {
+  const updateProfile = async (
+    e,
+    birthdate,
+    gender,
+    country,
+    setErrorMessage
+  ) => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     const data = {
@@ -23,7 +29,7 @@ const useUpdateProfile = () => {
       phone: form.get("phone"),
       address: form.get("address"),
       passport: form.get("passport"),
-      country: form.get("country"),
+      country: country,
     };
 
     const response = await fetch(`http://localhost:8080/api/users/updateUser`, {
