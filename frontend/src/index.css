@@ -18,6 +18,7 @@
   --black-color6: #121212;
   --black-color7: #0C0C0C;
   --black-color8: #050505;
+  --blackFull: #000000;
 
   --grey-color1: #CCCCCC;
   --grey-color2: #B2B2B2;
@@ -36,6 +37,7 @@
   --white-color6: #7F7F7F;
   --white-color7: #666666;
   --white-color8: #4C4C4C;
+  --whiteFull: #FFFFFF;
 
   --darkblue-color1: #1F4068;
   --darkblue-color2: #1B3660;
@@ -54,4 +56,10 @@
   --lightblue-color6: #6C9CFF;
   --lightblue-color7: #5E8DFF;
   --lightblue-color8: #518DFF;
+
+  --errorRed: #dc2626;
+
+  --successGreen: #10B981;
+
+  --AppMainColor: #FFDB58;
 }
