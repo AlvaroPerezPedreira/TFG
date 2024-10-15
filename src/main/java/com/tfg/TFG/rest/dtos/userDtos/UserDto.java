@@ -51,6 +51,8 @@ public class UserDto {
 	/** The user avatar. */
 	private String avatar;
 
+	private String status;
+
 	/**
 	 * The Interface AllValidations.
 	 */
@@ -70,7 +72,8 @@ public class UserDto {
 	}
 
 	public UserDto(String email, String password, String role, String username, String name, String lastname,
-			String phone, String birthdate, String country, String gender, String address, String passport) {
+			String phone, String birthdate, String country, String gender, String address, String passport,
+			String status) {
 		this.email = email;
 		this.password = password;
 		this.role = role;
@@ -84,11 +87,12 @@ public class UserDto {
 		this.address = address;
 		this.passport = passport;
 		this.avatar = null;
+		this.status = status;
 	}
 
 	public UserDto(String email, String password, String role, String username, String name, String lastname,
 			String phone, String birthdate, String country, String gender, String address, String passport,
-			String avatar) {
+			String avatar, String status) {
 		this.email = email;
 		this.password = password;
 		this.role = role;
@@ -102,6 +106,7 @@ public class UserDto {
 		this.address = address;
 		this.passport = passport;
 		this.avatar = avatar;
+		this.status = status;
 	}
 
 	public Long getId() {
@@ -266,6 +271,14 @@ public class UserDto {
 		if (avatar != null) {
 			this.avatar = avatar.trim();
 		}
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 }

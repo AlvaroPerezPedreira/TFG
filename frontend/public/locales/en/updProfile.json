@@ -13,5 +13,6 @@
     "passport": "Passport",
     "update": "Update profile",
     "invalidCountry": "It seems the country entered is not recognized. Please select a valid country",
-    "changePassword": "Change password"
+    "changePassword": "Change password",
+    "banUser": "Ban user"
 }

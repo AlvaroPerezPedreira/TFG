@@ -7,5 +7,6 @@
     "passwd": "Mot de passe",
     "continue": "Continuer",
     "LoginIncorrect": "Email ou mot de passe incorrect",
-    "LoginGenericError": "Une erreur s'est produite, veuillez réessayer plus tard"
+    "LoginGenericError": "Une erreur s'est produite, veuillez réessayer plus tard",
+    "BannedUser": "Ton compte a été banni"
 }

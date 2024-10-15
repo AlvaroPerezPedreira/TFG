@@ -6,7 +6,7 @@ package com.tfg.TFG.model.services.exceptions;
 @SuppressWarnings("serial")
 public class IncorrectLoginException extends Exception {
 
-	/** The user name. */
+	/** The user email. */
 	private final String email;
 
 	/** The password. */

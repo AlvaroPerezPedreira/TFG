@@ -7,5 +7,6 @@
     "passwd": "Password",
     "continue": "Continue",
     "LoginIncorrect": "Incorrect email or password",
-    "LoginGenericError": "An error occurred, please try again later"
+    "LoginGenericError": "An error occurred, please try again later",
+    "BannedUser": "Your account has been banned"
 }

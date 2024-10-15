@@ -14,5 +14,6 @@ CREATE TABLE User (
     gender VARCHAR(255) NOT NULL,
     address VARCHAR(255),
     passport VARCHAR(255),
-    avatar VARCHAR(350)
+    avatar VARCHAR(350),
+    status TINYINT NOT NULL
 );

@@ -6,7 +6,10 @@ import FlagDropdown from "../GlobalComponents/FlagDropdown";
 import { Input } from "@nextui-org/input";
 import { useTranslation } from "react-i18next";
 import { Radio, RadioGroup } from "@nextui-org/radio";
-import { Spinner } from "@nextui-org/spinner";
+import { Button } from "@nextui-org/button";
+import { useAuthContext } from "../../context/AuthContext";
+import { UserIcon } from "../../icons/UserIcon";
+import useBanUser from "../../hooks/useBanUser";
 
 function UserDetails() {
   const { email } = useParams();
@@ -15,11 +18,12 @@ function UserDetails() {
   const [error, setError] = useState(null);
   const token = JSON.parse(localStorage.getItem("authUser")).serviceToken;
   const [t, i18n] = useTranslation(["updProfile"]);
+  const { authUser } = useAuthContext();
+  const { banUser } = useBanUser();
 
   useEffect(() => {
     const fetchUserDetails = async () => {
       try {
-        console.log("Fetching user with email:", email);
         const response = await fetch(
           `http://localhost:8080/api/users/${email}`,
           {
@@ -47,6 +51,11 @@ function UserDetails() {
 
     fetchUserDetails();
   }, [email, token]);
+
+  const handleClick = async (e) => {
+    e.preventDefault();
+    await banUser(email);
+  };
 
   // Manejo de errores
   if (error) {
@@ -162,6 +171,17 @@ function UserDetails() {
                   </RadioGroup>
                 </div>
               </div>
+            </div>
+            <div className="updProfile-button-container">
+              {authUser.user.role === "ADMIN" && (
+                <Button
+                  children={t("banUser")}
+                  variant="bordered"
+                  startContent={<UserIcon />}
+                  color="danger"
+                  onClick={handleClick}
+                />
+              )}
             </div>
           </div>
         </div>

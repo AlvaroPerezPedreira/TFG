@@ -55,6 +55,12 @@ public class UserController {
 	/** The Constant INVALID_BIRTHDATE_EXCEPTION_CODE. */
 	private static final String INVALID_BIRTHDATE_EXCEPTION_CODE = "project.exceptions.InvalidBirthdateException";
 
+	/** The Constant INVALID_BIRTHDATE_EXCEPTION_CODE. */
+	private static final String PERMISSION_EXCEPTION_CODE = "project.exceptions.PermissionException";
+
+	/** The Constant INVALID_BIRTHDATE_EXCEPTION_CODE. */
+	private static final String BANNED_EXCEPTION_CODE = "project.exceptions.BannedUserException";
+
 	/** The message source. */
 	@Autowired
 	private MessageSource messageSource;
@@ -114,6 +120,28 @@ public class UserController {
 		return new ErrorsDto(errorMessage);
 	}
 
+	@ExceptionHandler(PermissionException.class)
+	@ResponseStatus(HttpStatus.FORBIDDEN)
+	@ResponseBody
+	public ErrorsDto handleInvalidBirthdateException(PermissionException exception, Locale locale) {
+
+		String errorMessage = messageSource.getMessage(PERMISSION_EXCEPTION_CODE, null,
+				PERMISSION_EXCEPTION_CODE, locale);
+
+		return new ErrorsDto(errorMessage);
+	}
+
+	@ExceptionHandler(BannedUserException.class)
+	@ResponseStatus(HttpStatus.FORBIDDEN)
+	@ResponseBody
+	public ErrorsDto handleBannedUserException(BannedUserException exception, Locale locale) {
+
+		String errorMessage = messageSource.getMessage(BANNED_EXCEPTION_CODE, null,
+				BANNED_EXCEPTION_CODE, locale);
+
+		return new ErrorsDto(errorMessage);
+	}
+
 	/*
 	 * @GetMapping("/{id}")
 	 * public ResponseEntity<UserDto> getUser(@RequestAttribute Long
@@ -168,7 +196,8 @@ public class UserController {
 	 * @throws IncorrectLoginException the incorrect login exception
 	 */
 	@PostMapping("/login")
-	public AuthenticatedUserDto login(@Validated @RequestBody LoginParamsDto params) throws IncorrectLoginException {
+	public AuthenticatedUserDto login(@Validated @RequestBody LoginParamsDto params)
+			throws IncorrectLoginException, BannedUserException {
 
 		User user = userService.login(params.getEmail(), params.getPassword());
 
@@ -240,6 +269,18 @@ public class UserController {
 
 		userService.changePassword(userId, params.getOldPassword(), params.getNewPassword());
 
+	}
+
+	@PostMapping("/banUser/{email}")
+	@ResponseStatus(HttpStatus.OK)
+	public void banUser(@RequestAttribute Long userId, @PathVariable String email)
+			throws InstanceNotFoundException, PermissionException {
+
+		System.out.println("ban user");
+
+		User admin = userService.findById(userId);
+
+		userService.banUser(admin, email);
 	}
 
 	/**

@@ -24,7 +24,7 @@ public class UserConversor {
 				user.getName(),
 				user.getLastname(),
 				user.getPhone(), user.getBirthdate(), user.getCountry(), user.getGender(), user.getAddress(),
-				user.getPassport(), user.getAvatar());
+				user.getPassport(), user.getAvatar(), user.getStatus().toString());
 	}
 
 	public static final UpdatedUserDto toUpdatedUserDto(User user) {
@@ -42,7 +42,7 @@ public class UserConversor {
 		return new User(userDto.getEmail(), userDto.getPassword(), userDto.getUsername(), userDto.getName(),
 				userDto.getLastname(), userDto.getPhone(), userDto.getBirthdate(),
 				userDto.getCountry(), userDto.getGender(), userDto.getAddress(), userDto.getPassport(),
-				userDto.getAvatar());
+				userDto.getAvatar(), userDto.getStatus());
 	}
 
 	/**

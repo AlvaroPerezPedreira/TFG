@@ -6,10 +6,12 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.tfg.TFG.model.entities.UserDao;
+import com.tfg.TFG.model.services.exceptions.BannedUserException;
 import com.tfg.TFG.model.services.exceptions.IncorrectLoginException;
 import com.tfg.TFG.model.services.exceptions.IncorrectPasswordException;
 import com.tfg.TFG.model.services.exceptions.InvalidBirthdateException;
 import com.tfg.TFG.model.services.exceptions.InvalidEmailException;
+import com.tfg.TFG.model.services.exceptions.PermissionException;
 import com.tfg.TFG.model.common.exceptions.DuplicateInstanceException;
 import com.tfg.TFG.model.common.exceptions.InstanceNotFoundException;
 import com.tfg.TFG.model.entities.User;
@@ -60,7 +62,8 @@ public class UserServiceTest {
 
         @Test
         public void testIncorrectLoginUser()
-                        throws DuplicateInstanceException, InvalidEmailException, InvalidBirthdateException {
+                        throws DuplicateInstanceException, InvalidEmailException, InvalidBirthdateException,
+                        BannedUserException {
                 User user = createUser5Args("user3");
                 userService.signUp(user);
 
@@ -70,7 +73,8 @@ public class UserServiceTest {
 
         @Test
         public void testIncorrectPassword()
-                        throws DuplicateInstanceException, InvalidEmailException, InvalidBirthdateException {
+                        throws DuplicateInstanceException, InvalidEmailException, InvalidBirthdateException,
+                        BannedUserException {
                 User user = createUser5Args("user4");
                 userService.signUp(user);
 
@@ -129,6 +133,19 @@ public class UserServiceTest {
 
                 User foundUser = userService.findByEmail(user.getEmail());
                 assertEquals(user, foundUser);
+        }
+
+        @Test
+        public void testBannedUser() throws DuplicateInstanceException, InvalidEmailException,
+                        InvalidBirthdateException, BannedUserException, InstanceNotFoundException, PermissionException {
+                User user = createUser5Args("user9");
+                userService.signUp(user);
+                User admin = userService.findByEmail("admin@udc.es");
+
+                userService.banUser(admin, user.getEmail());
+
+                assertThrows(BannedUserException.class,
+                                () -> userService.login(user.getEmail(), "password"));
         }
 
         @Test

@@ -53,6 +53,7 @@ public class UserServiceImpl implements UserService {
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole(User.RoleType.USER);
+        user.setStatus(User.StatusType.ACTIVE);
         user.setAvatar("Default_Avatar.png");
 
         userDao.save(user);
@@ -60,7 +61,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional(readOnly = true)
-    public User login(String email, String password) throws IncorrectLoginException {
+    public User login(String email, String password) throws IncorrectLoginException, BannedUserException {
 
         Optional<User> user = userDao.findByEmail(email);
 
@@ -70,6 +71,10 @@ public class UserServiceImpl implements UserService {
 
         if (!passwordEncoder.matches(password, user.get().getPassword())) {
             throw new IncorrectLoginException(email, password);
+        }
+
+        if (user.get().getStatus() == User.StatusType.BANNED) {
+            throw new BannedUserException(email);
         }
 
         return user.get();
@@ -132,4 +137,16 @@ public class UserServiceImpl implements UserService {
         return userDao.findByEmail(email)
                 .orElseThrow(() -> new InstanceNotFoundException("project.entities.user", email));
     }
+
+    @Override
+    public void banUser(User admin, String bannedUserEmail) throws InstanceNotFoundException, PermissionException {
+        if (admin.getRole() != User.RoleType.ADMIN) {
+            throw new PermissionException();
+        }
+        User bannedUser = userDao.findByEmail(bannedUserEmail)
+                .orElseThrow(() -> new InstanceNotFoundException("project.entities.user", bannedUserEmail));
+
+        bannedUser.setStatus(User.StatusType.BANNED);
+    }
+
 }

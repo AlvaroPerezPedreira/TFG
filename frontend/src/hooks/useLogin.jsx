@@ -29,7 +29,13 @@ const useLogin = (e) => {
 
     if (!response.ok) {
       if (finalData.globalError) {
-        setLoginError(t("LoginIncorrect"));
+        if (
+          finalData.globalError === "project.exceptions.BannedUserException"
+        ) {
+          setLoginError(t("BannedUser"));
+        } else {
+          setLoginError(t("LoginIncorrect"));
+        }
       } else {
         setLoginError(t("LoginGenericError")); // Mensaje genérico por defecto
       }

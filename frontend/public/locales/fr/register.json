@@ -17,5 +17,5 @@
     "EmailAlreadyExists": "Cet e-mail est déjà utilisé",
     "RegisterGenericError": "Une erreur est survenue, veuillez réessayer plus tard",
     "RegisterFieldError": "Veuillez remplir tous les champs obligatoires",
-    "InvalidBirthdate": "L'année doit être entre 1900 et 2013"
+    "InvalidBirthdate": "L'année de naissance doit être entre 1900 et 2013"
 }
