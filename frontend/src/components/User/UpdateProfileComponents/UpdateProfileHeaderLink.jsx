@@ -11,7 +11,7 @@ export default function UpdateProfileHeaderLink() {
           alt="Logo"
           className="updProfile-logo-img"
         />
-        <span>DeepDive</span>
+        <span style={{ fontFamily: "Caveat, sans-serif" }}>DeepDive</span>
       </Link>
     </>
   );

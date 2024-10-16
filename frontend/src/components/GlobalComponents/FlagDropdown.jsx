@@ -30,7 +30,7 @@ export default function FlagDropdown() {
     <div>
       <Dropdown placement="bottom-end">
         <DropdownTrigger>
-          <Button radius="md" variant="bordered" color="default" isIconOnly>
+          <Button radius="md" variant="light" color="default" isIconOnly>
             {getFlagIcon(currentLanguage)}
           </Button>
         </DropdownTrigger>

@@ -1,20 +1,29 @@
 .navbar-container {
     width: 100%;
-    background-color: var(  --white-color4);
+    background-color: var(--whiteFull);
     display: flex;
-    padding: 2rem;
+    padding: 1rem; /* Reducir padding para hacer la barra más estrecha */
+    height: 56px; /* Ajustar la altura para hacerla más compacta */
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Para un efecto de sombreado ligero */
 }
 
 .navbar-title {
     display: flex;
-    flex: 1;
+    align-items: center;
+    font-size: 1.5rem; /* Aumentar el tamaño del texto */
     height: 100%;
+    font-family: "Caveat", sans-serif;
+    flex-basis: 15%; /* Limitar el ancho para que el logo y título ocupen menos espacio */
+    flex-grow: 0; /* No dejar que crezca */
+    justify-content: flex-start; /* Alineación al principio */
 }
 
 .navbar-button {
     border-radius: 36px;
     border: 2px solid darkslategrey;
-    padding: 8px;
+    padding: 6px 12px; /* Reducir padding */
+    font-size: 1rem; /* Aumentar ligeramente el tamaño del texto */
 }
 
 .navbar-flag-container {
@@ -26,25 +35,45 @@
 
 .navbar-logo-img {
     margin-right: 10px;
-    height: auto;
-    width: 45px;
+    height: 50px; /* Agrandar el logo */
+    width: auto;
 }
 
 .navbar-deepdive-link {
-    background-color: red;
+    color: var(--blackFull);
     display: flex;
-    
+    text-decoration: none;
+    align-items: center;
+    font-weight: bold;
+    font-size: 32px;
 }
-
 
 .navbar-dropdown {
     display: flex;
     gap: 10px;
+    align-items: center;
+    flex-basis: 15%; /* Igual que el navbar-title para simetría */
+    flex-grow: 0; /* No dejar que crezca */
+    justify-content: flex-end; /* Alineación al final */
 }
 
 .navbar-avatar {
-    height: 24px;
-    width: 24px;
+    height: 28px; /* Ajustar el tamaño del avatar */
+    width: 28px;
     object-fit: cover;
     border-radius: 9999px;
+}
+
+.navbar-links {
+    display: flex;
+    justify-content: center;
+    flex: 1; /* Ocupa el espacio restante */
+    gap: 20px; /* Espacio entre los botones */
+}
+
+.navbar-link {
+    color: var(--blackFull);
+    text-decoration: none;
+    font-family: "Orbitron", sans-serif;
+    font-size: 16px;
 }

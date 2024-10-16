@@ -32,7 +32,9 @@ const Auth = () => {
                   alt="Logo"
                   className="login-logo-img"
                 />
-                <span>DeepDive</span>
+                <span style={{ fontFamily: "Caveat, sans-serif" }}>
+                  DeepDive
+                </span>
               </div>
               <div className="login-dropdown-container">
                 <FlagDropdown />

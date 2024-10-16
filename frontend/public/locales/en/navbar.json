@@ -1,5 +1,7 @@
 {
     "logOut": "Log out",
     "updProfile": "Update profile",
-    "signed": "Signed in as"
+    "signed": "Signed in as",
+    "contact": "Contact us",
+    "about": "About"
 }

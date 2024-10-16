@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function NavBarLink({ theme }) {
+export default function NavBarLink() {
   return (
     <>
       <Link to="/" className="navbar-deepdive-link">
@@ -10,7 +10,7 @@ export default function NavBarLink({ theme }) {
           alt="Logo"
           className="navbar-logo-img"
         />
-        <span>DeepDive</span>
+        <span style={{ fontFamily: "Caveat, sans-serif" }}>DeepDive</span>
       </Link>
     </>
   );

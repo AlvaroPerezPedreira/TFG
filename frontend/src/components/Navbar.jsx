@@ -15,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 import FlagDropdown from "./GlobalComponents/FlagDropdown";
 import NavBarLink from "./GlobalComponents/NavBarLink";
 import { Avatar } from "@nextui-org/avatar";
+import { Link } from "@nextui-org/link";
 
 const Navbar = () => {
   const [t, i18n] = useTranslation(["navbar"]);
@@ -32,12 +33,27 @@ const Navbar = () => {
         <h1 className="navbar-title">
           <NavBarLink />
         </h1>
+        <div className="navbar-links">
+          <Link
+            className="navbar-link"
+            underline="hover"
+            href="/test"
+            size="md"
+          >
+            Test
+          </Link>
+          <Link className="navbar-link" underline="hover" href="/" size="md">
+            {t("contact")}
+          </Link>
+          <Link className="navbar-link" underline="hover" href="/" size="md">
+            {t("about")}
+          </Link>
+        </div>
         <div className="navbar-dropdown">
           <FlagDropdown />
           <Dropdown placement="bottom-end">
             <DropdownTrigger>
               <Avatar
-                isBordered
                 as="button"
                 className="transition-transform"
                 src={`http://localhost:8080/images/${authUser.user.avatar}`}

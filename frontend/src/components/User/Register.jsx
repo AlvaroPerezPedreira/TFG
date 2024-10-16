@@ -37,7 +37,9 @@ const Register = () => {
                   alt="Logo"
                   className="register-logo-img"
                 />
-                <span>DeepDive</span>
+                <span style={{ fontFamily: "Caveat, sans-serif" }}>
+                  DeepDive
+                </span>
               </div>
               <div className="register-dropdown-container">
                 <FlagDropdown />

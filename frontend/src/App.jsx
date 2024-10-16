@@ -7,6 +7,7 @@ import UpdateProfile from "./components/User/UpdateProfile";
 import { useAuthContext } from "./context/AuthContext";
 import ChangePassword from "./components/User/ChangePassword";
 import UserDetails from "./components/User/UserDetails";
+import TestPage from "./components/TestPage";
 
 function App() {
   const { authUser } = useAuthContext();
@@ -29,6 +30,7 @@ function App() {
         <Route path="/updateProfile" element={<UpdateProfile />} />
         <Route path="/changePassword" element={<ChangePassword />} />
         <Route path="/users/:email" element={<UserDetails />} />
+        <Route path="/test" element={<TestPage />} />
       </Routes>
     </>
   );
