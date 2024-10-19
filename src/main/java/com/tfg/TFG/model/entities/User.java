@@ -67,8 +67,7 @@ public class User {
 
     // Constructor sin ID
     public User(String email, String password, String username, String name, String lastname, String phone,
-            String birthdate, String country, String gender, String address, String passport, String avatar,
-            String status) {
+            String birthdate, String country, String gender, String address, String passport, String avatar) {
         this.email = email;
         this.password = password;
         this.username = username;
@@ -81,11 +80,7 @@ public class User {
         this.address = address;
         this.passport = passport;
         this.avatar = avatar;
-        if (status.equals("ACTIVE")) {
-            this.status = StatusType.ACTIVE;
-        } else {
-            this.status = StatusType.BANNED;
-        }
+
     }
 
     // Id

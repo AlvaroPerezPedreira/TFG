@@ -42,7 +42,7 @@ public class UserConversor {
 		return new User(userDto.getEmail(), userDto.getPassword(), userDto.getUsername(), userDto.getName(),
 				userDto.getLastname(), userDto.getPhone(), userDto.getBirthdate(),
 				userDto.getCountry(), userDto.getGender(), userDto.getAddress(), userDto.getPassport(),
-				userDto.getAvatar(), userDto.getStatus());
+				userDto.getAvatar());
 	}
 
 	/**
