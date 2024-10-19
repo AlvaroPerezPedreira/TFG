@@ -1,6 +1,5 @@
 package com.tfg.TFG.rest.dtos.userDtos;
 
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 

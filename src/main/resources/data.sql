@@ -41,3 +41,12 @@ VALUES
     ('Hair salon'),
     ('Valet parking')
 ;
+
+INSERT INTO Lodge (hotel_name, hotel_description, hotel_address, hotel_phone, city, country, available_rooms, price_per_night, check_in, check_out, is_closed, hotel_provider, user_id) 
+VALUES 
+    ("Hotel 1", "Hotel 1 description", "Hotel 1 address", "123456789", "Hotel 1 city", "Hotel 1 country", 5, 50.00, "14:00", "11:00", 0, 0, 1),
+    ("Hotel 2", "Hotel 2 description", "Hotel 2 address", "123456789", "Hotel 2 city", "Hotel 2 country", 10, 100.00, "14:00", "11:00", 0, 0, 1),
+    ("Hotel 3", "Hotel 3 description", "Hotel 3 address", "123456789", "Hotel 3 city", "Hotel 3 country", 12, 150.00, "14:00", "11:00", 0, 0, 1),
+    ("Hotel 4", "Hotel 4 description", "Hotel 4 address", "123456789", "Hotel 4 city", "Hotel 4 country", 15, 200.00, "14:00", "11:00", 0, 0, 1),
+    ("Hotel 5", "Hotel 5 description", "Hotel 5 address", "123456789", "Hotel 5 city", "Hotel 5 country", 20, 250.00, "14:00", "11:00", 0, 0, 1)
+;
