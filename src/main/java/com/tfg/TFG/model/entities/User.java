@@ -1,8 +1,8 @@
 package com.tfg.TFG.model.entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -22,19 +22,35 @@ public class User {
     @GeneratedValue
     private Long id;
 
+    @Column(nullable = false)
     private String email;
+
+    @Column(nullable = false)
     private String password;
+
+    @Column(nullable = false)
     private RoleType role;
+
+    @Column(nullable = false)
     private String username;
+
     private String name;
     private String lastname;
     private String phone;
+
+    @Column(nullable = false)
     private String birthdate;
+
     private String country;
+
+    @Column(nullable = false)
     private String gender;
+
     private String address;
     private String passport;
     private String avatar;
+
+    @Column(nullable = false)
     public StatusType status;
 
     // Constructores
@@ -84,8 +100,6 @@ public class User {
     }
 
     // Id
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }

@@ -1,4 +1,9 @@
+DROP TABLE IF EXISTS Lodge_Feature;
+DROP TABLE IF EXISTS Feature;
+DROP TABLE IF EXISTS Lodge_Image;
+DROP TABLE IF EXISTS Lodge;
 DROP TABLE IF EXISTS User;
+
 
 CREATE TABLE User (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
@@ -16,4 +21,42 @@ CREATE TABLE User (
     passport VARCHAR(255),
     avatar VARCHAR(350),
     status TINYINT NOT NULL
+);
+
+CREATE TABLE Lodge (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    hotel_name VARCHAR(255) NOT NULL,
+    hotel_description VARCHAR(255) NOT NULL,
+    hotel_address VARCHAR(255) NOT NULL,
+    hotel_phone VARCHAR(255) NOT NULL,
+    city VARCHAR(255) NOT NULL,
+    country VARCHAR(255) NOT NULL,
+    available_rooms INT NOT NULL,
+    price_per_night DECIMAL(10,2) NOT NULL,
+    check_in VARCHAR(255) NOT NULL,
+    check_out VARCHAR(255) NOT NULL,
+    is_closed TINYINT NOT NULL,
+    hotel_provider TINYINT NOT NULL,
+    user_id BIGINT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES User(id)
+);
+
+CREATE TABLE Feature (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    feature_name VARCHAR(255) NOT NULL UNIQUE
+);
+
+CREATE TABLE Lodge_Feature (
+    lodge_id BIGINT NOT NULL,
+    feature_id BIGINT NOT NULL,
+    PRIMARY KEY (lodge_id, feature_id),
+    FOREIGN KEY (lodge_id) REFERENCES Lodge(id) ON DELETE CASCADE,
+    FOREIGN KEY (feature_id) REFERENCES Feature(id) ON DELETE CASCADE
+);
+
+CREATE TABLE Lodge_Image (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    image_url VARCHAR(255) NOT NULL,
+    lodge_id BIGINT NOT NULL,
+    FOREIGN KEY (lodge_id) REFERENCES Lodge(id) ON DELETE CASCADE
 );
