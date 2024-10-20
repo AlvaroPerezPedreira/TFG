@@ -1,17 +1,17 @@
 package com.tfg.TFG.rest.dtos.lodgeDtos;
 
 import com.tfg.TFG.model.entities.Lodge;
-import com.tfg.TFG.model.entities.Lodge.HotelProvider;
+import com.tfg.TFG.model.entities.Lodge.LodgeProvider;
 import com.tfg.TFG.rest.dtos.userDtos.UserConversor;
 
 public class LodgeConversor {
     public static LodgeDto toDto(Lodge lodge) {
         LodgeDto lodgeDto = new LodgeDto();
         lodgeDto.setId(lodge.getId());
-        lodgeDto.setHotel_name(lodge.getHotel_name());
-        lodgeDto.setHotel_description(lodge.getHotel_description());
-        lodgeDto.setHotel_address(lodge.getHotel_address());
-        lodgeDto.setHotel_phone(lodge.getHotel_phone());
+        lodgeDto.setLodge_name(lodge.getLodge_name());
+        lodgeDto.setLodge_description(lodge.getLodge_description());
+        lodgeDto.setLodge_address(lodge.getLodge_address());
+        lodgeDto.setLodge_phone(lodge.getLodge_phone());
         lodgeDto.setCity(lodge.getCity());
         lodgeDto.setCountry(lodge.getCountry());
         lodgeDto.setAvailable_rooms(lodge.getAvailable_rooms());
@@ -20,10 +20,10 @@ public class LodgeConversor {
         lodgeDto.setCheck_out(lodge.getCheck_out());
         lodgeDto.setIs_closed(lodge.getIs_closed());
 
-        if (lodge.getHotel_provider() == HotelProvider.DeepDive) {
-            lodgeDto.setHotel_provider("DeepDive");
+        if (lodge.getLodge_provider() == LodgeProvider.DeepDive) {
+            lodgeDto.setLodge_provider("DeepDive");
         } else {
-            lodgeDto.setHotel_provider("Others");
+            lodgeDto.setLodge_provider("Others");
         }
 
         lodgeDto.setUser(UserConversor.toUserDto(lodge.getUser()));
@@ -36,10 +36,10 @@ public class LodgeConversor {
     public static Lodge toEntity(LodgeDto lodgeDto) {
         Lodge lodge = new Lodge();
         lodge.setId(lodgeDto.getId());
-        lodge.setHotel_name(lodgeDto.getHotel_name());
-        lodge.setHotel_description(lodgeDto.getHotel_description());
-        lodge.setHotel_address(lodgeDto.getHotel_address());
-        lodge.setHotel_phone(lodgeDto.getHotel_phone());
+        lodge.setLodge_name(lodgeDto.getLodge_name());
+        lodge.setLodge_description(lodgeDto.getLodge_description());
+        lodge.setLodge_address(lodgeDto.getLodge_address());
+        lodge.setLodge_phone(lodgeDto.getLodge_phone());
         lodge.setCity(lodgeDto.getCity());
         lodge.setCountry(lodgeDto.getCountry());
         lodge.setAvailable_rooms(lodgeDto.getAvailable_rooms());
@@ -48,10 +48,10 @@ public class LodgeConversor {
         lodge.setCheck_out(lodgeDto.getCheck_out());
         lodge.setIs_closed(lodgeDto.getIs_closed());
 
-        if (lodgeDto.getHotel_provider().equals("DeepDive")) {
-            lodge.setHotel_provider(HotelProvider.DeepDive);
+        if (lodgeDto.getLodge_provider().equals("DeepDive")) {
+            lodge.setLodge_provider(LodgeProvider.DeepDive);
         } else {
-            lodge.setHotel_provider(HotelProvider.Others);
+            lodge.setLodge_provider(LodgeProvider.Others);
         }
 
         lodge.setUser(UserConversor.toUser(lodgeDto.getUser()));

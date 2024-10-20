@@ -3,14 +3,14 @@ package com.tfg.TFG.rest.dtos.lodgeDtos;
 public class Lodge_ImageDto {
     private Long id;
     private String image_url;
-    private LodgeDto lodge;
+    private Long lodge_id;
 
     public Lodge_ImageDto() {
     }
 
-    public Lodge_ImageDto(String image_url, LodgeDto lodge) {
+    public Lodge_ImageDto(String image_url, Long lodge_id) {
         this.image_url = image_url;
-        this.lodge = lodge;
+        this.lodge_id = lodge_id;
     }
 
     public Long getId() {
@@ -29,11 +29,11 @@ public class Lodge_ImageDto {
         this.image_url = image_url;
     }
 
-    public LodgeDto getLodge() {
-        return lodge;
+    public Long getLodgeId() {
+        return lodge_id;
     }
 
-    public void setLodge(LodgeDto lodge) {
-        this.lodge = lodge;
+    public void setLodgeId(Long lodge_id) {
+        this.lodge_id = lodge_id;
     }
 }

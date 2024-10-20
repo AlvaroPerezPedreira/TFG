@@ -25,10 +25,10 @@ CREATE TABLE User (
 
 CREATE TABLE Lodge (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    hotel_name VARCHAR(255) NOT NULL,
-    hotel_description VARCHAR(255) NOT NULL,
-    hotel_address VARCHAR(255) NOT NULL,
-    hotel_phone VARCHAR(255) NOT NULL,
+    lodge_name VARCHAR(255) NOT NULL,
+    lodge_description VARCHAR(255) NOT NULL,
+    lodge_address VARCHAR(255) NOT NULL,
+    lodge_phone VARCHAR(255) NOT NULL,
     city VARCHAR(255) NOT NULL,
     country VARCHAR(255) NOT NULL,
     available_rooms INT NOT NULL,
@@ -36,7 +36,7 @@ CREATE TABLE Lodge (
     check_in VARCHAR(255) NOT NULL,
     check_out VARCHAR(255) NOT NULL,
     is_closed TINYINT NOT NULL,
-    hotel_provider TINYINT NOT NULL,
+    lodge_provider TINYINT NOT NULL,
     user_id BIGINT NOT NULL,
     FOREIGN KEY (user_id) REFERENCES User(id)
 );

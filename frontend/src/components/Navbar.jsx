@@ -48,6 +48,14 @@ const Navbar = () => {
           <Link className="navbar-link" underline="hover" href="/" size="md">
             {t("about")}
           </Link>
+          <Link
+            className="navbar-link"
+            underline="hover"
+            href="/users/a@udc.es"
+            size="md"
+          >
+            GetUserTest
+          </Link>
         </div>
         <div className="navbar-dropdown">
           <FlagDropdown />

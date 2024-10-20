@@ -1,6 +1,5 @@
 package com.tfg.TFG.model.entities;
 
-import java.math.BigDecimal;
 import java.util.List;
 import jakarta.persistence.*;
 
@@ -8,7 +7,7 @@ import jakarta.persistence.*;
 @Table(name = "Lodge")
 public class Lodge {
 
-    public enum HotelProvider {
+    public enum LodgeProvider {
         DeepDive, Others;
     }
 
@@ -17,16 +16,16 @@ public class Lodge {
     private Long id;
 
     @Column(nullable = false)
-    private String hotel_name;
+    private String lodge_name;
 
     @Column(nullable = false)
-    private String hotel_description;
+    private String lodge_description;
 
     @Column(nullable = false)
-    private String hotel_address;
+    private String lodge_address;
 
     @Column(nullable = false)
-    private String hotel_phone;
+    private String lodge_phone;
 
     @Column(nullable = false)
     private String city;
@@ -50,7 +49,7 @@ public class Lodge {
     private Boolean is_closed;
 
     @Column(nullable = false)
-    private HotelProvider hotel_provider;
+    private LodgeProvider lodge_provider;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
@@ -67,13 +66,13 @@ public class Lodge {
     public Lodge() {
     }
 
-    public Lodge(String hotel_name, String hotel_description, String hotel_address, String hotel_phone, String city,
+    public Lodge(String lodge_name, String lodge_description, String lodge_address, String lodge_phone, String city,
             String country, int available_rooms, double price_per_night, String check_in, String check_out,
             Boolean is_closed, /* List<Lodge_Image> images, */ User user) {
-        this.hotel_name = hotel_name;
-        this.hotel_description = hotel_description;
-        this.hotel_address = hotel_address;
-        this.hotel_phone = hotel_phone;
+        this.lodge_name = lodge_name;
+        this.lodge_description = lodge_description;
+        this.lodge_address = lodge_address;
+        this.lodge_phone = lodge_phone;
         this.city = city;
         this.country = country;
         this.available_rooms = available_rooms;
@@ -95,39 +94,39 @@ public class Lodge {
     }
 
     // Name
-    public String getHotel_name() {
-        return hotel_name;
+    public String getLodge_name() {
+        return lodge_name;
     }
 
-    public void setHotel_name(String hotel_name) {
-        this.hotel_name = hotel_name;
+    public void setLodge_name(String lodge_name) {
+        this.lodge_name = lodge_name;
     }
 
     // Description
-    public String getHotel_description() {
-        return hotel_description;
+    public String getLodge_description() {
+        return lodge_description;
     }
 
-    public void setHotel_description(String hotel_description) {
-        this.hotel_description = hotel_description;
+    public void setLodge_description(String lodge_description) {
+        this.lodge_description = lodge_description;
     }
 
     // Address
-    public String getHotel_address() {
-        return hotel_address;
+    public String getLodge_address() {
+        return lodge_address;
     }
 
-    public void setHotel_address(String hotel_address) {
-        this.hotel_address = hotel_address;
+    public void setLodge_address(String lodge_address) {
+        this.lodge_address = lodge_address;
     }
 
     // Phone
-    public String getHotel_phone() {
-        return hotel_phone;
+    public String getLodge_phone() {
+        return lodge_phone;
     }
 
-    public void setHotel_phone(String hotel_phone) {
-        this.hotel_phone = hotel_phone;
+    public void setLodge_phone(String lodge_phone) {
+        this.lodge_phone = lodge_phone;
     }
 
     // City
@@ -193,13 +192,13 @@ public class Lodge {
         this.is_closed = is_closed;
     }
 
-    // Hotel provider
-    public HotelProvider getHotel_provider() {
-        return hotel_provider;
+    // Lodge provider
+    public LodgeProvider getLodge_provider() {
+        return lodge_provider;
     }
 
-    public void setHotel_provider(HotelProvider hotel_provider) {
-        this.hotel_provider = hotel_provider;
+    public void setLodge_provider(LodgeProvider lodge_provider) {
+        this.lodge_provider = lodge_provider;
     }
 
     // User
