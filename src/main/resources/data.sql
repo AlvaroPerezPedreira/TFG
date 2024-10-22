@@ -44,11 +44,11 @@ VALUES
 
 INSERT INTO Lodge (lodge_name, lodge_description, lodge_address, lodge_phone, city, country, available_rooms, price_per_night, check_in, check_out, is_closed, lodge_provider, user_id) 
 VALUES 
-    ('Lodge 1', 'Lodge 1 description', 'Lodge 1 address', '123456789', 'Lodge 1 city', 'Lodge 1 country', 5, 50.00, '14:00', '11:00', 0, 0, 1),
-    ('Lodge 2', 'Lodge 2 description', 'Lodge 2 address', '123456789', 'Lodge 2 city', 'Lodge 2 country', 10, 100.00, '14:00', '11:00', 0, 0, 1),
-    ('Lodge 3', 'Lodge 3 description', 'Lodge 3 address', '123456789', 'Lodge 3 city', 'Lodge 3 country', 12, 150.00, '14:00', '11:00', 0, 0, 1),
-    ('Lodge 4', 'Lodge 4 description', 'Lodge 4 address', '123456789', 'Lodge 4 city', 'Lodge 4 country', 15, 200.00, '14:00', '11:00', 0, 0, 1),
-    ('Lodge 5', 'Lodge 5 description', 'Lodge 5 address', '123456789', 'Lodge 5 city', 'Lodge 5 country', 20, 250.00, '14:00', '11:00', 0, 0, 1)
+    ('Paris Lodge', 'Paris Lodge description', 'ParisLodge@example.com', '123456789', 'Paris', 'France', 5, 50.00, '14:00', '11:00', 0, 0, 1),
+    ('New York Lodge', 'New York Lodge description', 'NYLodge@example.com', '123456789', 'New York', 'United States of America', 10, 100.00, '14:00', '11:00', 0, 0, 1),
+    ('London Lodge', 'London Lodge description', 'LondonLodge@example.com', '123456789', 'London', 'United kingdom', 12, 150.00, '14:00', '11:00', 0, 0, 1),
+    ('Madrid Lodge', 'Madrid Lodge description', 'MadridLodge@example.com', '123456789', 'Madrid', 'Spain', 15, 200.00, '14:00', '11:00', 0, 0, 1),
+    ('Rome Lodge', 'Rome Lodge description', 'RomeLodge@example.com', '123456789', 'Rome', 'Italy', 20, 250.00, '14:00', '11:00', 0, 0, 1)
 ;
 
 
@@ -85,6 +85,11 @@ VALUES
 
 INSERT INTO Lodge_Image (image_url, lodge_id)
 VALUES
+    ('ParisLodge@example.com_ParisLodge.jpg', 1),
+    ('NYLodge@example.com_NYLodge.jpg', 2),
+    ('LondonLodge@example.com_LondonLodge.jpg', 3),
+    ('MadridLodge@example.com_MadridLodge.jpg', 4),
+    ('RomeLodge@example.com_RomeLodge.jpg', 5),
     ('Hab1.jpg', 1),
     ('Hab2.jpg', 1),
     ('Hab3.jpg', 1),

@@ -37,7 +37,11 @@ const Navbar = () => {
           <Link
             className="navbar-link"
             underline="hover"
-            href="/test"
+            onClick={() => {
+              startTransition(() => {
+                navigate("/test");
+              });
+            }}
             size="md"
           >
             Test
@@ -51,7 +55,11 @@ const Navbar = () => {
           <Link
             className="navbar-link"
             underline="hover"
-            href="/users/a@udc.es"
+            onClick={() => {
+              startTransition(() => {
+                navigate("/users/a@udc.es");
+              });
+            }}
             size="md"
           >
             GetUserTest
