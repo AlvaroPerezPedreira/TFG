@@ -25,6 +25,7 @@ CREATE TABLE User (
 
 CREATE TABLE Lodge (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    lodge_email VARCHAR(255) UNIQUE NOT NULL,
     lodge_name VARCHAR(255) NOT NULL,
     lodge_description VARCHAR(255) NOT NULL,
     lodge_address VARCHAR(255) NOT NULL,

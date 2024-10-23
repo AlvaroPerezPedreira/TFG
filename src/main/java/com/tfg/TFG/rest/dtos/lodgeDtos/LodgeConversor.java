@@ -8,6 +8,7 @@ public class LodgeConversor {
     public static LodgeDto toDto(Lodge lodge) {
         LodgeDto lodgeDto = new LodgeDto();
         lodgeDto.setId(lodge.getId());
+        lodgeDto.setLodge_email(lodge.getLodge_email());
         lodgeDto.setLodge_name(lodge.getLodge_name());
         lodgeDto.setLodge_description(lodge.getLodge_description());
         lodgeDto.setLodge_address(lodge.getLodge_address());
@@ -36,6 +37,7 @@ public class LodgeConversor {
     public static Lodge toEntity(LodgeDto lodgeDto) {
         Lodge lodge = new Lodge();
         lodge.setId(lodgeDto.getId());
+        lodge.setLodge_email(lodgeDto.getLodge_email());
         lodge.setLodge_name(lodgeDto.getLodge_name());
         lodge.setLodge_description(lodgeDto.getLodge_description());
         lodge.setLodge_address(lodgeDto.getLodge_address());

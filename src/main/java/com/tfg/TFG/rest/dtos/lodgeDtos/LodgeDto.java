@@ -6,6 +6,7 @@ import com.tfg.TFG.rest.dtos.userDtos.UserDto;
 
 public class LodgeDto {
     private Long id;
+    private String lodge_email;
     private String lodge_name;
     private String lodge_description;
     private String lodge_address;
@@ -25,10 +26,12 @@ public class LodgeDto {
     public LodgeDto() {
     }
 
-    public LodgeDto(String lodge_name, String lodge_description, String lodge_address, String lodge_phone, String city,
+    public LodgeDto(String lodge_email, String lodge_name, String lodge_description, String lodge_address,
+            String lodge_phone, String city,
             String country, int available_rooms, double price_per_night, String check_in, String check_out,
             Boolean is_closed, String lodge_provider, UserDto user, List<Lodge_ImageDto> images,
             List<FeatureDto> features) {
+        this.lodge_email = lodge_email;
         this.lodge_name = lodge_name;
         this.lodge_description = lodge_description;
         this.lodge_address = lodge_address;
@@ -52,6 +55,14 @@ public class LodgeDto {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getLodge_email() {
+        return lodge_email;
+    }
+
+    public void setLodge_email(String lodge_email) {
+        this.lodge_email = lodge_email;
     }
 
     public String getLodge_name() {

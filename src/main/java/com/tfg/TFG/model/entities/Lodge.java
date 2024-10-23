@@ -16,6 +16,9 @@ public class Lodge {
     private Long id;
 
     @Column(nullable = false)
+    private String lodge_email;
+
+    @Column(nullable = false)
     private String lodge_name;
 
     @Column(nullable = false)
@@ -66,9 +69,11 @@ public class Lodge {
     public Lodge() {
     }
 
-    public Lodge(String lodge_name, String lodge_description, String lodge_address, String lodge_phone, String city,
+    public Lodge(String lodge_email, String lodge_name, String lodge_description, String lodge_address,
+            String lodge_phone, String city,
             String country, int available_rooms, double price_per_night, String check_in, String check_out,
-            Boolean is_closed, /* List<Lodge_Image> images, */ User user) {
+            Boolean is_closed, User user) {
+        this.lodge_email = lodge_email;
         this.lodge_name = lodge_name;
         this.lodge_description = lodge_description;
         this.lodge_address = lodge_address;
@@ -80,7 +85,6 @@ public class Lodge {
         this.check_in = check_in;
         this.check_out = check_out;
         this.is_closed = is_closed;
-        // this.images = images;
         this.user = user;
     }
 
@@ -91,6 +95,15 @@ public class Lodge {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    // Email
+    public String getLodge_email() {
+        return lodge_email;
+    }
+
+    public void setLodge_email(String lodge_email) {
+        this.lodge_email = lodge_email;
     }
 
     // Name
