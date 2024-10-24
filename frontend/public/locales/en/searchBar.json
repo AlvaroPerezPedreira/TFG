@@ -1,0 +1,14 @@
+{
+    "searchbarError": "Please fill in all fields",
+    "searchbarErrorAdults": "Adults must be a positive integer",
+    "searchbarErrorRooms": "Rooms must be a positive integer",
+    "searchbarErrorDates": "Check-in date must be before the check-out date",
+    "where": "Where",
+    "where_ph": "Search destinations",
+    "adults": "Adults",
+    "adults_ph": "Number of adults",
+    "rooms": "Rooms",
+    "rooms_ph": "Number of rooms",
+    "check-in": "Check-in date",
+    "check-out": "Check-out date"
+}

@@ -9,6 +9,7 @@ import ChangePassword from "./components/User/ChangePassword";
 import UserDetails from "./components/User/UserDetails";
 import TestPage from "./components/TestPage";
 import LodgeDetails from "./components/Lodge/LodgeDetails";
+import LodgeSearch from "./components/Lodge/LodgeSearch";
 
 function App() {
   const { authUser } = useAuthContext();
@@ -31,7 +32,8 @@ function App() {
         <Route path="/updateProfile" element={<UpdateProfile />} />
         <Route path="/changePassword" element={<ChangePassword />} />
         <Route path="/users/:email" element={<UserDetails />} />
-        <Route path="/lodges/:id" element={<LodgeDetails />} />
+        <Route path="/lodge/:id" element={<LodgeDetails />} />
+        <Route path="/lodges/:destination" element={<LodgeSearch />} />
         <Route path="/test" element={<TestPage />} />
       </Routes>
     </>

@@ -25,7 +25,7 @@ const Home = () => {
     <>
       <Suspense fallback="loading">
         <Navbar />
-        <div className="home-container">
+        <div className="home-container-example">
           <h1>{t("title")}</h1>
           <h2>{t("description")}</h2>
         </div>

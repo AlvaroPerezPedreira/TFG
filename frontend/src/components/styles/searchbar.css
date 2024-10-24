@@ -1,0 +1,36 @@
+.searchbar-container {
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Alinea verticalmente al centro */
+    padding: 0 20px; /* Espacio a los lados */
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.searchbar-inputs {
+    display: flex;
+    gap: 20px; /* Espacio de 20px entre inputs */
+    flex: 1; /* Permite que ocupe el espacio disponible */
+}
+
+.searchbar-button-container {
+    margin-left: 20px; /* Espacio entre inputs y el botón */
+}
+
+.searchbar-button {
+    background-color: transparent; /* Sin fondo */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Radio de borde opcional */
+    padding: 10px;
+    cursor: pointer;
+    display: block;
+    /* Se asegura de que el botón no se adhiera al borde derecho */
+}
+
+.error-messages {
+    color: red;
+    font-size: 0.8rem;
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+}

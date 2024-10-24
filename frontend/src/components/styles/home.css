@@ -1,5 +1,19 @@
-.home-container {
+.home-container-example {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-style: normal;
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra los elementos horizontalmente */
+  padding: 0 20px; /* Reduce el padding a la mitad */
+  margin: 0 auto; /* Asegura que el contenedor esté centrado */
+  max-width: 1200px; /* Establece un ancho máximo */
+}
+
+.home-container > * {
+  width: 100%;
+  max-width: 100%; /* Asegura que los hijos no se desborden */
 }
