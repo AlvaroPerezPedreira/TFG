@@ -5,10 +5,8 @@ import {
   Dropdown,
   DropdownTrigger,
   DropdownMenu,
-  DropdownSection,
   DropdownItem,
 } from "@nextui-org/dropdown";
-import { Button } from "@nextui-org/button";
 import { useAuthContext } from "../context/AuthContext";
 import { startTransition, Suspense } from "react";
 import { useNavigate } from "react-router-dom";
@@ -18,13 +16,16 @@ import { Avatar } from "@nextui-org/avatar";
 import { Link } from "@nextui-org/link";
 
 const Navbar = () => {
-  const [t, i18n] = useTranslation(["navbar"]);
+  const [t] = useTranslation(["navbar"]);
   const { authUser, setAuthUser } = useAuthContext();
   let navigate = useNavigate();
 
   const logOut = () => {
-    localStorage.removeItem("authUser");
-    setAuthUser(null);
+    startTransition(() => {
+      localStorage.removeItem("authUser");
+      setAuthUser(null);
+      navigate("/login"); // Mover la navegación dentro de startTransition
+    });
   };
 
   return (
@@ -76,11 +77,20 @@ const Navbar = () => {
               />
             </DropdownTrigger>
             <DropdownMenu aria-label="Profile Actions" variant="flat">
-              <DropdownItem key="profile" className="h-14 gap-2">
+              <DropdownItem
+                key="profile"
+                className="h-14 gap-2"
+                textValue={t("profile")}
+              >
                 <p className="font-semibold">{t("signed")}</p>
                 <p className="font-semibold">{authUser.user.email}</p>
               </DropdownItem>
-              <DropdownItem key="settings">Test</DropdownItem>
+              <DropdownItem
+                key="settings"
+                onClick={() => console.log(authUser)}
+              >
+                AuthUser
+              </DropdownItem>
               <DropdownItem
                 className="text-[#FFDB58] w-full"
                 key="updateProfile"
@@ -93,7 +103,12 @@ const Navbar = () => {
               >
                 {t("updProfile")}
               </DropdownItem>
-              <DropdownItem key="logout" variant="solid" onClick={logOut}>
+              <DropdownItem
+                key="logout"
+                variant="solid"
+                onClick={logOut}
+                textValue={t("logOut")}
+              >
                 {t("logOut")}
               </DropdownItem>
             </DropdownMenu>

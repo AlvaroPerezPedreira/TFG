@@ -40,6 +40,7 @@ export default function FlagDropdown() {
             onClick={() => {
               i18n.changeLanguage("es");
             }}
+            textValue={t("es")}
           >
             <div className="login-flag-container">
               <SpainIcon />
@@ -51,6 +52,7 @@ export default function FlagDropdown() {
             onClick={() => {
               i18n.changeLanguage("en");
             }}
+            textValue={t("en")}
           >
             <div className="login-flag-container">
               <UKIcon />
@@ -62,6 +64,7 @@ export default function FlagDropdown() {
             onClick={() => {
               i18n.changeLanguage("fr");
             }}
+            textValue={t("fr")}
           >
             <div className="login-flag-container">
               <FranceIcon />

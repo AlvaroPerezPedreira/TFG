@@ -10,5 +10,6 @@
     "rooms": "Habitaciones",
     "rooms_ph": "Número de habitaciones",
     "check-in": "Fecha de check-in",
-    "check-out": "Fecha de check-out"
+    "check-out": "Fecha de check-out",
+    "stay_duration": "Fechas de Check-in y Check-out"
 }

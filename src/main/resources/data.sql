@@ -177,4 +177,3 @@ VALUES
     ('Hab4.jpg', 23),
     ('Hab3.jpg', 23)
 ;
-

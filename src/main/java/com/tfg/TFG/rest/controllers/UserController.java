@@ -199,6 +199,8 @@ public class UserController {
 	public AuthenticatedUserDto login(@Validated @RequestBody LoginParamsDto params)
 			throws IncorrectLoginException, BannedUserException {
 
+		System.out.println("login");
+
 		User user = userService.login(params.getEmail(), params.getPassword());
 
 		return toAuthenticatedUserDto(generateServiceToken(user), user);

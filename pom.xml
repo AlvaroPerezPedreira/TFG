@@ -107,6 +107,7 @@
  		   <scope>test</scope>
 		</dependency>	
 
+		<!-- Para evitar hacer mvn clean install -->
 		<dependency>
             <groupId>
                 org.springframework.boot

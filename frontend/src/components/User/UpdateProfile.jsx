@@ -71,6 +71,7 @@ const Auth = () => {
                     className="max-w"
                     defaultInputValue={country || ""}
                     onInputChange={setCountry}
+                    aria-label="country"
                   >
                     {(country) => (
                       <AutocompleteItem key={country.value}>

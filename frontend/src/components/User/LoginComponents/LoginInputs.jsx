@@ -7,10 +7,10 @@ export default function LoginInputs() {
 
   return (
     <>
-      <Input name="email" placeholder={t("email")} variant="underlined" />
+      <Input name="email" label={t("email")} variant="underlined" />
       <Input
         name="password"
-        placeholder={t("passwd")}
+        label={t("passwd")}
         variant="underlined"
         type="password"
       />
