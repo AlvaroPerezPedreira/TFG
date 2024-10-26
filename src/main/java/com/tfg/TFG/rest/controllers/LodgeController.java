@@ -30,4 +30,28 @@ public class LodgeController {
 
         return ResponseEntity.ok(lodges);
     }
+
+    @GetMapping("/by-country")
+    public ResponseEntity<Page<LodgeDto>> getLodgesByCountry(@RequestParam(name = "country") String country,
+            @RequestParam(name = "page", defaultValue = "0") int page,
+            @RequestParam(name = "size", defaultValue = "9") int size) {
+
+        System.out.println("getLodgesByCountry");
+
+        Page<LodgeDto> lodges = lodgeService.getLodgesByCountry(country, page, size).map(LodgeConversor::toDto);
+
+        return ResponseEntity.ok(lodges);
+    }
+
+    @GetMapping("/by-city")
+    public ResponseEntity<Page<LodgeDto>> getLodgesByCity(@RequestParam(name = "city") String city,
+            @RequestParam(name = "page", defaultValue = "0") int page,
+            @RequestParam(name = "size", defaultValue = "9") int size) {
+
+        System.out.println("getLodgesByCity");
+
+        Page<LodgeDto> lodges = lodgeService.getLodgesByCity(city, page, size).map(LodgeConversor::toDto);
+
+        return ResponseEntity.ok(lodges);
+    }
 }

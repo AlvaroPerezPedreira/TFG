@@ -1,11 +1,11 @@
 import { useLodgeStore } from "../store/useLodgeStore";
 
-const useGetLodges = () => {
+const useGetLodgesByCountry = () => {
   const { addLodges } = useLodgeStore();
 
-  const getLodges = async (page, size) => {
+  const getLodgesByCountry = async (country, page, size) => {
     const response = await fetch(
-      `http://localhost:8080/api/lodges/?page=${page}&size=${size}`,
+      `http://localhost:8080/api/lodges/by-country?country=${country}&page=${page}&size=${size}`,
       {
         method: "GET",
         headers: {
@@ -25,7 +25,7 @@ const useGetLodges = () => {
     return finalData;
   };
 
-  return { getLodges };
+  return { getLodgesByCountry };
 };
 
-export default useGetLodges;
+export default useGetLodgesByCountry;

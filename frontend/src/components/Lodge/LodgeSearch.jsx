@@ -3,7 +3,7 @@ import Navbar from "../Navbar";
 import SearchBar from "../GlobalComponents/SearchBar";
 import { useParams, useLocation } from "react-router-dom";
 import { Button } from "@nextui-org/button";
-import { Card, CardBody, CardFooter } from "@nextui-org/card";
+import LodgeCard from "./LodgeComponents/LodgeCard";
 
 export default function LodgeSearch() {
   const { destination } = useParams();
@@ -104,26 +104,17 @@ export default function LodgeSearch() {
           }}
         >
           {apiLodges.map((lodge, index) => (
-            <Card key={index}>
-              <CardBody>
-                <h3>{lodge.hotel_name}</h3>
-                <p>City: {lodge.city}</p>
-                <p>Address: {lodge.address}</p>
-                <small className="text-default-500">
-                  Precio:
-                  {
-                    lodge.composite_price_breakdown.gross_amount_per_night
-                      .amount_rounded
-                  }
-                </small>
-                <img alt="" src={lodge.max_photo_url} />
-              </CardBody>
-              <CardFooter>
-                <Button auto flat href={lodge.url}>
-                  Ver más
-                </Button>
-              </CardFooter>
-            </Card>
+            <LodgeCard
+              key={index}
+              id={lodge.hotel_id}
+              lodge_name={lodge.hotel_name}
+              price_per_night={
+                lodge.composite_price_breakdown.gross_amount_per_night
+                  .amount_rounded
+              }
+              lodge_provider="Booking.com"
+              image_url={lodge.max_photo_url}
+            />
           ))}
         </div>
       </div>

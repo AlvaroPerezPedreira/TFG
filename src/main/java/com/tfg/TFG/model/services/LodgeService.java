@@ -6,4 +6,8 @@ import com.tfg.TFG.model.entities.Lodge;
 
 public interface LodgeService {
     Page<Lodge> getLodges(int page, int size);
+
+    Page<Lodge> getLodgesByCountry(String country, int page, int size);
+
+    Page<Lodge> getLodgesByCity(String city, int page, int size);
 }

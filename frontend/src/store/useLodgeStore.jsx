@@ -4,4 +4,6 @@ export const useLodgeStore = create((set) => ({
   lodges: [],
   setLodges: (lodges) => set({ lodges }),
   addLodge: (lodge) => set((state) => ({ lodges: [...state.lodges, lodge] })),
+  addLodges: (lodges) =>
+    set((state) => ({ lodges: [...state.lodges, ...lodges] })),
 }));
