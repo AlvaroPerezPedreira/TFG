@@ -2,7 +2,6 @@
     display: flex;
     justify-content: center; /* Centra el contenido horizontalmente */
     align-items: center; /* Alinea verticalmente al centro */
-    padding: 0 20px; /* Espacio a los lados */
     margin-top: 20px;
     margin-bottom: 20px;
 }

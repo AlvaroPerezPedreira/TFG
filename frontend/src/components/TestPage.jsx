@@ -9,6 +9,7 @@ import { useLodgeStore } from "../store/useLodgeStore";
 import HotelsList from "./HotelsList";
 import SearchBar from "./GlobalComponents/SearchBar";
 import LodgeCard from "./Lodge/LodgeComponents/LodgeCard";
+import LodgeBento from "./Lodge/LodgeComponents/LodgeBento";
 
 const TestPage = () => {
   const [t] = useTranslation(["welcome"]);
@@ -27,6 +28,11 @@ const TestPage = () => {
         <div className="home-container">
           <SearchBar />
           <br />
+
+          <LodgeBento />
+
+          <br />
+
           <div className="flex flex-wrap justify-center">
             {lodges.map((lodge, index) => (
               <LodgeCard

@@ -66,7 +66,8 @@ VALUES
     ('BostonLodge@example.com', 'Boston Lodge', 'Boston Lodge description', 'Boston Lodge Address', '123456789', 'Boston', 'United States of America', 10, 125.00, '14:00', '11:00', 0, 0, 1),
     ('RomeLodge@example.com', 'Rome Lodge', 'Rome Lodge description', 'Rome Lodge Address', '123456789', 'Rome', 'Italy', 20, 250.00, '14:00', '11:00', 0, 0, 1),
     ('SeattleLodge@example.com', 'Seattle Lodge', 'Seattle Lodge description', 'Seattle Lodge Address', '123456789', 'Seattle', 'United States of America', 10, 145.00, '14:00', '11:00', 0, 0, 1),
-    ('FlorenceLodge@example.com', 'Florence Lodge', 'Florence Lodge description', 'Florence Lodge Address', '123456789', 'Florence', 'Italy', 20, 210.00, '14:00', '11:00', 0, 0, 1)
+    ('FlorenceLodge@example.com', 'Florence Lodge', 'Florence Lodge description', 'Florence Lodge Address', '123456789', 'Florence', 'Italy', 20, 210.00, '14:00', '11:00', 0, 0, 1),
+    ('ValenciaLodge@example.com', 'Valencia Lodge', 'Valencia Lodge description', 'Valencia Lodge Address', '123456789', 'Valencia', 'Spain', 15, 215.00, '14:00', '11:00', 0, 0, 1)
 ;
 
 
@@ -126,6 +127,7 @@ VALUES
     ('RomeLodge@example.com_RomeLodge.jpg', 21),
     ('SeattleLodge@example.com_SeattleLodge.jpg', 22),
     ('FlorenceLodge@example.com_FlorenceLodge.jpg', 23),
+    ('ValenciaLodge@example.com_ValenciaLodge.jpg', 24),
 
     ('Hab6.jpg', 1),
     ('Hab1.jpg', 1),
@@ -175,5 +177,9 @@ VALUES
     ('Hab5.jpg', 22),
     ('Hab2.jpg', 22),
     ('Hab4.jpg', 23),
-    ('Hab3.jpg', 23)
+    ('Hab3.jpg', 23),
+    ('Hab5.jpg', 24),
+    ('Hab2.jpg', 24),
+    ('Hab4.jpg', 24),
+    ('Hab3.jpg', 24)
 ;

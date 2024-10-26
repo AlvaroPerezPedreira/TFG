@@ -6,6 +6,7 @@ import { Button } from "@nextui-org/button";
 import { Input } from "@nextui-org/input";
 import { useNavigate } from "react-router-dom";
 import { DateRangePicker } from "@nextui-org/date-picker";
+import { useFiltersStore } from "../../store/useFiltersStore";
 
 export default function SearchBar() {
   const [t] = useTranslation(["searchBar"]);
@@ -14,8 +15,9 @@ export default function SearchBar() {
   const roomsRef = useRef(null);
   const [checkIn, setCheckIn] = useState(null);
   const [checkOut, setCheckOut] = useState(null);
-  const [error, setError] = useState(""); // Solo un mensaje de error genérico
+  const [error, setError] = useState("");
   let navigate = useNavigate();
+  const { setFilters } = useFiltersStore();
 
   const handleDateChange = (dates) => {
     const { start, end } = dates;
@@ -65,10 +67,10 @@ export default function SearchBar() {
     setError("");
     console.log({ where, adults, rooms, checkIn, checkOut });
 
+    setFilters({ where, adults, rooms, checkIn, checkOut });
+
     startTransition(() => {
-      navigate(`/lodges/${encodeURIComponent(where)}`, {
-        state: { adults, rooms, checkIn, checkOut },
-      });
+      navigate(`/lodges/${encodeURIComponent(where)}`);
     });
   };
 
