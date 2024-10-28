@@ -14,5 +14,6 @@
     "update": "Update profile",
     "invalidCountry": "It seems the country entered is not recognized. Please select a valid country",
     "changePassword": "Change password",
-    "banUser": "Ban user"
+    "banUser": "Ban user",
+    "noUser": "No user found"
 }

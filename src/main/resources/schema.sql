@@ -45,7 +45,10 @@ CREATE TABLE Lodge (
 
 CREATE TABLE Feature (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    feature_name VARCHAR(255) NOT NULL UNIQUE
+    feature_nameEN VARCHAR(255) NOT NULL,
+    feature_nameES VARCHAR(255) NOT NULL,
+    feature_nameFR VARCHAR(255) NOT NULL,
+    category VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE Lodge_Feature (

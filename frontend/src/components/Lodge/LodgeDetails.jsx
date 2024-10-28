@@ -8,12 +8,16 @@ import { User } from "@nextui-org/user";
 import { useTranslation } from "react-i18next";
 import { Link } from "@nextui-org/link";
 import { useNavigate } from "react-router-dom";
+import LodgeFeatureList from "./LodgeComponents/LodgeFeatureList";
+import { Accordion, AccordionItem } from "@nextui-org/accordion";
+import IndicatorIcon from "../../icons/IndicatorIcon";
 
 export default function LodgeDetails() {
   const { email } = useParams();
   const getLodge = useLodgeStore((state) => state.getLodge);
   const lodge = getLodge(email);
-  const [t] = useTranslation(["lodgeDetails"]);
+  const [t, i18n] = useTranslation(["lodgeDetails"]);
+  const currentLanguage = i18n.language;
   let navigate = useNavigate();
 
   console.log(lodge);
@@ -59,7 +63,28 @@ export default function LodgeDetails() {
         </div>
 
         <div className="lodgeDetails-imageCarousel"></div>
-        <div className="lodgeDetails-featureList"></div>
+        <div className="lodgeDetails-featureList">
+          {lodge.features.map((feature, index) => (
+            <LodgeFeatureList
+              key={index}
+              feature={feature}
+              currentLanguage={currentLanguage}
+            />
+          ))}
+        </div>
+
+        <div className="lodgeDetails-description">
+          <Accordion>
+            <AccordionItem
+              key="anchor"
+              aria-label="Anchor"
+              indicator={<IndicatorIcon />}
+              title={t("provider")}
+            >
+              {lodge.lodge_description}
+            </AccordionItem>
+          </Accordion>
+        </div>
       </div>
     </Suspense>
   );

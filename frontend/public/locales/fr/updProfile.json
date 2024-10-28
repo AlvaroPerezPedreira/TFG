@@ -14,5 +14,6 @@
     "update": "Mise à jour du profile",
     "invalidCountry": "Il semble que le pays saisi n'est pas reconnu. Veuillez sélectionner un pays valide",
     "changePassword": "Changer le mot de passe",
-    "banUser": "Interdire l'utilisateur"
+    "banUser": "Interdire l'utilisateur",
+    "noUser": "Aucun utilisateur trouvé"
 }

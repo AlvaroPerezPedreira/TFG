@@ -9,7 +9,10 @@ public class FeatureConversor {
     public static FeatureDto toDto(Feature feature) {
         FeatureDto featureDto = new FeatureDto();
         featureDto.setId(feature.getId());
-        featureDto.setFeature_name(feature.getFeature_name());
+        featureDto.setFeature_nameEN(feature.getFeature_nameEN());
+        featureDto.setFeature_nameES(feature.getFeature_nameES());
+        featureDto.setFeature_nameFR(feature.getFeature_nameFR());
+        featureDto.setCategory(feature.getCategory());
 
         return featureDto;
     }
@@ -22,7 +25,10 @@ public class FeatureConversor {
     public static Feature toEntity(FeatureDto featureDto) {
         Feature feature = new Feature();
         feature.setId(featureDto.getId());
-        feature.setFeature_name(featureDto.getFeature_name());
+        feature.setFeature_nameEN(featureDto.getFeature_nameEN());
+        feature.setFeature_nameES(featureDto.getFeature_nameES());
+        feature.setFeature_nameFR(featureDto.getFeature_nameFR());
+        feature.setCategory(featureDto.getCategory());
 
         return feature;
     }

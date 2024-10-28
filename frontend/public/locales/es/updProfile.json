@@ -14,5 +14,6 @@
     "update": "Actualizar el perfil",
     "invalidCountry": "Parece que el país ingresado no es reconocido. Por favor, selecciona un país válido",
     "changePassword": "Cambiar contraseña",
-    "banUser": "Banear usuario"
+    "banUser": "Banear usuario",
+    "noUser": "No se encontró ningún usuario"
 }

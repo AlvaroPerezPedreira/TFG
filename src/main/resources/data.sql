@@ -8,39 +8,87 @@ VALUES
 ;
 
 
-INSERT INTO Feature (feature_name)
-VALUES 
-    ('Outdoor pool'),
-    ('Indoor pool'),
-    ('Heated pool'),
-    ('Spa'),
-    ('Free parking'),
-    ('Free Wi-Fi'),
-    ('Fitness center'),
-    ('Room service'),
-    ('Green areas'),
-    ('Complimentary breakfast'),
-    ('24-hour reception'),
-    ('On-site restaurant'),
-    ('Conference rooms'),
-    ('Pet-friendly'),
-    ('Laundry service'),
-    ('Kids plays area'),
-    ('Accessible rooms'),
-    ('Baggage storage'),
-    ('Private beach access'),
-    ('Electric vehicle charging stations'),
-    ('Multilingual staff'),
-    ('Bike rentals'),
-    ('Car rental service'),
-    ('Tour desk'),
-    ('Tennis court'),
-    ('Padel court'),
-    ('Golf course'),
-    ('Gift shop'),
-    ('Hair salon'),
-    ('Valet parking')
-;
+INSERT INTO Feature (feature_nameEN, feature_nameES, feature_nameFR, category) 
+VALUES
+    -- Vehicle
+    ('Free parking', 'Aparcamiento gratuito', 'Parking gratuit', 'Vehicle'),
+    ('Car hire', 'Alquiler de coches', 'Location de voiture', 'Vehicle'),
+    ('Electric vehicle charging station', 'Estación de carga para vehículos eléctricos', 'Station de charge pour véhicules électriques', 'Vehicle'),
+    ('Bicycle rental', 'Alquiler de bicicletas', 'Location de vélos', 'Vehicle'),
+
+    -- Food
+    ('Restaurant', 'Restaurante', 'Restaurant', 'Food'),
+    ('Bar', 'Bar', 'Bar', 'Food'),
+    ('Meeting/banquet facilities', 'Instalaciones para reuniones/banquetes', 'Installations pour réunions/banquets', 'Food'),
+    ('Continental breakfast', 'Desayuno continental', 'Petit-déjeuner continental', 'Food'),
+    ('Coffee house on site', 'Cafetería en el sitio', 'Café sur place', 'Food'),
+
+    -- Sports
+    ('Tennis court', 'Pista de tenis', 'Court de tennis', 'Sports'),
+    ('Fitness center', 'Gimnasio', 'Centre de fitness', 'Sports'),
+    ('Golf course', 'Campo de golf', 'Parcours de golf', 'Sports'),
+    ('Skiing', 'Esquí', 'Ski', 'Sports'),
+    ('Ski school', 'Escuela de esquí', 'École de ski', 'Sports'),
+    ('Games room', 'Sala de juegos', 'Salle de jeux', 'Sports'),
+    ('Windsurfing', 'Windsurf', 'Planche à voile', 'Sports'),
+    ('Hiking', 'Senderismo', 'Randonnée', 'Sports'),
+    ('Bowling', 'Bolos', 'Bowling', 'Sports'),
+    ('Diving', 'Buceo', 'Plongée', 'Sports'),
+    ('Horse riding', 'Equitación', 'Équitation', 'Sports'),
+    ('Mini golf', 'Mini golf', 'Mini-golf', 'Sports'),
+    ('Water sport facilities', 'Instalaciones para deportes acuáticos', 'Installations pour sports nautiques', 'Sports'),
+    ('Padel court', 'Pista de pádel', 'Terrain de padel', 'Sports'),
+
+    -- Zones
+    ('Chapel/shrine', 'Capilla/santuario', 'Chapelle/sanctuaire', 'Zones'),
+    ('Casino', 'Casino', 'Casino', 'Zones'),
+    ('Private beach area', 'Zona de playa privada', 'Zone de plage privée', 'Zones'),
+    ('Nightclub/DJ', 'Discoteca/DJ', 'Discothèque/DJ', 'Entertainment'),
+    ('Business center', 'Centro de negocios', "Centre d'affaires", 'Zones'),
+    ('Green areas', 'Zonas verdes', 'Espaces verts', 'Zones'),
+    ('Non-smoking rooms', 'Habitaciones para no fumadores', 'Chambres non-fumeurs', 'Zones'),
+    ('Laundry', 'Lavandería', 'Blanchisserie', 'Zones'),
+    ('Family rooms', 'Habitaciones familiares', 'Chambres familiales', 'Zones'),
+    ('Karaoke', 'Karaoke', 'Karaoké', 'Zones'),
+    ('Bingo', 'Bingo', 'Bingo', 'Zones'),
+    ('Conference room', 'Sala de conferencias', 'Salle de conférence', 'Zones'),
+    ('Kids play area', 'Área de juegos para niños', 'Aire de jeux pour enfants', 'Zones'),
+
+    -- Relax
+    ('Sauna', 'Sauna', 'Sauna', 'Relax'),
+    ('Spa and wellness center', 'Centro de spa y bienestar', 'Centre de spa et de bien-être', 'Relax'),
+    ('Jacuzzi', 'Jacuzzi', 'Jacuzzi', 'Relax'),
+    ('Indoor pool', 'Piscina cubierta', 'Piscine intérieure', 'Relax'),
+    ('Outdoor pool', 'Piscina al aire libre', 'Piscine extérieure', 'Relax'),
+    ('Heated pool', 'Piscina climatizada', 'Piscine chauffée', 'Relax'),
+    ('Kids pool', 'Piscina para niños', 'Piscine pour enfants', 'Relax'),
+    ('Hot spring bath', 'Baño de aguas termales', 'Bain de sources chaudes', 'Relax'),
+    ('Water park', 'Parque acuático', 'Parc aquatique', 'Relax'),
+    ('Steam room', 'Baño de vapor', 'Hammam', 'Relax'),
+
+    -- Accessibility
+    ('Facilities for disabled guests', 'Instalaciones para personas con discapacidad', 'Installations pour les personnes handicapées', 'Accessibility'),
+    ('Wheelchair accessible', 'Accesible para sillas de ruedas', 'Accessible aux fauteuils roulants', 'Accessibility'),
+    ('Visual aids: braille', 'Ayudas visuales: braille', 'Aides visuelles : braille', 'Accessibility'),
+    ('Visual aids: tactile signs', 'Ayudas visuales: señales táctiles', 'Aides visuelles : signes tactiles', 'Accessibility'),
+
+    -- Services    
+    ('Multilingual staff', 'Personal multilingüe', 'Personnel multilingue', 'Services'),
+    ('24-hour front desk', 'Recepción 24 horas', 'Réception 24h/24', 'Services'),
+    ('Airport shuttle', 'Traslado al aeropuerto', 'Navette aéroport', 'Services'),
+    ('Concierge service', 'Servicio de conserjería', 'Service de conciergerie', 'Services'),
+    ('Barber/beauty shop', 'Barbería/salón de belleza', 'Salon de coiffure/esthétique', 'Services'),
+    ('Tour desk', 'Mostrador de turismo', 'Bureau des excursions', 'Services'),
+    ('Luggage storage', 'Almacenamiento de equipaje', 'Consigne à bagages', 'Services'),
+    ('Pets allowed', 'Se admiten mascotas', 'Animaux acceptés', 'Services'),
+    ('Free Wi-Fi', 'Wi-Fi gratuito', 'Wi-Fi gratuit', 'Services'),
+    ('24-hour security', 'Seguridad las 24 horas', 'Sécurité 24 heures sur 24', 'Services'),
+
+    -- Room        
+    ('Room service', 'Servicio de habitaciones', 'Service de chambre', 'Room'),
+    ('Terrace', 'Terraza', 'Terrasse', 'Room'),
+    ('Soundproof rooms', 'Habitaciones insonorizadas', 'Chambres insonorisées', 'Room');
+
 
 INSERT INTO Lodge (lodge_email, lodge_name, lodge_description, lodge_address, lodge_phone, city, country, available_rooms, price_per_night, check_in, check_out, is_closed, lodge_provider, is_banned, user_id) 
 VALUES 
@@ -74,33 +122,65 @@ VALUES
 
 INSERT INTO Lodge_Feature (lodge_id, feature_id)
 VALUES
-    (1, 1),
-    (1, 2),
-    (1, 3),
-    (1, 4),
-    (2, 6),
-    (2, 7),
-    (2, 8),
-    (2, 9),
-    (3, 1),
-    (3, 2),
-    (3, 3),
-    (3, 4),
-    (3, 5),
-    (3, 6),
-    (3, 7),
-    (3, 8),
-    (3, 9),
-    (3, 10),
-    (3, 11),
-    (3, 12),
-    (3, 13),
-    (4, 1),
-    (4, 2),
-    (5, 15),
-    (5, 17),
-    (5, 18)
-;
+    -- Paris Lodge
+    (1, 1), (1, 5), (1, 10), (1, 15), (1, 20), (1, 25), (1, 30), (1, 35),
+    -- Los Angeles Lodge
+    (2, 2), (2, 6), (2, 11), (2, 16), (2, 21), (2, 26), (2, 31), (2, 36),
+    -- Las Vegas Lodge
+    (3, 3), (3, 7), (3, 12), (3, 17), (3, 22), (3, 27), (3, 32), (3, 37),
+    -- Manchester Lodge
+    (4, 4), (4, 8), (4, 13), (4, 18), (4, 23), (4, 28), (4, 33), (4, 38),
+    -- Naples Lodge
+    (5, 5), (5, 9), (5, 14), (5, 19), (5, 24), (5, 29), (5, 34), (5, 39),
+    -- Venice Lodge
+    (6, 6), (6, 10), (6, 15), (6, 20), (6, 25), (6, 30), (6, 35), (6, 40),
+    -- Marsella Lodge
+    (7, 1), (7, 3), (7, 5), (7, 7), (7, 9), (7, 11), (7, 13), (7, 15),
+    -- New York Lodge
+    (8, 2), (8, 4), (8, 6), (8, 8), (8, 10), (8, 12), (8, 14), (8, 16),
+    -- Miami Lodge
+    (9, 3), (9, 5), (9, 7), (9, 9), (9, 11), (9, 13), (9, 15), (9, 17),
+    -- Madrid Lodge
+    (10, 1), (10, 4), (10, 7), (10, 10), (10, 13), (10, 16), (10, 19), (10, 22),
+    -- Milan Lodge
+    (11, 2), (11, 5), (11, 8), (11, 11), (11, 14), (11, 17), (11, 20), (11, 23),
+    -- Lyon Lodge
+    (12, 1), (12, 3), (12, 5), (12, 8), (12, 11), (12, 14), (12, 17), (12, 19),
+    -- Niza Lodge
+    (13, 2), (13, 4), (13, 6), (13, 8), (13, 10), (13, 12), (13, 14), (13, 59),
+    -- Chicago Lodge
+    (14, 1), (14, 3), (14, 5), (14, 8), (14, 10), (14, 12), (14, 14), (14, 17),
+    -- Liverpool Lodge
+    (15, 2), (15, 4), (15, 6), (15, 8), (15, 11), (15, 13), (15, 15), (15, 19),
+    -- Pisa Lodge
+    (16, 1), (16, 3), (16, 5), (16, 7), (16, 9), (16, 11), (16, 13), (16, 15),
+    -- San Francisco Lodge
+    (17, 2), (17, 4), (17, 6), (17, 8), (17, 10), (17, 12), (17, 14), (17, 63),
+    -- London Lodge
+    (18, 1), (18, 3), (18, 5), (18, 7), (18, 9), (18, 11), (18, 13), (18, 15),
+    -- Barcelona Lodge
+    (19, 2), (19, 4), (19, 6), (19, 8), (19, 10), (19, 12), (19, 14), (19, 16),
+    -- Boston Lodge
+    (20, 1), (20, 3), (20, 5), (20, 7), (20, 9), (20, 11), (20, 13), (20, 15),
+    -- Rome Lodge
+    (21, 2), (21, 4), (21, 6), (21, 8), (21, 10), (21, 12), (21, 14), (21, 61),
+    -- Seattle Lodge
+    (22, 1), (22, 3), (22, 5), (22, 7), (22, 9), (22, 11), (22, 13), (22, 15),
+    -- Florence Lodge
+    (23, 1), (23, 3), (23, 5), (23, 7), (23, 9), (23, 11), (23, 13), (23, 15),
+    (23, 17), (23, 19), (23, 21), (23, 23), (23, 25), (23, 27), (23, 29), (23, 31),
+    (23, 33), (23, 35), (23, 37), (23, 39), (23, 41), (23, 43), (23, 45), (23, 47),
+    (23, 49), (23, 51), (23, 53), (23, 55), (23, 57), (23, 59), (23, 61), (23, 63),
+    (23, 2), (23, 4), (23, 6), (23, 8), (23, 10), (23, 12), (23, 14), (23, 16),
+    (23, 18), (23, 20), (23, 22), (23, 24), (23, 26), (23, 28), (23, 30), (23, 32),
+    (23, 34), (23, 36), (23, 38), (23, 40), (23, 42), (23, 44), (23, 46), (23, 48),
+    (23, 50), (23, 52), (23, 54), (23, 56), (23, 58), (23, 60), (23, 62),
+
+    -- Valencia Lodge
+    (24, 1), (24, 3), (24, 5), (24, 7), (24, 9), (24, 11), (24, 13), (24, 15),
+    -- Banned Lodge
+    (25, 2), (25, 4), (25, 6), (25, 8), (25, 10), (25, 12), (25, 14), (25, 62);
+
 
 
 INSERT INTO Lodge_Image (image_url, lodge_id)

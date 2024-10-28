@@ -49,3 +49,10 @@ font-size: 14;
     display: block; 
     margin-top: 4px;
 }
+
+.lodgeDetails-featureList {
+    margin-top: 20px;
+    gap: 5px;
+    display: flex;
+    flex-wrap: wrap;
+}

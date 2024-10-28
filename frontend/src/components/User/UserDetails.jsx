@@ -70,7 +70,7 @@ function UserDetails() {
 
   // Verifica si user no es null antes de acceder a sus propiedades
   if (!user) {
-    return <div>No user found.</div>;
+    return <div>{t("noUser")}</div>;
   }
 
   return (
