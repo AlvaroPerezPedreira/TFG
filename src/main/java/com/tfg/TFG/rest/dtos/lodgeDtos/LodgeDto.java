@@ -20,6 +20,7 @@ public class LodgeDto {
     private Boolean is_closed;
     private String lodge_provider;
     private UserDto user;
+    private Boolean is_banned;
     private List<Lodge_ImageDto> images;
     private List<FeatureDto> features;
 
@@ -29,7 +30,7 @@ public class LodgeDto {
     public LodgeDto(String lodge_email, String lodge_name, String lodge_description, String lodge_address,
             String lodge_phone, String city,
             String country, int available_rooms, double price_per_night, String check_in, String check_out,
-            Boolean is_closed, String lodge_provider, UserDto user, List<Lodge_ImageDto> images,
+            Boolean is_closed, String lodge_provider, Boolean is_banned, UserDto user, List<Lodge_ImageDto> images,
             List<FeatureDto> features) {
         this.lodge_email = lodge_email;
         this.lodge_name = lodge_name;
@@ -44,6 +45,7 @@ public class LodgeDto {
         this.check_out = check_out;
         this.is_closed = is_closed;
         this.lodge_provider = lodge_provider;
+        this.is_banned = is_banned;
         this.user = user;
         this.images = images;
         this.features = features;
@@ -159,6 +161,14 @@ public class LodgeDto {
 
     public void setLodge_provider(String lodge_provider) {
         this.lodge_provider = lodge_provider;
+    }
+
+    public Boolean getIs_banned() {
+        return is_banned;
+    }
+
+    public void setIs_banned(Boolean is_banned) {
+        this.is_banned = is_banned;
     }
 
     public UserDto getUser() {

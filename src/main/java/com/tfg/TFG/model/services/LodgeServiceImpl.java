@@ -23,20 +23,20 @@ public class LodgeServiceImpl implements LodgeService {
     public Page<Lodge> getLodges(int page, int size) {
         PageRequest pageRequest = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "id"));
 
-        return lodgeDao.findAll(pageRequest);
+        return lodgeDao.findAllAndIsBannedFalse(pageRequest);
     }
 
     @Override
     public Page<Lodge> getLodgesByCountry(String country, int page, int size) {
         PageRequest pageRequest = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "id"));
 
-        return lodgeDao.findByCountry(country, pageRequest);
+        return lodgeDao.findByCountryAndIsBannedFalse(country, pageRequest);
     }
 
     @Override
     public Page<Lodge> getLodgesByCity(String city, int page, int size) {
         PageRequest pageRequest = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "id"));
 
-        return lodgeDao.findByCity(city, pageRequest);
+        return lodgeDao.findByCityAndIsBannedFalse(city, pageRequest);
     }
 }

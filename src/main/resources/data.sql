@@ -1,7 +1,7 @@
 --Usuarios
 INSERT INTO User (email, password, role, username, name, lastname, phone, birthdate, country, gender, address, passport, avatar, status) 
 VALUES 
-    ('a@udc.es', '$2a$10$hmGUL85rQGco4zBJgP6uzeeBSUi5Teq8b7so0cPGujgqrUppWjtBW', 0, 'a', 'aName', 'aLastName', '123456789', '01-01-2000', 'Spain', 'male', 'aAddress', '123456789', 'a@udc.es_apriliars660.jpg', 0),
+    ('a@udc.es', '$2a$10$hmGUL85rQGco4zBJgP6uzeeBSUi5Teq8b7so0cPGujgqrUppWjtBW', 0, 'aUsername', 'John', 'Doe', '981525252', '01-01-2000', 'Spain', 'male', 'aAddress', '123456789', 'a@udc.es_apriliars660.jpg', 0),
     ('b@udc.es', '$2a$10$hmGUL85rQGco4zBJgP6uzeeBSUi5Teq8b7so0cPGujgqrUppWjtBW', 0, 'b', null, null, null, '01-01-1999', null, 'female', null, null, 'Default_Avatar.png', 0),
     ('admin@udc.es', '$2a$10$hmGUL85rQGco4zBJgP6uzeeBSUi5Teq8b7so0cPGujgqrUppWjtBW', 1, 'b', null, null, null, '01-01-2000', null, 'male', null, null, 'Default_Avatar.png', 0),
     ('banned@udc.es','$2a$10$hmGUL85rQGco4zBJgP6uzeeBSUi5Teq8b7so0cPGujgqrUppWjtBW', 0, 'BannedUser', null, null, null, '01-01-2000', null, 'female', null, null, 'Default_Avatar.png', 1)
@@ -42,33 +42,34 @@ VALUES
     ('Valet parking')
 ;
 
-INSERT INTO Lodge (lodge_email, lodge_name, lodge_description, lodge_address, lodge_phone, city, country, available_rooms, price_per_night, check_in, check_out, is_closed, lodge_provider, user_id) 
+INSERT INTO Lodge (lodge_email, lodge_name, lodge_description, lodge_address, lodge_phone, city, country, available_rooms, price_per_night, check_in, check_out, is_closed, lodge_provider, is_banned, user_id) 
 VALUES 
-    ('ParisLodge@example.com', 'Paris Lodge', 'Paris Lodge description', 'Paris Lodge Address', '123456789', 'Paris', 'France', 5, 50.00, '14:00', '11:00', 0, 0, 1),
-    ('LALodge@example.com', 'Los Angeles Lodge', 'Los Angeles Lodge description', 'Los Angeles Lodge Address', '123456789', 'Los Angeles', 'United States of America', 10, 110.00, '14:00', '11:00', 0, 0, 1),
-    ('LasVegasLodge@example.com', 'Las Vegas Lodge', 'Las Vegas Lodge description', 'Las Vegas Lodge Address', '123456789', 'Las Vegas', 'United States of America', 10, 120.00, '14:00', '11:00', 0, 0, 1),
-    ('ManchesterLodge@example.com', 'Manchester Lodge', 'Manchester Lodge description', 'Manchester Lodge Address', '123456789', 'Manchester', 'United kingdom', 12, 180.00, '14:00', '11:00', 0, 0, 1),
-    ('NaplesLodge@example.com', 'Naples Lodge', 'Naples Lodge description', 'Naples Lodge Address', '123456789', 'Naples', 'Italy', 20, 120.00, '14:00', '11:00', 0, 0, 1),
-    ('VeniceLodge@example.com', 'Venice Lodge', 'Venice Lodge description', 'Venice Lodge Address', '123456789', 'Venice', 'Italy', 20, 280.00, '14:00', '11:00', 0, 0, 1),
-    ('MarsellaLodge@example.com', 'Marsella Lodge', 'Marsella Lodge description', 'Marsella Lodge Address', '123456789', 'Marsella', 'France', 5, 150.00, '14:00', '11:00', 0, 0, 1),
-    ('NYLodge@example.com', 'New York Lodge', 'New York Lodge description', 'New York Lodge Address', '123456789', 'New York', 'United States of America', 10, 100.00, '14:00', '11:00', 0, 0, 1),
-    ('MiamiLodge@example.com', 'Miami Lodge', 'Miami Lodge description', 'Miami Lodge Address', '123456789', 'Miami', 'United States of America', 10, 160.00, '14:00', '11:00', 0, 0, 1),
-    ('MadridLodge@example.com', 'Madrid Lodge', 'Madrid Lodge description', 'Madrid Lodge Address', '123456789', 'Madrid', 'Spain', 15, 200.00, '14:00', '11:00', 0, 0, 1),
-    ('MilanLodge@example.com', 'Milan Lodge', 'Milan Lodge description', 'Milan Lodge Address', '123456789', 'Milan', 'Italy', 20, 220.00, '14:00', '11:00', 0, 0, 1),
-    ('LyonLodge@example.com', 'Lyon Lodge', 'Lyon Lodge description', 'Lyon Lodge Address', '123456789', 'Lyon', 'France', 5, 75.00, '14:00', '11:00', 0, 0, 1),
-    ('NizaLodge@example.com', 'Niza Lodge', 'Niza Lodge description', 'Niza Lodge Address', '123456789', 'Niza', 'France', 5, 80.00, '14:00', '11:00', 0, 0, 1),
-    ('ChicagoLodge@example.com', 'Chicago Lodge', 'Chicago Lodge description', 'Chicago Lodge Address', '123456789', 'Chicago', 'United States of America', 10, 150.00, '14:00', '11:00', 0, 0, 1),
-    ('LiverpoolLodge@example.com', 'Liverpool Lodge', 'Liverpool Lodge description', 'Liverpool Lodge Address', '123456789', 'Liverpool', 'United kingdom', 12, 160.00, '14:00', '11:00', 0, 0, 1),
-    ('PisaLodge@example.com', 'Pisa Lodge', 'Pisa Lodge description', 'Pisa Lodge Address', '123456789', 'Pisa', 'Italy', 20, 130.00, '14:00', '11:00', 0, 0, 1),
-    ('SanFranciscoLodge@example.com', 'San Francisco Lodge', 'San Francisco Lodge description', 'San Francisco Lodge Address', '123456789', 'San Francisco', 'United States of America', 10, 100.00, '14:00', '11:00', 0, 0, 1),
-    ('LondonLodge@example.com', 'London Lodge', 'London Lodge description', 'London Lodge Address', '123456789', 'London', 'United kingdom', 12, 150.00, '14:00', '11:00', 0, 0, 1),
-    ('BarcelonaLodge@example.com', 'Barcelona Lodge', 'Barcelona Lodge description', 'Barcelona Lodge Address', '123456789', 'Barcelona', 'Spain', 15, 190.00, '14:00', '11:00', 0, 0, 1),
-    ('BostonLodge@example.com', 'Boston Lodge', 'Boston Lodge description', 'Boston Lodge Address', '123456789', 'Boston', 'United States of America', 10, 125.00, '14:00', '11:00', 0, 0, 1),
-    ('RomeLodge@example.com', 'Rome Lodge', 'Rome Lodge description', 'Rome Lodge Address', '123456789', 'Rome', 'Italy', 20, 250.00, '14:00', '11:00', 0, 0, 1),
-    ('SeattleLodge@example.com', 'Seattle Lodge', 'Seattle Lodge description', 'Seattle Lodge Address', '123456789', 'Seattle', 'United States of America', 10, 145.00, '14:00', '11:00', 0, 0, 1),
-    ('FlorenceLodge@example.com', 'Florence Lodge', 'Florence Lodge description', 'Florence Lodge Address', '123456789', 'Florence', 'Italy', 20, 210.00, '14:00', '11:00', 0, 0, 1),
-    ('ValenciaLodge@example.com', 'Valencia Lodge', 'Valencia Lodge description', 'Valencia Lodge Address', '123456789', 'Valencia', 'Spain', 15, 215.00, '14:00', '11:00', 0, 0, 1)
-;
+    ('ParisLodge@example.com', 'Paris Lodge', 'Paris Lodge description', '123 Rue de Rivoli, 75001 Paris', '123456789', 'Paris', 'France', 5, 50.00, '14:00', '11:00', 0, 0, 0, 1),
+    ('LALodge@example.com', 'Los Angeles Lodge', 'Los Angeles Lodge description', '456 Sunset Blvd, Los Angeles, CA', '123456789', 'Los Angeles', 'United States of America', 10, 110.00, '14:00', '11:00', 0, 0, 0, 1),
+    ('LasVegasLodge@example.com', 'Las Vegas Lodge', 'Las Vegas Lodge description', '789 Las Vegas Blvd, Las Vegas, NV', '123456789', 'Las Vegas', 'United States of America', 10, 120.00, '14:00', '11:00', 0, 0, 0, 1),
+    ('ManchesterLodge@example.com', 'Manchester Lodge', 'Manchester Lodge description', '101 Deansgate, Manchester', '123456789', 'Manchester', 'United Kingdom', 12, 180.00, '14:00', '11:00', 0, 0, 0, 1),
+    ('NaplesLodge@example.com', 'Naples Lodge', 'Naples Lodge description', '202 Via Toledo, Naples', '123456789', 'Naples', 'Italy', 20, 120.00, '14:00', '11:00', 0, 0, 0, 1),
+    ('VeniceLodge@example.com', 'Venice Lodge', 'Venice Lodge description', '303 Piazza San Marco, Venice', '123456789', 'Venice', 'Italy', 20, 280.00, '14:00', '11:00', 0, 0, 0, 1),
+    ('MarsellaLodge@example.com', 'Marsella Lodge', 'Marsella Lodge description', '404 Rue de la République, Marseille', '123456789', 'Marsella', 'France', 5, 150.00, '14:00', '11:00', 0, 0, 0, 1),
+    ('NYLodge@example.com', 'New York Lodge', 'New York Lodge description', '505 5th Ave, New York, NY', '123456789', 'New York', 'United States of America', 10, 100.00, '14:00', '11:00', 0, 0, 0, 1),
+    ('MiamiLodge@example.com', 'Miami Lodge', 'Miami Lodge description', '606 Ocean Dr, Miami Beach, FL', '123456789', 'Miami', 'United States of America', 10, 160.00, '14:00', '11:00', 0, 0, 0, 1),
+    ('MadridLodge@example.com', 'Madrid Lodge', 'Madrid Lodge description', '707 Gran Vía, Madrid', '123456789', 'Madrid', 'Spain', 15, 200.00, '14:00', '11:00', 0, 0, 0, 1),
+    ('MilanLodge@example.com', 'Milan Lodge', 'Milan Lodge description', '808 Via Montenapoleone, Milan', '123456789', 'Milan', 'Italy', 20, 220.00, '14:00', '11:00', 0, 0, 0, 1),
+    ('LyonLodge@example.com', 'Lyon Lodge', 'Lyon Lodge description', '909 Rue de la Liberté, Lyon', '123456789', 'Lyon', 'France', 5, 75.00, '14:00', '11:00', 0, 0, 0, 1),
+    ('NizaLodge@example.com', 'Niza Lodge', 'Niza Lodge description', '1010 Promenade des Anglais, Nice', '123456789', 'Niza', 'France', 5, 80.00, '14:00', '11:00', 0, 0, 0, 1),
+    ('ChicagoLodge@example.com', 'Chicago Lodge', 'Chicago Lodge description', '1111 W Adams St, Chicago, IL', '123456789', 'Chicago', 'United States of America', 10, 150.00, '14:00', '11:00', 0, 0, 0, 1),
+    ('LiverpoolLodge@example.com', 'Liverpool Lodge', 'Liverpool Lodge description', '1212 Albert Dock, Liverpool', '123456789', 'Liverpool', 'United Kingdom', 12, 160.00, '14:00', '11:00', 0, 0, 0, 1),
+    ('PisaLodge@example.com', 'Pisa Lodge', 'Pisa Lodge description', '1313 Piazza dei Miracoli, Pisa', '123456789', 'Pisa', 'Italy', 20, 130.00, '14:00', '11:00', 0, 0, 0, 1),
+    ('SanFranciscoLodge@example.com', 'San Francisco Lodge', 'San Francisco Lodge description', '1414 Lombard St, San Francisco, CA', '123456789', 'San Francisco', 'United States of America', 10, 100.00, '14:00', '11:00', 0, 0, 0, 1),
+    ('LondonLodge@example.com', 'London Lodge', 'London Lodge description', '1515 Buckingham Palace Rd, London', '123456789', 'London', 'United Kingdom', 12, 150.00, '14:00', '11:00', 0, 0, 0, 1),
+    ('BarcelonaLodge@example.com', 'Barcelona Lodge', 'Barcelona Lodge description', '1616 Passeig de Gràcia, Barcelona', '123456789', 'Barcelona', 'Spain', 15, 190.00, '14:00', '11:00', 0, 0, 0, 1),
+    ('BostonLodge@example.com', 'Boston Lodge', 'Boston Lodge description', '1717 Beacon St, Boston, MA', '123456789', 'Boston', 'United States of America', 10, 125.00, '14:00', '11:00', 0, 0, 0, 1),
+    ('RomeLodge@example.com', 'Rome Lodge', 'Rome Lodge description', '1818 Via del Corso, Rome', '123456789', 'Rome', 'Italy', 20, 250.00, '14:00', '11:00', 0, 0, 0, 1),
+    ('SeattleLodge@example.com', 'Seattle Lodge', 'Seattle Lodge description', '1919 Pike Pl, Seattle, WA', '123456789', 'Seattle', 'United States of America', 10, 145.00, '14:00', '11:00', 0, 0, 0, 1),
+    ('FlorenceLodge@example.com', 'Florence Lodge', 'Florence Lodge description', '2020 Piazza della Signoria, Florence', '123456789', 'Florence', 'Italy', 20, 210.00, '14:00', '11:00', 0, 0, 0, 1),
+    ('ValenciaLodge@example.com', 'Valencia Lodge', 'Valencia Lodge description', '2121 Avenida de las Cortes Valencianas, Valencia', '123456789', 'Valencia', 'Spain', 15, 215.00, '14:00', '11:00', 0, 0, 0, 1),
+    ('BannedLodge@example.com', 'Banned Lodge', 'Banned Lodge description', 'Banned Lodge Address', '123456789', 'Victoria', 'Spain', 15, 215.00, '14:00', '11:00', 0, 0, 1, 1);
+
 
 
 INSERT INTO Lodge_Feature (lodge_id, feature_id)

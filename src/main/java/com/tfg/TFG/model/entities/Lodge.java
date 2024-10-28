@@ -54,6 +54,9 @@ public class Lodge {
     @Column(nullable = false)
     private LodgeProvider lodge_provider;
 
+    @Column(nullable = false)
+    private Boolean is_banned;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
@@ -212,6 +215,15 @@ public class Lodge {
 
     public void setLodge_provider(LodgeProvider lodge_provider) {
         this.lodge_provider = lodge_provider;
+    }
+
+    // Is banned
+    public Boolean getIs_banned() {
+        return is_banned;
+    }
+
+    public void setIs_banned(Boolean is_banned) {
+        this.is_banned = is_banned;
     }
 
     // User

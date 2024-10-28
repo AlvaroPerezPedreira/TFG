@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 
 export default function LodgeCard({
   index,
-  id,
+  lodge_email,
   lodge_name,
   price_per_night,
   lodge_provider,
@@ -23,7 +23,7 @@ export default function LodgeCard({
       isPressable
       onPress={() => {
         startTransition(() => {
-          navigate(`/lodge/${id}`);
+          navigate(`/lodge/${lodge_email}`);
         });
       }}
     >

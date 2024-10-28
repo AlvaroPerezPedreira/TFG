@@ -1,0 +1,51 @@
+.lodgeDetails-container {
+    padding: 50px;
+    margin-left: 150px;
+    margin-right: 150px;
+}
+
+.lodgeDetails-firstinputs-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.lodgeDetails-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lodgeDetails-lodgeName {
+    font-size: 24px; 
+    font-weight: bold; 
+    color: var(--AppMainColor); 
+    text-align: center; 
+    margin: 20px 0; 
+    padding: 5px;
+    transition: color 0.3s ease;
+}
+
+.lodgeDetails-provider {
+font-size: 14;
+}
+
+.lodgeDetails-providerTitle {
+    color: white;
+}
+
+.lodgeDetails-providerName {
+    margin-left: 8px;
+    color: var(--AppMainColor);
+}
+
+.lodgeDetails-userAvatar {
+    margin-bottom: 10px;
+}
+
+.lodgeDetails-address {
+    font-size: 1rem;
+    color: white;
+    display: block; 
+    margin-top: 4px;
+}

@@ -40,7 +40,7 @@ const Home = () => {
             {lodges.map((lodge, index) => (
               <LodgeCard
                 key={index}
-                id={lodge.id}
+                lodge_email={lodge.lodge_email}
                 lodge_name={lodge.lodge_name}
                 price_per_night={lodge.price_per_night}
                 lodge_provider={lodge.lodge_provider}

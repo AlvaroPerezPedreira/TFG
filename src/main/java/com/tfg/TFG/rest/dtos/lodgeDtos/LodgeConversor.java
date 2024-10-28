@@ -20,6 +20,7 @@ public class LodgeConversor {
         lodgeDto.setCheck_in(lodge.getCheck_in());
         lodgeDto.setCheck_out(lodge.getCheck_out());
         lodgeDto.setIs_closed(lodge.getIs_closed());
+        lodgeDto.setIs_banned(lodge.getIs_banned());
 
         if (lodge.getLodge_provider() == LodgeProvider.DeepDive) {
             lodgeDto.setLodge_provider("DeepDive");
@@ -49,6 +50,7 @@ public class LodgeConversor {
         lodge.setCheck_in(lodgeDto.getCheck_in());
         lodge.setCheck_out(lodgeDto.getCheck_out());
         lodge.setIs_closed(lodgeDto.getIs_closed());
+        lodge.setIs_banned(lodgeDto.getIs_banned());
 
         if (lodgeDto.getLodge_provider().equals("DeepDive")) {
             lodge.setLodge_provider(LodgeProvider.DeepDive);

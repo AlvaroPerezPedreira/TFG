@@ -38,6 +38,7 @@ CREATE TABLE Lodge (
     check_out VARCHAR(255) NOT NULL,
     is_closed TINYINT NOT NULL,
     lodge_provider TINYINT NOT NULL,
+    is_banned TINYINT NOT NULL,
     user_id BIGINT NOT NULL,
     FOREIGN KEY (user_id) REFERENCES User(id)
 );
