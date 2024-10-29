@@ -1,0 +1,20 @@
+{
+    "provider": "Fournisseur",
+    "description": "Description du lodge",
+    "noLodge": "Aucun lodge trouvé",
+    "details": "Détails du lodge",
+    "price": "Tarif par nuit",
+    "euro": "Prix en Euros",
+    "dollar": "Prix en Dollars",
+    "pound": "Prix en Livres",
+    "checkSchedule": "Horaire d'enregistrement/de départ",
+    "checkIn": "Heure d'enregistrement",
+    "checkOut": "Heure de départ",
+    "contact": "Informations de contact",
+    "email": "Adresse e-mail",
+    "phone": "Numéro de téléphone",
+    "totalRooms": "Nombre total de chambres dans le lodge",
+    "checkButton": "Vérifier la disponibilité",
+    "availableRooms": "Chambres disponibles pour vos dates de voyage",
+    "stay_duration": "Dates d'enregistrement et de départ"
+}

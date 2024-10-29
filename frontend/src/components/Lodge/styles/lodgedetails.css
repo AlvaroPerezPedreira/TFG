@@ -56,3 +56,45 @@ font-size: 14;
     display: flex;
     flex-wrap: wrap;
 }
+
+
+.lodgeDetails-secondInputs {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
+.lodgeDetails-lodgeData,
+.lodgeDetails-lodgeAvailability {
+    flex: 1;
+    margin: 0;
+    padding: 20px;
+}
+
+.lodgeDetails-rooms {
+    margin-bottom: 10px;
+    display: flex;
+}
+
+.lodgeDetails-Vdivider {
+    width: 1px; 
+    background-color: var(--AppMainColor);
+    height: auto;
+    margin: 0 10px;
+}
+
+.lodgeDetails-Hdivider {
+    height: 1px;
+    background-color: var(--AppMainColor);
+    width: 100%;
+    margin: 20px 0;
+}
+
+.lodgeDetails-button {
+    margin-top: 20px;          /* Espacio en la parte superior */
+    display: flex;             /* Activa Flexbox */
+    justify-content: center;   /* Centra horizontalmente el contenido */
+    align-items: center;       /* Centra verticalmente el contenido */
+    /* No es necesario especificar un width, el botón se centrará en su ancho natural */
+}
+

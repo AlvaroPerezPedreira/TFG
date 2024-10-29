@@ -7,6 +7,7 @@ import { Input } from "@nextui-org/input";
 import { useNavigate } from "react-router-dom";
 import { DateRangePicker } from "@nextui-org/date-picker";
 import { useFiltersStore } from "../../store/useFiltersStore";
+import { handleDateChange } from "../../Functions/calendarFunctions";
 
 export default function SearchBar() {
   const [t] = useTranslation(["searchBar"]);
@@ -19,24 +20,8 @@ export default function SearchBar() {
   let navigate = useNavigate();
   const { setFilters } = useFiltersStore();
 
-  const handleDateChange = (dates) => {
-    const { start, end } = dates;
-
-    if (start) {
-      const jsDate = new Date(start);
-      const day = String(jsDate.getDate()).padStart(2, "0");
-      const month = String(jsDate.getMonth() + 1).padStart(2, "0");
-      const year = jsDate.getFullYear();
-      setCheckIn(`${year}-${month}-${day}`);
-    }
-
-    if (end) {
-      const jsDate2 = new Date(end);
-      const day2 = String(jsDate2.getDate()).padStart(2, "0");
-      const month2 = String(jsDate2.getMonth() + 1).padStart(2, "0");
-      const year2 = jsDate2.getFullYear();
-      setCheckOut(`${year2}-${month2}-${day2}`);
-    }
+  const handleDateChangeAux = (dates) => {
+    handleDateChange(dates, setCheckIn, setCheckOut);
   };
 
   const handleSubmit = (e) => {
@@ -106,7 +91,7 @@ export default function SearchBar() {
             startName="checkIn"
             endName="checkOut"
             isRequired
-            onChange={handleDateChange}
+            onChange={handleDateChangeAux}
           />
         </div>
         <div className="searchbar-button-container">

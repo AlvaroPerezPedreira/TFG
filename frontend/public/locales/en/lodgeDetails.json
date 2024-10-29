@@ -1,5 +1,20 @@
 {
     "provider": "Provider",
-    "description": "Description",
-    "noLodge": "No lodge found"
+    "description": "Lodge description",
+    "noLodge": "No lodge found",
+    "details": "Lodge details",
+    "price": "Room rate per night",
+    "euro": "Price in Euros",
+    "dollar": "Price in Dollars",
+    "pound": "Price in Pounds",
+    "checkSchedule": "Check-in/Check-out schedule",
+    "checkIn": "Check-in time",
+    "checkOut": "Check-out time",
+    "contact": "Contact information",
+    "email": "Email address",
+    "phone": "Phone number",
+    "totalRooms": "Total rooms in the Lodge",
+    "checkButton": "Check availability",
+    "availableRooms": "Available rooms for your travel dates",
+    "stay_duration": "Check-in and Check-out dates"
 }

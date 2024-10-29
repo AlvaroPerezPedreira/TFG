@@ -11,8 +11,19 @@ import { useNavigate } from "react-router-dom";
 import LodgeFeatureList from "./LodgeComponents/LodgeFeatureList";
 import { Accordion, AccordionItem } from "@nextui-org/accordion";
 import IndicatorIcon from "../../icons/IndicatorIcon";
+import { currencyConverter } from "../../Functions/currencyFunctions";
+import { handleDateChange2 } from "../../Functions/calendarFunctions";
+import { Divider } from "@nextui-org/divider";
+import { DateRangePicker } from "@nextui-org/date-picker";
+import { Button } from "@nextui-org/button";
 
 export default function LodgeDetails() {
+  const [dollars, setDollars] = useState(0);
+  const [pounds, setPounds] = useState(0);
+  const [checkIn, setCheckIn] = useState(null);
+  const [checkOut, setCheckOut] = useState(null);
+  const [availableRooms, setAvailableRooms] = useState(0);
+
   const { email } = useParams();
   const getLodge = useLodgeStore((state) => state.getLodge);
   const lodge = getLodge(email);
@@ -21,6 +32,20 @@ export default function LodgeDetails() {
   let navigate = useNavigate();
 
   console.log(lodge);
+
+  useEffect(() => {
+    currencyConverter({ value: lodge.price_per_night, setDollars, setPounds });
+  }, [lodge]);
+
+  const handleDateChangeAux = (dates) => {
+    handleDateChange2(dates, setCheckIn, setCheckOut);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(checkIn, checkOut);
+  };
+
   return (
     <Suspense fallback="loading">
       <Navbar />
@@ -61,8 +86,9 @@ export default function LodgeDetails() {
             <span className="lodgeDetails-address">{lodge.lodge_address}</span>
           </div>
         </div>
-
+        <Divider className="lodgeDetails-Hdivider" />
         <div className="lodgeDetails-imageCarousel"></div>
+        <Divider className="lodgeDetails-Hdivider" />
         <div className="lodgeDetails-featureList">
           {lodge.features.map((feature, index) => (
             <LodgeFeatureList
@@ -72,18 +98,80 @@ export default function LodgeDetails() {
             />
           ))}
         </div>
-
-        <div className="lodgeDetails-description">
-          <Accordion>
-            <AccordionItem
-              key="anchor"
-              aria-label="Anchor"
-              indicator={<IndicatorIcon />}
-              title={t("provider")}
+        <Divider className="lodgeDetails-Hdivider" />
+        <div className="lodgeDetails-secondInputs">
+          <div className="lodgeDetails-lodgeData">
+            <Accordion variant="splitted">
+              <AccordionItem
+                key="description"
+                aria-label="description"
+                indicator={<IndicatorIcon />}
+                title={t("description")}
+              >
+                {lodge.lodge_description}
+              </AccordionItem>
+              <AccordionItem
+                key="price"
+                aria-label="price"
+                indicator={<IndicatorIcon />}
+                title={t("price")}
+              >
+                {t("euro")}: {lodge.price_per_night} €<br />
+                {t("dollar")}: {dollars} $<br />
+                {t("pound")}: {pounds} £
+              </AccordionItem>
+              <AccordionItem
+                key="check-schedule"
+                aria-label="check-schedule"
+                indicator={<IndicatorIcon />}
+                title={t("checkSchedule")}
+              >
+                {t("checkIn")}: {lodge.check_in} <br />
+                {t("checkOut")}: {lodge.check_out}
+              </AccordionItem>
+              <AccordionItem
+                key="contact"
+                aria-label="contact"
+                indicator={<IndicatorIcon />}
+                title={t("contact")}
+              >
+                {t("email")}: {lodge.lodge_email} <br />
+                {t("phone")}: {lodge.lodge_phone}
+              </AccordionItem>
+            </Accordion>
+          </div>
+          <Divider className="lodgeDetails-Vdivider" orientation="vertical" />
+          <div className="lodgeDetails-lodgeAvailability">
+            <span className="lodgeDetails-rooms">
+              {t("totalRooms")}: {lodge.available_rooms}
+            </span>
+            <span className="lodgeDetails-rooms">
+              {t("availableRooms")}: {availableRooms}
+            </span>
+            <form
+              className="lodgeDetails-checkAvailability"
+              onSubmit={handleSubmit}
             >
-              {lodge.lodge_description}
-            </AccordionItem>
-          </Accordion>
+              <DateRangePicker
+                label={t("stay_duration")}
+                variant="bordered"
+                visibleMonths={1}
+                startName="checkIn"
+                endName="checkOut"
+                isRequired
+                onChange={handleDateChangeAux}
+              />
+              <div className="lodgeDetails-button">
+                <Button
+                  className="bg-[#FFDB58] text-black"
+                  type="submit"
+                  radius="none"
+                >
+                  {t("checkButton")}
+                </Button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </Suspense>
