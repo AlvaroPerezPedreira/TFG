@@ -16,8 +16,10 @@ import { handleDateChange2 } from "../../Functions/calendarFunctions";
 import { Divider } from "@nextui-org/divider";
 import { DateRangePicker } from "@nextui-org/date-picker";
 import { Button } from "@nextui-org/button";
+import useGetLodge from "../../hooks/useGetLodge";
 
 export default function LodgeDetails() {
+  const [lodge, setLodge] = useState(null);
   const [dollars, setDollars] = useState(0);
   const [pounds, setPounds] = useState(0);
   const [checkIn, setCheckIn] = useState(null);
@@ -25,16 +27,22 @@ export default function LodgeDetails() {
   const [availableRooms, setAvailableRooms] = useState(0);
 
   const { email } = useParams();
-  const getLodge = useLodgeStore((state) => state.getLodge);
-  const lodge = getLodge(email);
+  const { getLodge } = useGetLodge();
+
   const [t, i18n] = useTranslation(["lodgeDetails"]);
   const currentLanguage = i18n.language;
   let navigate = useNavigate();
 
-  console.log(lodge);
+  useEffect(() => {
+    const getLodgeAux = async () => {
+      const lodge = await getLodge(email);
+      setLodge(lodge);
+    };
+    getLodgeAux();
+  }, []);
 
   useEffect(() => {
-    currencyConverter({ value: lodge.price_per_night, setDollars, setPounds });
+    currencyConverter({ value: lodge?.price_per_night, setDollars, setPounds });
   }, [lodge]);
 
   const handleDateChangeAux = (dates) => {
@@ -52,45 +60,45 @@ export default function LodgeDetails() {
       <div className="lodgeDetails-container">
         <div className="lodgeDetails-firstinputs-container">
           <div className="lodgeDetails-row">
-            <h1 className="lodgeDetails-lodgeName">{lodge.lodge_name}</h1>
+            <h1 className="lodgeDetails-lodgeName">{lodge?.lodge_name}</h1>
             <span className="lodgeDetails-provider">
               <span className="lodgeDetails-providerTitle">
                 {t("provider")}:
               </span>
               <span className="lodgeDetails-providerName">
-                {lodge.lodge_provider}
+                {lodge?.lodge_provider}
               </span>
             </span>
           </div>
           <div className="lodgeDetails-userAvatar">
             <User
-              name={lodge.user.name}
+              name={lodge?.user.name}
               description={
                 <Link
                   onClick={() => {
                     startTransition(() => {
-                      navigate(`/users/${lodge.user.email}`);
+                      navigate(`/users/${lodge?.user.email}`);
                     });
                   }}
                   size="sm"
                 >
-                  {lodge.user.email}
+                  {lodge?.user.email}
                 </Link>
               }
               avatarProps={{
-                src: `http://localhost:8080/images/${lodge.user.avatar}`,
+                src: `http://localhost:8080/images/${lodge?.user.avatar}`,
               }}
             />
           </div>
           <div className="lodgeDetails-row">
-            <span className="lodgeDetails-address">{lodge.lodge_address}</span>
+            <span className="lodgeDetails-address">{lodge?.lodge_address}</span>
           </div>
         </div>
         <Divider className="lodgeDetails-Hdivider" />
         <div className="lodgeDetails-imageCarousel"></div>
         <Divider className="lodgeDetails-Hdivider" />
         <div className="lodgeDetails-featureList">
-          {lodge.features.map((feature, index) => (
+          {lodge?.features.map((feature, index) => (
             <LodgeFeatureList
               key={index}
               feature={feature}
@@ -108,7 +116,7 @@ export default function LodgeDetails() {
                 indicator={<IndicatorIcon />}
                 title={t("description")}
               >
-                {lodge.lodge_description}
+                {lodge?.lodge_description}
               </AccordionItem>
               <AccordionItem
                 key="price"
@@ -116,7 +124,7 @@ export default function LodgeDetails() {
                 indicator={<IndicatorIcon />}
                 title={t("price")}
               >
-                {t("euro")}: {lodge.price_per_night} €<br />
+                {t("euro")}: {lodge?.price_per_night} €<br />
                 {t("dollar")}: {dollars} $<br />
                 {t("pound")}: {pounds} £
               </AccordionItem>
@@ -126,8 +134,8 @@ export default function LodgeDetails() {
                 indicator={<IndicatorIcon />}
                 title={t("checkSchedule")}
               >
-                {t("checkIn")}: {lodge.check_in} <br />
-                {t("checkOut")}: {lodge.check_out}
+                {t("checkIn")}: {lodge?.check_in} <br />
+                {t("checkOut")}: {lodge?.check_out}
               </AccordionItem>
               <AccordionItem
                 key="contact"
@@ -135,15 +143,15 @@ export default function LodgeDetails() {
                 indicator={<IndicatorIcon />}
                 title={t("contact")}
               >
-                {t("email")}: {lodge.lodge_email} <br />
-                {t("phone")}: {lodge.lodge_phone}
+                {t("email")}: {lodge?.lodge_email} <br />
+                {t("phone")}: {lodge?.lodge_phone}
               </AccordionItem>
             </Accordion>
           </div>
           <Divider className="lodgeDetails-Vdivider" orientation="vertical" />
           <div className="lodgeDetails-lodgeAvailability">
             <span className="lodgeDetails-rooms">
-              {t("totalRooms")}: {lodge.available_rooms}
+              {t("totalRooms")}: {lodge?.available_rooms}
             </span>
             <span className="lodgeDetails-rooms">
               {t("availableRooms")}: {availableRooms}

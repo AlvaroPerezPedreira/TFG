@@ -1,5 +1,7 @@
 package com.tfg.TFG.model.services;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -7,6 +9,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.tfg.TFG.model.common.exceptions.InstanceNotFoundException;
 import com.tfg.TFG.model.entities.Lodge;
 import com.tfg.TFG.model.entities.LodgeDao;
 
@@ -39,5 +42,11 @@ public class LodgeServiceImpl implements LodgeService {
         PageRequest pageRequest = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "id"));
 
         return lodgeDao.findByCityAndIsBannedFalse(city, pageRequest);
+    }
+
+    @Override
+    public Lodge findByEmail(String email) throws InstanceNotFoundException {
+        return lodgeDao.findByEmail(email)
+                .orElseThrow(() -> new InstanceNotFoundException("project.entities.lodge", email));
     }
 }

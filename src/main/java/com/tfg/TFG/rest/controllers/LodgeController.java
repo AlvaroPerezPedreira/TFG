@@ -5,7 +5,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 
+import com.tfg.TFG.model.common.exceptions.InstanceNotFoundException;
+import com.tfg.TFG.model.entities.Lodge;
 import com.tfg.TFG.model.services.LodgeService;
+import com.tfg.TFG.model.services.exceptions.PermissionException;
 import com.tfg.TFG.rest.dtos.lodgeDtos.*;
 
 /**
@@ -52,5 +55,17 @@ public class LodgeController {
         Page<LodgeDto> lodges = lodgeService.getLodgesByCity(city, page, size).map(LodgeConversor::toDto);
 
         return ResponseEntity.ok(lodges);
+    }
+
+    @GetMapping("/{email}")
+    public ResponseEntity<LodgeDto> getUserByEmail(@RequestAttribute Long userId, @PathVariable String email)
+            throws InstanceNotFoundException, PermissionException {
+
+        System.out.println("getLodgeByEmail");
+        System.out.println(email);
+
+        Lodge lodge = lodgeService.findByEmail(email);
+
+        return ResponseEntity.ok(LodgeConversor.toDto(lodge));
     }
 }

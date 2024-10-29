@@ -23,6 +23,7 @@ export default function LodgeFeatureList({ feature, currentLanguage }) {
         color="warning"
         variant="bordered"
         startContent={getIcon(feature.feature_nameEN)}
+        className="border-[1px] p-2 py-4"
       >
         {getName(currentLanguage)}
       </Chip>
