@@ -1,0 +1,104 @@
+.lodgeApiDetails-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.lodgeApiDetails-firstinputs-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.lodgeApiDetails-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.lodgeApiDetails-lodgeName {
+    font-size: 24px; 
+    font-weight: bold; 
+    color: var(--AppMainColor); 
+    text-align: center; 
+    margin: 20px 0; 
+    padding: 5px;
+    transition: color 0.3s ease;
+}
+
+.lodgeApiDetails-provider {
+font-size: 14;
+}
+
+.lodgeApiDetails-providerTitle {
+    color: white;
+}
+
+.lodgeApiDetails-providerName {
+    margin-left: 8px;
+    color: var(--AppMainColor);
+}
+
+.lodgeApiDetails-userAvatar {
+    margin-bottom: 10px;
+}
+
+.lodgeApiDetails-address {
+    font-size: 1rem;
+    color: white;
+    display: block; 
+    margin-top: 4px;
+}
+
+.lodgeApiDetails-featureList {
+    margin-top: 20px;
+    gap: 5px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.lodgeApiDetails-secondInputs {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
+.lodgeApiDetails-lodgeData,
+.lodgeApiDetails-lodgeAvailability {
+    flex: 1;
+    margin: 0;
+    padding-top: 20px;
+}
+
+.lodgeApiDetails-rooms {
+    margin-bottom: 10px;
+    display: flex;
+}
+
+.lodgeApiDetails-Vdivider {
+    width: 1px; 
+    background-color: var(--AppMainColor);
+    height: auto;
+    margin: 0 20px 0 10px;
+}
+
+.lodgeApiDetails-Hdivider {
+    height: 1px;
+    background-color: var(--AppMainColor);
+    width: 100%;
+    margin: 20px 0;
+}
+
+.lodgeApiDetails-button {
+    margin-top: 20px;
+    display: flex; 
+    justify-content: center;
+    align-items: center;      
+}
+

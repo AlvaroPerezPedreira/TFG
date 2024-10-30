@@ -64,7 +64,54 @@ const useApi = () => {
     }
   };
 
-  return { fetchDestId, fetchHotels };
+  const getLodgeDetails = async (hotel_id, currentLanguage) => {
+    let locale;
+
+    switch (currentLanguage) {
+      case "es":
+        locale = "es";
+        break;
+      case "en":
+        locale = "en-gb";
+        break;
+      case "fr":
+        locale = "fr";
+        break;
+      default:
+        locale = "en-gb";
+    }
+
+    try {
+      const response = await fetch(
+        `https://booking-com.p.rapidapi.com/v1/hotels/data?hotel_id=${hotel_id}&locale=${locale}`,
+        {
+          method: "GET",
+          headers: {
+            "x-rapidapi-host": "booking-com.p.rapidapi.com",
+            "x-rapidapi-key":
+              "7e41a53217mshbd5a3caf00bccebp154d2ajsn10ab552e5d64",
+          },
+        }
+      );
+
+      if (response.ok) {
+        const data = await response.json();
+        return data;
+      } else {
+        console.log("Error retreving lodge details", hotel_id);
+        const errorResponse = await response.text();
+        console.error(
+          "Error al obtener los datos:",
+          response.statusText,
+          errorResponse
+        );
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
+  return { fetchDestId, fetchHotels, getLodgeDetails };
 };
 
 export default useApi;

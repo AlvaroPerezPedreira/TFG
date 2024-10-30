@@ -9,6 +9,7 @@ import ChangePassword from "./components/User/ChangePassword";
 import UserDetails from "./components/User/UserDetails";
 import TestPage from "./components/TestPage";
 import LodgeDetails from "./components/Lodge/LodgeDetails";
+import LodgeApiDetails from "./components/Lodge/LodgeApiDetails";
 import LodgeSearch from "./components/Lodge/LodgeSearch";
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
         <Route path="/changePassword" element={<ChangePassword />} />
         <Route path="/users/:email" element={<UserDetails />} />
         <Route path="/lodge/:email" element={<LodgeDetails />} />
+        <Route path="lodgeApi/:email" element={<LodgeApiDetails />} />
         <Route path="/lodges/:destination" element={<LodgeSearch />} />
         <Route path="/test" element={<TestPage />} />
       </Routes>

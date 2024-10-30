@@ -3,7 +3,6 @@ import "./styles/lodgedetails.css";
 import React, { Suspense, startTransition, useEffect, useState } from "react";
 import Navbar from "../Navbar";
 import { useParams } from "react-router-dom";
-import { useLodgeStore } from "../../store/useLodgeStore";
 import { User } from "@nextui-org/user";
 import { useTranslation } from "react-i18next";
 import { Link } from "@nextui-org/link";
@@ -72,7 +71,7 @@ export default function LodgeDetails() {
           </div>
           <div className="lodgeDetails-userAvatar">
             <User
-              name={lodge?.user.name}
+              name={lodge?.user.name + " " + lodge?.user.lastname}
               description={
                 <Link
                   onClick={() => {

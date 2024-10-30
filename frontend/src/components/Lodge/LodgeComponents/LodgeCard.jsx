@@ -16,14 +16,13 @@ export default function LodgeCard({
   const [t] = useTranslation(["lodge"]);
 
   const handlePress = () => {
-    console.log(lodge_provider);
     if (lodge_provider === "DeepDive") {
       startTransition(() => {
         navigate(`/lodge/${lodge_email}`);
       });
     } else {
       startTransition(() => {
-        navigate(`/lodge/${lodge_email}`);
+        navigate(`/lodgeApi/${lodge_email}`);
       });
     }
   };

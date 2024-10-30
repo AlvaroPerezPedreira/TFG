@@ -43,9 +43,7 @@ export default function LodgeSearch() {
             <LodgeCard
               key={index}
               id={lodge.hotel_id}
-              lodge_email={
-                lodge.hotel_name.replace(/\s+/g, "") + "@bookingapi.com"
-              }
+              lodge_email={`LodgeApi_${lodge.hotel_id}@bookingapi.com`}
               lodge_name={lodge.hotel_name}
               price_per_night={
                 lodge.composite_price_breakdown.gross_amount_per_night
