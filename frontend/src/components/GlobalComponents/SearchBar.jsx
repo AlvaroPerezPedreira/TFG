@@ -13,6 +13,7 @@ export default function SearchBar() {
   const [t] = useTranslation(["searchBar"]);
   const whereRef = useRef(null);
   const adultsRef = useRef(null);
+  const childrenRef = useRef(null);
   const roomsRef = useRef(null);
   const [checkIn, setCheckIn] = useState(null);
   const [checkOut, setCheckOut] = useState(null);
@@ -28,6 +29,7 @@ export default function SearchBar() {
     e.preventDefault();
     const where = whereRef.current.value;
     const adults = adultsRef.current.value;
+    const children = childrenRef.current.value;
     const rooms = roomsRef.current.value;
 
     if (!where || !adults || !rooms || !checkIn || !checkOut) {
@@ -39,6 +41,11 @@ export default function SearchBar() {
       setError(t("searchbarErrorAdults"));
       return;
     }
+    if (isNaN(children) || children < 0) {
+      setError(t("searchbarErrorChildren"));
+      return;
+    }
+
     if (isNaN(rooms) || rooms <= 0) {
       setError(t("searchbarErrorRooms"));
       return;
@@ -50,9 +57,16 @@ export default function SearchBar() {
     }
 
     setError("");
-    console.log({ where, adults, rooms, checkIn, checkOut });
+    console.log({ where, adults, children, rooms, checkIn, checkOut });
 
-    setFilters({ where, adults, rooms, checkIn, checkOut });
+    setFilters({
+      where,
+      adults,
+      children: children === "" ? 0 : children,
+      rooms,
+      checkIn,
+      checkOut,
+    });
 
     startTransition(() => {
       navigate(`/lodges/${encodeURIComponent(where)}`);
@@ -76,6 +90,12 @@ export default function SearchBar() {
             ref={adultsRef}
             variant="bordered"
             isRequired
+          />
+          <Input
+            label={t("children")}
+            placeholder={t("children_ph")}
+            ref={childrenRef}
+            variant="bordered"
           />
           <Input
             label={t("rooms")}

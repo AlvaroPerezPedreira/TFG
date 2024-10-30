@@ -15,17 +15,26 @@ export default function LodgeCard({
   let navigate = useNavigate();
   const [t] = useTranslation(["lodge"]);
 
+  const handlePress = () => {
+    console.log(lodge_provider);
+    if (lodge_provider === "DeepDive") {
+      startTransition(() => {
+        navigate(`/lodge/${lodge_email}`);
+      });
+    } else {
+      startTransition(() => {
+        navigate(`/lodge/${lodge_email}`);
+      });
+    }
+  };
+
   return (
     <Card
       key={index}
       isHoverable
       className="py-4"
       isPressable
-      onPress={() => {
-        startTransition(() => {
-          navigate(`/lodge/${lodge_email}`);
-        });
-      }}
+      onPress={handlePress}
     >
       <CardHeader className="pb-3 pt-0 px-4 flex-col items-start">
         <h2 className="font-bold text-xl pb-2 text-left text-pretty">

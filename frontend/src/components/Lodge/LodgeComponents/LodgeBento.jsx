@@ -9,20 +9,23 @@ export default function LodgeBento() {
 
   return (
     <div id="bento-div" className="bt-div">
-      <div className="bento-item bento-item-1" onClick={handleClick("France")}>
-        <img src="http://localhost:8080/images/Hab1.jpg" alt="" />
-      </div>
-      <div className="bento-item bento-item-2" onClick={handleClick("Italy")}>
-        <img src="http://localhost:8080/images/Hab1.jpg" alt="" />
-      </div>
-      <div className="bento-item bento-item-3" onClick={handleClick("Spain")}>
-        <img src="http://localhost:8080/images/Hab1.jpg" alt="" />
-      </div>
       <div
-        className="bento-item bento-item-4"
+        className="bento-item bento-item-1"
         onClick={handleClick("United States of America")}
       >
-        <img src="http://localhost:8080/images/Hab1.jpg" alt="" />
+        <img src="http://localhost:8080/images/bento/USABento.jpg" alt="" />
+      </div>
+      <div className="bento-item bento-item-2" onClick={handleClick("Italy")}>
+        <img src="http://localhost:8080/images/bento/ItalyBento.jpg" alt="" />
+      </div>
+      <div
+        className="bento-item bento-item-3"
+        onClick={handleClick("United Kingdom")}
+      >
+        <img src="http://localhost:8080/images/bento/UKBento.jpg" alt="" />
+      </div>
+      <div className="bento-item bento-item-4" onClick={handleClick("France")}>
+        <img src="http://localhost:8080/images/bento/FranceBento.jpg" alt="" />
       </div>
     </div>
   );

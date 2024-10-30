@@ -19,7 +19,7 @@ const Home = () => {
   const { getLodges } = useGetLodges();
 
   useEffect(() => {
-    getLodges(0, 12);
+    getLodges(0, 24);
   }, []);
 
   return (
@@ -29,6 +29,7 @@ const Home = () => {
         <div className="home-container">
           <SearchBar />
           <LodgeBento />
+          <br />
           <div
             style={{
               display: "grid",
@@ -48,6 +49,7 @@ const Home = () => {
               />
             ))}
           </div>
+          <br />
         </div>
       </Suspense>
     </>

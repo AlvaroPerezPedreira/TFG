@@ -1,7 +1,7 @@
 import { useLodgeStore } from "../store/useLodgeStore";
 
 const useGetLodges = () => {
-  const { lodges, addLodges } = useLodgeStore();
+  const { lodges, setLodges } = useLodgeStore();
 
   const getLodges = async (page, size) => {
     const response = await fetch(
@@ -21,7 +21,7 @@ const useGetLodges = () => {
       return;
     }
     console.log(finalData.content);
-    addLodges(finalData.content);
+    setLodges(finalData.content);
     console.log(lodges);
     return finalData;
   };
