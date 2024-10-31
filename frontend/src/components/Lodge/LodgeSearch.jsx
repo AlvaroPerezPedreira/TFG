@@ -2,12 +2,18 @@ import "./styles/lodgesearch.css";
 import React, { Suspense, useEffect, useState } from "react";
 import Navbar from "../Navbar";
 import SearchBar from "../GlobalComponents/SearchBar";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import LodgeCard from "./LodgeComponents/LodgeCard";
 import useApi from "../../hooks/useApi";
 
 export default function LodgeSearch() {
   const { destination } = useParams();
+
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const checkIn = searchParams.get("checkIn");
+  const checkOut = searchParams.get("checkOut");
+
   const [apiLodges, setApiLodges] = useState([]);
   const [pageN, setPageN] = useState(0);
   const [destId, setDestId] = useState(0);
@@ -51,6 +57,8 @@ export default function LodgeSearch() {
               }
               lodge_provider="Booking.com"
               image_url={lodge.max_photo_url}
+              checkIn={checkIn}
+              checkOut={checkOut}
             />
           ))}
         </div>

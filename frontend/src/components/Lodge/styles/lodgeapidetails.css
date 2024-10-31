@@ -79,6 +79,7 @@ font-size: 14;
 .lodgeApiDetails-rooms {
     margin-bottom: 10px;
     display: flex;
+    margin-top: 20px;
 }
 
 .lodgeApiDetails-Vdivider {
@@ -98,7 +99,16 @@ font-size: 14;
 .lodgeApiDetails-button {
     margin-top: 20px;
     display: flex; 
-    justify-content: center;
-    align-items: center;      
+    margin-left: 40px;
 }
 
+.lodgeApiDetials-datesTitle {
+    color: var(--AppMainColor); 
+    font-size: 1.2rem;
+}
+
+.lodgeApiDetails-noRooms {
+    color: var(--errorRed);
+    margin-top: 10px;
+    font-size: 1rem;
+}

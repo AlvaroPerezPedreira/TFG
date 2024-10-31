@@ -69,7 +69,13 @@ export default function SearchBar() {
     });
 
     startTransition(() => {
-      navigate(`/lodges/${encodeURIComponent(where)}`);
+      const queryParams = new URLSearchParams({
+        checkIn,
+        checkOut,
+      });
+      navigate(
+        `/lodges/${encodeURIComponent(where)}?${queryParams.toString()}`
+      );
     });
   };
 

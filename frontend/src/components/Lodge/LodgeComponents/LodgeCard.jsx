@@ -11,6 +11,8 @@ export default function LodgeCard({
   price_per_night,
   lodge_provider,
   image_url,
+  checkIn,
+  checkOut,
 }) {
   let navigate = useNavigate();
   const [t] = useTranslation(["lodge"]);
@@ -22,7 +24,11 @@ export default function LodgeCard({
       });
     } else {
       startTransition(() => {
-        navigate(`/lodgeApi/${lodge_email}`);
+        const queryParams = new URLSearchParams({
+          checkIn,
+          checkOut,
+        });
+        navigate(`/lodgeApi/${lodge_email}?${queryParams.toString()}`);
       });
     }
   };

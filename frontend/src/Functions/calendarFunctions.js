@@ -57,3 +57,8 @@ export function handleDateChange2(dates, setCheckIn, setCheckOut) {
     setCheckOut(`${day2}-${month2}-${year2}`);
   }
 };
+
+export function transformDate(date) {
+  const [year, month, day] = date.split('-');
+  return `${day}-${month}-${year}`;
+}

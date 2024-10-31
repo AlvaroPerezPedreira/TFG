@@ -2,7 +2,7 @@ import "./styles/lodgeapidetails.css";
 
 import React, { Suspense, startTransition, useEffect, useState } from "react";
 import Navbar from "../Navbar";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { User } from "@nextui-org/user";
 import { useTranslation } from "react-i18next";
 import { Link } from "@nextui-org/link";
@@ -10,38 +10,53 @@ import { useNavigate } from "react-router-dom";
 import ApiLodgeFeatureList from "./LodgeComponents/ApiLodgeFeatureList";
 import { Accordion, AccordionItem } from "@nextui-org/accordion";
 import IndicatorIcon from "../../icons/IndicatorIcon";
-import { currencyConverter } from "../../Functions/currencyFunctions";
-import { handleDateChange2 } from "../../Functions/calendarFunctions";
+import { transformDate } from "../../Functions/calendarFunctions";
 import { Divider } from "@nextui-org/divider";
-import { DateRangePicker } from "@nextui-org/date-picker";
 import { Button } from "@nextui-org/button";
 import useApi from "../../hooks/useApi";
+import languageMap from "../../utils/LanguageMap";
 
 export default function LodgeApiDetails() {
+  let navigate = useNavigate();
+  const [t, i18n] = useTranslation(["lodgeApiDetails"]);
+  const currentLanguage = i18n.language;
   const [lodge, setLodge] = useState(null);
-  const [availableRooms, setAvailableRooms] = useState(0);
+  const [lodgeCheckInOut, setLodgeCheckInOut] = useState(null);
+
+  const { getLodgeDetails, getLodgeDetailsCheckInOut } = useApi();
 
   const { email } = useParams();
   const hotel_id = email.split("_")[1].split("@")[0];
 
-  const { getLodgeDetails } = useApi();
-
-  const [t, i18n] = useTranslation(["lodgeApiDetails"]);
-  const currentLanguage = i18n.language;
-  let navigate = useNavigate();
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const checkIn = searchParams.get("checkIn");
+  const checkOut = searchParams.get("checkOut");
 
   useEffect(() => {
     const getLodgeAux = async () => {
       const lodge = await getLodgeDetails(hotel_id, currentLanguage);
       setLodge(lodge);
     };
+    const getLodgeWithCheckInOutAux = async () => {
+      const lodgeCheckInOut = await getLodgeDetailsCheckInOut(
+        hotel_id,
+        currentLanguage,
+        checkIn,
+        checkOut
+      );
+      setLodgeCheckInOut(lodgeCheckInOut);
+    };
     getLodgeAux();
+    getLodgeWithCheckInOutAux();
   }, []);
 
-  console.log(currentLanguage);
   console.log(lodge);
+  console.log(lodgeCheckInOut);
 
   const getDescription = (descriptions) => {
+    if (!descriptions) return t("noDescription");
+
     let locale = currentLanguage;
     if (locale === "en") {
       locale = "en-gb";
@@ -90,7 +105,10 @@ export default function LodgeApiDetails() {
             />
           </div>
           <div className="lodgeApiDetails-row">
-            <span className="lodgeApiDetails-address">{lodge?.address}</span>
+            <span className="lodgeApiDetails-address">
+              {lodge?.address}, {lodgeCheckInOut?.district}, {lodge?.zip},{" "}
+              {lodge?.city}, {lodge?.country}
+            </span>
           </div>
         </div>
         <Divider className="lodgeApiDetails-Hdivider" />
@@ -109,18 +127,9 @@ export default function LodgeApiDetails() {
                 indicator={<IndicatorIcon />}
                 title={t("description")}
               >
-                {lodge && getDescription(lodge.description_translations)}
-              </AccordionItem>
-              <AccordionItem
-                key="price"
-                aria-label="price"
-                indicator={<IndicatorIcon />}
-                title={t("price")}
-              >
-                {/* {t("euro")}: {lodge?.price_per_night} €<br />
-                {t("dollar")}: {lodge?.price_per_night} $<br />
-                {t("pound")}: {lodge?.price_per_night} £ */}
-                dinero
+                {lodge && lodge.description_translations
+                  ? getDescription(lodge.description_translations)
+                  : t("noDescription")}
               </AccordionItem>
               <AccordionItem
                 key="check-schedule"
@@ -128,9 +137,64 @@ export default function LodgeApiDetails() {
                 indicator={<IndicatorIcon />}
                 title={t("checkSchedule")}
               >
-                {/* {t("checkIn")}: {lodge?.check_in} <br />
-                {t("checkOut")}: {lodge?.check_out} */}
-                checkin checkout
+                {t("checkIn")}: {lodge?.checkin.from} <br />
+                {t("checkOut")}: {lodge?.checkout.to}
+              </AccordionItem>
+              <AccordionItem
+                key="moreInfo"
+                aria-label="moreInfo"
+                indicator={<IndicatorIcon />}
+                title={t("moreInfo")}
+              >
+                <Accordion variant="splitted">
+                  <AccordionItem
+                    key="coordinates"
+                    aria-label="coordinates"
+                    indicator={<IndicatorIcon />}
+                    title={t("coordinates")}
+                  >
+                    {t("lat")}: {lodge?.location.latitude} <br />
+                    {t("lon")}: {lodge?.location.longitude}
+                  </AccordionItem>
+                  <AccordionItem
+                    key="languages"
+                    aria-label="languages"
+                    indicator={<IndicatorIcon />}
+                    title={t("languages")}
+                  >
+                    {lodge?.languages_spoken.languagecode.map((code, index) => (
+                      <span key={index}>
+                        {languageMap[code] || code} <br />
+                      </span>
+                    ))}
+                  </AccordionItem>
+                  <AccordionItem
+                    key="review"
+                    aria-label="review"
+                    indicator={<IndicatorIcon />}
+                    title={t("review")}
+                  >
+                    {t("reviewCount")}: {lodge?.review_nr} <br />
+                    {t("rating")}: {lodge?.review_score} <br />
+                    {t("wifiRating")}:{" "}
+                    {lodgeCheckInOut?.wifi_review_score.rating > 0
+                      ? lodgeCheckInOut.wifi_review_score.rating
+                      : t("noRating")}
+                    <br />
+                    {t("breakfastRating")}:{" "}
+                    {lodgeCheckInOut?.breakfast_review_score.review_score > 0
+                      ? lodgeCheckInOut.breakfast_review_score.review_score
+                      : t("noRating")}
+                  </AccordionItem>
+                  <AccordionItem
+                    key="timezone"
+                    aria-label="timezone"
+                    indicator={<IndicatorIcon />}
+                    title={t("timezone")}
+                  >
+                    {t("timezone2")}: {lodgeCheckInOut?.timezone} <br />
+                  </AccordionItem>
+                </Accordion>
               </AccordionItem>
               <AccordionItem
                 key="contact"
@@ -138,9 +202,8 @@ export default function LodgeApiDetails() {
                 indicator={<IndicatorIcon />}
                 title={t("contact")}
               >
-                {/* {t("email")}: {lodge?.lodge_email} <br />
-                {t("phone")}: {lodge?.lodge_phone} */}
-                contacto
+                {t("email")}: {email} <br />
+                {t("url")}: {lodge?.url}
               </AccordionItem>
             </Accordion>
           </div>
@@ -149,12 +212,39 @@ export default function LodgeApiDetails() {
             orientation="vertical"
           />
           <div className="lodgeApiDetails-lodgeAvailability">
-            <span className="lodgeApiDetails-rooms">
-              {t("totalRooms")}: {lodge?.available_rooms}
+            <span className="lodgeApiDetials-datesTitle">
+              {t("infoDates")} <br />
+            </span>
+            <span className="lodgeApiDetails-dates">
+              {t("arrival")}: {transformDate(checkIn)} <br />
+              {t("departure")}: {transformDate(checkOut)}
             </span>
             <span className="lodgeApiDetails-rooms">
-              {t("availableRooms")}: {availableRooms}
+              {t("totalRooms")}: {lodgeCheckInOut?.available_rooms} <br />
+              {lodgeCheckInOut?.composite_price_breakdown && (
+                <>
+                  {t("price")}:{" "}
+                  {lodgeCheckInOut.composite_price_breakdown.gross_amount.value}{" "}
+                  {" €"}
+                </>
+              )}
             </span>
+            <div className="lodgeApiDetails-button">
+              {lodgeCheckInOut?.available_rooms > 0 ? (
+                <Button
+                  className="bg-[#FFDB58] text-black"
+                  type="submit"
+                  radius="none"
+                >
+                  {t("bookButton")}
+                </Button>
+              ) : (
+                <span className="lodgeApiDetails-noRooms">
+                  {t("noRooms")} <br />
+                  {lodgeCheckInOut?.soldout_message}
+                </span>
+              )}
+            </div>
           </div>
         </div>
       </div>
