@@ -16,6 +16,7 @@ import { Divider } from "@nextui-org/divider";
 import { DateRangePicker } from "@nextui-org/date-picker";
 import { Button } from "@nextui-org/button";
 import useGetLodge from "../../hooks/useGetLodge";
+import EmblaCarousel from "./LodgeComponents/EmblaCarousel";
 
 export default function LodgeDetails() {
   const [lodge, setLodge] = useState(null);
@@ -32,6 +33,8 @@ export default function LodgeDetails() {
   const currentLanguage = i18n.language;
   let navigate = useNavigate();
 
+  const OPTIONS = { loop: true };
+
   useEffect(() => {
     const getLodgeAux = async () => {
       const lodge = await getLodge(email);
@@ -43,6 +46,8 @@ export default function LodgeDetails() {
   useEffect(() => {
     currencyConverter({ value: lodge?.price_per_night, setDollars, setPounds });
   }, [lodge]);
+
+  console.log(lodge);
 
   const handleDateChangeAux = (dates) => {
     handleDateChange2(dates, setCheckIn, setCheckOut);
@@ -94,7 +99,11 @@ export default function LodgeDetails() {
           </div>
         </div>
         <Divider className="lodgeDetails-Hdivider" />
-        <div className="lodgeDetails-imageCarousel"></div>
+        <div className="w-full">
+          {lodge?.images?.length > 0 && (
+            <EmblaCarousel slides={lodge.images} options={OPTIONS} />
+          )}
+        </div>
         <Divider className="lodgeDetails-Hdivider" />
         <div className="lodgeDetails-featureList">
           {lodge?.features.map((feature, index) => (
@@ -108,7 +117,7 @@ export default function LodgeDetails() {
         <Divider className="lodgeDetails-Hdivider" />
         <div className="lodgeDetails-secondInputs">
           <div className="lodgeDetails-lodgeData">
-            <Accordion variant="splitted">
+            <Accordion variant="light">
               <AccordionItem
                 key="description"
                 aria-label="description"
@@ -181,6 +190,7 @@ export default function LodgeDetails() {
           </div>
         </div>
       </div>
+      <></>
     </Suspense>
   );
 }

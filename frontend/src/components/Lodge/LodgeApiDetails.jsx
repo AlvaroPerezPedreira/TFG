@@ -120,7 +120,7 @@ export default function LodgeApiDetails() {
         <Divider className="lodgeApiDetails-Hdivider" />
         <div className="lodgeApiDetails-secondInputs">
           <div className="lodgeApiDetails-lodgeData">
-            <Accordion variant="splitted">
+            <Accordion variant="light">
               <AccordionItem
                 key="description"
                 aria-label="description"
@@ -146,7 +146,7 @@ export default function LodgeApiDetails() {
                 indicator={<IndicatorIcon />}
                 title={t("moreInfo")}
               >
-                <Accordion variant="splitted">
+                <Accordion variant="bordered">
                   <AccordionItem
                     key="coordinates"
                     aria-label="coordinates"

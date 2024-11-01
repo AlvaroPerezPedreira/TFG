@@ -27,6 +27,8 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "date-fns": "^4.1.0",
+    "embla-carousel": "^8.3.1",
+    "embla-carousel-react": "^8.3.1",
     "flag-icons": "^7.2.3",
     "framer-motion": "^11.7.0",
     "frontend": "file:",
