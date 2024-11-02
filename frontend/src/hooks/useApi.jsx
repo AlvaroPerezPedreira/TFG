@@ -1,5 +1,8 @@
 import { useFiltersStore } from "../store/useFiltersStore";
 
+const RAPIDAPI_HOST = "booking-com.p.rapidapi.com";
+const RAPIDAPI_KEY = "c49223a641msh80a676e719b5656p15ee2ajsnbc2d1186287f";
+
 const useApi = () => {
   const { filters } = useFiltersStore();
   const { adults, children, rooms, checkIn, checkOut } = filters;
@@ -7,13 +10,12 @@ const useApi = () => {
   const fetchDestId = async ({ destination, setDestId }) => {
     try {
       const response = await fetch(
-        `https://booking-com.p.rapidapi.com/v1/hotels/locations?locale=en-gb&name=${destination}`,
+        `https://${RAPIDAPI_HOST}/v1/hotels/locations?locale=en-gb&name=${destination}`,
         {
           method: "GET",
           headers: {
-            "x-rapidapi-host": "booking-com.p.rapidapi.com",
-            "x-rapidapi-key":
-              "7e41a53217mshbd5a3caf00bccebp154d2ajsn10ab552e5d64",
+            "x-rapidapi-host": RAPIDAPI_HOST,
+            "x-rapidapi-key": RAPIDAPI_KEY,
           },
         }
       );
@@ -30,7 +32,7 @@ const useApi = () => {
 
   const fetchHotels = async ({ pageN, destId, setApiLodges }) => {
     try {
-      let url = `https://booking-com.p.rapidapi.com/v1/hotels/search?page_number=${pageN}&adults_number=${adults}&room_number=${rooms}&units=metric&checkout_date=${checkOut}&dest_id=${destId}&filter_by_currency=EUR&dest_type=city&checkin_date=${checkIn}&order_by=popularity&locale=en-gb`;
+      let url = `https://${RAPIDAPI_HOST}/v1/hotels/search?page_number=${pageN}&adults_number=${adults}&room_number=${rooms}&units=metric&checkout_date=${checkOut}&dest_id=${destId}&filter_by_currency=EUR&dest_type=city&checkin_date=${checkIn}&order_by=popularity&locale=en-gb`;
 
       if (children !== 0) {
         url += `&children_number=${children}`;
@@ -39,9 +41,8 @@ const useApi = () => {
       const response = await fetch(url, {
         method: "GET",
         headers: {
-          "x-rapidapi-host": "booking-com.p.rapidapi.com",
-          "x-rapidapi-key":
-            "7e41a53217mshbd5a3caf00bccebp154d2ajsn10ab552e5d64",
+          "x-rapidapi-host": RAPIDAPI_HOST,
+          "x-rapidapi-key": RAPIDAPI_KEY,
         },
       });
 
@@ -83,13 +84,12 @@ const useApi = () => {
 
     try {
       const response = await fetch(
-        `https://booking-com.p.rapidapi.com/v1/hotels/data?hotel_id=${hotel_id}&locale=${locale}`,
+        `https://${RAPIDAPI_HOST}/v1/hotels/data?hotel_id=${hotel_id}&locale=${locale}`,
         {
           method: "GET",
           headers: {
-            "x-rapidapi-host": "booking-com.p.rapidapi.com",
-            "x-rapidapi-key":
-              "7e41a53217mshbd5a3caf00bccebp154d2ajsn10ab552e5d64",
+            "x-rapidapi-host": RAPIDAPI_HOST,
+            "x-rapidapi-key": RAPIDAPI_KEY,
           },
         }
       );
@@ -135,13 +135,12 @@ const useApi = () => {
 
     try {
       const response = await fetch(
-        `https://booking-com.p.rapidapi.com/v2/hotels/details?locale=${locale}&checkin_date=${checkIn}&hotel_id=${hotel_id}&currency=EUR&checkout_date=${checkOut}`,
+        `https://${RAPIDAPI_HOST}/v2/hotels/details?locale=${locale}&checkin_date=${checkIn}&hotel_id=${hotel_id}&currency=EUR&checkout_date=${checkOut}`,
         {
           method: "GET",
           headers: {
-            "x-rapidapi-host": "booking-com.p.rapidapi.com",
-            "x-rapidapi-key":
-              "7e41a53217mshbd5a3caf00bccebp154d2ajsn10ab552e5d64",
+            "x-rapidapi-host": RAPIDAPI_HOST,
+            "x-rapidapi-key": RAPIDAPI_KEY,
           },
         }
       );
@@ -163,11 +162,35 @@ const useApi = () => {
     }
   };
 
+  const getLodgePhotos = async ({ hotel_id }) => {
+    try {
+      const response = await fetch(
+        `https://${RAPIDAPI_HOST}/v1/hotels/photos?hotel_id=${hotel_id}&locale=en-gb`,
+        {
+          method: "GET",
+          headers: {
+            "x-rapidapi-host": RAPIDAPI_HOST,
+            "x-rapidapi-key": RAPIDAPI_KEY,
+          },
+        }
+      );
+      if (response.ok) {
+        const data = await response.json();
+        return data;
+      } else {
+        console.error("Error al obtener los datos1:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
   return {
     fetchDestId,
     fetchHotels,
     getLodgeDetails,
     getLodgeDetailsCheckInOut,
+    getLodgePhotos,
   };
 };
 

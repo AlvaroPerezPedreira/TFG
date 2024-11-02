@@ -1,20 +1,18 @@
 import "./styles/lodgeapidetails.css";
 
-import React, { Suspense, startTransition, useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import Navbar from "../Navbar";
 import { useLocation, useParams } from "react-router-dom";
-import { User } from "@nextui-org/user";
 import { useTranslation } from "react-i18next";
-import { Link } from "@nextui-org/link";
 import { useNavigate } from "react-router-dom";
 import ApiLodgeFeatureList from "./LodgeComponents/ApiLodgeFeatureList";
-import { Accordion, AccordionItem } from "@nextui-org/accordion";
-import IndicatorIcon from "../../icons/IndicatorIcon";
 import { transformDate } from "../../Functions/calendarFunctions";
 import { Divider } from "@nextui-org/divider";
 import { Button } from "@nextui-org/button";
 import useApi from "../../hooks/useApi";
-import languageMap from "../../utils/LanguageMap";
+import EmblaCarousel from "./LodgeComponents/EmblaCarousel";
+import UserLink from "./LodgeComponents/UserLink";
+import LodgeApiAccordion from "./LodgeComponents/LodgeApiAccordion";
 
 export default function LodgeApiDetails() {
   let navigate = useNavigate();
@@ -22,8 +20,10 @@ export default function LodgeApiDetails() {
   const currentLanguage = i18n.language;
   const [lodge, setLodge] = useState(null);
   const [lodgeCheckInOut, setLodgeCheckInOut] = useState(null);
+  const [photos, setPhotos] = useState(null);
 
-  const { getLodgeDetails, getLodgeDetailsCheckInOut } = useApi();
+  const { getLodgeDetails, getLodgeDetailsCheckInOut, getLodgePhotos } =
+    useApi();
 
   const { email } = useParams();
   const hotel_id = email.split("_")[1].split("@")[0];
@@ -32,6 +32,8 @@ export default function LodgeApiDetails() {
   const searchParams = new URLSearchParams(location.search);
   const checkIn = searchParams.get("checkIn");
   const checkOut = searchParams.get("checkOut");
+
+  const OPTIONS = { loop: true };
 
   useEffect(() => {
     const getLodgeAux = async () => {
@@ -47,26 +49,15 @@ export default function LodgeApiDetails() {
       );
       setLodgeCheckInOut(lodgeCheckInOut);
     };
+    const getPhotosAux = async () => {
+      const photos = await getLodgePhotos({ hotel_id });
+      setPhotos(photos);
+    };
+
     getLodgeAux();
     getLodgeWithCheckInOutAux();
+    getPhotosAux();
   }, []);
-
-  console.log(lodge);
-  console.log(lodgeCheckInOut);
-
-  const getDescription = (descriptions) => {
-    if (!descriptions) return t("noDescription");
-
-    let locale = currentLanguage;
-    if (locale === "en") {
-      locale = "en-gb";
-    }
-
-    const descriptionObj = descriptions.find(
-      (desc) => desc.languagecode === locale
-    );
-    return descriptionObj ? descriptionObj.description : t("noDescription");
-  };
 
   return (
     <Suspense fallback="loading">
@@ -85,34 +76,21 @@ export default function LodgeApiDetails() {
             </span>
           </div>
           <div className="lodgeApiDetails-userAvatar">
-            <User
-              name="Gleen D. Fogel"
-              description={
-                <Link
-                  onClick={() => {
-                    startTransition(() => {
-                      navigate(`/users/LodgeOwner@apibooking.com`);
-                    });
-                  }}
-                  size="sm"
-                >
-                  LodgeOwner@apibooking.com
-                </Link>
-              }
-              avatarProps={{
-                src: `http://localhost:8080/images/LodgeOwner@apibooking.com_BookingImg.jpg`,
-              }}
-            />
+            <UserLink user={null} />
           </div>
           <div className="lodgeApiDetails-row">
             <span className="lodgeApiDetails-address">
-              {lodge?.address}, {lodgeCheckInOut?.district}, {lodge?.zip},{" "}
+              {lodge?.address}, {lodgeCheckInOut?.district}, {lodge?.zip},
               {lodge?.city}, {lodge?.country}
             </span>
           </div>
         </div>
         <Divider className="lodgeApiDetails-Hdivider" />
-        <div className="lodgeApiDetails-imageCarousel"></div>
+        <div className="w-full">
+          {photos && Array.isArray(photos) && photos?.length > 0 && (
+            <EmblaCarousel slides={photos} options={OPTIONS} />
+          )}
+        </div>
         <Divider className="lodgeApiDetails-Hdivider" />
         <div className="lodgeApiDetails-featureList">
           <ApiLodgeFeatureList lodge={lodge} />
@@ -120,92 +98,11 @@ export default function LodgeApiDetails() {
         <Divider className="lodgeApiDetails-Hdivider" />
         <div className="lodgeApiDetails-secondInputs">
           <div className="lodgeApiDetails-lodgeData">
-            <Accordion variant="light">
-              <AccordionItem
-                key="description"
-                aria-label="description"
-                indicator={<IndicatorIcon />}
-                title={t("description")}
-              >
-                {lodge && lodge.description_translations
-                  ? getDescription(lodge.description_translations)
-                  : t("noDescription")}
-              </AccordionItem>
-              <AccordionItem
-                key="check-schedule"
-                aria-label="check-schedule"
-                indicator={<IndicatorIcon />}
-                title={t("checkSchedule")}
-              >
-                {t("checkIn")}: {lodge?.checkin.from} <br />
-                {t("checkOut")}: {lodge?.checkout.to}
-              </AccordionItem>
-              <AccordionItem
-                key="moreInfo"
-                aria-label="moreInfo"
-                indicator={<IndicatorIcon />}
-                title={t("moreInfo")}
-              >
-                <Accordion variant="bordered">
-                  <AccordionItem
-                    key="coordinates"
-                    aria-label="coordinates"
-                    indicator={<IndicatorIcon />}
-                    title={t("coordinates")}
-                  >
-                    {t("lat")}: {lodge?.location.latitude} <br />
-                    {t("lon")}: {lodge?.location.longitude}
-                  </AccordionItem>
-                  <AccordionItem
-                    key="languages"
-                    aria-label="languages"
-                    indicator={<IndicatorIcon />}
-                    title={t("languages")}
-                  >
-                    {lodge?.languages_spoken.languagecode.map((code, index) => (
-                      <span key={index}>
-                        {languageMap[code] || code} <br />
-                      </span>
-                    ))}
-                  </AccordionItem>
-                  <AccordionItem
-                    key="review"
-                    aria-label="review"
-                    indicator={<IndicatorIcon />}
-                    title={t("review")}
-                  >
-                    {t("reviewCount")}: {lodge?.review_nr} <br />
-                    {t("rating")}: {lodge?.review_score} <br />
-                    {t("wifiRating")}:{" "}
-                    {lodgeCheckInOut?.wifi_review_score.rating > 0
-                      ? lodgeCheckInOut.wifi_review_score.rating
-                      : t("noRating")}
-                    <br />
-                    {t("breakfastRating")}:{" "}
-                    {lodgeCheckInOut?.breakfast_review_score.review_score > 0
-                      ? lodgeCheckInOut.breakfast_review_score.review_score
-                      : t("noRating")}
-                  </AccordionItem>
-                  <AccordionItem
-                    key="timezone"
-                    aria-label="timezone"
-                    indicator={<IndicatorIcon />}
-                    title={t("timezone")}
-                  >
-                    {t("timezone2")}: {lodgeCheckInOut?.timezone} <br />
-                  </AccordionItem>
-                </Accordion>
-              </AccordionItem>
-              <AccordionItem
-                key="contact"
-                aria-label="contact"
-                indicator={<IndicatorIcon />}
-                title={t("contact")}
-              >
-                {t("email")}: {email} <br />
-                {t("url")}: {lodge?.url}
-              </AccordionItem>
-            </Accordion>
+            <LodgeApiAccordion
+              email={email}
+              lodge={lodge}
+              lodgeCheckInOut={lodgeCheckInOut}
+            />
           </div>
           <Divider
             className="lodgeApiDetails-Vdivider"
@@ -216,17 +113,38 @@ export default function LodgeApiDetails() {
               {t("infoDates")} <br />
             </span>
             <span className="lodgeApiDetails-dates">
-              {t("arrival")}: {transformDate(checkIn)} <br />
-              {t("departure")}: {transformDate(checkOut)}
+              {t("arrival")}:{" "}
+              <span style={{ color: "var(--AppMainColor)" }}>
+                {transformDate(checkIn)}
+              </span>{" "}
+              <br />
+              {t("departure")}:{" "}
+              <span style={{ color: "var(--AppMainColor)" }}>
+                {transformDate(checkOut)}
+              </span>
             </span>
-            <span className="lodgeApiDetails-rooms">
-              {t("totalRooms")}: {lodgeCheckInOut?.available_rooms} <br />
+            <span
+              className="lodgeApiDetails-rooms"
+              style={{ display: "block" }}
+            >
+              <span>
+                {t("totalRooms")}:{" "}
+                <span style={{ color: "var(--AppMainColor)" }}>
+                  {lodgeCheckInOut?.available_rooms}
+                </span>
+              </span>
+              <br />
               {lodgeCheckInOut?.composite_price_breakdown && (
-                <>
+                <span>
                   {t("price")}:{" "}
-                  {lodgeCheckInOut.composite_price_breakdown.gross_amount.value}{" "}
-                  {" €"}
-                </>
+                  <span style={{ color: "var(--AppMainColor)" }}>
+                    {
+                      lodgeCheckInOut.composite_price_breakdown.gross_amount
+                        .value
+                    }
+                    {" €"}
+                  </span>
+                </span>
               )}
             </span>
             <div className="lodgeApiDetails-button">

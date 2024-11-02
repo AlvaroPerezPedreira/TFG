@@ -32,7 +32,11 @@ const EmblaCarousel = (props) => {
             <div className="embla__slide" key={index}>
               <div className="embla__slide__number">
                 <img
-                  src={`http://localhost:8080/images/${image.image_url}`}
+                  src={
+                    image.image_url
+                      ? `http://localhost:8080/images/${image.image_url}`
+                      : image.url_1440 || "URL_DE_IMAGEN_ALTERNATIVA"
+                  }
                   alt=""
                   className="w-full h-full object-cover rounded-3xl"
                 />

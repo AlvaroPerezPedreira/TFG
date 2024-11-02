@@ -1,27 +1,22 @@
 import "./styles/lodgedetails.css";
 
-import React, { Suspense, startTransition, useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import Navbar from "../Navbar";
 import { useParams } from "react-router-dom";
-import { User } from "@nextui-org/user";
 import { useTranslation } from "react-i18next";
-import { Link } from "@nextui-org/link";
 import { useNavigate } from "react-router-dom";
 import LodgeFeatureList from "./LodgeComponents/LodgeFeatureList";
-import { Accordion, AccordionItem } from "@nextui-org/accordion";
-import IndicatorIcon from "../../icons/IndicatorIcon";
-import { currencyConverter } from "../../Functions/currencyFunctions";
 import { handleDateChange2 } from "../../Functions/calendarFunctions";
 import { Divider } from "@nextui-org/divider";
 import { DateRangePicker } from "@nextui-org/date-picker";
 import { Button } from "@nextui-org/button";
 import useGetLodge from "../../hooks/useGetLodge";
 import EmblaCarousel from "./LodgeComponents/EmblaCarousel";
+import UserLink from "./LodgeComponents/UserLink";
+import LodgeAccordion from "./LodgeComponents/LodgeAccordion";
 
 export default function LodgeDetails() {
   const [lodge, setLodge] = useState(null);
-  const [dollars, setDollars] = useState(0);
-  const [pounds, setPounds] = useState(0);
   const [checkIn, setCheckIn] = useState(null);
   const [checkOut, setCheckOut] = useState(null);
   const [availableRooms, setAvailableRooms] = useState(0);
@@ -42,10 +37,6 @@ export default function LodgeDetails() {
     };
     getLodgeAux();
   }, []);
-
-  useEffect(() => {
-    currencyConverter({ value: lodge?.price_per_night, setDollars, setPounds });
-  }, [lodge]);
 
   console.log(lodge);
 
@@ -75,24 +66,7 @@ export default function LodgeDetails() {
             </span>
           </div>
           <div className="lodgeDetails-userAvatar">
-            <User
-              name={lodge?.user.name + " " + lodge?.user.lastname}
-              description={
-                <Link
-                  onClick={() => {
-                    startTransition(() => {
-                      navigate(`/users/${lodge?.user.email}`);
-                    });
-                  }}
-                  size="sm"
-                >
-                  {lodge?.user.email}
-                </Link>
-              }
-              avatarProps={{
-                src: `http://localhost:8080/images/${lodge?.user.avatar}`,
-              }}
-            />
+            <UserLink user={lodge?.user} />
           </div>
           <div className="lodgeDetails-row">
             <span className="lodgeDetails-address">{lodge?.lodge_address}</span>
@@ -117,44 +91,7 @@ export default function LodgeDetails() {
         <Divider className="lodgeDetails-Hdivider" />
         <div className="lodgeDetails-secondInputs">
           <div className="lodgeDetails-lodgeData">
-            <Accordion variant="light">
-              <AccordionItem
-                key="description"
-                aria-label="description"
-                indicator={<IndicatorIcon />}
-                title={t("description")}
-              >
-                {lodge?.lodge_description}
-              </AccordionItem>
-              <AccordionItem
-                key="price"
-                aria-label="price"
-                indicator={<IndicatorIcon />}
-                title={t("price")}
-              >
-                {t("euro")}: {lodge?.price_per_night} €<br />
-                {t("dollar")}: {dollars} $<br />
-                {t("pound")}: {pounds} £
-              </AccordionItem>
-              <AccordionItem
-                key="check-schedule"
-                aria-label="check-schedule"
-                indicator={<IndicatorIcon />}
-                title={t("checkSchedule")}
-              >
-                {t("checkIn")}: {lodge?.check_in} <br />
-                {t("checkOut")}: {lodge?.check_out}
-              </AccordionItem>
-              <AccordionItem
-                key="contact"
-                aria-label="contact"
-                indicator={<IndicatorIcon />}
-                title={t("contact")}
-              >
-                {t("email")}: {lodge?.lodge_email} <br />
-                {t("phone")}: {lodge?.lodge_phone}
-              </AccordionItem>
-            </Accordion>
+            <LodgeAccordion lodge={lodge} />
           </div>
           <Divider className="lodgeDetails-Vdivider" orientation="vertical" />
           <div className="lodgeDetails-lodgeAvailability">
