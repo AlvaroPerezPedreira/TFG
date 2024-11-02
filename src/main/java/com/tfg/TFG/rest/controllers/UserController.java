@@ -285,6 +285,18 @@ public class UserController {
 		userService.banUser(admin, email);
 	}
 
+	@PostMapping("/unbanUser/{email}")
+	@ResponseStatus(HttpStatus.OK)
+	public void unbanUser(@RequestAttribute Long userId, @PathVariable String email)
+			throws InstanceNotFoundException, PermissionException {
+
+		System.out.println("unban user");
+
+		User admin = userService.findById(userId);
+
+		userService.unbanUser(admin, email);
+	}
+
 	/**
 	 * Generate service token.
 	 *

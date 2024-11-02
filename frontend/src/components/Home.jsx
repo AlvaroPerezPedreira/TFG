@@ -12,7 +12,7 @@ import useGetLodges from "../hooks/useGetLodges";
 import LodgeCard from "./Lodge/LodgeComponents/LodgeCard";
 
 const Home = () => {
-  const [t] = useTranslation(["welcome"]);
+  const [t] = useTranslation(["home"]);
   const { authUser } = useAuthContext();
   let navigate = useNavigate();
   const { lodges } = useLodgeStore();
@@ -30,6 +30,10 @@ const Home = () => {
           <SearchBar />
           <LodgeBento />
           <br />
+          <br />
+          <div className="title-container">
+            <span className="title-text">{t("title")}</span>
+          </div>
           <div
             style={{
               display: "grid",

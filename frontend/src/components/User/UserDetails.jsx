@@ -10,52 +10,27 @@ import { Button } from "@nextui-org/button";
 import { useAuthContext } from "../../context/AuthContext";
 import { UserIcon } from "../../icons/UserIcon";
 import useBanUser from "../../hooks/useBanUser";
+import useUserDetails from "../../hooks/useUserDetails";
 
 function UserDetails() {
   const { email } = useParams();
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true); // Estado de carga
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const token = JSON.parse(localStorage.getItem("authUser")).serviceToken;
   const [t, i18n] = useTranslation(["updProfile"]);
   const { authUser } = useAuthContext();
-  const { banUser } = useBanUser();
+  const { banUser, unbanUser } = useBanUser();
+  const { fetchUserDetails } = useUserDetails();
 
   useEffect(() => {
-    const fetchUserDetails = async () => {
-      try {
-        const response = await fetch(
-          `http://localhost:8080/api/users/${email}`,
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              "Access-Control-Allow-Origin": "*",
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-
-        if (!response.ok) {
-          throw new Error(`Error: ${response.status}`);
-        }
-
-        const finalData = await response.json();
-        setUser(finalData);
-      } catch (error) {
-        console.error("Error fetching user details:", error);
-        setError(error.message);
-      } finally {
-        setLoading(false); // Cambia el estado de carga cuando termine la solicitud
-      }
-    };
-
-    fetchUserDetails();
-  }, [email, token]);
+    fetchUserDetails({ email, setUser, setError, setLoading });
+  }, [email]);
 
   const handleClick = async (e) => {
     e.preventDefault();
-    await banUser(email);
+    if (user.status === "ACTIVE") await banUser(email);
+    else await unbanUser(email);
+    window.location.reload();
   };
 
   // Manejo de errores
@@ -93,28 +68,32 @@ function UserDetails() {
                   name="email"
                   label={t("email")}
                   variant="underlined"
-                  value={user.email}
+                  value={user.email ?? ""}
+                  color="warning"
                   isReadOnly
                 />
                 <Input
                   name="username"
                   label={t("username")}
                   variant="underlined"
-                  value={user.username}
+                  value={user.username ?? ""}
+                  color="warning"
                   isReadOnly
                 />
                 <Input
                   name="name"
                   label={t("name")}
                   variant="underlined"
-                  value={user.name}
+                  value={user.name ?? ""}
+                  color="warning"
                   isReadOnly
                 />
                 <Input
                   name="lastname"
                   label={t("lastname")}
                   variant="underlined"
-                  value={user.lastname}
+                  value={user.lastname ?? ""}
+                  color="warning"
                   isReadOnly
                 />
               </div>
@@ -133,28 +112,32 @@ function UserDetails() {
                   name="country"
                   label={t("country")}
                   variant="underlined"
-                  value={user.country}
+                  value={user.country ?? ""}
+                  color="warning"
                   isReadOnly
                 />
                 <Input
                   name="address"
                   label={t("address")}
                   variant="underlined"
-                  value={user.address}
+                  value={t("private")}
+                  color="danger"
                   isReadOnly
                 />
                 <Input
                   name="passport"
                   label={t("passport")}
                   variant="underlined"
-                  value={user.passport}
+                  value={t("private")}
+                  color="danger"
                   isReadOnly
                 />
                 <Input
                   name="birthdate"
                   label={t("birthdate")}
                   variant="underlined"
-                  value={user.birthdate}
+                  value={user.birthdate ?? ""}
+                  color="warning"
                   isReadOnly
                 />
               </div>
@@ -176,7 +159,9 @@ function UserDetails() {
             <div className="updProfile-button-container">
               {authUser.user.role === "ADMIN" && (
                 <Button
-                  children={t("banUser")}
+                  children={
+                    user.status === "ACTIVE" ? t("banUser") : t("unbanUser")
+                  }
                   variant="bordered"
                   startContent={<UserIcon />}
                   color="danger"

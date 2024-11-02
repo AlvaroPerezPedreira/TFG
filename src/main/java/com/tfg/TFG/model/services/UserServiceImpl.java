@@ -149,4 +149,15 @@ public class UserServiceImpl implements UserService {
         bannedUser.setStatus(User.StatusType.BANNED);
     }
 
+    @Override
+    public void unbanUser(User admin, String bannedUserEmail) throws InstanceNotFoundException, PermissionException {
+        if (admin.getRole() != User.RoleType.ADMIN) {
+            throw new PermissionException();
+        }
+        User bannedUser = userDao.findByEmail(bannedUserEmail)
+                .orElseThrow(() -> new InstanceNotFoundException("project.entities.user", bannedUserEmail));
+
+        bannedUser.setStatus(User.StatusType.ACTIVE);
+    }
+
 }

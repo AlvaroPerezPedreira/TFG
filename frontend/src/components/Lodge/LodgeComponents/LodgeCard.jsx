@@ -43,7 +43,7 @@ export default function LodgeCard({
     >
       <CardHeader className="pb-3 pt-0 px-4 flex-col items-start">
         <h2 className="font-bold text-xl pb-2 text-left text-pretty">
-          {lodge_name}
+          <span style={{ color: "var(--AppMainColor)" }}>{lodge_name} </span>
         </h2>
         <small className="text-sm pb-1">
           {t("price_per_night")} {price_per_night}

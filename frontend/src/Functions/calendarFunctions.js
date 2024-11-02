@@ -62,3 +62,25 @@ export function transformDate(date) {
   const [year, month, day] = date.split('-');
   return `${day}-${month}-${year}`;
 }
+
+export function calculateCheckInOut({ setCheckIn, setCheckOut}) {
+  const CHECK_IN_DAYS = 10;
+const CHECK_OUT_DAYS = 15;
+  const today = new Date();
+
+  const checkInDate = new Date(today);
+  checkInDate.setDate(today.getDate() + CHECK_IN_DAYS);
+
+  const checkOutDate = new Date(today);
+  checkOutDate.setDate(today.getDate() + CHECK_OUT_DAYS);
+
+  const formatDate = (date) => {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Mes empieza desde 0
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  };
+
+  setCheckIn(formatDate(checkInDate));
+  setCheckOut(formatDate(checkOutDate));
+}

@@ -1,11 +1,22 @@
 import "../styles/updateProfile.css";
-import React from "react";
+import React, { startTransition } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function UpdateProfileHeaderLink() {
+  let navigate = useNavigate();
+
+  const handleClick = (e) => {
+    e.preventDefault();
+
+    startTransition(() => {
+      navigate("/");
+    });
+  };
+
   return (
     <>
-      <Link to="/" className="updProfile-deepdive-link">
+      <Link onClick={handleClick} className="updProfile-deepdive-link">
         <img
           src="/images/logo/LogoBlanco.jpg"
           alt="Logo"

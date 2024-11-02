@@ -15,5 +15,7 @@
     "invalidCountry": "Il semble que le pays saisi n'est pas reconnu. Veuillez sélectionner un pays valide",
     "changePassword": "Changer le mot de passe",
     "banUser": "Interdire l'utilisateur",
-    "noUser": "Aucun utilisateur trouvé"
+    "unbanUser": "Débannir l'utilisateur",
+    "noUser": "Aucun utilisateur trouvé",
+    "private": "Privé, regarde dans ton profil."
 }

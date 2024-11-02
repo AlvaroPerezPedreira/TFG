@@ -11,3 +11,16 @@
   width: 100%;
   max-width: 100%;
 }
+
+.title-container {
+  display: flex;
+  justify-content: flex-start; /* Alinear a la derecha */
+  margin: 20px 0; /* Margen superior e inferior */
+}
+
+.title-text {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--whiteFull); 
+}
+

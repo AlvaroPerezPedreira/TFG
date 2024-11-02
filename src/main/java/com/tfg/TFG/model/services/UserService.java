@@ -28,4 +28,7 @@ public interface UserService {
         User findByEmail(String email) throws InstanceNotFoundException;
 
         void banUser(User admin, String bannedUserEmail) throws InstanceNotFoundException, PermissionException;
+
+        void unbanUser(User admin, String bannedUserEmail) throws InstanceNotFoundException, PermissionException;
+
 }

@@ -20,9 +20,7 @@ const useGetLodges = () => {
     if (!response.ok) {
       return;
     }
-    console.log(finalData.content);
     setLodges(finalData.content);
-    console.log(lodges);
     return finalData;
   };
 

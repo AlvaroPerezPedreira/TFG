@@ -15,5 +15,7 @@
     "invalidCountry": "Parece que el país ingresado no es reconocido. Por favor, selecciona un país válido",
     "changePassword": "Cambiar contraseña",
     "banUser": "Banear usuario",
-    "noUser": "No se encontró ningún usuario"
+    "unbanUser": "Desbanear usuario",
+    "noUser": "No se encontró ningún usuario",
+    "private": "Privado, mira en tu perfil."
 }
