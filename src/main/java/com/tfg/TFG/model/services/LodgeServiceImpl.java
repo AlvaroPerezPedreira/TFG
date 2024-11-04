@@ -45,6 +45,13 @@ public class LodgeServiceImpl implements LodgeService {
     }
 
     @Override
+    public Page<Lodge> getLodgesByPlace(String place, int page, int size) {
+        PageRequest pageRequest = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "id"));
+
+        return lodgeDao.findByPlaceAndIsBannedFalse(place, pageRequest);
+    }
+
+    @Override
     public Lodge findByEmail(String email) throws InstanceNotFoundException {
         return lodgeDao.findByEmail(email)
                 .orElseThrow(() -> new InstanceNotFoundException("project.entities.lodge", email));

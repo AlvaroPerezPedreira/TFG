@@ -14,5 +14,7 @@ public interface LodgeService {
 
     Page<Lodge> getLodgesByCity(String city, int page, int size);
 
+    Page<Lodge> getLodgesByPlace(String place, int page, int size);
+
     Lodge findByEmail(String email) throws InstanceNotFoundException;
 }

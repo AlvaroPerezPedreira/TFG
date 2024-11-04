@@ -19,6 +19,9 @@ public interface LodgeDao extends JpaRepository<Lodge, Long> {
     @Query("SELECT l FROM Lodge l WHERE l.city = :city AND l.is_banned = false")
     Page<Lodge> findByCityAndIsBannedFalse(@Param("city") String city, Pageable pageable);
 
+    @Query("SELECT l FROM Lodge l WHERE (l.country = :place OR l.city = :place) AND l.is_banned = false")
+    Page<Lodge> findByPlaceAndIsBannedFalse(@Param("place") String place, Pageable pageable);
+
     @Query("SELECT l FROM Lodge l WHERE l.lodge_email = :email")
     Optional<Lodge> findByEmail(@Param("email") String email);
 }

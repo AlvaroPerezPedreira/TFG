@@ -138,10 +138,9 @@ export default function LodgeApiDetails() {
                 <span>
                   {t("price")}:{" "}
                   <span style={{ color: "var(--AppMainColor)" }}>
-                    {
-                      lodgeCheckInOut.composite_price_breakdown.gross_amount
-                        .value
-                    }
+                    {lodgeCheckInOut.composite_price_breakdown.gross_amount.value.toFixed(
+                      2
+                    )}
                     {" €"}
                   </span>
                 </span>

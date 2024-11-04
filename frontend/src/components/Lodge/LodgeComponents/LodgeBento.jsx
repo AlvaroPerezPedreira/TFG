@@ -42,7 +42,10 @@ export default function LodgeBento() {
 
   return (
     <div id="bento-div" className="bt-div">
-      <div className="bento-item bento-item-1" onClick={handleClick("USA")}>
+      <div
+        className="bento-item bento-item-1"
+        onClick={handleClick("United States of America")}
+      >
         <img src="http://localhost:8080/images/bento/USABento.jpg" alt="" />
       </div>
       <div className="bento-item bento-item-2" onClick={handleClick("Italy")}>

@@ -57,6 +57,18 @@ public class LodgeController {
         return ResponseEntity.ok(lodges);
     }
 
+    @GetMapping("/by-place")
+    public ResponseEntity<Page<LodgeDto>> getLodgesByPlace(@RequestParam(name = "place") String city,
+            @RequestParam(name = "page", defaultValue = "0") int page,
+            @RequestParam(name = "size", defaultValue = "9") int size) {
+
+        System.out.println("getLodgesByPlace");
+
+        Page<LodgeDto> lodges = lodgeService.getLodgesByPlace(city, page, size).map(LodgeConversor::toDto);
+
+        return ResponseEntity.ok(lodges);
+    }
+
     @GetMapping("/{email}")
     public ResponseEntity<LodgeDto> getUserByEmail(@RequestAttribute Long userId, @PathVariable String email)
             throws InstanceNotFoundException, PermissionException {

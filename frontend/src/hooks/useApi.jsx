@@ -7,7 +7,7 @@ const useApi = () => {
   const { filters } = useFiltersStore();
   const { adults, children, rooms, checkIn, checkOut } = filters;
 
-  const fetchDestId = async ({ destination, setDestId }) => {
+  const fetchDestId = async ({ destination, setDestId, setDestType }) => {
     try {
       const response = await fetch(
         `https://${RAPIDAPI_HOST}/v1/hotels/locations?locale=en-gb&name=${destination}`,
@@ -22,6 +22,7 @@ const useApi = () => {
       if (response.ok) {
         const data = await response.json();
         setDestId(data[0].dest_id);
+        setDestType(data[0].dest_type);
       } else {
         console.error("Error al obtener los datos1:", response.statusText);
       }
@@ -30,9 +31,9 @@ const useApi = () => {
     }
   };
 
-  const fetchHotels = async ({ pageN, destId, setApiLodges }) => {
+  const fetchHotels = async ({ pageN, destId, destType, setApiLodges }) => {
     try {
-      let url = `https://${RAPIDAPI_HOST}/v1/hotels/search?page_number=${pageN}&adults_number=${adults}&room_number=${rooms}&units=metric&checkout_date=${checkOut}&dest_id=${destId}&filter_by_currency=EUR&dest_type=city&checkin_date=${checkIn}&order_by=popularity&locale=en-gb`;
+      let url = `https://${RAPIDAPI_HOST}/v1/hotels/search?page_number=${pageN}&adults_number=${adults}&room_number=${rooms}&units=metric&checkout_date=${checkOut}&dest_id=${destId}&filter_by_currency=EUR&dest_type=${destType}&checkin_date=${checkIn}&order_by=popularity&locale=en-gb`;
 
       if (children !== 0) {
         url += `&children_number=${children}`;

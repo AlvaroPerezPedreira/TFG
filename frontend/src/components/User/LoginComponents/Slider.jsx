@@ -27,25 +27,40 @@ export default function LoginSlider() {
         className="mySwiper"
       >
         <SwiperSlide>
-          <img src="./images/login/logImg1.jpeg" alt="" />
+          <img src="./images/login/LogV2_3.jpg" alt="" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="./images/login/logImg2.jpeg" alt="" />
+          <img src="./images/login/LogV2_2.jpg" alt="" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="./images/login/logImg3.jpeg" alt="" />
+          <img src="./images/login/LogV2_4.jpg" alt="" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="./images/login/logImg4.jpeg" alt="" />
+          <img src="./images/login/LogV2_5.jpg" alt="" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="./images/login/logImg5.jpeg" alt="" />
+          <img src="./images/login/LogV2_6.jpg" alt="" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="./images/login/logImg6.jpeg" alt="" />
+          <img src="./images/login/LogV2_7.jpg" alt="" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="./images/login/logImg7.jpeg" alt="" />
+          <img src="./images/login/LogV2_8.jpg" alt="" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="./images/login/LogV2_9.jpg" alt="" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="./images/login/LogV2_10.jpg" alt="" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="./images/login/LogV2_11.jpg" alt="" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="./images/login/LogV2_12.jpg" alt="" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src="./images/login/LogV2_13.jpg" alt="" />
         </SwiperSlide>
       </Swiper>
     </>
