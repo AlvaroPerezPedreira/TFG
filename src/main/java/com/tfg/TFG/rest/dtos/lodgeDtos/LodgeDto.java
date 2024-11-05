@@ -24,6 +24,12 @@ public class LodgeDto {
     private List<Lodge_ImageDto> images;
     private List<FeatureDto> features;
 
+    public interface AllValidations {
+    }
+
+    public interface UpdateValidations {
+    }
+
     public LodgeDto() {
     }
 
@@ -193,5 +199,13 @@ public class LodgeDto {
 
     public void setFeatures(List<FeatureDto> features) {
         this.features = features;
+    }
+
+    public List<Long> featuresToList() {
+        return features.stream().map(FeatureDto::getId).toList();
+    }
+
+    public List<String> imagesToList() {
+        return images.stream().map(Lodge_ImageDto::getImage_url).toList();
     }
 }

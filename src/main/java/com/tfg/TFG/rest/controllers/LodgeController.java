@@ -1,15 +1,24 @@
 package com.tfg.TFG.rest.controllers;
 
+import java.net.URI;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 
+import com.tfg.TFG.model.common.exceptions.DuplicateInstanceException;
 import com.tfg.TFG.model.common.exceptions.InstanceNotFoundException;
 import com.tfg.TFG.model.entities.Lodge;
 import com.tfg.TFG.model.services.LodgeService;
+import com.tfg.TFG.model.services.exceptions.InvalidBirthdateException;
+import com.tfg.TFG.model.services.exceptions.InvalidEmailException;
 import com.tfg.TFG.model.services.exceptions.PermissionException;
 import com.tfg.TFG.rest.dtos.lodgeDtos.*;
+import com.tfg.TFG.rest.dtos.userDtos.AuthenticatedUserDto;
+import com.tfg.TFG.rest.dtos.userDtos.UserDto;
 
 /**
  * The Class LodgeController.
@@ -79,5 +88,25 @@ public class LodgeController {
         Lodge lodge = lodgeService.findByEmail(email);
 
         return ResponseEntity.ok(LodgeConversor.toDto(lodge));
+    }
+
+    @PostMapping("/createPost")
+    public ResponseEntity<LodgeDto> createPost(@RequestAttribute Long userId,
+            @Validated({ LodgeDto.AllValidations.class }) @RequestBody LodgeDto lodgeDto)
+            throws InstanceNotFoundException {
+
+        System.out.println("createPost");
+
+        Lodge lodge = lodgeService.createLodge(userId, lodgeDto.getLodge_email(), lodgeDto.getLodge_name(),
+                lodgeDto.getLodge_description(),
+                lodgeDto.getLodge_address(), lodgeDto.getLodge_phone(), lodgeDto.getCity(), lodgeDto.getCountry(),
+                lodgeDto.getAvailable_rooms(), lodgeDto.getPrice_per_night(), lodgeDto.getCheck_in(),
+                lodgeDto.getCheck_out(), lodgeDto.featuresToList(), lodgeDto.imagesToList());
+
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{email}")
+                .buildAndExpand(lodge.getLodge_email())
+                .toUri();
+
+        return ResponseEntity.created(location).body(LodgeConversor.toDto(lodge));
     }
 }

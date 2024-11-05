@@ -75,6 +75,24 @@ public class Lodge {
     public Lodge(String lodge_email, String lodge_name, String lodge_description, String lodge_address,
             String lodge_phone, String city,
             String country, int available_rooms, double price_per_night, String check_in, String check_out,
+            User user) {
+        this.lodge_email = lodge_email;
+        this.lodge_name = lodge_name;
+        this.lodge_description = lodge_description;
+        this.lodge_address = lodge_address;
+        this.lodge_phone = lodge_phone;
+        this.city = city;
+        this.country = country;
+        this.available_rooms = available_rooms;
+        this.price_per_night = price_per_night;
+        this.check_in = check_in;
+        this.check_out = check_out;
+        this.user = user;
+    }
+
+    public Lodge(String lodge_email, String lodge_name, String lodge_description, String lodge_address,
+            String lodge_phone, String city,
+            String country, int available_rooms, double price_per_night, String check_in, String check_out,
             Boolean is_closed, User user) {
         this.lodge_email = lodge_email;
         this.lodge_name = lodge_name;
