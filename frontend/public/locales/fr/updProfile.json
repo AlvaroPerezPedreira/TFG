@@ -4,7 +4,8 @@
     "lastname": "Prénom",
     "phone": "Téléphone",
     "birthdate": "Date de naissance",
-    "country": "Pays (En anglais)",
+    "country": "Pays",
+    "country_tt": "Doit être en anglais",
     "gender": "Genre",
     "male": "Homme",
     "female": "Femme",
@@ -17,5 +18,7 @@
     "banUser": "Interdire l'utilisateur",
     "unbanUser": "Débannir l'utilisateur",
     "noUser": "Aucun utilisateur trouvé",
-    "private": "Privé, regarde dans ton profil."
+    "private": "Privé, regarde dans ton profil.",
+    "updateProfile": "Mettre à jour le profil",
+    "userDetails": "Détails du profil de l'utilisateur"
 }

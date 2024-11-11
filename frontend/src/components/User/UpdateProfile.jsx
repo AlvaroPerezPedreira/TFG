@@ -16,6 +16,8 @@ import UpdateProfileHeaderLink from "./UpdateProfileComponents/UpdateProfileHead
 import { CountryList } from "../../utils/CountryListConstant";
 import { useNavigate } from "react-router-dom";
 import { Autocomplete, AutocompleteItem } from "@nextui-org/autocomplete";
+import { Tooltip } from "@nextui-org/tooltip";
+import AppNavbar from "../AppNavbar";
 
 const Auth = () => {
   const { updateProfile } = useUpdateProfile();
@@ -38,15 +40,11 @@ const Auth = () => {
 
   return (
     <Suspense fallback="loading">
+      <AppNavbar />
       <div className="updProfile-container">
         <div className="updProfile-form-container">
           <div className="updProfile-header-container">
-            <div className="updProfile-logo">
-              <UpdateProfileHeaderLink />
-            </div>
-            <div className="updProfile-dropdown-container">
-              <FlagDropdown />
-            </div>
+            <span>{t("updateProfile")}</span>
           </div>
 
           <form className="updProfile-form" onSubmit={handleSubmit}>
@@ -64,21 +62,29 @@ const Auth = () => {
                 <UpdateProfileSecondInputs />
 
                 <div className="updProfile-country">
-                  <Autocomplete
-                    defaultItems={CountryList}
-                    placeholder={t("country")}
-                    variant="underlined"
-                    className="max-w"
-                    defaultInputValue={country || ""}
-                    onInputChange={setCountry}
-                    aria-label="country"
+                  <Tooltip
+                    showArrow={true}
+                    content={t("country_tt")}
+                    size="sm"
+                    placement="bottom-start"
+                    offset={5}
                   >
-                    {(country) => (
-                      <AutocompleteItem key={country.value}>
-                        {country.label}
-                      </AutocompleteItem>
-                    )}
-                  </Autocomplete>
+                    <Autocomplete
+                      defaultItems={CountryList}
+                      placeholder={t("country")}
+                      variant="underlined"
+                      className="max-w"
+                      defaultInputValue={country || ""}
+                      onInputChange={setCountry}
+                      aria-label="country"
+                    >
+                      {(country) => (
+                        <AutocompleteItem key={country.value}>
+                          {country.label}
+                        </AutocompleteItem>
+                      )}
+                    </Autocomplete>
+                  </Tooltip>
                 </div>
 
                 <div className="updProfile-birthdate-form-group">

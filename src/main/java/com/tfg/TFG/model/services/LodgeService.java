@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.data.domain.Page;
 
 import com.tfg.TFG.model.common.exceptions.InstanceNotFoundException;
+import com.tfg.TFG.model.entities.Feature;
 import com.tfg.TFG.model.entities.Lodge;
 
 public interface LodgeService {
@@ -23,4 +24,6 @@ public interface LodgeService {
             String lodgeAddress, String lodgePhone, String city, String country, int availabeRooms,
             double pricePerNight, String checkIn, String checkOut, List<Long> featureIds, List<String> imageUrls)
             throws InstanceNotFoundException;
+
+    List<Feature> getAllFeatures();
 }

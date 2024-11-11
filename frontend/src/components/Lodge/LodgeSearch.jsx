@@ -1,11 +1,11 @@
 import "./styles/lodgesearch.css";
 import React, { Suspense, useEffect, useState } from "react";
-import Navbar from "../Navbar";
 import SearchBar from "../GlobalComponents/SearchBar";
 import { useLocation, useParams } from "react-router-dom";
 import LodgeCard from "./LodgeComponents/LodgeCard";
 import useApi from "../../hooks/useApi";
 import useGetLodgesByPlace from "../../hooks/useGetLodgesByPlace";
+import AppNavbar from "../AppNavbar";
 
 export default function LodgeSearch() {
   const { destination } = useParams();
@@ -39,7 +39,7 @@ export default function LodgeSearch() {
 
   return (
     <Suspense fallback="loading">
-      <Navbar />
+      <AppNavbar />
       <div className="lodgeSearch-container">
         <SearchBar />
         <br />

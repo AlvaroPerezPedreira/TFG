@@ -21,8 +21,16 @@
 }
 
 .updProfile-header-container {
-  display: flex;
-  padding: 0px 10px;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.updProfile-header-container span {
+  color: var(--AppMainColor);
+  padding: 10px;
+  display: inline-block;
 }
 
 .updProfile-logo {

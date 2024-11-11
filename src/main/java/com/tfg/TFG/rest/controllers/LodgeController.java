@@ -1,6 +1,8 @@
 package com.tfg.TFG.rest.controllers;
 
 import java.net.URI;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -109,4 +111,16 @@ public class LodgeController {
 
         return ResponseEntity.created(location).body(LodgeConversor.toDto(lodge));
     }
+
+    @GetMapping("/getFeatures")
+    public ResponseEntity<List<FeatureDto>> getAllFeatures() {
+
+        System.out.println("getAllFeatures");
+
+        List<FeatureDto> features = lodgeService.getAllFeatures().stream().map(FeatureConversor::toDto)
+                .collect(Collectors.toList());
+
+        return ResponseEntity.ok(features);
+    }
+
 }

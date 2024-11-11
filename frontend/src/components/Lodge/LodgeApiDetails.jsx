@@ -1,10 +1,8 @@
 import "./styles/lodgeapidetails.css";
 
 import React, { Suspense, useEffect, useState } from "react";
-import Navbar from "../Navbar";
 import { useLocation, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
 import ApiLodgeFeatureList from "./LodgeComponents/ApiLodgeFeatureList";
 import { transformDate } from "../../Functions/calendarFunctions";
 import { Divider } from "@nextui-org/divider";
@@ -13,9 +11,9 @@ import useApi from "../../hooks/useApi";
 import EmblaCarousel from "./LodgeComponents/EmblaCarousel";
 import UserLink from "./LodgeComponents/UserLink";
 import LodgeApiAccordion from "./LodgeComponents/LodgeApiAccordion";
+import AppNavbar from "../AppNavbar";
 
 export default function LodgeApiDetails() {
-  let navigate = useNavigate();
   const [t, i18n] = useTranslation(["lodgeApiDetails"]);
   const currentLanguage = i18n.language;
   const [lodge, setLodge] = useState(null);
@@ -61,7 +59,7 @@ export default function LodgeApiDetails() {
 
   return (
     <Suspense fallback="loading">
-      <Navbar />
+      <AppNavbar />
       <div className="lodgeApiDetails-container">
         <div className="lodgeApiDetails-firstinputs-container">
           <div className="lodgeApiDetails-row">

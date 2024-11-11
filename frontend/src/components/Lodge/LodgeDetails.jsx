@@ -1,10 +1,8 @@
 import "./styles/lodgedetails.css";
 
 import React, { Suspense, useEffect, useState } from "react";
-import Navbar from "../Navbar";
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
 import LodgeFeatureList from "./LodgeComponents/LodgeFeatureList";
 import { handleDateChange2 } from "../../Functions/calendarFunctions";
 import { Divider } from "@nextui-org/divider";
@@ -14,6 +12,7 @@ import useGetLodge from "../../hooks/useGetLodge";
 import EmblaCarousel from "./LodgeComponents/EmblaCarousel";
 import UserLink from "./LodgeComponents/UserLink";
 import LodgeAccordion from "./LodgeComponents/LodgeAccordion";
+import AppNavbar from "../AppNavbar";
 
 export default function LodgeDetails() {
   const [lodge, setLodge] = useState(null);
@@ -26,7 +25,6 @@ export default function LodgeDetails() {
 
   const [t, i18n] = useTranslation(["lodgeDetails"]);
   const currentLanguage = i18n.language;
-  let navigate = useNavigate();
 
   const OPTIONS = { loop: true };
 
@@ -51,7 +49,7 @@ export default function LodgeDetails() {
 
   return (
     <Suspense fallback="loading">
-      <Navbar />
+      <AppNavbar />
       <div className="lodgeDetails-container">
         <div className="lodgeDetails-firstinputs-container">
           <div className="lodgeDetails-row">

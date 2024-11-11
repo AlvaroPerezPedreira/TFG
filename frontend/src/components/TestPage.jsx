@@ -1,18 +1,25 @@
 import "./styles/home.css";
-import React, { useEffect } from "react";
-import { startTransition, Suspense } from "react";
-import Navbar from "./Navbar";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Suspense } from "react";
+import AppNavbar from "./AppNavbar";
+import useFeatures from "../hooks/useFeatures";
 
 const TestPage = () => {
-  let navigate = useNavigate();
+  const [features, setFeatures] = useState([]);
+
+  const { getAllFeatures } = useFeatures();
+
+  useEffect(() => {
+    getAllFeatures({ setFeatures });
+  }, []);
 
   return (
     <>
       <Suspense fallback="loading">
-        <Navbar />
+        <AppNavbar />
         <div className="home-container">
           <span>Test</span>
+          <button onClick={() => console.log(features)}>Features</button>
         </div>
       </Suspense>
     </>

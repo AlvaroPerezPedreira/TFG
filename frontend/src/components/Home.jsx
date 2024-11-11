@@ -1,20 +1,15 @@
-import React, { startTransition, Suspense, useEffect } from "react";
+import React, { Suspense, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import Navbar from "./Navbar";
 import "./styles/home.css";
-import { useAuthContext } from "../context/AuthContext";
-import { Button } from "@nextui-org/button";
-import { useNavigate } from "react-router-dom";
 import SearchBar from "./GlobalComponents/SearchBar";
 import LodgeBento from "./Lodge/LodgeComponents/LodgeBento";
 import { useLodgeStore } from "../store/useLodgeStore";
 import useGetLodges from "../hooks/useGetLodges";
 import LodgeCard from "./Lodge/LodgeComponents/LodgeCard";
+import AppNavbar from "./AppNavbar";
 
 const Home = () => {
   const [t] = useTranslation(["home"]);
-  const { authUser } = useAuthContext();
-  let navigate = useNavigate();
   const { lodges } = useLodgeStore();
   const { getLodges } = useGetLodges();
 
@@ -25,7 +20,7 @@ const Home = () => {
   return (
     <>
       <Suspense fallback="loading">
-        <Navbar />
+        <AppNavbar />
         <div className="home-container">
           <SearchBar />
           <LodgeBento />

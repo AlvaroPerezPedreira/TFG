@@ -11,6 +11,7 @@ import { useAuthContext } from "../../context/AuthContext";
 import { UserIcon } from "../../icons/UserIcon";
 import useBanUser from "../../hooks/useBanUser";
 import useUserDetails from "../../hooks/useUserDetails";
+import AppNavbar from "../AppNavbar";
 
 function UserDetails() {
   const { email } = useParams();
@@ -50,15 +51,11 @@ function UserDetails() {
 
   return (
     <Suspense fallback="loading">
+      <AppNavbar />
       <div className="updProfile-container">
         <div className="updProfile-form-container">
           <div className="updProfile-header-container">
-            <div className="updProfile-logo">
-              <UpdateProfileHeaderLink />
-            </div>
-            <div className="updProfile-dropdown-container">
-              <FlagDropdown />
-            </div>
+            <span>{t("userDetails")}</span>
           </div>
 
           <div className="updProfile-form">

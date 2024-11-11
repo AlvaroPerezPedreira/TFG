@@ -111,4 +111,9 @@ public class LodgeServiceImpl implements LodgeService {
         return savedLodge;
     }
 
+    @Override
+    public List<Feature> getAllFeatures() {
+        return featureDao.findAll();
+    }
+
 }

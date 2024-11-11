@@ -1,0 +1,108 @@
+/* Eliminar márgenes y padding innecesarios del contenedor principal del navbar */
+.navbar-container {
+    background-color: var(--whiteFull) !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    position: sticky !important;
+    top: 0 !important;
+    inset-x: 0 !important;
+    z-index: 1000 !important; /* Asegurarse de que el navbar esté en el frente */
+  }
+  
+  /* Estilo para el logo y el título */
+  .navbar-title {
+    display: flex !important;
+    align-items: center !important;
+    font-size: 1.5rem !important;
+    height: 100% !important;
+    font-family: "Caveat", sans-serif !important;
+    flex-basis: auto !important;
+    justify-content: flex-start !important;
+    gap: 10px !important;
+  }
+  
+  /* Ajustes de botones */
+  .navbar-button {
+    border-radius: 36px !important;
+    border: 2px solid darkslategrey !important;
+    padding: 6px 12px !important;
+    font-size: 1rem !important;
+  }
+  
+  /* Estilo para los contenedores de banderas o dropdowns */
+  .navbar-flag-container {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.5rem !important;
+  }
+  
+  /* Ajuste de tamaño del logo */
+  .navbar-logo-img {
+    margin-right: 10px !important;
+    height: 50px !important;
+    width: auto !important;
+  }
+  
+  /* Estilo para el enlace principal (DeepDive) */
+  .navbar-deepdive-link {
+    color: var(--blackFull) !important;
+    display: flex !important;
+    text-decoration: none !important;
+    align-items: center !important;
+    font-weight: bold !important;
+    font-size: 32px !important;
+  }
+  
+  /* Ajuste de estilo para los dropdowns (avatar, usuario, etc.) */
+  .navbar-dropdown {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+  }
+  
+  /* Estilo para el avatar */
+  .navbar-avatar {
+    height: 28px !important;
+    width: 28px !important;
+    object-fit: cover !important;
+    border-radius: 9999px !important;
+  }
+  
+  /* Estilo para los enlaces del navbar */
+  .navbar-links {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 20px !important;
+    flex-grow: 1 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  /* Estilo para cada enlace dentro del navbar */
+  .navbar-link {
+    color: var(--blackFull) !important;
+    text-decoration: none !important;
+    font-family: "Orbitron", sans-serif !important;
+    font-size: 16px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  /* Estilo para el contenido del navbar */
+  .navbar-content {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  /* Ajuste de los items del navbar */
+  .navbar-item {
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+  }
+  

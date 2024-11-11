@@ -55,6 +55,11 @@ public class SecurityConfig {
 						 .requestMatchers(antMatcher(HttpMethod.POST, "/users/changePassword")).permitAll()
 						 .requestMatchers(antMatcher(HttpMethod.GET, "/users/{email}")).permitAll()
 						 .requestMatchers(antMatcher(HttpMethod.PUT, "/users/*")).hasAnyRole("USER", "ADMIN")
+						 .requestMatchers(antMatcher(HttpMethod.PUT, "/lodges/*")).hasAnyRole("USER", "ADMIN")
+						 .requestMatchers(antMatcher(HttpMethod.GET, "/lodges/by-place")).permitAll()
+						 .requestMatchers(antMatcher(HttpMethod.GET, "/lodges/{email}")).permitAll()
+						 .requestMatchers(antMatcher(HttpMethod.POST, "/lodges/createPost")).permitAll()
+						 .requestMatchers(antMatcher(HttpMethod.GET, "/lodges/getFeatures")).permitAll()
 						 .requestMatchers(antMatcher(HttpMethod.POST, "/images/uploadImage")).permitAll()
 						 .requestMatchers(antMatcher("/images/**")).permitAll()  // Permitir acceso a las imágenes
 						 .anyRequest().permitAll()
