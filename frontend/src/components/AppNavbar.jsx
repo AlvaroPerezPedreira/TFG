@@ -13,7 +13,7 @@ import {
   NavbarContent,
   NavbarItem,
 } from "@nextui-org/navbar";
-import { Button } from "@nextui-org/button";
+import { NbSearchIcon, NbHomeIcon, NbContactIcon } from "../icons/NavbarIcons";
 
 const AppNavbar = () => {
   const [t] = useTranslation(["navbar"]);
@@ -41,7 +41,30 @@ const AppNavbar = () => {
               }}
               size="md"
             >
-              Home
+              <div className="navbar-icon-text-container">
+                <NbHomeIcon />
+                <span className="search-text">{t("home")}</span>
+              </div>
+            </Link>
+          </NavbarItem>
+          <NavbarItem
+            className="navbar-links"
+            isActive={isActivePage("/searchLodges")}
+          >
+            <Link
+              className="navbar-link"
+              underline="hover"
+              onClick={() => {
+                startTransition(() => {
+                  navigate("/searchLodges");
+                });
+              }}
+              size="md"
+            >
+              <div className="navbar-icon-text-container">
+                <NbSearchIcon />
+                <span>{t("search")}</span>
+              </div>
             </Link>
           </NavbarItem>
           <NavbarItem className="navbar-links" isActive={isActivePage("/test")}>
@@ -72,7 +95,10 @@ const AppNavbar = () => {
                 });
               }}
             >
-              {t("contact")}
+              <div className="navbar-icon-text-container">
+                <NbContactIcon />
+                <span>{t("contact")}</span>
+              </div>
             </Link>
           </NavbarItem>
         </NavbarContent>
