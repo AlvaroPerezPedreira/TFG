@@ -6,7 +6,6 @@
     width: 100% !important;
     position: sticky !important;
     top: 0 !important;
-    inset-x: 0 !important;
     z-index: 1000 !important; /* Asegurarse de que el navbar esté en el frente */
   }
   
@@ -114,7 +113,7 @@
   
   .navbar-icon-text-container svg {
     margin-bottom: 3px; /* Espacio entre el icono y el texto */
-    width: 16px;  /* Tamaño del icono */
-    height: 16px; /* Tamaño del icono */
+    width: 20px;  /* Tamaño del icono */
+    height: 20px; /* Tamaño del icono */
   }
   
