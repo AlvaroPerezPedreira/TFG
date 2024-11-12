@@ -1,4 +1,24 @@
 {
     "feature": "Feature",
-    "category": "Category"
+    "category": "Category",
+    "checkIn": "Check-in",
+    "checkOut": "Check-out",
+    "name": "Lodge name",
+    "address": "Address",
+    "city": "City",
+    "country": "Country",
+    "country_tt": "Must be in English",
+    "create": "Register lodge",
+    "description": "Description of the Lodge",
+    "description_ph": "Briefly describe your lodge and its features",
+    "checkSchedule": "Check-in/Check-out schedule",
+    "priceInfo": "Price and availability",
+    "pricePerNight": "Price per night",
+    "pricePerNight_tt": "The price must be in euros",
+    "rooms": "Rooms available",
+    "contact": "Contact",
+    "email": "Contact email of the lodge",
+    "phone": "Phone number of the lodge"
 }
+
+

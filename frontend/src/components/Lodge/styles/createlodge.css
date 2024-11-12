@@ -12,10 +12,30 @@
     max-width: 100%;
   }
 
+.createLodge-firstInputs {
+
+}
+
+.createLodge-secondInputs {
+
+}
+
+.createLodge-country {
+
+}
+
+.createLodge-description {
+
+}
+
 .createLodge-featureTable {
     max-width: 800px;
     border: 1px solid var(--whiteFull);
     border-radius: 24px;
     padding: 16px;
     margin: 20px;
+}
+
+.createLodge-button-container {
+
 }

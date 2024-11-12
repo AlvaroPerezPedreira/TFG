@@ -84,3 +84,13 @@ const CHECK_OUT_DAYS = 15;
   setCheckIn(formatDate(checkInDate));
   setCheckOut(formatDate(checkOutDate));
 }
+
+export function handleTimeChange(time, type) {
+  const hour = String(time.hour).padStart(2, "0");
+  const minute = String(time.minute).padStart(2, "0");
+  if (type === "checkIn") {
+    return `${hour}:${minute}`;
+  } else {
+    return `${hour}:${minute}`;
+  }
+}

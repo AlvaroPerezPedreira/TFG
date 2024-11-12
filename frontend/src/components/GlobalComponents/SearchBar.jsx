@@ -88,6 +88,7 @@ export default function SearchBar() {
             placeholder={t("where_ph")}
             ref={whereRef}
             variant="bordered"
+            color="warning"
             isRequired
           />
           <Input
@@ -95,6 +96,7 @@ export default function SearchBar() {
             placeholder={t("adults_ph")}
             ref={adultsRef}
             variant="bordered"
+            color="warning"
             isRequired
           />
           <Input
@@ -102,12 +104,14 @@ export default function SearchBar() {
             placeholder={t("children_ph")}
             ref={childrenRef}
             variant="bordered"
+            color="warning"
           />
           <Input
             label={t("rooms")}
             placeholder={t("rooms_ph")}
             ref={roomsRef}
             variant="bordered"
+            color="warning"
             isRequired
           />
           <DateRangePicker
@@ -117,6 +121,7 @@ export default function SearchBar() {
             startName="checkIn"
             endName="checkOut"
             isRequired
+            color="warning"
             onChange={handleDateChangeAux}
           />
         </div>

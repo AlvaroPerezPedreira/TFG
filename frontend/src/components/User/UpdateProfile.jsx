@@ -73,6 +73,7 @@ const Auth = () => {
                       defaultItems={CountryList}
                       placeholder={t("country")}
                       variant="underlined"
+                      color="warning"
                       className="max-w"
                       defaultInputValue={country || ""}
                       onInputChange={setCountry}

@@ -1,4 +1,22 @@
 {
     "feature": "Servicio",
-    "category": "Categoría"
+    "category": "Categoría",
+    "checkIn": "Hora de check-in",
+    "checkOut": "Hora de check-out",
+    "name": "Nombre de la alojamiento",
+    "address": "Dirección",
+    "city": "Ciudad",
+    "country": "País",
+    "country_tt": "Debe estar en inglés",
+    "create": "Registrar alojamiento",
+    "description": "Descripción del alojamiento",
+    "description_ph": "Describa brevemente su alojamiento y sus características",
+    "checkSchedule": "Horario de check-in/check-out",
+    "priceInfo": "Precio y disponibilidad",
+    "pricePerNight": "Precio por noche",
+    "pricePerNight_tt": "El precio debe estar en euros",
+    "rooms": "Habitaciones disponibles",
+    "contact": "Contacto",
+    "email": "Correo de contacto del alojamiento",
+    "phone": "Teléfono del alojamiento"
 }

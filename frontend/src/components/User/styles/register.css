@@ -84,8 +84,11 @@
   }
   
   .register-button-container {
-    width: 100%;
+    display: flex;
+    justify-content: center;
+    width: 70%;
     margin-top: 10px;
+    margin: 10px auto;
   }
   
   .register-footer {
