@@ -1,6 +1,7 @@
 {
     "feature": "Servicio",
     "category": "Categoría",
+    "featureTitle": "Características y servicios disponibles",
     "checkIn": "Hora de check-in",
     "checkOut": "Hora de check-out",
     "name": "Nombre de la alojamiento",
@@ -18,5 +19,7 @@
     "rooms": "Habitaciones disponibles",
     "contact": "Contacto",
     "email": "Correo de contacto del alojamiento",
-    "phone": "Teléfono del alojamiento"
+    "phone": "Teléfono del alojamiento",
+    "mainImageTitle": "Seleccionar la imagen de la portada",
+    "chooseImg": "Seleccionar imagen"
 }

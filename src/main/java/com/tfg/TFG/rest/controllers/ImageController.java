@@ -73,6 +73,33 @@ public class ImageController {
         }
     }
 
+    @PostMapping("/uploadLodgeImage")
+    public ResponseEntity<String> uploadLodgeImage(@RequestParam String lodgeEmail,
+            @RequestParam("file") MultipartFile file)
+            throws InstanceNotFoundException {
+        try {
+            // Crear el directorio si no existe
+            Path uploadPath = Paths.get(UPLOAD_DIR);
+            if (!Files.exists(uploadPath)) {
+                Files.createDirectories(uploadPath);
+            }
+
+            // Obtener el nombre original del archivo
+            String originalFilename = file.getOriginalFilename();
+
+            // Crear el nuevo nombre del archivo (email_nombreOriginal.extension)
+            String newFilename = lodgeEmail + "_" + originalFilename;
+
+            // Crear el archivo en la ubicación de destino con el nuevo nombre
+            Path path = uploadPath.resolve(newFilename);
+            Files.write(path, file.getBytes());
+
+            return ResponseEntity.ok(newFilename);
+        } catch (IOException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al subir el archivo");
+        }
+    }
+
     @GetMapping("/{filename}")
     public ResponseEntity<Resource> getImageByName(@PathVariable String filename) {
         try {

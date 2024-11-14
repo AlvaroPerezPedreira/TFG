@@ -1,6 +1,7 @@
 {
     "feature": "Feature",
     "category": "Category",
+    "featureTitle": "Available features and services",
     "checkIn": "Check-in",
     "checkOut": "Check-out",
     "name": "Lodge name",
@@ -18,7 +19,9 @@
     "rooms": "Rooms available",
     "contact": "Contact",
     "email": "Contact email of the lodge",
-    "phone": "Phone number of the lodge"
+    "phone": "Phone number of the lodge",
+    "mainImageTitle": "Select the cover image",
+    "chooseImg": "Select image"
 }
 
 

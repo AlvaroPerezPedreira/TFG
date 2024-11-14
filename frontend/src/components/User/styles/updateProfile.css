@@ -177,23 +177,24 @@
 
 .updProfile-changePwd-link {
   display: flex;
-  justify-content: start;
+  justify-content: center;
   margin-top: 75px;
 }
 
 .updProfile-changePassword-button {
   background-color: transparent;
-  border: none;
+  border: 2px solid var(--AppMainColor);
+  border-radius: 8px;
   display: flex;
   justify-content: center;
   text-align: center;
   align-items: center;
   text-decoration: none;
   color: var(--AppMainColor);
-  text-decoration: underline;
   cursor: pointer;
   margin-left: 5px;
 }
+
 
 @media screen and (max-width: 768px) {
   .updProfile-personal-data {

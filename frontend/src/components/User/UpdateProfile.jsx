@@ -18,6 +18,7 @@ import { useNavigate } from "react-router-dom";
 import { Autocomplete, AutocompleteItem } from "@nextui-org/autocomplete";
 import { Tooltip } from "@nextui-org/tooltip";
 import AppNavbar from "../AppNavbar";
+import { LockIcon } from "../../icons/MainAppIcons";
 
 const Auth = () => {
   const { updateProfile } = useUpdateProfile();
@@ -102,17 +103,20 @@ const Auth = () => {
                 </div>
 
                 <div className="updProfile-changePwd-link">
-                  <button
-                    type="button"
+                  <Button
+                    color="warning"
                     onClick={() => {
                       startTransition(() => {
                         navigate("/changePassword");
                       });
                     }}
+                    variant="bordered"
+                    radius="sm"
+                    startContent={<LockIcon />}
                     className="updProfile-changePassword-button"
                   >
                     {t("changePassword")}
-                  </button>
+                  </Button>
                 </div>
               </div>
             </div>

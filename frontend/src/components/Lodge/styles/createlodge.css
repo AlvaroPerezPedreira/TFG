@@ -10,32 +10,55 @@
 .createLodge-container > * {
     width: 100%;
     max-width: 100%;
-  }
+}
 
-.createLodge-firstInputs {
+/* First inputs (name, address, city) */
+.createLodge-firstInputsContainer {
 
 }
 
-.createLodge-secondInputs {
+/* Second inputs (checkIn, checkOut, price, rooms, email, phone) */
+.createLodge-secondInputsContainer {
 
 }
 
-.createLodge-country {
+/* Country */
+.createLodge-countryContainer {
 
 }
 
-.createLodge-description {
+/* Description */
+.createLodge-descriptionContainer {
 
 }
 
-.createLodge-featureTable {
+/* Feature table */
+.createLodge-featureTableContainer {
     max-width: 800px;
     border: 1px solid var(--whiteFull);
     border-radius: 24px;
     padding: 16px;
     margin: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
-.createLodge-button-container {
+.createLodge-featureTitle {
+    margin-bottom: 20px;
+    margin-left: 12px;
+}
+
+/* Main Image */
+.createLodge-mainImageContainer  {}
+
+.createLodge-mainImageTitle {}
+
+.createLodge-mainImagePreview {}
+
+.createLodge-mainImageButton {}
+
+
+/* Submit button */
+.createLodge-buttonContainer {
 
 }

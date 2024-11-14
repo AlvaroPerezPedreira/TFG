@@ -4,7 +4,6 @@ import { useTranslation } from "react-i18next";
 import { Suspense } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import FlagDropdown from "./GlobalComponents/FlagDropdown";
-import NavBarLink from "./GlobalComponents/NavBarLink";
 import { Link } from "@nextui-org/link";
 import UserDropdown from "./GlobalComponents/UserDropdown";
 import {
@@ -22,11 +21,30 @@ const AppNavbar = () => {
 
   const isActivePage = (path) => location.pathname === path;
 
+  const handleClick = (e) => {
+    e.preventDefault();
+    startTransition(() => {
+      navigate("/");
+    });
+  };
+
   return (
     <Suspense fallback="loading">
       <Navbar maxWidth="full" className="navbar-container">
         <NavbarBrand>
-          <NavBarLink />
+          <Link
+            className="navbar-deepdive-link"
+            onClick={handleClick}
+            isBlock
+            color=""
+          >
+            <img
+              src="/images/logo/LogoNegro.jpg"
+              alt="Logo"
+              className="navbar-logo-img"
+            />
+            <span style={{ fontFamily: "Caveat, sans-serif" }}>DeepDive</span>
+          </Link>
         </NavbarBrand>
 
         <NavbarContent className="hidden md:flex gap-8" justify="center">

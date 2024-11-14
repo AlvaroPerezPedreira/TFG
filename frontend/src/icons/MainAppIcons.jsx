@@ -69,48 +69,20 @@ export function PhoneIcon() {
 export function LockIcon() {
   return (
     <svg
-      id="Layer_1"
-      data-name="Layer 1"
       xmlns="http://www.w3.org/2000/svg"
+      fill="none"
       viewBox="0 0 24 24"
       strokeWidth="1.5"
+      stroke="#FFDB58"
       width="20"
       height="20"
-      color="#FFDB58"
+      className="size-6"
     >
-      <defs>
-        <style>
-          {`.cls-6374f8d9b67f094e4896c64a-1 {
-            fill: none;
-            stroke: currentColor;
-            stroke-miterlimit: 10;
-          }`}
-        </style>
-      </defs>
-      <rect
-        className="cls-6374f8d9b67f094e4896c64a-1"
-        x="5.32"
-        y="10.09"
-        width="13.36"
-        height="12.41"
-      ></rect>
       <path
-        className="cls-6374f8d9b67f094e4896c64a-1"
-        d="M12,1.5h0a4.77,4.77,0,0,1,4.77,4.77v3.82a0,0,0,0,1,0,0H7.23a0,0,0,0,1,0,0V6.27A4.77,4.77,0,0,1,12,1.5Z"
-      ></path>
-      <circle
-        className="cls-6374f8d9b67f094e4896c64a-1"
-        cx="12"
-        cy="14.86"
-        r="0.95"
-      ></circle>
-      <line
-        className="cls-6374f8d9b67f094e4896c64a-1"
-        x1="12"
-        y1="19.64"
-        x2="12"
-        y2="15.82"
-      ></line>
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z"
+      />
     </svg>
   );
 }
@@ -270,6 +242,27 @@ export function BedIcon() {
         x2="21.55"
         y2="17.75"
       ></line>
+    </svg>
+  );
+}
+
+export function ImageIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth="1.5"
+      stroke="#FFDB58"
+      className="size-6"
+      width="20"
+      height="20"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M2.25 15.75l5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"
+      />
     </svg>
   );
 }

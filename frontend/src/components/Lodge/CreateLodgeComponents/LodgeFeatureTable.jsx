@@ -60,6 +60,12 @@ export default function LodgeFeatureTable({
 
   return (
     <>
+      <span
+        className="createLodge-featureTitle"
+        style={{ color: "var(--AppMainColor)" }}
+      >
+        {t("featureTitle")}
+      </span>
       <Table
         aria-label="Feature table"
         selectionMode="multiple"

@@ -1,6 +1,7 @@
 {
     "feature": "Service",
     "category": "Catégorie",
+    "featureTitle": "Caractéristiques et services disponibles",
     "checkIn": "Heure d'enregistrement",
     "checkOut": "Heure de départ",
     "name": "Nom de l'hébergement",
@@ -18,5 +19,7 @@
     "rooms": "Chambres disponibles",
     "contact": "Coordonnées",
     "email": "Email de contact du lodge",
-    "phone": "Numéro de téléphone du lodge"
+    "phone": "Numéro de téléphone du lodge",
+    "mainImageTitle": "Sélectionner l'image de couverture",
+    "chooseImg": "Sélectionner l'image"
 }

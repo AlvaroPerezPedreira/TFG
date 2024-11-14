@@ -10,6 +10,7 @@ import LodgeCountryAutocomplete from "./CreateLodgeComponents/LodgeCountryAutoco
 import { Button } from "@nextui-org/button";
 import LodgeDescription from "./CreateLodgeComponents/LodgeDescription";
 import CreateLodgeAccordion from "./CreateLodgeComponents/CreateLodgeAccordion";
+import LodgeMainImage from "./CreateLodgeComponents/LodgeMainImage";
 
 export default function CreateLodge() {
   const [t, i18n] = useTranslation(["createLodge"]);
@@ -18,6 +19,8 @@ export default function CreateLodge() {
   const [checkOut, setCheckOut] = useState("");
   const [country, setCountry] = useState("");
   const [selectedFeatures, setSelectedFeatures] = useState([]);
+  const [mainImage, setMainImage] = useState(null);
+  const [mainImageUrl, setMainImageUrl] = useState(null);
 
   const handleClick = () => {
     const checkInDate = handleTimeChange(checkIn, "checkIn");
@@ -38,16 +41,10 @@ export default function CreateLodge() {
         <span>Create Lodge</span>
       </div>
       <form className="createLodge-container" onSubmit={handleSubmit}>
-        <div className="createLodge-firstInputs">
+        <div className="createLodge-firstInputsContainer">
           <LodgeFirstInputs />
         </div>
-        <div className="createLodge-country">
-          <LodgeCountryAutocomplete setCountry={setCountry} />
-        </div>
-        <div className="createLodge-description">
-          <LodgeDescription />
-        </div>
-        <div className="createLodge-secondInputs">
+        <div className="createLodge-secondInputsContainer">
           <CreateLodgeAccordion
             checkIn={checkIn}
             setCheckIn={setCheckIn}
@@ -55,14 +52,29 @@ export default function CreateLodge() {
             setCheckOut={setCheckOut}
           />
         </div>
-        <div className="createLodge-featureTable">
+        <div className="createLodge-mainImageContainer">
+          <LodgeMainImage
+            mainImageUrl={mainImageUrl}
+            setMainImageUrl={setMainImageUrl}
+            mainImage={mainImage}
+            setMainImage={setMainImage}
+          />
+        </div>
+        <div className="createLodge-countryContainer">
+          <LodgeCountryAutocomplete setCountry={setCountry} />
+        </div>
+        <div className="createLodge-descriptionContainer">
+          <LodgeDescription />
+        </div>
+
+        <div className="createLodge-featureTableContainer">
           <LodgeFeatureTable
             selectedFeatures={selectedFeatures}
             setSelectedFeatures={setSelectedFeatures}
           />
         </div>
         <button onClick={handleClick}>dasfdsaf</button>
-        <div className="createLodge-button-container">
+        <div className="createLodge-buttonContainer">
           <Button
             className="bg-[#FFDB58] text-black w-full"
             radius="none"

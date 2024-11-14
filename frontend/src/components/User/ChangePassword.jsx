@@ -7,6 +7,7 @@ import UpdateProfileHeaderLink from "./UpdateProfileComponents/UpdateProfileHead
 import useChangePassword from "../../hooks/useChangePassword";
 import FlagDropdown from "../GlobalComponents/FlagDropdown";
 import { Suspense } from "react";
+import AppNavbar from "../AppNavbar";
 
 export default function ChangePassword() {
   const [t] = useTranslation(["changePassword"]);
@@ -30,21 +31,19 @@ export default function ChangePassword() {
 
   return (
     <Suspense fallback="loading">
+      <AppNavbar />
       <div className="changePassword-container">
-        <header className="changePassword-header">
-          <UpdateProfileHeaderLink />
-        </header>
         <div className="changePassword-form-container">
           <form onSubmit={handleSubmit} className="changePassword-form">
             <div className="changePassword-form-title-container">
               <h1 className="changePassword-form-title">{t("title")}</h1>
-              <FlagDropdown className="changePassword-flag-dropdown" />
             </div>
             <Input
               name="oldPassword"
               placeholder={t("oldPassword")}
               variant="underlined"
               type="password"
+              color="warning"
               className="changePassword-form-input"
             />
             <Input
@@ -52,6 +51,7 @@ export default function ChangePassword() {
               placeholder={t("newPassword")}
               variant="underlined"
               type="password"
+              color="warning"
               className="changePassword-form-input"
             />
             <Input
@@ -59,6 +59,7 @@ export default function ChangePassword() {
               placeholder={t("rptPassword")}
               variant="underlined"
               type="password"
+              color="warning"
               className="changePassword-form-input"
             />
 

@@ -12,22 +12,14 @@ import { Accordion, AccordionItem } from "@nextui-org/accordion";
 import LodgeTimeInput from "./Lodge/CreateLodgeComponents/LodgeTimeInput";
 import CreateLodge from "./Lodge/CreateLodge";
 import CreateLodgeAccordion from "./Lodge/CreateLodgeComponents/CreateLodgeAccordion";
+import LodgeMainImage from "./Lodge/CreateLodgeComponents/LodgeMainImage";
 
 const TestPage = () => {
   const [t, i18n] = useTranslation(["createLodge"]);
-  const [features, setFeatures] = useState([]);
-
-  const { getAllFeatures } = useFeatures();
   let navigate = useNavigate();
 
-  useEffect(() => {
-    getAllFeatures({ setFeatures });
-  }, []);
-
-  const [country, setCountry] = useState("");
-
-  const [checkIn, setCheckIn] = useState("");
-  const [checkOut, setCheckOut] = useState("");
+  const [mainImage, setMainImage] = useState(null);
+  const [mainImageUrl, setMainImageUrl] = useState(null);
 
   return (
     <>
@@ -35,12 +27,12 @@ const TestPage = () => {
         <AppNavbar />
         <div className="home-container">
           <span>Test</span>
-          <div style={{ maxWidth: "400px", gap: "10px" }}>
-            <CreateLodgeAccordion
-              checkIn={checkIn}
-              checkOut={checkOut}
-              setCheckIn={setCheckIn}
-              setCheckOut={setCheckOut}
+          <div style={{ maxWidth: "300px", gap: "10px" }}>
+            <LodgeMainImage
+              mainImageUrl={mainImageUrl}
+              setMainImageUrl={setMainImageUrl}
+              mainImage={mainImage}
+              setMainImage={setMainImage}
             />
           </div>
         </div>
