@@ -34,7 +34,6 @@ export default function CreateLodgeAccordion({
           setCheckOut={setCheckOut}
         />
       </div>
-      <Divider orientation="vertical" className="createLodge-verticalDivider" />
       <div className="createLodge-priceInputsContainer">
         <span style={{ color: "var(--AppMainColor)" }}>{t("priceInfo")}</span>
         <Input
@@ -62,7 +61,6 @@ export default function CreateLodgeAccordion({
           />
         </Tooltip>
       </div>
-      <Divider orientation="vertical" className="createLodge-verticalDivider" />
       <div className="createLodge-contactInputsContainer">
         <span style={{ color: "var(--AppMainColor)" }}>{t("contact")}</span>
         <Input

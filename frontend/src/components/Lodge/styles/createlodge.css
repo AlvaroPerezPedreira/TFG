@@ -102,29 +102,29 @@
 
 /* Second inputs (checkIn, checkOut, price, rooms, email, phone) */
 .createLodge-secondInputsContainer {
-    display: flex;  /* Flexbox para alinear los elementos en horizontal */
+    display: grid;  /* Flexbox para alinear los elementos en horizontal */
     width: 100%;
     box-sizing: border-box;
     padding: 20px;  /* Padding aplicado al contenedor */
-    justify-content: center;
+    grid-template-columns: repeat(3, 1fr);  /* 3 columnas con el mismo ancho */
 }
 
 .createLodge-timeInputsContainer {
     box-sizing: border-box;  /* Asegura que el padding no afecte el tamaño del contenedor */
     padding: 20px;  /* Padding de 20px dentro de cada contenedor */
-    flex: 0 0 30%;
+    
 }
 
 .createLodge-priceInputsContainer {
     box-sizing: border-box;  /* Asegura que el padding no afecte el tamaño del contenedor */
     padding: 20px;  /* Padding de 20px dentro de cada contenedor */
-    flex: 0 0 30%;
+    
 }
 
 .createLodge-contactInputsContainer {
     box-sizing: border-box;  /* Asegura que el padding no afecte el tamaño del contenedor */
     padding: 20px;  /* Padding de 20px dentro de cada contenedor */
-    flex: 0 0 30%;
+    
 }
 
 
@@ -142,7 +142,7 @@
 .createLodge-featureTableContainer {
     max-width: 800px;
     border: 1px solid var(--whiteFull);
-    border-radius: 24px;
+    border-radius: 12px;
     padding: 16px;
     margin: 20px;
     display: flex;
@@ -182,7 +182,7 @@
 
 /* Responsive */
 
-@media (max-width: 768px) {
+@media (max-width: 850px) {
     .createLodge-firstInputsContainer {
         flex-direction: column; /* Cambia la dirección de los inputs a columna */
     }
@@ -201,14 +201,8 @@
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 850px) {
     .createLodge-secondInputsContainer {
-        flex-direction: column; /* Cambia la dirección de los inputs a columna */
-    }
-
-    .createLodge-timeInputsContainer,
-    .createLodge-priceInputsContainer,
-    .createLodge-contactInputsContainer {
-        flex: 1 1 100%; /* Asegura que cada contenedor ocupe todo el ancho disponible */
+        grid-template-columns: 1fr; /* Cambia a una sola columna */
     }
 }
