@@ -9,8 +9,9 @@ import LodgeFirstInputs from "./CreateLodgeComponents/LodgeFirstInputs";
 import LodgeCountryAutocomplete from "./CreateLodgeComponents/LodgeCountryAutocomplete";
 import { Button } from "@nextui-org/button";
 import LodgeDescription from "./CreateLodgeComponents/LodgeDescription";
-import CreateLodgeAccordion from "./CreateLodgeComponents/CreateLodgeAccordion";
+import LodgeSecondInputs from "./CreateLodgeComponents/LodgeSecondInputs";
 import LodgeMainImage from "./CreateLodgeComponents/LodgeMainImage";
+import { Divider } from "@nextui-org/divider";
 
 export default function CreateLodge() {
   const [t, i18n] = useTranslation(["createLodge"]);
@@ -41,32 +42,21 @@ export default function CreateLodge() {
         <span>Create Lodge</span>
       </div>
       <form className="createLodge-container" onSubmit={handleSubmit}>
-        <div className="createLodge-firstInputsContainer">
-          <LodgeFirstInputs />
-        </div>
-        <div className="createLodge-secondInputsContainer">
-          <CreateLodgeAccordion
-            checkIn={checkIn}
-            setCheckIn={setCheckIn}
-            checkOut={checkOut}
-            setCheckOut={setCheckOut}
-          />
-        </div>
-        <div className="createLodge-mainImageContainer">
-          <LodgeMainImage
-            mainImageUrl={mainImageUrl}
-            setMainImageUrl={setMainImageUrl}
-            mainImage={mainImage}
-            setMainImage={setMainImage}
-          />
-        </div>
-        <div className="createLodge-countryContainer">
-          <LodgeCountryAutocomplete setCountry={setCountry} />
-        </div>
-        <div className="createLodge-descriptionContainer">
-          <LodgeDescription />
-        </div>
-
+        <LodgeFirstInputs
+          setCountry={setCountry}
+          mainImageUrl={mainImageUrl}
+          setMainImageUrl={setMainImageUrl}
+          mainImage={mainImage}
+          setMainImage={setMainImage}
+        />
+        <Divider className="createLodge-horizontalDivider" />
+        <LodgeSecondInputs
+          checkIn={checkIn}
+          setCheckIn={setCheckIn}
+          checkOut={checkOut}
+          setCheckOut={setCheckOut}
+        />
+        <Divider className="createLodge-horizontalDivider" />
         <div className="createLodge-featureTableContainer">
           <LodgeFeatureTable
             selectedFeatures={selectedFeatures}

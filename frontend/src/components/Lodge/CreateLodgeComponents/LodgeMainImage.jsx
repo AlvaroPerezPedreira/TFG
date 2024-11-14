@@ -37,10 +37,11 @@ export default function LodgeMainImage({
       />
 
       {mainImageUrl && (
-        <div className="createLodge-mainImagePreview" style={{ marginTop: 10 }}>
+        <div className="createLodge-mainImagePreview">
           <img
             src={mainImageUrl}
             alt="Vista previa"
+            className="createLodge-mainImage"
             style={{ maxWidth: "100%", maxHeight: 300 }}
           />
         </div>

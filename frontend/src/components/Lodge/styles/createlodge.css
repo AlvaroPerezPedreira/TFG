@@ -12,15 +12,121 @@
     max-width: 100%;
 }
 
-/* First inputs (name, address, city) */
+/* First inputs (name, city, country, description, address, main img) */
 .createLodge-firstInputsContainer {
-
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    padding: 20px;
 }
+
+.createLodge-leftInputsContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    flex: 1 1 calc(50% - 20px);
+    box-sizing: border-box;
+    padding-left: 20px;
+    padding-right: 30px;
+}
+
+.createLodge-descriptionContainer {
+    margin-top: 40px;
+}
+
+.createLodge-rightInputsContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    flex: 1 1 calc(50% - 20px);
+    box-sizing: border-box;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 20px;
+}
+
+/* Contenedor principal para la imagen, título y botón */
+.createLodge-mainImageContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    margin: 0 auto;
+  }
+  
+  .createLodge-mainImageTitle {
+    color: var(--AppMainColor);
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .createLodge-mainImagePreview {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    margin: 0 auto;
+  }
+  
+  .createLodge-mainImagePreview img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 0 auto;
+    display: block;
+  }
+  
+  .createLodge-mainImageButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 15px;
+  }
+  
+
 
 /* Second inputs (checkIn, checkOut, price, rooms, email, phone) */
 .createLodge-secondInputsContainer {
-
+    display: flex;  /* Flexbox para alinear los elementos en horizontal */
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;  /* Padding aplicado al contenedor */
+    justify-content: center;
 }
+
+.createLodge-timeInputsContainer {
+    box-sizing: border-box;  /* Asegura que el padding no afecte el tamaño del contenedor */
+    padding: 20px;  /* Padding de 20px dentro de cada contenedor */
+    flex: 0 0 30%;
+}
+
+.createLodge-priceInputsContainer {
+    box-sizing: border-box;  /* Asegura que el padding no afecte el tamaño del contenedor */
+    padding: 20px;  /* Padding de 20px dentro de cada contenedor */
+    flex: 0 0 30%;
+}
+
+.createLodge-contactInputsContainer {
+    box-sizing: border-box;  /* Asegura que el padding no afecte el tamaño del contenedor */
+    padding: 20px;  /* Padding de 20px dentro de cada contenedor */
+    flex: 0 0 30%;
+}
+
 
 /* Country */
 .createLodge-countryContainer {
@@ -48,17 +154,61 @@
     margin-left: 12px;
 }
 
-/* Main Image */
-.createLodge-mainImageContainer  {}
 
-.createLodge-mainImageTitle {}
-
-.createLodge-mainImagePreview {}
-
-.createLodge-mainImageButton {}
 
 
 /* Submit button */
 .createLodge-buttonContainer {
 
+}
+
+
+
+/* Dividers */
+
+.createLodge-verticalDivider {
+    width: 1px; 
+    background-color: var(--AppMainColor);
+    height: auto;
+    margin: 0 20px 0 10px;
+}
+
+.createLodge-horizontalDivider {
+    height: 1px;
+    background-color: var(--AppMainColor);
+    width: 100%;
+    margin: 20px 0;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    .createLodge-firstInputsContainer {
+        flex-direction: column; /* Cambia la dirección de los inputs a columna */
+    }
+
+    .createLodge-leftInputsContainer,
+    .createLodge-rightInputsContainer {
+        flex: 1 1 100%; /* Asegura que ambos ocupen todo el ancho disponible */
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    /* Opcionalmente, puedes ajustar los márgenes para que haya un poco de espacio entre los elementos */
+    .createLodge-leftInputsContainer,
+    .createLodge-rightInputsContainer {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .createLodge-secondInputsContainer {
+        flex-direction: column; /* Cambia la dirección de los inputs a columna */
+    }
+
+    .createLodge-timeInputsContainer,
+    .createLodge-priceInputsContainer,
+    .createLodge-contactInputsContainer {
+        flex: 1 1 100%; /* Asegura que cada contenedor ocupe todo el ancho disponible */
+    }
 }
