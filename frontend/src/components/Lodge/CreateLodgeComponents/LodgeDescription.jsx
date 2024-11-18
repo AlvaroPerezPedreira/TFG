@@ -9,6 +9,7 @@ export default function LodgeDescription() {
     <>
       <Textarea
         key="description"
+        name="description"
         variant="bordered"
         label={t("description")}
         labelPlacement="outside"

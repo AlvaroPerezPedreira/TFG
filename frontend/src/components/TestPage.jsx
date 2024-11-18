@@ -14,6 +14,7 @@ import CreateLodge from "./Lodge/CreateLodge";
 import CreateLodgeSecondInputs from "./Lodge/CreateLodgeComponents/LodgeSecondInputs";
 import LodgeMainImage from "./Lodge/CreateLodgeComponents/LodgeMainImage";
 import LodgeFirstInputs from "./Lodge/CreateLodgeComponents/LodgeFirstInputs";
+import LodgeDropZone from "./Lodge/CreateLodgeComponents/LodgeDropZone";
 
 const TestPage = () => {
   const [t, i18n] = useTranslation(["createLodge"]);
@@ -21,6 +22,7 @@ const TestPage = () => {
 
   const [country, setCountry] = useState(null);
   const [mainImageUrl, setMainImageUrl] = useState(null);
+  const [images, setImages] = useState([]);
 
   return (
     <>
@@ -28,6 +30,12 @@ const TestPage = () => {
         <AppNavbar />
         <span>Test</span>
         <CreateLodgeSecondInputs />
+        <br />
+        <br />
+        <br />
+        <div>
+          <LodgeDropZone images={images} setImages={setImages} />
+        </div>
       </Suspense>
     </>
   );

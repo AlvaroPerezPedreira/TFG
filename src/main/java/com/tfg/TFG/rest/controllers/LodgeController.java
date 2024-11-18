@@ -92,12 +92,12 @@ public class LodgeController {
         return ResponseEntity.ok(LodgeConversor.toDto(lodge));
     }
 
-    @PostMapping("/createPost")
-    public ResponseEntity<LodgeDto> createPost(@RequestAttribute Long userId,
+    @PostMapping("/createLodge")
+    public ResponseEntity<LodgeDto> createLodge(@RequestAttribute Long userId,
             @Validated({ LodgeDto.AllValidations.class }) @RequestBody LodgeDto lodgeDto)
             throws InstanceNotFoundException {
 
-        System.out.println("createPost");
+        System.out.println("createLodge");
 
         Lodge lodge = lodgeService.createLodge(userId, lodgeDto.getLodge_email(), lodgeDto.getLodge_name(),
                 lodgeDto.getLodge_description(),

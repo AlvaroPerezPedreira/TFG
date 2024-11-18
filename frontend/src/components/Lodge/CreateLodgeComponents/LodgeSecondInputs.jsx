@@ -1,8 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { Accordion, AccordionItem } from "@nextui-org/accordion";
 import LodgeTimeInput from "./LodgeTimeInput";
-import IndicatorIcon from "../../../icons/IndicatorIcon";
 import { Input } from "@nextui-org/input";
 import { Tooltip } from "@nextui-org/tooltip";
 import {
@@ -11,7 +9,6 @@ import {
   PhoneIcon,
   BedIcon,
 } from "../../../icons/MainAppIcons";
-import { Divider } from "@nextui-org/divider";
 
 export default function CreateLodgeAccordion({
   checkIn,

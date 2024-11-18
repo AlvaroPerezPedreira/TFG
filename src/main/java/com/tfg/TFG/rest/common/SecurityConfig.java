@@ -60,6 +60,7 @@ public class SecurityConfig {
 						 .requestMatchers(antMatcher(HttpMethod.GET, "/lodges/{email}")).permitAll()
 						 .requestMatchers(antMatcher(HttpMethod.POST, "/lodges/createPost")).permitAll()
 						 .requestMatchers(antMatcher(HttpMethod.GET, "/lodges/getFeatures")).permitAll()
+						 .requestMatchers(antMatcher(HttpMethod.POST, "/lodges/createLodge")).permitAll()
 						 .requestMatchers(antMatcher(HttpMethod.POST, "/images/uploadImage")).permitAll()
 						 .requestMatchers(antMatcher("/images/**")).permitAll()  // Permitir acceso a las imágenes
 						 .anyRequest().permitAll()

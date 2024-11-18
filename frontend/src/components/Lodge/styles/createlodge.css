@@ -154,12 +154,44 @@
     margin-left: 12px;
 }
 
+/* Images drop zone */
+.createLodge-imagesContainer {
+
+}
+
+.createLodge-dropZone {
+    border: 2px dashed var(--AppMainColor);
+    border-radius: 8px;
+    padding: 110px;
+    width: 800px;
+    height: 250px;
+    margin: 10px auto;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+
+.createLodge-dropZonePrerenderTitle {
+    margin-top: 20px;
+}
+
+.createLodge-imagesButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+
+
+
+
 
 
 
 /* Submit button */
 .createLodge-buttonContainer {
-
+    margin-top: 20px;
 }
 
 
@@ -204,5 +236,21 @@
 @media (max-width: 850px) {
     .createLodge-secondInputsContainer {
         grid-template-columns: 1fr; /* Cambia a una sola columna */
+    }
+}
+
+@media (max-width: 768px) {
+    .createLodge-dropZone {
+        width: 90vw; /* Ancho relativo a la ventana */
+        height: 200px; /* Ajustar altura en pantallas más pequeñas */
+        padding: 50px; /* Reducir el padding en pantallas pequeñas */
+    }
+}
+
+@media (max-width: 480px) {
+    .createLodge-dropZone {
+        width: 95vw; /* Aumentar el ancho relativo en pantallas muy pequeñas */
+        height: 150px; /* Altura aún más pequeña en pantallas muy pequeñas */
+        padding: 30px; /* Reducir más el padding */
     }
 }

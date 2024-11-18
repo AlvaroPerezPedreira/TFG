@@ -21,5 +21,10 @@
     "email": "Email de contact du lodge",
     "phone": "Numéro de téléphone du lodge",
     "mainImageTitle": "Sélectionner l'image de couverture",
-    "chooseImg": "Sélectionner l'image"
+    "chooseImg": "Sélectionner l'image",
+    "chooseImgs": "Sélectionner les images",
+    "dropZone": "Glissez-déposez les images ici ou utilisez le bouton ci-dessous pour les sélectionner",
+    "imagesTitle": "Téléchargez les images de votre hébergement",
+    "imagesCounter": "Images sélectionnées",
+    "delete": "Supprimer"
 }

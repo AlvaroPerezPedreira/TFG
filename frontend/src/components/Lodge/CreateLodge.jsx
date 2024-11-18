@@ -1,20 +1,19 @@
 import "./styles/createlodge.css";
-import React, { Suspense, useEffect, useState } from "react";
+import React, { Suspense, useState } from "react";
 import { useTranslation } from "react-i18next";
 import AppNavbar from "../AppNavbar";
 import LodgeFeatureTable from "./CreateLodgeComponents/LodgeFeatureTable";
-import LodgeTimeInput from "./CreateLodgeComponents/LodgeTimeInput";
 import { handleTimeChange } from "../../Functions/calendarFunctions";
 import LodgeFirstInputs from "./CreateLodgeComponents/LodgeFirstInputs";
-import LodgeCountryAutocomplete from "./CreateLodgeComponents/LodgeCountryAutocomplete";
 import { Button } from "@nextui-org/button";
-import LodgeDescription from "./CreateLodgeComponents/LodgeDescription";
 import LodgeSecondInputs from "./CreateLodgeComponents/LodgeSecondInputs";
-import LodgeMainImage from "./CreateLodgeComponents/LodgeMainImage";
 import { Divider } from "@nextui-org/divider";
+import LodgeDropZone from "./CreateLodgeComponents/LodgeDropZone";
+import useCreateLodge from "../../hooks/useCreateLodge";
 
 export default function CreateLodge() {
   const [t, i18n] = useTranslation(["createLodge"]);
+  const { createLodge } = useCreateLodge();
 
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
@@ -22,17 +21,31 @@ export default function CreateLodge() {
   const [selectedFeatures, setSelectedFeatures] = useState([]);
   const [mainImage, setMainImage] = useState(null);
   const [mainImageUrl, setMainImageUrl] = useState(null);
-
-  const handleClick = () => {
-    const checkInDate = handleTimeChange(checkIn, "checkIn");
-    const checkOutDate = handleTimeChange(checkOut, "checkOut");
-
-    console.log(checkInDate, checkOutDate);
-  };
+  const [images, setImages] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("submit");
+
+    const checkInDate = handleTimeChange(checkIn, "checkIn");
+    const checkOutDate = handleTimeChange(checkOut, "checkOut");
+
+    const allImages = [
+      { image_url: mainImage.name },
+      ...images.map((image) => ({ image_url: image.name })),
+    ];
+
+    const orderedFeatures = [...selectedFeatures]
+      .map((id) => ({ id: parseInt(id) }))
+      .sort((a, b) => a.id - b.id);
+
+    createLodge(
+      e,
+      checkInDate,
+      checkOutDate,
+      country,
+      allImages,
+      orderedFeatures
+    );
   };
 
   return (
@@ -63,7 +76,10 @@ export default function CreateLodge() {
             setSelectedFeatures={setSelectedFeatures}
           />
         </div>
-        <button onClick={handleClick}>dasfdsaf</button>
+        <Divider className="createLodge-horizontalDivider" />
+        <div className="createLodge-imagesContainer">
+          <LodgeDropZone images={images} setImages={setImages} />
+        </div>
         <div className="createLodge-buttonContainer">
           <Button
             className="bg-[#FFDB58] text-black w-full"

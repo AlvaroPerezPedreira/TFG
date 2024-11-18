@@ -21,5 +21,10 @@
     "email": "Correo de contacto del alojamiento",
     "phone": "Teléfono del alojamiento",
     "mainImageTitle": "Seleccionar la imagen de la portada",
-    "chooseImg": "Seleccionar imagen"
+    "chooseImg": "Seleccionar imagen",
+    "chooseImgs": "Seleccionar imágenes",
+    "dropZone": "Arrastra y suelta imágenes aquí o usa el botón de abajo para seleccionarlas",
+    "imagesTitle": "Sube las imágenes de tu alojamiento",
+    "imagesCounter": "Imágenes seleccionadas",
+    "delete": "Eliminar"
 }

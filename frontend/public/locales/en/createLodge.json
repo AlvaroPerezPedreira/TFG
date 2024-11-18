@@ -21,7 +21,12 @@
     "email": "Contact email of the lodge",
     "phone": "Phone number of the lodge",
     "mainImageTitle": "Select the cover image",
-    "chooseImg": "Select image"
+    "chooseImg": "Select image",
+    "chooseImgs": "Select images",
+    "dropZone": "Drag and drop images here or use the button below to select them",
+    "imagesTitle": "Upload images of your lodge",
+    "imagesCounter": "Selected images",
+    "delete": "Delete"
 }
 
 
