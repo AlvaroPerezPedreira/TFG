@@ -17,6 +17,8 @@ export default function CreateLodge() {
   const { createLodge, uploadImages } = useCreateLodge();
   let navigate = useNavigate();
 
+  const [error, setError] = useState("");
+
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
   const [country, setCountry] = useState("");
@@ -30,6 +32,44 @@ export default function CreateLodge() {
 
     const checkInDate = handleTimeChange(checkIn, "checkIn");
     const checkOutDate = handleTimeChange(checkOut, "checkOut");
+
+    const form = new FormData(e.currentTarget);
+    const lodgeEmail = form.get("email");
+    const lodge_description = form.get("description");
+    const lodge_address = form.get("address");
+    const city = form.get("city");
+    const lodgePhone = form.get("phone");
+    const availableRooms = form.get("rooms");
+    const pricePerNight = form.get("pricePerNight");
+
+    if (!lodgeEmail || !lodge_description || !lodge_address || !city || !lodgePhone || !availableRooms || !pricePerNight || !checkIn || !checkOut || !country || !mainImage || selectedFeatures.length === 0) {
+      setError(t("errorEmptyFields")); // Error si algún campo esencial está vacío
+      return;
+    }
+
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailPattern.test(lodgeEmail)) {
+      setError(t("errorEmail")); // Error si el email no tiene formato válido
+      return;
+    }
+
+    const phonePattern = /^[0-9]{9}$/;
+    if (!phonePattern.test(lodgePhone)) {
+      setError(t("errorPhone")); // Error si el teléfono no es válido
+      return;
+    }
+
+    if (!Number.isInteger(Number(availableRooms)) || Number(availableRooms) <= 0) {
+      setError(t("errorRooms")); // Error si el número de habitaciones no es un entero positivo
+      return;
+    }
+
+    if (isNaN(pricePerNight) || parseFloat(pricePerNight) <= 0) {
+      setError(t("errorPrice")); // Error si el precio por noche no es un número positivo
+      return;
+    }
+
+    setError("");
 
     const allImages = [
       { image_url: mainImage.name },
@@ -48,9 +88,6 @@ export default function CreateLodge() {
       allImages,
       orderedFeatures
     );
-
-    const form = new FormData(e.currentTarget);
-    const lodgeEmail = form.get("email");
 
     uploadImages(lodgeEmail, mainImage);
 
@@ -71,7 +108,6 @@ export default function CreateLodge() {
     startTransition(() => {
       navigate("/");
     });
-    //starttransition
   };
 
   return (
@@ -106,6 +142,13 @@ export default function CreateLodge() {
         <div className="createLodge-imagesContainer">
           <LodgeDropZone images={images} setImages={setImages} />
         </div>
+        <div className="error-messages">
+        {error && (
+          <div className="error-container">
+            <span className="error">{error}</span>
+          </div>
+        )}
+      </div>
         <div className="createLodge-buttonContainer">
           <Button
             className="bg-[#FFDB58] text-black w-full"

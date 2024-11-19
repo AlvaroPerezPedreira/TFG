@@ -26,5 +26,10 @@
     "dropZone": "Arrastra y suelta imágenes aquí o usa el botón de abajo para seleccionarlas",
     "imagesTitle": "Sube las imágenes de tu alojamiento",
     "imagesCounter": "Imágenes seleccionadas",
-    "delete": "Eliminar"
+    "delete": "Eliminar",
+    "errorEmptyFields": "Por favor, complete todos los campos obligatorios. Asegúrese de haber ingresado un correo electrónico, teléfono, número de habitaciones, precio, fechas de check-in y check-out, y la imagen principal",
+    "errorEmail": "El correo electrónico ingresado no es válido. Asegúrese de que tenga el formato correcto (ejemplo: ejemplo@dominio.com)",
+    "errorPhone": "El número de teléfono debe contener exactamente 9 dígitos numéricos. Verifique su número e intente nuevamente",
+    "errorRooms": "El número de habitaciones debe ser un valor entero mayor a 0. Por favor, ingrese un número válido de habitaciones",
+    "errorPrice": "El precio por noche debe ser un valor numérico positivo. Asegúrese de ingresar un precio válido"
 }
