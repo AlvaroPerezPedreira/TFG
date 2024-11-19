@@ -74,7 +74,7 @@ public class ImageController {
     }
 
     @PostMapping("/uploadLodgeImage")
-    public ResponseEntity<String> uploadLodgeImage(@RequestParam String lodgeEmail,
+    public ResponseEntity<String> uploadLodgeImage(@RequestParam("lodgeEmail") String lodgeEmail,
             @RequestParam("file") MultipartFile file)
             throws InstanceNotFoundException {
         try {

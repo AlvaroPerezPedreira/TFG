@@ -34,8 +34,9 @@ export default function UserDropdown() {
             src={`http://localhost:8080/images/${authUser.user.avatar}`}
           />
         </DropdownTrigger>
-        <DropdownMenu aria-label="Profile Actions" variant="flat">
+        <DropdownMenu aria-label="Profile Actions">
           <DropdownItem
+            variant=""
             key="profile"
             className="h-14 gap-2"
             textValue={t("profile")}
@@ -49,6 +50,19 @@ export default function UserDropdown() {
             </p>
           </DropdownItem>
           <DropdownItem
+            style={{ color: "var(--AppMainColor)" }}
+            key="createLodge"
+            variant="bordered"
+            onClick={() => {
+              startTransition(() => {
+                navigate("/");
+              });
+            }}
+          >
+            {t("home")}
+          </DropdownItem>
+          <DropdownItem
+            style={{ color: "var(--AppMainColor)" }}
             key="createLodge"
             variant="bordered"
             onClick={() => {
@@ -57,7 +71,8 @@ export default function UserDropdown() {
               });
             }}
           >
-            {t("createLodge-translate")}
+            <p> {t("createLodge1")}</p>
+            <p> {t("createLodge2")}</p>
           </DropdownItem>
           <DropdownItem
             className="text-[#FFDB58] w-full"
@@ -72,7 +87,7 @@ export default function UserDropdown() {
             {t("updProfile")}
           </DropdownItem>
           <DropdownItem
-            style={{ color: "#E63946" }}
+            style={{ color: "var(--errorRed)" }}
             key="logout"
             variant="bordered"
             onClick={logOut}

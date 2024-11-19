@@ -60,11 +60,34 @@ const useCreateLodge = (e) => {
 
     console.log(finalData);
     addLodge(finalData);
-
-    navigate("/");
   };
 
-  return { createLodge };
+  const uploadImages = async (lodgeEmail, image) => {
+    const formData = new FormData();
+    formData.append("lodgeEmail", lodgeEmail);
+    formData.append("file", image);
+
+    const response = await fetch(
+      "http://localhost:8080/api/images/uploadLodgeImage",
+      {
+        method: "POST",
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+        body: formData,
+      }
+    );
+
+    const result = await response.text();
+
+    if (response.ok) {
+      console.log(`Imagen subida correctamente: ${result}`);
+    } else {
+      console.log("Error al subir la imagen.");
+    }
+  };
+
+  return { createLodge, uploadImages };
 };
 
 export default useCreateLodge;

@@ -1,5 +1,5 @@
 import "./styles/createlodge.css";
-import React, { Suspense, useState } from "react";
+import React, { Suspense, useState, startTransition } from "react";
 import { useTranslation } from "react-i18next";
 import AppNavbar from "../AppNavbar";
 import LodgeFeatureTable from "./CreateLodgeComponents/LodgeFeatureTable";
@@ -10,10 +10,12 @@ import LodgeSecondInputs from "./CreateLodgeComponents/LodgeSecondInputs";
 import { Divider } from "@nextui-org/divider";
 import LodgeDropZone from "./CreateLodgeComponents/LodgeDropZone";
 import useCreateLodge from "../../hooks/useCreateLodge";
+import { useNavigate } from "react-router-dom";
 
 export default function CreateLodge() {
   const [t, i18n] = useTranslation(["createLodge"]);
-  const { createLodge } = useCreateLodge();
+  const { createLodge, uploadImages } = useCreateLodge();
+  let navigate = useNavigate();
 
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
@@ -46,6 +48,30 @@ export default function CreateLodge() {
       allImages,
       orderedFeatures
     );
+
+    const form = new FormData(e.currentTarget);
+    const lodgeEmail = form.get("email");
+
+    uploadImages(lodgeEmail, mainImage);
+
+    async function uploadAllImages(lodgeEmail, images) {
+      for (const image of images) {
+        try {
+          await uploadImages(lodgeEmail, image);
+        } catch (error) {
+          console.error(
+            `Error uploading image: ${image.name || "unknown"}`,
+            error
+          );
+        }
+      }
+    }
+    uploadAllImages(lodgeEmail, images);
+
+    startTransition(() => {
+      navigate("/");
+    });
+    //starttransition
   };
 
   return (

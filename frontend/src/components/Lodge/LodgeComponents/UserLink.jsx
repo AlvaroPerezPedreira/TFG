@@ -8,7 +8,11 @@ export default function UserLink({ user }) {
 
   return (
     <User
-      name={user ? `${user.name} ${user.lastname}` : "Gleen D. Fogel"}
+      name={
+        user
+          ? `${user.name || ""} ${user.lastname || ""}`.trim()
+          : "Gleen D. Fogel"
+      }
       description={
         <Link
           onClick={() => {
