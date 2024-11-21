@@ -42,7 +42,20 @@ export default function CreateLodge() {
     const availableRooms = form.get("rooms");
     const pricePerNight = form.get("pricePerNight");
 
-    if (!lodgeEmail || !lodge_description || !lodge_address || !city || !lodgePhone || !availableRooms || !pricePerNight || !checkIn || !checkOut || !country || !mainImage || selectedFeatures.length === 0) {
+    if (
+      !lodgeEmail ||
+      !lodge_description ||
+      !lodge_address ||
+      !city ||
+      !lodgePhone ||
+      !availableRooms ||
+      !pricePerNight ||
+      !checkIn ||
+      !checkOut ||
+      !country ||
+      !mainImage ||
+      selectedFeatures.length === 0
+    ) {
       setError(t("errorEmptyFields")); // Error si algún campo esencial está vacío
       return;
     }
@@ -59,7 +72,10 @@ export default function CreateLodge() {
       return;
     }
 
-    if (!Number.isInteger(Number(availableRooms)) || Number(availableRooms) <= 0) {
+    if (
+      !Number.isInteger(Number(availableRooms)) ||
+      Number(availableRooms) <= 0
+    ) {
       setError(t("errorRooms")); // Error si el número de habitaciones no es un entero positivo
       return;
     }
@@ -113,10 +129,10 @@ export default function CreateLodge() {
   return (
     <Suspense fallback="loading">
       <AppNavbar />
-      <div>
-        <span>Create Lodge</span>
-      </div>
       <form className="createLodge-container" onSubmit={handleSubmit}>
+        <div className="createLodge-header-container">
+          <span>{t("createLodge")}</span>
+        </div>
         <LodgeFirstInputs
           setCountry={setCountry}
           mainImageUrl={mainImageUrl}
@@ -143,12 +159,12 @@ export default function CreateLodge() {
           <LodgeDropZone images={images} setImages={setImages} />
         </div>
         <div className="error-messages">
-        {error && (
-          <div className="error-container">
-            <span className="error">{error}</span>
-          </div>
-        )}
-      </div>
+          {error && (
+            <div className="error-container">
+              <span className="error">{error}</span>
+            </div>
+          )}
+        </div>
         <div className="createLodge-buttonContainer">
           <Button
             className="bg-[#FFDB58] text-black w-full"

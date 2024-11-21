@@ -6,6 +6,13 @@ import LodgeCard from "./LodgeComponents/LodgeCard";
 import useApi from "../../hooks/useApi";
 import useGetLodgesByPlace from "../../hooks/useGetLodgesByPlace";
 import AppNavbar from "../AppNavbar";
+import { Button } from "@nextui-org/button";
+import {
+  Pagination,
+  PaginationItem,
+  PaginationCursor,
+} from "@nextui-org/pagination";
+import LodgeSearchPagination from "./LodgeComponents/LodgeSearchPagination";
 
 export default function LodgeSearch() {
   const { destination } = useParams();
@@ -17,7 +24,7 @@ export default function LodgeSearch() {
 
   const [lodges, setLodges] = useState([]);
   const [apiLodges, setApiLodges] = useState([]);
-  const [pageN, setPageN] = useState(0);
+  const [pageN, setPageN] = useState(1);
   const [size, setSize] = useState(30);
   const [destId, setDestId] = useState(0);
   const [destType, setDestType] = useState("");
@@ -28,12 +35,12 @@ export default function LodgeSearch() {
     setLodges([]);
     setApiLodges([]);
     fetchDestId({ destination, setDestId, setDestType });
-    getLodgesByPlace(destination, pageN, size, setLodges);
+    getLodgesByPlace(destination, pageN - 1, size, setLodges);
   }, [destination]);
 
   useEffect(() => {
     if (destId) {
-      fetchHotels({ pageN, destId, destType, setApiLodges });
+      fetchHotels({ pageN: pageN - 1, destId, destType, setApiLodges });
     }
   }, [destId, pageN]);
 
@@ -52,20 +59,22 @@ export default function LodgeSearch() {
             marginTop: "20px",
           }}
         >
-          {lodges.map((lodge, index) => (
-            <LodgeCard
-              key={index}
-              id={lodge.id}
-              lodge_email={lodge.lodge_email}
-              lodge_name={lodge.lodge_name}
-              price_per_night={lodge.price_per_night}
-              lodge_provider={lodge.lodge_provider}
-              image_url={`http://localhost:8080/images/${lodge.images[0].image_url}`}
-            />
-          ))}
+          {pageN === 1 &&
+            lodges.map((lodge, index) => (
+              <LodgeCard
+                key={`${index}_${lodge.lodge_email}`}
+                id={lodge.id}
+                lodge_email={lodge.lodge_email}
+                lodge_name={lodge.lodge_name}
+                price_per_night={lodge.price_per_night}
+                lodge_provider={lodge.lodge_provider}
+                image_url={`http://localhost:8080/images/${lodge.images[0].image_url}`}
+              />
+            ))}
+
           {apiLodges.map((lodge, index) => (
             <LodgeCard
-              key={index}
+              key={`${index}_${lodge.hotel_id}`}
               id={lodge.hotel_id}
               lodge_email={`LodgeApi_${lodge.hotel_id}@bookingapi.com`}
               lodge_name={lodge.hotel_name}
@@ -79,6 +88,9 @@ export default function LodgeSearch() {
               checkOut={checkOut}
             />
           ))}
+        </div>
+        <div className="lodgeSearch-buttonsContainer">
+          <LodgeSearchPagination pageN={pageN} setPageN={setPageN} />
         </div>
       </div>
     </Suspense>

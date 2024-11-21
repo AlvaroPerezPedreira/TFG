@@ -12,6 +12,16 @@
     max-width: 100%;
 }
 
+.createLodge-header-container {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 20px;
+    color: var(--AppMainColor);
+    padding: 10px;
+    display: inline-block;
+  }
+  
 /* First inputs (name, city, country, description, address, main img) */
 .createLodge-firstInputsContainer {
     display: flex;
@@ -127,17 +137,6 @@
     
 }
 
-
-/* Country */
-.createLodge-countryContainer {
-
-}
-
-/* Description */
-.createLodge-descriptionContainer {
-
-}
-
 /* Feature table */
 .createLodge-featureTableContainer {
     max-width: 800px;
@@ -155,9 +154,6 @@
 }
 
 /* Images drop zone */
-.createLodge-imagesContainer {
-
-}
 
 .createLodge-dropZone {
     border: 2px dashed var(--AppMainColor);
@@ -190,12 +186,6 @@
     justify-content: center;
 }
 
-
-
-
-
-
-
 /* Submit button */
 .createLodge-buttonContainer {
     display: flex;
@@ -205,10 +195,7 @@
     margin: 30px auto;
 }
 
-
-
 /* Dividers */
-
 .createLodge-verticalDivider {
     width: 1px; 
     background-color: var(--AppMainColor);
@@ -224,7 +211,6 @@
 }
 
 /* Responsive */
-
 @media (max-width: 850px) {
     .createLodge-firstInputsContainer {
         flex-direction: column; /* Cambia la dirección de los inputs a columna */

@@ -14,5 +14,7 @@
     "rooms_ph": "Nombre de chambres",
     "check-in": "Date d'arrivée",
     "check-out": "Date de départ",
-    "stay_duration": "Dates d'Arrivée et de Départ"
+    "stay_duration": "Dates d'Arrivée et de Départ",
+    "previous": "Précédent",
+    "next": "Suivant"
 }

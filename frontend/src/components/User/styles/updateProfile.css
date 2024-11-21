@@ -25,9 +25,6 @@
   font-size: 2rem;
   font-weight: bold;
   margin-top: 20px;
-}
-
-.updProfile-header-container span {
   color: var(--AppMainColor);
   padding: 10px;
   display: inline-block;

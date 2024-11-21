@@ -28,7 +28,7 @@ export default function FlagDropdown() {
 
   return (
     <div>
-      <Dropdown placement="bottom-end">
+      <Dropdown placement="bottom-end" backdrop="blur">
         <DropdownTrigger>
           <Button radius="md" variant="light" color="default" isIconOnly>
             {getFlagIcon(currentLanguage)}

@@ -10,6 +10,12 @@ import { Avatar } from "@nextui-org/avatar";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../context/AuthContext";
+import {
+  HomeIcon,
+  EditIcon,
+  CreateIcon,
+  LogoutIcon,
+} from "../../icons/UserDropdownIcons";
 
 export default function UserDropdown() {
   const [t, i18n] = useTranslation(["navbar"]);
@@ -26,7 +32,7 @@ export default function UserDropdown() {
 
   return (
     <div>
-      <Dropdown placement="bottom-end">
+      <Dropdown placement="bottom-end" backdrop="blur">
         <DropdownTrigger>
           <Avatar
             as="button"
@@ -51,8 +57,10 @@ export default function UserDropdown() {
           </DropdownItem>
           <DropdownItem
             style={{ color: "var(--AppMainColor)" }}
-            key="createLodge"
+            key="home"
+            textValue={t("home")}
             variant="bordered"
+            startContent={<HomeIcon />}
             onClick={() => {
               startTransition(() => {
                 navigate("/");
@@ -65,6 +73,8 @@ export default function UserDropdown() {
             style={{ color: "var(--AppMainColor)" }}
             key="createLodge"
             variant="bordered"
+            textValue={t("createLodge1")}
+            startContent={<CreateIcon />}
             onClick={() => {
               startTransition(() => {
                 navigate("/lodge/createLodge");
@@ -77,7 +87,9 @@ export default function UserDropdown() {
           <DropdownItem
             className="text-[#FFDB58] w-full"
             key="updateProfile"
+            textValue={t("updProfile")}
             variant="bordered"
+            startContent={<EditIcon />}
             onClick={() => {
               startTransition(() => {
                 navigate("/updateProfile");
@@ -91,6 +103,7 @@ export default function UserDropdown() {
             key="logout"
             variant="bordered"
             onClick={logOut}
+            startContent={<LogoutIcon />}
             textValue={t("logOut")}
           >
             {t("logOut")}

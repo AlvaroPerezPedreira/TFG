@@ -31,5 +31,6 @@
     "errorEmail": "El correo electrónico ingresado no es válido. Asegúrese de que tenga el formato correcto (ejemplo: ejemplo@dominio.com)",
     "errorPhone": "El número de teléfono debe contener exactamente 9 dígitos numéricos. Verifique su número e intente nuevamente",
     "errorRooms": "El número de habitaciones debe ser un valor entero mayor a 0. Por favor, ingrese un número válido de habitaciones",
-    "errorPrice": "El precio por noche debe ser un valor numérico positivo. Asegúrese de ingresar un precio válido"
+    "errorPrice": "El precio por noche debe ser un valor numérico positivo. Asegúrese de ingresar un precio válido",
+    "createLodge": "Registra tu alojamiento"
 }

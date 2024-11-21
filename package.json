@@ -1,1 +1,5 @@
-{}
+{
+  "dependencies": {
+    "@nextui-org/pagination": "^2.0.36"
+  }
+}
