@@ -47,7 +47,9 @@ export default function UserDropdown() {
             className="h-14 gap-2"
             textValue={t("profile")}
           >
-            <p className="font-semibold">{t("signed")}</p>
+            <p className="font-semibold" style={{ color: "var(--text-color)" }}>
+              {t("signed")}
+            </p>
             <p
               className="font-semibold"
               style={{ color: "var(--AppMainColor)" }}
@@ -85,7 +87,7 @@ export default function UserDropdown() {
             <p> {t("createLodge2")}</p>
           </DropdownItem>
           <DropdownItem
-            className="text-[#FFDB58] w-full"
+            style={{ color: "var(--AppMainColor)" }}
             key="updateProfile"
             textValue={t("updProfile")}
             variant="bordered"

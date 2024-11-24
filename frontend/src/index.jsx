@@ -5,14 +5,15 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import "./config/i18next.config";
 import { AuthContextProvider } from "./context/AuthContext";
-
-document.documentElement.classList.add("dark");
+import { ThemeContextProvider } from "./context/ThemeContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-    <AuthContextProvider>
-      <App />
-    </AuthContextProvider>
+    <ThemeContextProvider>
+      <AuthContextProvider>
+        <App />
+      </AuthContextProvider>
+    </ThemeContextProvider>
   </BrowserRouter>
 );

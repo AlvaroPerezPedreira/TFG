@@ -49,8 +49,6 @@ export default function LodgeSearch() {
       <AppNavbar />
       <div className="lodgeSearch-container">
         <SearchBar />
-        <br />
-        <br />
         <div
           style={{
             display: "grid",

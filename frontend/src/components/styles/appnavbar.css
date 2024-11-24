@@ -1,6 +1,6 @@
 /* Eliminar márgenes y padding innecesarios del contenedor principal del navbar */
 .navbar-container {
-    background-color: var(--whiteFull) !important;
+    background-color: var(--navbar-background) !important;
     padding: 0 !important;
     margin: 0 !important;
     width: 100% !important;
@@ -20,15 +20,7 @@
     justify-content: flex-start !important;
     gap: 10px !important;
   }
-  
-  /* Ajustes de botones */
-  .navbar-button {
-    border-radius: 36px !important;
-    border: 2px solid darkslategrey !important;
-    padding: 6px 12px !important;
-    font-size: 1rem !important;
-  }
-  
+    
   /* Estilo para los contenedores de banderas o dropdowns */
   .navbar-flag-container {
     display: flex !important;
@@ -46,7 +38,7 @@
   
   /* Estilo para el enlace principal (DeepDive) */
   .navbar-deepdive-link {
-    color: var(--blackFull) !important;
+    color: var(--navbar-deepdive) !important;
     display: flex !important;
     text-decoration: none !important;
     align-items: center !important;
@@ -81,7 +73,7 @@
   
   /* Estilo para cada enlace dentro del navbar */
   .navbar-link {
-    color: var(--blackFull) !important;
+    color: var(--navbar-deepdive) !important;
     text-decoration: none !important;
     font-family: "Poppins", sans-serif !important;
     font-size: 16px !important;

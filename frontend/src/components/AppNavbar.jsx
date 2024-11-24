@@ -13,11 +13,13 @@ import {
   NavbarItem,
 } from "@nextui-org/navbar";
 import { NbSearchIcon, NbHomeIcon, NbContactIcon } from "../icons/NavbarIcons";
+import { useThemeContext } from "../context/ThemeContext";
 
 const AppNavbar = () => {
   const [t] = useTranslation(["navbar"]);
   let navigate = useNavigate();
   const location = useLocation();
+  const { dark, setDark } = useThemeContext();
 
   const isActivePage = (path) => location.pathname === path;
 
@@ -27,6 +29,12 @@ const AppNavbar = () => {
       navigate("/");
     });
   };
+
+  const handleMode = () => {
+    setDark((prev) => !prev);
+  };
+
+  console.log(dark);
 
   return (
     <Suspense fallback="loading">
@@ -38,11 +46,19 @@ const AppNavbar = () => {
             isBlock
             color=""
           >
-            <img
-              src="/images/logo/LogoNegro.jpg"
-              alt="Logo"
-              className="navbar-logo-img"
-            />
+            {dark ? (
+              <img
+                src="/images/logo/LogoNegro.jpg"
+                alt="Logo"
+                className="navbar-logo-img"
+              />
+            ) : (
+              <img
+                src="/images/logo/LogoBlanco.jpg"
+                alt="Logo"
+                className="navbar-logo-img"
+              />
+            )}
             <span style={{ fontFamily: "Caveat, sans-serif" }}>DeepDive</span>
           </Link>
         </NavbarBrand>
@@ -98,6 +114,11 @@ const AppNavbar = () => {
             >
               Test
             </Link>
+          </NavbarItem>
+          <NavbarItem className="navbar-links">
+            <button onClick={handleMode} className="bg-red-500">
+              modo
+            </button>
           </NavbarItem>
           <NavbarItem
             isActive={isActivePage("/contact")}

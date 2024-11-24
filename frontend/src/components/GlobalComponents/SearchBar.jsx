@@ -1,5 +1,5 @@
 import "../styles/searchbar.css";
-import React, { startTransition, useRef, useState } from "react";
+import React, { startTransition, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import SearchIcon from "../../icons/SearchIcon";
 import { Button } from "@nextui-org/button";
@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { DateRangePicker } from "@nextui-org/date-picker";
 import { useFiltersStore } from "../../store/useFiltersStore";
 import { handleDateChange } from "../../Functions/calendarFunctions";
+import { useThemeContext } from "../../context/ThemeContext";
 
 export default function SearchBar() {
   const [t] = useTranslation(["searchBar"]);
@@ -20,6 +21,7 @@ export default function SearchBar() {
   const [error, setError] = useState("");
   let navigate = useNavigate();
   const { setFilters } = useFiltersStore();
+  const { color } = useThemeContext();
 
   const handleDateChangeAux = (dates) => {
     handleDateChange(dates, setCheckIn, setCheckOut);
@@ -88,7 +90,7 @@ export default function SearchBar() {
             placeholder={t("where_ph")}
             ref={whereRef}
             variant="bordered"
-            color="warning"
+            color={color}
             isRequired
           />
           <Input
@@ -96,7 +98,7 @@ export default function SearchBar() {
             placeholder={t("adults_ph")}
             ref={adultsRef}
             variant="bordered"
-            color="warning"
+            color={color}
             isRequired
           />
           <Input
@@ -104,14 +106,14 @@ export default function SearchBar() {
             placeholder={t("children_ph")}
             ref={childrenRef}
             variant="bordered"
-            color="warning"
+            color={color}
           />
           <Input
             label={t("rooms")}
             placeholder={t("rooms_ph")}
             ref={roomsRef}
             variant="bordered"
-            color="warning"
+            color={color}
             isRequired
           />
           <DateRangePicker
@@ -121,7 +123,7 @@ export default function SearchBar() {
             startName="checkIn"
             endName="checkOut"
             isRequired
-            color="warning"
+            color={color}
             onChange={handleDateChangeAux}
           />
         </div>
