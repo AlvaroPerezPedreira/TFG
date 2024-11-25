@@ -19,12 +19,14 @@ import { Autocomplete, AutocompleteItem } from "@nextui-org/autocomplete";
 import { Tooltip } from "@nextui-org/tooltip";
 import AppNavbar from "../AppNavbar";
 import { LockIcon } from "../../icons/MainAppIcons";
+import { useThemeContext } from "../../context/ThemeContext";
 
 const Auth = () => {
   const { updateProfile } = useUpdateProfile();
   const [t, i18n] = useTranslation(["updProfile"]);
   const { authUser } = useAuthContext();
   let navigate = useNavigate();
+  const { color, dark } = useThemeContext();
 
   const [birthdate, setBirthdate] = useState(authUser.user?.birthdate || "");
   const [gender, setGender] = useState(authUser.user?.gender || "male");
@@ -69,12 +71,13 @@ const Auth = () => {
                     size="sm"
                     placement="bottom-start"
                     offset={5}
+                    color={color}
                   >
                     <Autocomplete
                       defaultItems={CountryList}
                       placeholder={t("country")}
                       variant="underlined"
-                      color="warning"
+                      color={color}
                       className="max-w"
                       defaultInputValue={country || ""}
                       onInputChange={setCountry}
@@ -112,7 +115,7 @@ const Auth = () => {
                     }}
                     variant="bordered"
                     radius="sm"
-                    startContent={<LockIcon />}
+                    startContent={<LockIcon color={dark ? "#FFDB58": "#006FEE"}/>}
                     className="updProfile-changePassword-button"
                   >
                     {t("changePassword")}
@@ -127,7 +130,7 @@ const Auth = () => {
 
             <div className="updProfile-button-container">
               <Button
-                className="bg-[#FFDB58] text-black w-full"
+                className="bg-[#006FEE] dark:bg-[#FFDB58] text-black w-full"
                 type="submit"
                 children={t("update")}
                 radius="none"

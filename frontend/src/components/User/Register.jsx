@@ -10,12 +10,15 @@ import UpdateProfileDatePicker from "./UpdateProfileComponents/UpdateProfileDate
 import GenderRadioGroup from "./UserComponents/GenderRadioGroup";
 import RegisterInputs from "./RegisterComponents/RegisterInputs";
 import FlagDropdown from "../GlobalComponents/FlagDropdown";
+import ThemeComponent from "../GlobalComponents/ThemeComponent";
+import { useThemeContext } from "../../context/ThemeContext";
 
 const Register = () => {
   const [birthdate, setBirthdate] = useState("");
   const { register } = useRegister();
   const [t, i18n] = useTranslation(["register"]);
   let navigate = useNavigate();
+  const { dark } = useThemeContext();
 
   const [registerError, setRegisterError] = useState("");
   const [gender, setGender] = useState("male");
@@ -32,16 +35,25 @@ const Register = () => {
           <div className="register-form-container">
             <div className="register-header-container">
               <div className="register-logo">
-                <img
-                  src="/images/logo/LogoBlanco.jpg"
-                  alt="Logo"
-                  className="register-logo-img"
-                />
+              {dark ? (
+              <img
+                src="/images/logo/LogoBlanco.jpg"
+                alt="Logo"
+                className="navbar-logo-img"
+              />
+            ) : (
+              <img
+                src="/images/logo/LogoNegro.jpg"
+                alt="Logo"
+                className="navbar-logo-img"
+              />
+            )}
                 <span style={{ fontFamily: "Caveat, sans-serif" }}>
                   DeepDive
                 </span>
               </div>
               <div className="register-dropdown-container">
+                <ThemeComponent />
                 <FlagDropdown />
               </div>
             </div>
@@ -71,7 +83,7 @@ const Register = () => {
 
                 <div className="register-button-container">
                   <Button
-                    className="bg-[#FFDB58] text-black w-full"
+                    className="bg-[#006FEE] dark:bg-[#FFDB58] text-black w-full"
                     radius="none"
                     type="submit"
                     children={t("continue")}

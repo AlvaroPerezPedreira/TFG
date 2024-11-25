@@ -2,10 +2,12 @@ import { Input } from "@nextui-org/input";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { useAuthContext } from "../../../context/AuthContext";
+import { useThemeContext } from "../../../context/ThemeContext";
 
 export default function UpdateProfileFirstInputs({}) {
   const [t, i18n] = useTranslation(["updProfile"]);
   const { authUser } = useAuthContext();
+  const { dark, color } = useThemeContext();
 
   return (
     <>
@@ -13,7 +15,7 @@ export default function UpdateProfileFirstInputs({}) {
         name="username"
         placeholder={t("username")}
         variant="underlined"
-        color="warning"
+        color={color}
         defaultValue={authUser.user?.username || ""}
         label={authUser.user?.username ? t("username") : ""}
       />
@@ -22,7 +24,7 @@ export default function UpdateProfileFirstInputs({}) {
         name="name"
         placeholder={t("name")}
         variant="underlined"
-        color="warning"
+        color={color}
         defaultValue={authUser.user?.name || ""}
         label={authUser.user?.name ? t("name") : ""}
       />
@@ -31,7 +33,7 @@ export default function UpdateProfileFirstInputs({}) {
         name="lastname"
         placeholder={t("lastname")}
         variant="underlined"
-        color="warning"
+        color={color}
         defaultValue={authUser.user?.lastname || ""}
         label={authUser.user?.lastname ? t("lastname") : ""}
       />
@@ -40,7 +42,7 @@ export default function UpdateProfileFirstInputs({}) {
         name="phone"
         placeholder={t("phone")}
         variant="underlined"
-        color="warning"
+        color={color}
         defaultValue={authUser.user?.phone || ""}
         label={authUser.user?.phone ? t("phone") : ""}
       />

@@ -6,6 +6,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import FlagDropdown from "./GlobalComponents/FlagDropdown";
 import { Link } from "@nextui-org/link";
 import UserDropdown from "./GlobalComponents/UserDropdown";
+import ThemeComponent from "./GlobalComponents/ThemeComponent";
 import {
   Navbar,
   NavbarBrand,
@@ -19,7 +20,7 @@ const AppNavbar = () => {
   const [t] = useTranslation(["navbar"]);
   let navigate = useNavigate();
   const location = useLocation();
-  const { dark, setDark } = useThemeContext();
+  const { dark } = useThemeContext();
 
   const isActivePage = (path) => location.pathname === path;
 
@@ -29,13 +30,7 @@ const AppNavbar = () => {
       navigate("/");
     });
   };
-
-  const handleMode = () => {
-    setDark((prev) => !prev);
-  };
-
-  console.log(dark);
-
+  
   return (
     <Suspense fallback="loading">
       <Navbar maxWidth="full" className="navbar-container">
@@ -115,11 +110,6 @@ const AppNavbar = () => {
               Test
             </Link>
           </NavbarItem>
-          <NavbarItem className="navbar-links">
-            <button onClick={handleMode} className="bg-red-500">
-              modo
-            </button>
-          </NavbarItem>
           <NavbarItem
             isActive={isActivePage("/contact")}
             className="navbar-links"
@@ -143,6 +133,7 @@ const AppNavbar = () => {
         </NavbarContent>
 
         <NavbarContent as="div" justify="end">
+          <ThemeComponent />
           <FlagDropdown />
           <UserDropdown />
         </NavbarContent>

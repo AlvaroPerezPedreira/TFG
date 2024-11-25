@@ -18,9 +18,9 @@
   --text-color: #000000;
 
   --main-background: #eee;
+  --inverted-background-color: #000000;
 
   --AppMainColor: #006FEE;
-
 
 
 
@@ -40,7 +40,7 @@
   --text-color: #FFFFFF;
 
   --main-background: #000000;
-
+  --inverted-background-color: #eee;
 
   --AppMainColor: #FFDB58;
 

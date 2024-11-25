@@ -1,6 +1,6 @@
 import React from "react";
 
-export function MailIcon() {
+export function MailIcon({color}) {
   return (
     <svg
       id="Layer_1"
@@ -10,7 +10,8 @@ export function MailIcon() {
       strokeWidth="1.5"
       width="20"
       height="20"
-      color="#FFDB58" // Este color ya no tiene efecto aquí
+      fill="none"
+      color={color}
     >
       <defs>
         <style>
@@ -26,11 +27,11 @@ export function MailIcon() {
         y="4.36"
         width="21"
         height="15.27"
-        stroke="#FFDB58" // Aplico el color aquí
+        stroke={color}
       />
       <polyline
         points="1.5 4.36 12 14.86 22.5 4.36"
-        stroke="#FFDB58" // Aplico el color aquí también
+        stroke={color}
       />
     </svg>
   );
@@ -66,14 +67,14 @@ export function PhoneIcon() {
   );
 }
 
-export function LockIcon() {
+export function LockIcon({ color }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth="1.5"
-      stroke="#FFDB58"
+      stroke={color}
       width="20"
       height="20"
       className="size-6"
@@ -87,7 +88,7 @@ export function LockIcon() {
   );
 }
 
-export function UserIcon() {
+export function UserIcon({ color }) {
   return (
     <svg
       id="Layer_1"
@@ -97,7 +98,7 @@ export function UserIcon() {
       strokeWidth="1.5"
       width="20"
       height="20"
-      color="#FFDB58"
+      color={color}
     >
       <defs>
         <style>

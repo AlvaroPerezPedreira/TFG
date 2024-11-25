@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function SearchIcon() {
+export default function SearchIcon({ color }) {
   return (
     <svg
       viewBox="0 -0.5 21 21"
@@ -29,7 +29,7 @@ export default function SearchIcon() {
           <g
             id="Dribbble-Light-Preview"
             transform="translate(-259.000000, -280.000000)"
-            fill="#FFFFFF"
+            fill={color}
           >
             <g id="icons" transform="translate(56.000000, 160.000000)">
               <path

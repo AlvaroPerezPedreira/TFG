@@ -2,9 +2,11 @@ import { DatePicker } from "@nextui-org/date-picker";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { stringToCalendarDate } from "../../../Functions/calendarFunctions";
+import { useThemeContext } from "../../../context/ThemeContext";
 
 export default function UpdateProfileDatePicker({ birthdate, setBirthdate }) {
   const [t] = useTranslation(["register"]);
+  const { color } = useThemeContext();
 
   const handleDateChange = (date) => {
     const jsDate = new Date(date);
@@ -25,6 +27,7 @@ export default function UpdateProfileDatePicker({ birthdate, setBirthdate }) {
         label={t("birthdate")}
         visibleMonths={1}
         variant="bordered"
+        color={color}
         defaultValue={stringToCalendarDate(birthdate)}
         onChange={handleDateChange}
       />

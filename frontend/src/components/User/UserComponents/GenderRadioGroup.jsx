@@ -1,9 +1,11 @@
 import React from "react";
 import { RadioGroup, Radio } from "@nextui-org/radio";
 import { useTranslation } from "react-i18next";
+import { useThemeContext } from "../../../context/ThemeContext";
 
 export default function GenderRadioGroup({ gender, setGender }) {
   const [t] = useTranslation(["register"]);
+  const { dark, color } = useThemeContext();
 
   const handleRadioChange = (e) => {
     setGender(e.target.value);
@@ -13,7 +15,7 @@ export default function GenderRadioGroup({ gender, setGender }) {
     <div>
       <RadioGroup
         label={t("gender")}
-        color="warning"
+        color={color}
         value={gender}
         onChange={handleRadioChange}
       >

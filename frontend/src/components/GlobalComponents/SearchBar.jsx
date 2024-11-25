@@ -21,7 +21,7 @@ export default function SearchBar() {
   const [error, setError] = useState("");
   let navigate = useNavigate();
   const { setFilters } = useFiltersStore();
-  const { color } = useThemeContext();
+  const { dark, color } = useThemeContext();
 
   const handleDateChangeAux = (dates) => {
     handleDateChange(dates, setCheckIn, setCheckOut);
@@ -129,7 +129,7 @@ export default function SearchBar() {
         </div>
         <div className="searchbar-button-container">
           <Button className="searchbar-button" isIconOnly type="submit">
-            <SearchIcon />
+          <SearchIcon color={dark ? "#FFFFFF" : "#000000"}/>
           </Button>
         </div>
       </form>
