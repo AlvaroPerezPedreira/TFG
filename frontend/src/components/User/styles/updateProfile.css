@@ -126,6 +126,13 @@
   margin-top: 10px;
 }
 
+.updProfile-country-item {
+  color: var(--text-color);
+  & lu li {
+    color: white;
+  }
+}
+
 .updProfile-personal-data-2 {
   position: relative;
   color: var(--whiteFull);

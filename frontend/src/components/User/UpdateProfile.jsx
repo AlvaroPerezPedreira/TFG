@@ -115,7 +115,9 @@ const Auth = () => {
                     }}
                     variant="bordered"
                     radius="sm"
-                    startContent={<LockIcon color={dark ? "#FFDB58": "#006FEE"}/>}
+                    startContent={
+                      <LockIcon color={dark ? "#FFDB58" : "#006FEE"} />
+                    }
                     className="updProfile-changePassword-button"
                   >
                     {t("changePassword")}
