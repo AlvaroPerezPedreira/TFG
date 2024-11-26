@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import LodgeDescription from "./LodgeDescription";
 import LodgeCountryAutocomplete from "./LodgeCountryAutocomplete";
 import LodgeMainImage from "./LodgeMainImage";
+import { useThemeContext } from "../../../context/ThemeContext";
 
 export default function LodgeFirstInputs({
   setCountry,
@@ -13,6 +14,7 @@ export default function LodgeFirstInputs({
   setMainImage,
 }) {
   const [t, i18n] = useTranslation(["createLodge"]);
+  const { dark, color } = useThemeContext();
 
   return (
     <div className="createLodge-firstInputsContainer">
@@ -21,21 +23,21 @@ export default function LodgeFirstInputs({
           name="name"
           label={t("name")}
           variant="underlined"
-          color="warning"
+          color={color}
           isRequired
         />
         <Input
           name="address"
           label={t("address")}
           variant="underlined"
-          color="warning"
+          color={color}
           isRequired
         />
         <Input
           name="city"
           label={t("city")}
           variant="underlined"
-          color="warning"
+          color={color}
           isRequired
         />
         <LodgeCountryAutocomplete setCountry={setCountry} />

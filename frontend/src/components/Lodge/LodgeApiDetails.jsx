@@ -147,7 +147,7 @@ export default function LodgeApiDetails() {
             <div className="lodgeApiDetails-button">
               {lodgeCheckInOut?.available_rooms > 0 ? (
                 <Button
-                  className="bg-[#FFDB58] text-black"
+                  className="bg-[#006FEE] dark:bg-[#FFDB58] text-black"
                   type="submit"
                   radius="none"
                 >

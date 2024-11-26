@@ -4,10 +4,12 @@ import { ImageIcon } from "../../../icons/MainAppIcons";
 import { useTranslation } from "react-i18next";
 import { Card, CardBody, CardHeader } from "@nextui-org/card";
 import CloseIcon from "../../../icons/CloseIcon";
+import { useThemeContext } from "../../../context/ThemeContext";
 
 export default function LodgeDropZone({ images, setImages }) {
   const fileInputRef = useRef(null); // Referencia al input de archivos
   const [t, i18n] = useTranslation(["createLodge"]);
+  const { dark, color } = useThemeContext();
 
   const handleDrop = (event) => {
     event.preventDefault();
@@ -69,10 +71,10 @@ export default function LodgeDropZone({ images, setImages }) {
       </div>
       <div className="createLodge-imagesButton">
         <Button
-          color="warning"
+          color={color}
           variant="bordered"
           radius="sm"
-          startContent={<ImageIcon />}
+          startContent={<ImageIcon color={dark ? "#FFDB58" : "#006FEE"} />}
           onClick={handleButtonClick}
         >
           {t("chooseImgs")}

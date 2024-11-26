@@ -10,6 +10,7 @@
     display: flex;
     gap: 20px; /* Espacio de 20px entre inputs */
     flex: 1; /* Permite que ocupe el espacio disponible */
+    color: var(--text-color)
 }
 
 .searchbar-button-container {

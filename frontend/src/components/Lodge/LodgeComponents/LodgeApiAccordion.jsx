@@ -3,10 +3,12 @@ import { Accordion, AccordionItem } from "@nextui-org/accordion";
 import { useTranslation } from "react-i18next";
 import IndicatorIcon from "../../../icons/IndicatorIcon";
 import languageMap from "../../../utils/LanguageMap";
+import { useThemeContext } from "../../../context/ThemeContext";
 
 export default function LodgeApiAccordion({ email, lodge, lodgeCheckInOut }) {
   const [t, i18n] = useTranslation(["lodgeApiDetails"]);
   const currentLanguage = i18n.language;
+  const { dark } = useThemeContext();
 
   const getDescription = (descriptions) => {
     if (!descriptions) return t("noDescription");
@@ -27,7 +29,7 @@ export default function LodgeApiAccordion({ email, lodge, lodgeCheckInOut }) {
       <AccordionItem
         key="description"
         aria-label="description"
-        indicator={<IndicatorIcon />}
+        indicator={<IndicatorIcon color={dark ? "white" : "black"} />}
         title={t("description")}
       >
         <span style={{ color: "var(--AppMainColor)" }}>
@@ -39,7 +41,7 @@ export default function LodgeApiAccordion({ email, lodge, lodgeCheckInOut }) {
       <AccordionItem
         key="check-schedule"
         aria-label="check-schedule"
-        indicator={<IndicatorIcon />}
+        indicator={<IndicatorIcon color={dark ? "white" : "black"} />}
         title={t("checkSchedule")}
       >
         {t("checkIn")}:{" "}
@@ -55,14 +57,14 @@ export default function LodgeApiAccordion({ email, lodge, lodgeCheckInOut }) {
       <AccordionItem
         key="moreInfo"
         aria-label="moreInfo"
-        indicator={<IndicatorIcon />}
+        indicator={<IndicatorIcon color={dark ? "white" : "black"} />}
         title={t("moreInfo")}
       >
         <Accordion variant="bordered">
           <AccordionItem
             key="coordinates"
             aria-label="coordinates"
-            indicator={<IndicatorIcon />}
+            indicator={<IndicatorIcon color={dark ? "white" : "black"} />}
             title={t("coordinates")}
           >
             {t("lat")}:{" "}
@@ -78,7 +80,7 @@ export default function LodgeApiAccordion({ email, lodge, lodgeCheckInOut }) {
           <AccordionItem
             key="languages"
             aria-label="languages"
-            indicator={<IndicatorIcon />}
+            indicator={<IndicatorIcon color={dark ? "white" : "black"} />}
             title={t("languages")}
           >
             {lodge?.languages_spoken.languagecode.map((code, index) => (
@@ -90,7 +92,7 @@ export default function LodgeApiAccordion({ email, lodge, lodgeCheckInOut }) {
           <AccordionItem
             key="review"
             aria-label="review"
-            indicator={<IndicatorIcon />}
+            indicator={<IndicatorIcon color={dark ? "white" : "black"} />}
             title={t("review")}
           >
             {t("reviewCount")}:{" "}
@@ -122,7 +124,7 @@ export default function LodgeApiAccordion({ email, lodge, lodgeCheckInOut }) {
           <AccordionItem
             key="timezone"
             aria-label="timezone"
-            indicator={<IndicatorIcon />}
+            indicator={<IndicatorIcon color={dark ? "white" : "black"} />}
             title={t("timezone")}
           >
             {t("timezone2")}:{" "}
@@ -136,7 +138,7 @@ export default function LodgeApiAccordion({ email, lodge, lodgeCheckInOut }) {
       <AccordionItem
         key="contact"
         aria-label="contact"
-        indicator={<IndicatorIcon />}
+        indicator={<IndicatorIcon color={dark ? "white" : "black"} />}
         title={t("contact")}
       >
         {t("email")}:{" "}

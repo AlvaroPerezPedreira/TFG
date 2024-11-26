@@ -14,6 +14,7 @@ import {
 } from "@nextui-org/pagination";
 import { useTranslation } from "react-i18next";
 import useFeatures from "../../../hooks/useFeatures";
+import { useThemeContext } from "../../../context/ThemeContext";
 
 export default function LodgeFeatureTable({
   selectedFeatures,
@@ -21,6 +22,7 @@ export default function LodgeFeatureTable({
 }) {
   const { getAllFeatures } = useFeatures();
   const [t, i18n] = useTranslation(["createLodge"]);
+  const { color } = useThemeContext();
 
   const [page, setPage] = useState(1);
   const [features, setFeatures] = useState([]);
@@ -70,7 +72,7 @@ export default function LodgeFeatureTable({
         aria-label="Feature table"
         selectionMode="multiple"
         removeWrapper
-        color="warning"
+        color={color}
         selectedKeys={selectedFeatures}
         onSelectionChange={setSelectedFeatures}
         bottomContent={
@@ -79,7 +81,7 @@ export default function LodgeFeatureTable({
               isCompact
               showControls
               showShadow
-              color="warning"
+              color={color}
               page={page}
               total={pages}
               onChange={(page) => setPage(page)}

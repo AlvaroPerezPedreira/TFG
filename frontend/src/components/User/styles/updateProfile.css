@@ -124,6 +124,7 @@
 
 .updProfile-country {
   margin-top: 10px;
+  color: var(--text-color);
 }
 
 .updProfile-country-item {

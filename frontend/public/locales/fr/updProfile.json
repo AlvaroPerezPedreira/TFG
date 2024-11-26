@@ -20,5 +20,6 @@
     "noUser": "Aucun utilisateur trouvé",
     "private": "Privé, regarde dans ton profil.",
     "updateProfile": "Mettre à jour le profil",
-    "userDetails": "Détails du profil de l'utilisateur"
+    "userDetails": "Détails du profil de l'utilisateur",
+    "email": "Courrier électronique"
 }

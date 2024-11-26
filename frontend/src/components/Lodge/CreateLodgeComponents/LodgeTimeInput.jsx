@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { TimeInput } from "@nextui-org/date-input";
 import ClockIcon from "../../../icons/ClockIcon";
 import { useTranslation } from "react-i18next";
+import { useThemeContext } from "../../../context/ThemeContext";
 
 export default function LodgeTimeInput({
   checkIn,
@@ -10,6 +11,7 @@ export default function LodgeTimeInput({
   setCheckOut,
 }) {
   const [t, i18n] = useTranslation(["createLodge"]);
+  const { dark, color } = useThemeContext();
 
   return (
     <>
@@ -17,8 +19,8 @@ export default function LodgeTimeInput({
         label={t("checkIn")}
         isRequired
         variant="underlined"
-        color="warning"
-        startContent={<ClockIcon />}
+        color={color}
+        startContent={<ClockIcon color={dark ? "#FFDB58" : "#006FEE"} />}
         value={checkIn}
         onChange={setCheckIn}
       />
@@ -26,8 +28,8 @@ export default function LodgeTimeInput({
         label={t("checkOut")}
         isRequired
         variant="underlined"
-        color="warning"
-        startContent={<ClockIcon />}
+        color={color}
+        startContent={<ClockIcon color={dark ? "#FFDB58" : "#006FEE"} />}
         value={checkOut}
         onChange={setCheckOut}
       />

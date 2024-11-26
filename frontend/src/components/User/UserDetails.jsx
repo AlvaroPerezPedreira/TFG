@@ -12,6 +12,7 @@ import { UserIcon } from "../../icons/UserIcon";
 import useBanUser from "../../hooks/useBanUser";
 import useUserDetails from "../../hooks/useUserDetails";
 import AppNavbar from "../AppNavbar";
+import { useThemeContext } from "../../context/ThemeContext";
 
 function UserDetails() {
   const { email } = useParams();
@@ -22,6 +23,7 @@ function UserDetails() {
   const { authUser } = useAuthContext();
   const { banUser, unbanUser } = useBanUser();
   const { fetchUserDetails } = useUserDetails();
+  const { dark, color } = useThemeContext();
 
   useEffect(() => {
     fetchUserDetails({ email, setUser, setError, setLoading });
@@ -66,7 +68,7 @@ function UserDetails() {
                   label={t("email")}
                   variant="underlined"
                   value={user.email ?? ""}
-                  color="warning"
+                  color={color}
                   isReadOnly
                 />
                 <Input
@@ -74,7 +76,7 @@ function UserDetails() {
                   label={t("username")}
                   variant="underlined"
                   value={user.username ?? ""}
-                  color="warning"
+                  color={color}
                   isReadOnly
                 />
                 <Input
@@ -82,7 +84,7 @@ function UserDetails() {
                   label={t("name")}
                   variant="underlined"
                   value={user.name ?? ""}
-                  color="warning"
+                  color={color}
                   isReadOnly
                 />
                 <Input
@@ -90,7 +92,7 @@ function UserDetails() {
                   label={t("lastname")}
                   variant="underlined"
                   value={user.lastname ?? ""}
-                  color="warning"
+                  color={color}
                   isReadOnly
                 />
               </div>
@@ -110,7 +112,7 @@ function UserDetails() {
                   label={t("country")}
                   variant="underlined"
                   value={user.country ?? ""}
-                  color="warning"
+                  color={color}
                   isReadOnly
                 />
                 <Input
@@ -134,7 +136,7 @@ function UserDetails() {
                   label={t("birthdate")}
                   variant="underlined"
                   value={user.birthdate ?? ""}
-                  color="warning"
+                  color={color}
                   isReadOnly
                 />
               </div>
@@ -143,7 +145,7 @@ function UserDetails() {
                 <div className="updProfile-gender-form-group">
                   <RadioGroup
                     label={t("gender")}
-                    color="warning"
+                    color={color}
                     value={user.gender}
                   >
                     <Radio value="male">{t("male")}</Radio>

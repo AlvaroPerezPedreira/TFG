@@ -22,7 +22,7 @@
 
   --AppMainColor: #006FEE;
 
-
+  --text-color-contrast: #afafaf;
 
   --blackFull: #000000;
   --whiteFull: #FFFFFF;
@@ -43,6 +43,9 @@
   --inverted-background-color: #eee;
 
   --AppMainColor: #FFDB58;
+
+  --text-color-contrast: #2e2e2e;
+
 
 
   --blackFull: #000000;

@@ -3,9 +3,11 @@ import { Accordion, AccordionItem } from "@nextui-org/accordion";
 import { currencyConverter } from "../../../Functions/currencyFunctions";
 import IndicatorIcon from "../../../icons/IndicatorIcon";
 import { useTranslation } from "react-i18next";
+import { useThemeContext } from "../../../context/ThemeContext";
 
 export default function LodgeAccordion({ lodge }) {
   const [t, i18n] = useTranslation(["lodgeDetails"]);
+  const { dark } = useThemeContext();
 
   const [dollars, setDollars] = useState(0);
   const [pounds, setPounds] = useState(0);
@@ -19,7 +21,7 @@ export default function LodgeAccordion({ lodge }) {
       <AccordionItem
         key="description"
         aria-label="description"
-        indicator={<IndicatorIcon />}
+        indicator={<IndicatorIcon color={dark ? "white" : "black"} />}
         title={t("description")}
       >
         <span style={{ color: "var(--AppMainColor)" }}>
@@ -29,7 +31,7 @@ export default function LodgeAccordion({ lodge }) {
       <AccordionItem
         key="price"
         aria-label="price"
-        indicator={<IndicatorIcon />}
+        indicator={<IndicatorIcon color={dark ? "white" : "black"} />}
         title={t("price")}
       >
         {t("euro")}:{" "}
@@ -45,7 +47,7 @@ export default function LodgeAccordion({ lodge }) {
       <AccordionItem
         key="check-schedule"
         aria-label="check-schedule"
-        indicator={<IndicatorIcon />}
+        indicator={<IndicatorIcon color={dark ? "white" : "black"} />}
         title={t("checkSchedule")}
       >
         {t("checkIn")}:{" "}
@@ -58,7 +60,7 @@ export default function LodgeAccordion({ lodge }) {
       <AccordionItem
         key="contact"
         aria-label="contact"
-        indicator={<IndicatorIcon />}
+        indicator={<IndicatorIcon color={dark ? "white" : "black"} />}
         title={t("contact")}
       >
         {t("email")}:{" "}

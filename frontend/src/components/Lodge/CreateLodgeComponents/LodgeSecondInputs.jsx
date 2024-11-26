@@ -9,6 +9,7 @@ import {
   PhoneIcon,
   BedIcon,
 } from "../../../icons/MainAppIcons";
+import { useThemeContext } from "../../../context/ThemeContext";
 
 export default function CreateLodgeAccordion({
   checkIn,
@@ -17,6 +18,7 @@ export default function CreateLodgeAccordion({
   setCheckOut,
 }) {
   const [t, i18n] = useTranslation(["createLodge"]);
+  const { color, dark } = useThemeContext();
 
   return (
     <div className="createLodge-secondInputsContainer">
@@ -37,9 +39,9 @@ export default function CreateLodgeAccordion({
           name="rooms"
           label={t("rooms")}
           variant="underlined"
-          color="warning"
+          color={color}
           isRequired
-          startContent={<BedIcon />}
+          startContent={<BedIcon color={dark ? "#FFDB58" : "#006FEE"} />}
         />
         <Tooltip
           showArrow={false}
@@ -47,14 +49,15 @@ export default function CreateLodgeAccordion({
           size="sm"
           placement="bottom-start"
           offset={10}
+          color={color}
         >
           <Input
             name="pricePerNight"
             label={t("pricePerNight")}
             variant="underlined"
-            color="warning"
+            color={color}
             isRequired
-            startContent={<MoneyIcon />}
+            startContent={<MoneyIcon color={dark ? "#FFDB58" : "#006FEE"} />}
           />
         </Tooltip>
       </div>
@@ -64,17 +67,17 @@ export default function CreateLodgeAccordion({
           name="email"
           label={t("email")}
           variant="underlined"
-          color="warning"
+          color={color}
           isRequired
-          startContent={<MailIcon />}
+          startContent={<MailIcon color={dark ? "#FFDB58" : "#006FEE"} />}
         />
         <Input
           name="phone"
           label={t("phone")}
           variant="underlined"
-          color="warning"
+          color={color}
           isRequired
-          startContent={<PhoneIcon />}
+          startContent={<PhoneIcon color={dark ? "#FFDB58" : "#006FEE"} />}
         />
       </div>
     </div>

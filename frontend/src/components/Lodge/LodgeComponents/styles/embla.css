@@ -20,7 +20,7 @@
     padding-left: var(--slide-spacing);
   }
   .embla__slide__number {
-    box-shadow: inset 0 0 0 0.2rem rgb(25,25,25);
+    box-shadow: inset 0 0 0 0.2rem var(--text-color);
     border-radius: 1.8rem;
     font-size: 4rem;
     font-weight: 600;
@@ -55,7 +55,7 @@
     border: 0;
     padding: 0;
     margin: 0;
-    box-shadow: inset 0 0 0 0.2rem rgb(25,25,25);
+    box-shadow: inset 0 0 0 0.2rem var(--text-color);
     width: 2rem;
     height: 2rem;
     z-index: 1;
@@ -71,6 +71,7 @@
   .embla__button__svg {
     width: 35%;
     height: 35%;
+    color: var(--text-color);
   }
   .embla__dots {
     display: flex;
@@ -100,7 +101,7 @@
     border-radius: 50%;
   }
   .embla__dot:after {
-    box-shadow: inset 0 0 0 0.2rem rgb(25,25,25);
+    box-shadow: inset 0 0 0 0.2rem var(--text-color-contrast);
     width: 1.4rem;
     height: 1.4rem;
     border-radius: 50%;
@@ -109,6 +110,6 @@
     content: '';
   }
   .embla__dot--selected:after {
-    box-shadow: inset 0 0 0 0.2rem white;
+    box-shadow: inset 0 0 0 0.2rem var(--text-color);
   }
   

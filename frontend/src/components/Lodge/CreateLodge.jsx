@@ -167,7 +167,7 @@ export default function CreateLodge() {
         </div>
         <div className="createLodge-buttonContainer">
           <Button
-            className="bg-[#FFDB58] text-black w-full"
+            className="bg-[#006FEE] dark:bg-[#FFDB58] text-black w-full"
             radius="none"
             type="submit"
             children={t("create")}

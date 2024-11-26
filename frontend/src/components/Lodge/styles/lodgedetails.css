@@ -36,7 +36,7 @@ font-size: 14;
 }
 
 .lodgeDetails-providerTitle {
-    color: white;
+    color: var(--text-color);
 }
 
 .lodgeDetails-providerName {
@@ -46,11 +46,12 @@ font-size: 14;
 
 .lodgeDetails-userAvatar {
     margin-bottom: 10px;
+    color: var(--text-color);
 }
 
 .lodgeDetails-address {
     font-size: 1rem;
-    color: white;
+    color: var(--text-color);
     display: block; 
     margin-top: 4px;
 }
@@ -74,6 +75,7 @@ font-size: 14;
     flex: 1;
     margin: 0;
     padding-top: 20px;
+    color: var(--text-color);
 }
 
 .lodgeDetails-rooms {

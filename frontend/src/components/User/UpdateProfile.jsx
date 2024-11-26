@@ -84,7 +84,10 @@ const Auth = () => {
                       aria-label="country"
                     >
                       {(country) => (
-                        <AutocompleteItem key={country.value}>
+                        <AutocompleteItem
+                          key={country.value}
+                          className="updProfile-country-item"
+                        >
                           {country.label}
                         </AutocompleteItem>
                       )}

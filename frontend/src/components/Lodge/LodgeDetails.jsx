@@ -13,6 +13,7 @@ import EmblaCarousel from "./LodgeComponents/EmblaCarousel";
 import UserLink from "./LodgeComponents/UserLink";
 import LodgeAccordion from "./LodgeComponents/LodgeAccordion";
 import AppNavbar from "../AppNavbar";
+import { useThemeContext } from "../../context/ThemeContext";
 
 export default function LodgeDetails() {
   const [lodge, setLodge] = useState(null);
@@ -22,6 +23,7 @@ export default function LodgeDetails() {
 
   const { email } = useParams();
   const { getLodge } = useGetLodge();
+  const { color } = useThemeContext();
 
   const [t, i18n] = useTranslation(["lodgeDetails"]);
   const currentLanguage = i18n.language;
@@ -109,12 +111,13 @@ export default function LodgeDetails() {
                 visibleMonths={1}
                 startName="checkIn"
                 endName="checkOut"
+                color={color}
                 isRequired
                 onChange={handleDateChangeAux}
               />
               <div className="lodgeDetails-button">
                 <Button
-                  className="bg-[#FFDB58] text-black"
+                  className="bg-[#006FEE] dark:bg-[#FFDB58] text-black"
                   type="submit"
                   radius="none"
                 >

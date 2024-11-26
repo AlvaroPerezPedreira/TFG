@@ -2,6 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import { BedIcon, ImageIcon } from "../../../icons/MainAppIcons";
 import { Button } from "@nextui-org/button";
+import { useThemeContext } from "../../../context/ThemeContext";
 
 export default function LodgeMainImage({
   mainImageUrl,
@@ -10,6 +11,7 @@ export default function LodgeMainImage({
   setMainImage,
 }) {
   const [t, i18n] = useTranslation(["createLodge"]);
+  const { dark, color } = useThemeContext();
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
@@ -48,10 +50,10 @@ export default function LodgeMainImage({
       )}
       <div className="createLodge-mainImageButton">
         <Button
-          color="warning"
+          color={color}
           variant="bordered"
           radius="sm"
-          startContent={<ImageIcon />}
+          startContent={<ImageIcon color={dark ? "#FFDB58" : "#006FEE"} />}
           onClick={() => document.getElementById("fileInput").click()}
         >
           {t("chooseImg")}

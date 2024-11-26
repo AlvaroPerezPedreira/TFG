@@ -20,5 +20,6 @@
     "noUser": "No user found",
     "private": "Private, check your profile.",
     "updateProfile": "Update profile",
-    "userDetails": "User profile details"
+    "userDetails": "User profile details",
+    "email": "Email"
 }
