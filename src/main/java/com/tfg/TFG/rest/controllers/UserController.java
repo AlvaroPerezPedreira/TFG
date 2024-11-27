@@ -5,6 +5,7 @@ import static com.tfg.TFG.rest.dtos.userDtos.UserConversor.*;
 import java.net.URI;
 import java.util.Locale;
 
+import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.springframework.data.domain.Page;
 
 import com.tfg.TFG.model.common.exceptions.*;
 import com.tfg.TFG.model.entities.*;
@@ -30,11 +32,7 @@ import com.tfg.TFG.model.services.exceptions.*;
 import com.tfg.TFG.rest.common.ErrorsDto;
 import com.tfg.TFG.rest.common.JwtGenerator;
 import com.tfg.TFG.rest.common.JwtInfo;
-import com.tfg.TFG.rest.dtos.userDtos.AuthenticatedUserDto;
-import com.tfg.TFG.rest.dtos.userDtos.ChangePasswordParamsDto;
-import com.tfg.TFG.rest.dtos.userDtos.LoginParamsDto;
-import com.tfg.TFG.rest.dtos.userDtos.UserDto;
-import com.tfg.TFG.rest.dtos.userDtos.UpdatedUserDto;
+import com.tfg.TFG.rest.dtos.userDtos.*;
 
 /**
  * The Class UserController.
@@ -295,6 +293,20 @@ public class UserController {
 		User admin = userService.findById(userId);
 
 		userService.unbanUser(admin, email);
+	}
+
+	@GetMapping("/findAllBannedUsers")
+	@ResponseStatus(HttpStatus.OK)
+	public ResponseEntity<Page<UserDto>> findAllBannedUsers(@RequestAttribute Long userId)
+			throws InstanceNotFoundException, PermissionException {
+
+		System.out.println("Find all banned users");
+
+		User admin = userService.findById(userId);
+
+		Page<UserDto> users = userService.findAllBannedUsers(admin, 0, 24).map(UserConversor::toUserDto);
+
+		return ResponseEntity.ok(users);
 	}
 
 	/**

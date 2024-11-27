@@ -15,6 +15,7 @@ import {
   EditIcon,
   CreateIcon,
   LogoutIcon,
+  NbHammerIcon,
 } from "../../icons/UserDropdownIcons";
 
 export default function UserDropdown() {
@@ -100,6 +101,22 @@ export default function UserDropdown() {
           >
             {t("updProfile")}
           </DropdownItem>
+          {authUser.user.role === "ADMIN" && (
+            <DropdownItem
+              style={{ color: "var(--AppMainColor)" }}
+              key="bannedUsers"
+              variant="bordered"
+              textValue={t("bannedUsers")}
+              startContent={<NbHammerIcon />}
+              onClick={() => {
+                startTransition(() => {
+                  navigate("/users/bannedUsers");
+                });
+              }}
+            >
+              {t("bannedUsers")}
+            </DropdownItem>
+          )}
           <DropdownItem
             style={{ color: "var(--errorRed)" }}
             key="logout"

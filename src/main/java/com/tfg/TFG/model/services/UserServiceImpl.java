@@ -3,9 +3,12 @@ package com.tfg.TFG.model.services;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.data.domain.Page;
 
 import com.tfg.TFG.model.common.exceptions.DuplicateInstanceException;
 import com.tfg.TFG.model.common.exceptions.InstanceNotFoundException;
@@ -158,6 +161,17 @@ public class UserServiceImpl implements UserService {
                 .orElseThrow(() -> new InstanceNotFoundException("project.entities.user", bannedUserEmail));
 
         bannedUser.setStatus(User.StatusType.ACTIVE);
+    }
+
+    @Override
+    public Page<User> findAllBannedUsers(User admin, int page, int size) throws PermissionException {
+        if (admin.getRole() != User.RoleType.ADMIN) {
+            throw new PermissionException();
+        }
+
+        PageRequest pageRequest = PageRequest.of(page, size, Sort.by(Sort.Direction.ASC, "id"));
+
+        return userDao.findAllBannedUsers(pageRequest);
     }
 
 }

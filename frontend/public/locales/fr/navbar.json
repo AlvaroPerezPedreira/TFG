@@ -7,5 +7,6 @@
     "search": "Rechercher",
     "home": "Accueil",
     "createLodge1": "Enregistrer un",
-    "createLodge2": "nouveau hébergement"
+    "createLodge2": "nouveau hébergement",
+    "bannedUsers": "Utilisateurs bannis"
 }

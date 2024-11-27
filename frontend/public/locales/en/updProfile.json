@@ -21,5 +21,7 @@
     "private": "Private, check your profile.",
     "updateProfile": "Update profile",
     "userDetails": "User profile details",
-    "email": "Email"
+    "email": "Email",
+    "fullName": "Full name",
+    "bannedUsersTitle": "Banned users"
 }

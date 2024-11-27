@@ -21,5 +21,7 @@
     "private": "Privé, regarde dans ton profil.",
     "updateProfile": "Mettre à jour le profil",
     "userDetails": "Détails du profil de l'utilisateur",
-    "email": "Courrier électronique"
+    "email": "Courrier électronique",
+    "fullName": "Nom complet",
+    "bannedUsersTitle": "Utilisateurs bannis"
 }

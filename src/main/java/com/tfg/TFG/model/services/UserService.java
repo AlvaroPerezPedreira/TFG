@@ -1,6 +1,7 @@
 package com.tfg.TFG.model.services;
 
 import com.tfg.TFG.model.entities.User;
+import org.springframework.data.domain.Page;
 import com.tfg.TFG.model.services.exceptions.BannedUserException;
 import com.tfg.TFG.model.services.exceptions.IncorrectLoginException;
 import com.tfg.TFG.model.services.exceptions.IncorrectPasswordException;
@@ -31,4 +32,5 @@ public interface UserService {
 
         void unbanUser(User admin, String bannedUserEmail) throws InstanceNotFoundException, PermissionException;
 
+        Page<User> findAllBannedUsers(User admin, int page, int size) throws PermissionException;
 }

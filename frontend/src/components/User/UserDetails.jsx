@@ -13,6 +13,7 @@ import useBanUser from "../../hooks/useBanUser";
 import useUserDetails from "../../hooks/useUserDetails";
 import AppNavbar from "../AppNavbar";
 import { useThemeContext } from "../../context/ThemeContext";
+import { useBannedUsersStore } from "../../store/useBannedUsersStore";
 
 function UserDetails() {
   const { email } = useParams();
@@ -24,6 +25,7 @@ function UserDetails() {
   const { banUser, unbanUser } = useBanUser();
   const { fetchUserDetails } = useUserDetails();
   const { dark, color } = useThemeContext();
+  const { addUser, removeUser } = useBannedUsersStore();
 
   useEffect(() => {
     fetchUserDetails({ email, setUser, setError, setLoading });
@@ -31,8 +33,13 @@ function UserDetails() {
 
   const handleClick = async (e) => {
     e.preventDefault();
-    if (user.status === "ACTIVE") await banUser(email);
-    else await unbanUser(email);
+    if (user.status === "ACTIVE") {
+      await banUser(email);
+      addUser(user);
+    } else {
+      await unbanUser(email);
+      removeUser(user);
+    }
     window.location.reload();
   };
 
