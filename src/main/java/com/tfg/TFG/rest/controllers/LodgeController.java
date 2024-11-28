@@ -8,13 +8,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 
 import com.tfg.TFG.model.common.exceptions.DuplicateInstanceException;
 import com.tfg.TFG.model.common.exceptions.InstanceNotFoundException;
 import com.tfg.TFG.model.entities.Lodge;
+import com.tfg.TFG.model.entities.User;
 import com.tfg.TFG.model.services.LodgeService;
+import com.tfg.TFG.model.services.UserService;
 import com.tfg.TFG.model.services.exceptions.InvalidBirthdateException;
 import com.tfg.TFG.model.services.exceptions.InvalidEmailException;
 import com.tfg.TFG.model.services.exceptions.PermissionException;
@@ -32,6 +35,9 @@ public class LodgeController {
     /** The user service. */
     @Autowired
     private LodgeService lodgeService;
+
+    @Autowired
+    private UserService userService;
 
     @GetMapping("/")
     public ResponseEntity<Page<LodgeDto>> getLodges(@RequestParam(name = "page", defaultValue = "0") int page,
@@ -81,7 +87,7 @@ public class LodgeController {
     }
 
     @GetMapping("/{email}")
-    public ResponseEntity<LodgeDto> getUserByEmail(@RequestAttribute Long userId, @PathVariable String email)
+    public ResponseEntity<LodgeDto> getLodgeByEmail(@RequestAttribute Long userId, @PathVariable String email)
             throws InstanceNotFoundException, PermissionException {
 
         System.out.println("getLodgeByEmail");
@@ -121,6 +127,41 @@ public class LodgeController {
                 .collect(Collectors.toList());
 
         return ResponseEntity.ok(features);
+    }
+
+    @GetMapping("/myLodges")
+    public ResponseEntity<List<LodgeDto>> getMyLodges(@RequestAttribute Long userId) throws InstanceNotFoundException {
+
+        System.out.println("get my lodges");
+
+        List<LodgeDto> lodges = lodgeService.getLodgesByUserId(userId).stream().map(LodgeConversor::toDto)
+                .collect(Collectors.toList());
+
+        return ResponseEntity.ok(lodges);
+    }
+
+    @PostMapping("/closeLodge/{email}")
+    @ResponseStatus(HttpStatus.OK)
+    public void closeLodge(@RequestAttribute Long userId, @PathVariable String email)
+            throws InstanceNotFoundException, PermissionException {
+        System.out.println("closeLodge");
+
+        User owner = userService.findById(userId);
+        Lodge lodge = lodgeService.findByEmail(email);
+
+        lodgeService.closeLodge(owner, lodge);
+    }
+
+    @PostMapping("/openLodge/{email}")
+    @ResponseStatus(HttpStatus.OK)
+    public void openLodge(@RequestAttribute Long userId, @PathVariable String email)
+            throws InstanceNotFoundException, PermissionException {
+        System.out.println("openLodge");
+
+        User owner = userService.findById(userId);
+        Lodge lodge = lodgeService.findByEmail(email);
+
+        lodgeService.openLodge(owner, lodge);
     }
 
 }

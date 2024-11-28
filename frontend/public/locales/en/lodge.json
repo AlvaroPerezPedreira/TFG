@@ -1,4 +1,8 @@
 {
     "price_per_night": "Price (per night):",
-    "provider": "Provider:"
+    "provider": "Provider:",
+    "myLodgesTitle": "Manage your lodges",
+    "editLodge": "Edit",
+    "closeLodge": "Close",
+    "openLodge": "Open"
 }

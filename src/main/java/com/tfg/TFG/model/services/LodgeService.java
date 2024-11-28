@@ -8,6 +8,8 @@ import org.springframework.data.domain.Page;
 import com.tfg.TFG.model.common.exceptions.InstanceNotFoundException;
 import com.tfg.TFG.model.entities.Feature;
 import com.tfg.TFG.model.entities.Lodge;
+import com.tfg.TFG.model.entities.User;
+import com.tfg.TFG.model.services.exceptions.PermissionException;
 
 public interface LodgeService {
     Page<Lodge> getLodges(int page, int size);
@@ -26,4 +28,11 @@ public interface LodgeService {
             throws InstanceNotFoundException;
 
     List<Feature> getAllFeatures();
+
+    List<Lodge> getLodgesByUserId(Long userId) throws InstanceNotFoundException;
+
+    void closeLodge(User user, Lodge lodge) throws InstanceNotFoundException, PermissionException;
+
+    void openLodge(User user, Lodge lodge) throws InstanceNotFoundException, PermissionException;
+
 }

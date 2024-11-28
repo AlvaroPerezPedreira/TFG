@@ -21,6 +21,7 @@ import com.tfg.TFG.model.entities.Lodge_ImageDao;
 import com.tfg.TFG.model.entities.User;
 import com.tfg.TFG.model.entities.UserDao;
 import com.tfg.TFG.model.entities.Lodge.LodgeProvider;
+import com.tfg.TFG.model.services.exceptions.PermissionException;
 
 /**
  * The Class LodgeServiceImpl.
@@ -116,4 +117,26 @@ public class LodgeServiceImpl implements LodgeService {
         return featureDao.findAll();
     }
 
+    @Override
+    public List<Lodge> getLodgesByUserId(Long userId) throws InstanceNotFoundException {
+        return lodgeDao.findByUserId(userId);
+    }
+
+    @Override
+    public void closeLodge(User user, Lodge lodge) throws InstanceNotFoundException, PermissionException {
+        if (!lodge.getUser().equals(user)) {
+            throw new PermissionException();
+        }
+
+        lodge.setIs_closed(true);
+    }
+
+    @Override
+    public void openLodge(User user, Lodge lodge) throws InstanceNotFoundException, PermissionException {
+        if (!lodge.getUser().equals(user)) {
+            throw new PermissionException();
+        }
+
+        lodge.setIs_closed(false);
+    }
 }

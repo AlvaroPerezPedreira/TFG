@@ -24,7 +24,31 @@ const useGetLodges = () => {
     return finalData;
   };
 
-  return { getLodges };
+  const getMyLodges = async ({ token, setLodges }) => {
+    try {
+      const response = await fetch(
+        `http://localhost:8080/api/lodges/myLodges`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      const finalData = await response.json();
+
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`);
+      }
+      setLodges(finalData);
+    } catch (error) {
+      console.error("Error getting my lodges:", error);
+    }
+  };
+
+  return { getLodges, getMyLodges };
 };
 
 export default useGetLodges;

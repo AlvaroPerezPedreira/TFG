@@ -1,5 +1,5 @@
 import "./styles/updateProfile.css";
-import React, { Suspense, useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState, startTransition } from "react";
 import { useParams } from "react-router-dom";
 import UpdateProfileHeaderLink from "./UpdateProfileComponents/UpdateProfileHeaderLink";
 import FlagDropdown from "../GlobalComponents/FlagDropdown";
@@ -33,14 +33,21 @@ function UserDetails() {
 
   const handleClick = async (e) => {
     e.preventDefault();
-    if (user.status === "ACTIVE") {
-      await banUser(email);
-      addUser(user);
-    } else {
-      await unbanUser(email);
-      removeUser(user);
-    }
-    window.location.reload();
+
+    // Usamos startTransition para no bloquear la UI al cambiar el estado
+    startTransition(async () => {
+      if (user.status === "ACTIVE") {
+        await banUser(email);
+        // Actualizamos el estado y el store
+        setUser((prevUser) => ({ ...prevUser, status: "BANNED" }));
+        addUser(user); // Agregamos el usuario al store
+      } else {
+        await unbanUser(email);
+        // Actualizamos el estado y el store
+        setUser((prevUser) => ({ ...prevUser, status: "ACTIVE" }));
+        removeUser(user); // Removemos el usuario del store
+      }
+    });
   };
 
   // Manejo de errores

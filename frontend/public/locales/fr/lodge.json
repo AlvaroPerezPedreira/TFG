@@ -1,4 +1,8 @@
 {
     "price_per_night": "Prix (par nuit):",
-    "provider": "Fournisseur:"
+    "provider": "Fournisseur:",
+    "myLodgesTitle": "Gérez vos hébergements",
+    "editLodge": "Modifier",
+    "closeLodge": "Fermer",
+    "openLodge": "Ouvrir"
 }

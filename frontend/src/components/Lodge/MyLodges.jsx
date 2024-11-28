@@ -1,0 +1,71 @@
+import "./styles/mylodges.css";
+import React, { Suspense, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import AppNavbar from "../AppNavbar";
+import { useBannedUsersStore } from "../../store/useBannedUsersStore";
+import useBanUser from "../../hooks/useBanUser";
+import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/card";
+import { Avatar } from "@nextui-org/avatar";
+import { Button } from "@nextui-org/button";
+import { UserIcon } from "../../icons/UserIcon";
+import useGetLodges from "../../hooks/useGetLodges";
+import MyLodgesCard from "./LodgeComponents/MyLodgesCard";
+
+function MyLodges() {
+  const [t] = useTranslation(["lodge"]);
+  const [lodges, setLodges] = useState([]);
+  const { getMyLodges } = useGetLodges();
+  const token = JSON.parse(localStorage.getItem("authUser")).serviceToken;
+
+  useEffect(() => {
+    getMyLodges({ token, setLodges });
+  }, []);
+
+  const handleClick = async (e) => {
+    e.preventDefault();
+    console.log("details");
+  };
+
+  console.log(lodges);
+
+  return (
+    <>
+      <Suspense fallback="loading">
+        <AppNavbar />
+        <div className="myLodges-container">
+          <div className="myLodges-titleContainer">
+            <span className="myLodges-title">{t("myLodgesTitle")}</span>
+          </div>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
+              gap: "20px",
+              marginTop: "20px",
+            }}
+          >
+            {Array.isArray(lodges) &&
+              lodges.map((lodge, index) => (
+                <MyLodgesCard
+                  key={index}
+                  lodge_email={lodge.lodge_email}
+                  lodge_name={lodge.lodge_name}
+                  price_per_night={lodge.price_per_night}
+                  lodge_provider={lodge.lodge_provider}
+                  is_closed={lodge.is_closed}
+                  image_url={
+                    lodge.images && lodge.images.length > 0
+                      ? `http://localhost:8080/images/${lodge.images[0].image_url}`
+                      : "http://localhost:8080/images/Default_LodgeImage.jpg"
+                  }
+                  handleClick={handleClick}
+                />
+              ))}
+          </div>
+        </div>
+      </Suspense>
+    </>
+  );
+}
+
+export default MyLodges;

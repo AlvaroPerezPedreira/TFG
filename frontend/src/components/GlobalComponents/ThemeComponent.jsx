@@ -18,17 +18,17 @@ export default function ThemeComponent() {
 
   return (
     <>
-      <Button isIconOnly onClick={handleMode} variant="" size="sm">
+      {/* <Button isIconOnly onClick={handleMode} variant="" size="sm">
         {dark ? <NbMoonIcon /> : <NbSunIcon />}
-      </Button>
-      {/* <Switch
+      </Button> */}
+      <Switch
         defaultSelected
         size="md"
         color="default"
         startContent={<SunIcon />}
         endContent={<MoonIcon />}
         onChange={handleMode}
-      /> */}
+      />
     </>
   );
 }
