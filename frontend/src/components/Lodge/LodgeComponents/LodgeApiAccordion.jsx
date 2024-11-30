@@ -1,13 +1,17 @@
-import React from "react";
+import React, { startTransition } from "react";
 import { Accordion, AccordionItem } from "@nextui-org/accordion";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
+
 import IndicatorIcon from "../../../icons/IndicatorIcon";
 import languageMap from "../../../utils/LanguageMap";
 import { useThemeContext } from "../../../context/ThemeContext";
+import { Link } from "@nextui-org/link";
 
 export default function LodgeApiAccordion({ email, lodge, lodgeCheckInOut }) {
   const [t, i18n] = useTranslation(["lodgeApiDetails"]);
   const currentLanguage = i18n.language;
+  let navigate = useNavigate();
   const { dark } = useThemeContext();
 
   const getDescription = (descriptions) => {
@@ -144,7 +148,11 @@ export default function LodgeApiAccordion({ email, lodge, lodgeCheckInOut }) {
         {t("email")}:{" "}
         <span style={{ color: "var(--AppMainColor)" }}>{email}</span> <br />
         {t("url")}:{" "}
-        <span style={{ color: "var(--AppMainColor)" }}>{lodge?.url}</span>
+        <span style={{ color: "var(--AppMainColor)" }}>
+          <Link href={lodge?.url} size="sm" isExternal>
+            {lodge?.url}
+          </Link>
+        </span>
       </AccordionItem>
     </Accordion>
   );

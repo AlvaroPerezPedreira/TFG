@@ -1,5 +1,5 @@
 import "./styles/bannedUsers.css";
-import React, { Suspense, useEffect, startTrsition } from "react";
+import React, { Suspense, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import AppNavbar from "../AppNavbar";
 import { useBannedUsersStore } from "../../store/useBannedUsersStore";
