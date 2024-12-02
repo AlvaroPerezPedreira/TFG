@@ -1,5 +1,8 @@
 package com.tfg.TFG.model.services;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -110,6 +113,80 @@ public class LodgeServiceImpl implements LodgeService {
         savedLodge.setImages(lodgeImages);
 
         return savedLodge;
+    }
+
+    @Override
+    public Lodge updateLodge(Long userId, String lodgeEmail, String lodgeName, String lodgeDescription,
+            String lodgeAddress, String lodgePhone, String city, String country, int availabeRooms,
+            double pricePerNight, String checkIn, String checkOut, List<Long> featureIds, List<String> imageUrls)
+            throws InstanceNotFoundException, PermissionException {
+
+        Optional<Lodge> lodgeOptional = lodgeDao.findByEmail(lodgeEmail);
+
+        if (lodgeOptional.isEmpty()) {
+            throw new InstanceNotFoundException("project.entities.lodge", lodgeEmail);
+        }
+
+        Lodge lodge = lodgeOptional.get();
+
+        Optional<User> owner = userDao.findById(userId);
+
+        // if (lodge.getUser() != owner.get()) {
+        // throw new PermissionException();
+        // }
+
+        lodge.setLodge_name(lodgeName);
+        lodge.setLodge_description(lodgeDescription);
+        lodge.setLodge_address(lodgeAddress);
+        lodge.setLodge_phone(lodgePhone);
+        lodge.setCity(city);
+        lodge.setCountry(country);
+        lodge.setAvailable_rooms(availabeRooms);
+        lodge.setPrice_per_night(pricePerNight);
+        lodge.setCheck_in(checkIn);
+        lodge.setCheck_out(checkOut);
+
+        List<Feature> features = featureDao.findAllById(featureIds);
+        lodge.setFeatures(features);
+
+        // Lista de imágenes actuales del lodge
+        List<String> existingImageUrls = new ArrayList<>();
+        for (Lodge_Image lodgeImage : lodge.getImages()) {
+            existingImageUrls.add(lodgeImage.getImage_url());
+        }
+
+        // Filtrar las URLs de las nuevas imágenes que no existen aún
+        List<String> newImageUrls = new ArrayList<>();
+        for (String imageUrl : imageUrls) {
+            // Si la imagen no existe en el directorio ni está en el sistema, agregarla
+            if (!existingImageUrls.contains(imageUrl) && !imageExists(imageUrl)) {
+                newImageUrls.add(imageUrl);
+            }
+        }
+
+        // Añadir solo las nuevas imágenes
+        List<Lodge_Image> newLodgeImages = new ArrayList<>();
+        for (String imageUrl : newImageUrls) {
+            Lodge_Image lodgeImage = new Lodge_Image();
+            lodgeImage.setImage_url(lodgeEmail + "_" + imageUrl);
+            lodgeImage.setLodge(lodge);
+            newLodgeImages.add(lodgeImage);
+            imageDao.save(lodgeImage); // Guardar la nueva imagen
+        }
+
+        // Añadir las nuevas imágenes a la lista del lodge
+        lodge.getImages().addAll(newLodgeImages);
+
+        Lodge savedLodge = lodgeDao.save(lodge);
+
+        return savedLodge;
+    }
+
+    // Función para verificar si la imagen existe en el sistema
+    private boolean imageExists(String imageUrl) {
+        Path path = Paths.get("uploads/images", imageUrl); // Ruta del directorio de imágenes
+        System.out.println("IMAGE TEST" + path + "\n" + imageUrl);
+        return Files.exists(path); // Devuelve true si el archivo ya existe en el sistema
     }
 
     @Override

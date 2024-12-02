@@ -32,7 +32,9 @@
     "errorPhone": "The phone number must contain exactly 9 numeric digits. Please verify your number and try again",
     "errorRooms": "The number of rooms must be a positive integer greater than 0. Please enter a valid number of rooms",
     "errorPrice": "The price per night must be a positive numeric value. Please ensure you enter a valid price",
-    "createLodge": "Register your accommodation"
+    "createLodge": "Register your accommodation",
+    "updateLodge": "Update lodge",
+    "update": "Update"
 }
 
 

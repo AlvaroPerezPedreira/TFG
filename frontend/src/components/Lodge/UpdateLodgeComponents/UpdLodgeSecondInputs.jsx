@@ -1,6 +1,5 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import LodgeTimeInput from "./LodgeTimeInput";
 import { Input } from "@nextui-org/input";
 import { Tooltip } from "@nextui-org/tooltip";
 import {
@@ -10,8 +9,10 @@ import {
   BedIcon,
 } from "../../../icons/MainAppIcons";
 import { useThemeContext } from "../../../context/ThemeContext";
+import UpdLodgeTimeInput from "./UpdLodgeTimeInput";
 
-export default function LodgeSecondInputs({
+export default function UpdLodgeSecondInputs({
+  lodge,
   checkIn,
   checkOut,
   setCheckIn,
@@ -21,23 +22,26 @@ export default function LodgeSecondInputs({
   const { color, dark } = useThemeContext();
 
   return (
-    <div className="createLodge-secondInputsContainer">
-      <div className="createLodge-timeInputsContainer">
+    <div className="updateLodge-secondInputsContainer">
+      <div className="updateLodge-timeInputsContainer">
         <span style={{ color: "var(--AppMainColor)" }}>
           {t("checkSchedule")}
         </span>
-        <LodgeTimeInput
+        <UpdLodgeTimeInput
+          lodge={lodge}
           checkIn={checkIn}
           setCheckIn={setCheckIn}
           checkOut={checkOut}
           setCheckOut={setCheckOut}
         />
       </div>
-      <div className="createLodge-priceInputsContainer">
+      <div className="updateLodge-priceInputsContainer">
         <span style={{ color: "var(--AppMainColor)" }}>{t("priceInfo")}</span>
         <Input
           name="rooms"
-          label={t("rooms")}
+          placeholder={t("rooms")}
+          defaultValue={lodge?.available_rooms || ""}
+          label={lodge?.available_rooms ? t("rooms") : ""}
           variant="underlined"
           color={color}
           isRequired
@@ -53,7 +57,9 @@ export default function LodgeSecondInputs({
         >
           <Input
             name="pricePerNight"
-            label={t("pricePerNight")}
+            placeholder={t("pricePerNight")}
+            defaultValue={lodge?.price_per_night || ""}
+            label={lodge?.price_per_night ? t("rooms") : ""}
             variant="underlined"
             color={color}
             isRequired
@@ -61,11 +67,13 @@ export default function LodgeSecondInputs({
           />
         </Tooltip>
       </div>
-      <div className="createLodge-contactInputsContainer">
+      <div className="updateLodge-contactInputsContainer">
         <span style={{ color: "var(--AppMainColor)" }}>{t("contact")}</span>
         <Input
           name="email"
-          label={t("email")}
+          placeholder={t("email")}
+          defaultValue={lodge?.lodge_email || ""}
+          label={lodge?.lodge_email ? t("email") : ""}
           variant="underlined"
           color={color}
           isRequired
@@ -73,7 +81,9 @@ export default function LodgeSecondInputs({
         />
         <Input
           name="phone"
-          label={t("phone")}
+          placeholder={t("phone")}
+          defaultValue={lodge?.lodge_phone || ""}
+          label={lodge?.lodge_phone ? t("phone") : ""}
           variant="underlined"
           color={color}
           isRequired

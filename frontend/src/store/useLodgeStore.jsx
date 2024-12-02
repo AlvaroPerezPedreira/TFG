@@ -10,4 +10,8 @@ export const useLodgeStore = create((set, get) => ({
     const state = get();
     return state.lodges.find((lodge) => lodge.lodge_email === email);
   },
+  removeLodge: (email) =>
+    set((state) => ({
+      lodges: state.lodges.filter((lodge) => lodge.lodge_email !== email),
+    })),
 }));

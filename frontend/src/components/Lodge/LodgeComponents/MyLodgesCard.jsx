@@ -17,14 +17,21 @@ export default function MyLodgesCard({
   lodge_provider,
   image_url,
   is_closed,
-  handleClick,
 }) {
   const [t] = useTranslation(["lodge"]);
   const { color } = useThemeContext();
   const { closeLodge, openLodge } = useManageLodges();
+  let navigate = useNavigate();
 
   // Estado para manejar el cambio de 'is_closed'
   const [isLodgeClosed, setIsLodgeClosed] = useState(is_closed);
+
+  const handleClick = async (e) => {
+    e.preventDefault();
+    startTransition(() => {
+      navigate(`/lodge/updateLodge/${lodge_email}`);
+    });
+  };
 
   const handleOpenClose = (e) => {
     e.preventDefault();

@@ -1,0 +1,266 @@
+.updateLodge-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+    margin: 0 auto;
+    max-width: 1200px;
+    color: var(--text-color);
+}
+
+.updateLodge-container > * {
+    width: 100%;
+    max-width: 100%;
+}
+
+.updateLodge-header-container {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 20px;
+    color: var(--AppMainColor);
+    padding: 10px;
+    display: inline-block;
+  }
+  
+/* First inputs (name, city, country, description, address, main img) */
+.updateLodge-firstInputsContainer {
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    padding: 20px;
+    color: var(--text-color);
+
+}
+
+.updateLodge-leftInputsContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    flex: 1 1 calc(50% - 20px);
+    box-sizing: border-box;
+    padding-left: 20px;
+    padding-right: 30px;
+    color: var(--text-color);
+
+}
+
+.updateLodge-descriptionContainer {
+    margin-top: 40px;
+}
+
+.updateLodge-rightInputsContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    flex: 1 1 calc(50% - 20px);
+    box-sizing: border-box;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 20px;
+    color: var(--text-color);
+}
+
+.updateLodge-country-item {
+    color: var(--text-color);
+    & lu li {
+      color: white;
+    }
+  }
+
+/* Contenedor principal para la imagen, título y botón */
+.updateLodge-mainImageContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    margin: 0 auto;
+  }
+  
+  .updateLodge-mainImageTitle {
+    color: var(--AppMainColor);
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .updateLodge-mainImagePreview {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    margin: 0 auto;
+  }
+  
+  .updateLodge-mainImagePreview img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 0 auto;
+    display: block;
+  }
+  
+  .updateLodge-mainImageButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 15px;
+  }
+  
+
+
+/* Second inputs (checkIn, checkOut, price, rooms, email, phone) */
+.updateLodge-secondInputsContainer {
+    display: grid;  /* Flexbox para alinear los elementos en horizontal */
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;  /* Padding aplicado al contenedor */
+    grid-template-columns: repeat(3, 1fr);  /* 3 columnas con el mismo ancho */
+}
+
+.updateLodge-timeInputsContainer {
+    box-sizing: border-box;  /* Asegura que el padding no afecte el tamaño del contenedor */
+    padding: 20px;  /* Padding de 20px dentro de cada contenedor */
+    
+}
+
+.updateLodge-priceInputsContainer {
+    box-sizing: border-box;  /* Asegura que el padding no afecte el tamaño del contenedor */
+    padding: 20px;  /* Padding de 20px dentro de cada contenedor */
+    
+}
+
+.updateLodge-contactInputsContainer {
+    box-sizing: border-box;  /* Asegura que el padding no afecte el tamaño del contenedor */
+    padding: 20px;  /* Padding de 20px dentro de cada contenedor */
+    
+}
+
+/* Feature table */
+.updateLodge-featureTableContainer {
+    max-width: 800px;
+    border: 1px solid var(--navbar-background);
+    border-radius: 12px;
+    padding: 16px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.updateLodge-featureTitle {
+    margin-bottom: 20px;
+    margin-left: 12px;
+}
+
+/* Images drop zone */
+
+.updateLodge-dropZone {
+    border: 2px dashed var(--AppMainColor);
+    border-radius: 8px;
+    padding: 110px;
+    width: 800px;
+    height: 250px;
+    margin: 10px auto;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+
+.updateLodge-dropZonePrerenderTitle {
+    margin-top: 20px;
+}
+
+.updateLodge-imagesButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.error-messages {
+    color: red;
+    font-size: 0.8rem;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Submit button */
+.updateLodge-buttonContainer {
+    display: flex;
+    justify-content: center;
+    width: 30%;
+    margin-top: 30px;
+    margin: 30px auto;
+}
+
+/* Dividers */
+.updateLodge-verticalDivider {
+    width: 1px; 
+    background-color: var(--AppMainColor);
+    height: auto;
+    margin: 0 20px 0 10px;
+}
+
+.updateLodge-horizontalDivider {
+    height: 1px;
+    background-color: var(--AppMainColor);
+    width: 100%;
+    margin: 20px 0;
+}
+
+/* Responsive */
+@media (max-width: 850px) {
+    .updateLodge-firstInputsContainer {
+        flex-direction: column; /* Cambia la dirección de los inputs a columna */
+    }
+
+    .updateLodge-leftInputsContainer,
+    .updateLodge-rightInputsContainer {
+        flex: 1 1 100%; /* Asegura que ambos ocupen todo el ancho disponible */
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    /* Opcionalmente, puedes ajustar los márgenes para que haya un poco de espacio entre los elementos */
+    .updateLodge-leftInputsContainer,
+    .updateLodge-rightInputsContainer {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 850px) {
+    .updateLodge-secondInputsContainer {
+        grid-template-columns: 1fr; /* Cambia a una sola columna */
+    }
+}
+
+@media (max-width: 768px) {
+    .updateLodge-dropZone {
+        width: 90vw; /* Ancho relativo a la ventana */
+        height: 200px; /* Ajustar altura en pantallas más pequeñas */
+        padding: 50px; /* Reducir el padding en pantallas pequeñas */
+    }
+}
+
+@media (max-width: 480px) {
+    .updateLodge-dropZone {
+        width: 95vw; /* Aumentar el ancho relativo en pantallas muy pequeñas */
+        height: 150px; /* Altura aún más pequeña en pantallas muy pequeñas */
+        padding: 30px; /* Reducir más el padding */
+    }
+}

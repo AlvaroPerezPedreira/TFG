@@ -1,5 +1,5 @@
 import "./styles/mylodges.css";
-import React, { Suspense, useEffect, useState } from "react";
+import React, { startTransition, Suspense, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import AppNavbar from "../AppNavbar";
 import { useBannedUsersStore } from "../../store/useBannedUsersStore";
@@ -20,11 +20,6 @@ function MyLodges() {
   useEffect(() => {
     getMyLodges({ token, setLodges });
   }, []);
-
-  const handleClick = async (e) => {
-    e.preventDefault();
-    console.log("details");
-  };
 
   console.log(lodges);
 
@@ -58,7 +53,6 @@ function MyLodges() {
                       ? `http://localhost:8080/images/${lodge.images[0].image_url}`
                       : "http://localhost:8080/images/Default_LodgeImage.jpg"
                   }
-                  handleClick={handleClick}
                 />
               ))}
           </div>

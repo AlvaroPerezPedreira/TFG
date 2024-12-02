@@ -1,12 +1,12 @@
 import { Button } from "@nextui-org/button";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { ImageIcon } from "../../../icons/MainAppIcons";
 import { useTranslation } from "react-i18next";
 import { Card, CardBody, CardHeader } from "@nextui-org/card";
 import CloseIcon from "../../../icons/CloseIcon";
 import { useThemeContext } from "../../../context/ThemeContext";
 
-export default function LodgeDropZone({ images, setImages }) {
+export default function UpdLodgeDropZone({ images, setImages, lodgeImages }) {
   const fileInputRef = useRef(null);
   const [t, i18n] = useTranslation(["createLodge"]);
   const { dark, color } = useThemeContext();
@@ -53,6 +53,18 @@ export default function LodgeDropZone({ images, setImages }) {
       prevImages.filter((image) => image.name !== imageName)
     );
   };
+
+  useEffect(() => {
+    if (lodgeImages && Array.isArray(lodgeImages)) {
+      const transformedImages = lodgeImages.slice(1).map((lodgeImage) => ({
+        name: lodgeImage.image_url, // Usamos image_url como name
+        type: "fromBackend", // Tipo personalizado
+        path: `http://localhost:8080/images/${lodgeImage.image_url}`, // URL completa
+      }));
+      // Añadir estas imágenes al principio de images
+      setImages((prevImages) => [...transformedImages, ...prevImages]);
+    }
+  }, [lodgeImages]);
 
   return (
     <>
@@ -131,7 +143,11 @@ export default function LodgeDropZone({ images, setImages }) {
                       objectFit: "cover",
                       borderRadius: "8px",
                     }}
-                    src={URL.createObjectURL(image)}
+                    src={
+                      image.type === "fromBackend"
+                        ? image.path
+                        : URL.createObjectURL(image)
+                    }
                   />
                 </CardBody>
               </Card>

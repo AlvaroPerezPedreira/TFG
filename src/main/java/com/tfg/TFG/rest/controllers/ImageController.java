@@ -92,6 +92,7 @@ public class ImageController {
 
             // Crear el archivo en la ubicación de destino con el nuevo nombre
             Path path = uploadPath.resolve(newFilename);
+
             Files.write(path, file.getBytes());
 
             return ResponseEntity.ok(newFilename);

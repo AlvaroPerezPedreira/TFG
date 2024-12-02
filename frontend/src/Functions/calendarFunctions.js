@@ -94,3 +94,13 @@ export function handleTimeChange(time, type) {
     return `${hour}:${minute}`;
   }
 }
+
+export function handleTimeChange2(time, type) {
+  const [hour, minute] = time.split(":").map(Number);
+
+  if(type === "checkIn"){
+    return {hour, minute};
+  } else {
+    return {hour, minute};
+  }
+}

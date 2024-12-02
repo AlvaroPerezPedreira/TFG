@@ -22,10 +22,15 @@ public interface LodgeService {
 
     Lodge findByEmail(String email) throws InstanceNotFoundException;
 
-    Lodge createLodge(Long userId, String lodgeEmail, String lodgeName, String lodgeDescriptoin,
+    Lodge createLodge(Long userId, String lodgeEmail, String lodgeName, String lodgeDescription,
             String lodgeAddress, String lodgePhone, String city, String country, int availabeRooms,
             double pricePerNight, String checkIn, String checkOut, List<Long> featureIds, List<String> imageUrls)
             throws InstanceNotFoundException;
+
+    Lodge updateLodge(Long userId, String lodgeEmail, String lodgeName, String lodgeDescription,
+            String lodgeAddress, String lodgePhone, String city, String country, int availabeRooms,
+            double pricePerNight, String checkIn, String checkOut, List<Long> featureIds, List<String> imageUrls)
+            throws InstanceNotFoundException, PermissionException;
 
     List<Feature> getAllFeatures();
 

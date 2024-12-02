@@ -32,5 +32,7 @@
     "errorPhone": "Le numéro de téléphone doit contenir exactement 9 chiffres numériques. Veuillez vérifier votre numéro et réessayer",
     "errorRooms": "Le nombre de chambres doit être un entier positif supérieur à 0. Veuillez entrer un nombre valide de chambres",
     "errorPrice": "Le prix par nuit doit être une valeur numérique positive. Assurez-vous d'entrer un prix valide",
-    "createLodge": "Enregistrez votre hébergement"
+    "createLodge": "Enregistrez votre hébergement",
+    "updateLodge": "Mettre à jour l'hébergement",
+    "update": "Mettre à jour"
 }

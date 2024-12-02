@@ -164,4 +164,20 @@ public class LodgeController {
         lodgeService.openLodge(owner, lodge);
     }
 
+    @PutMapping("/updateLodge")
+    @ResponseStatus(HttpStatus.OK)
+    public LodgeDto updateLodge(@RequestAttribute Long userId,
+            @Validated({ LodgeDto.AllValidations.class }) @RequestBody LodgeDto lodgeDto)
+            throws InstanceNotFoundException, PermissionException {
+
+        System.out.println("updateLodge");
+
+        Lodge lodge = lodgeService.updateLodge(userId, lodgeDto.getLodge_email(), lodgeDto.getLodge_name(),
+                lodgeDto.getLodge_description(),
+                lodgeDto.getLodge_address(), lodgeDto.getLodge_phone(), lodgeDto.getCity(), lodgeDto.getCountry(),
+                lodgeDto.getAvailable_rooms(), lodgeDto.getPrice_per_night(), lodgeDto.getCheck_in(),
+                lodgeDto.getCheck_out(), lodgeDto.featuresToList(), lodgeDto.imagesToList());
+
+        return (LodgeConversor.toDto(lodge));
+    }
 }
