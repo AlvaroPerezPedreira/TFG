@@ -9,5 +9,6 @@
     "createLodge1": "Enregistrer un",
     "createLodge2": "nouveau hébergement",
     "bannedUsers": "Utilisateurs bannis",
-    "myLodges": "Mes hébergements"
+    "myLodges": "Mes hébergements",
+    "bannedLodges": "Hébergements bannis"
 }

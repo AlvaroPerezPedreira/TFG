@@ -16,5 +16,8 @@
     "totalRooms": "Número total de habitaciones en el lodge",
     "checkButton": "Verificar disponibilidad",
     "availableRooms": "Habitaciones disponibles para tus fechas de viaje",
-    "stay_duration": "Fechas de Check-in y Check-out"
+    "stay_duration": "Fechas de Check-in y Check-out",
+    "banLodge": "Banear alojamiento",
+    "unbanLodge": "Desbanear alojamiento",
+    "name": "Nombre"
 }

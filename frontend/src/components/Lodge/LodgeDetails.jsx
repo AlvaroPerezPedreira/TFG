@@ -1,6 +1,6 @@
 import "./styles/lodgedetails.css";
 
-import React, { Suspense, useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState, startTransition } from "react";
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import LodgeFeatureList from "./LodgeComponents/LodgeFeatureList";
@@ -14,6 +14,10 @@ import UserLink from "./LodgeComponents/UserLink";
 import LodgeAccordion from "./LodgeComponents/LodgeAccordion";
 import AppNavbar from "../AppNavbar";
 import { useThemeContext } from "../../context/ThemeContext";
+import { useAuthContext } from "../../context/AuthContext";
+import { useBannedLodgesStore } from "../../store/useBannedLodgesStore";
+import useBanLodge from "../../hooks/useBanLodge";
+import LodgeBanIcon from "../../icons/LodgeBanIcon";
 
 export default function LodgeDetails() {
   const [lodge, setLodge] = useState(null);
@@ -24,6 +28,9 @@ export default function LodgeDetails() {
   const { email } = useParams();
   const { getLodge } = useGetLodge();
   const { color } = useThemeContext();
+  const { authUser } = useAuthContext();
+  const { addLodge, removeLodge } = useBannedLodgesStore();
+  const { banLodge, unbanLodge } = useBanLodge();
 
   const [t, i18n] = useTranslation(["lodgeDetails"]);
   const currentLanguage = i18n.language;
@@ -47,6 +54,25 @@ export default function LodgeDetails() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(checkIn, checkOut);
+  };
+
+  const handleClick = async (e) => {
+    e.preventDefault();
+
+    // Usamos startTransition para no bloquear la UI al cambiar el estado
+    startTransition(async () => {
+      if (lodge.is_banned === false) {
+        await banLodge(email);
+        // Actualizamos el estado y el store
+        setLodge((prevLodge) => ({ ...prevLodge, is_banned: true }));
+        addLodge(lodge); // Agregamos el usuario al store
+      } else {
+        await unbanLodge(email);
+        // Actualizamos el estado y el store
+        setLodge((prevLodge) => ({ ...prevLodge, is_banned: false }));
+        removeLodge(lodge); // Removemos el usuario del store
+      }
+    });
   };
 
   return (
@@ -126,6 +152,21 @@ export default function LodgeDetails() {
               </div>
             </form>
           </div>
+        </div>
+        <div className="updProfile-button-container">
+          {authUser.user.role === "ADMIN" && (
+            <Button
+              children={
+                lodge && lodge.is_banned === false
+                  ? t("banLodge")
+                  : t("unbanLodge")
+              }
+              variant="bordered"
+              startContent={<LodgeBanIcon />}
+              color="danger"
+              onClick={handleClick}
+            />
+          )}
         </div>
       </div>
       <></>

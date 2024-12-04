@@ -128,6 +128,7 @@ export default function UpdLodgeDropZone({ images, setImages, lodgeImages }) {
                     size="sm"
                     variant=""
                     isIconOnly
+                    style={{ position: "absolute", right: "10px", top: "10px" }}
                     onClick={() => handleSubmit(image.name)}
                   >
                     <CloseIcon />

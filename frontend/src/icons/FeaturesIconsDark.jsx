@@ -275,7 +275,7 @@ export function CarIconDark() {
           {`
                   .st0 {
                       fill: none;
-                      stroke: #ffffff; /* Cambia a blanco */
+                      stroke: #000000; /* Cambié a negro */
                       stroke-width: 2;
                       stroke-linecap: round;
                       stroke-linejoin: round;

@@ -132,6 +132,22 @@ export default function UserDropdown() {
               {t("bannedUsers")}
             </DropdownItem>
           )}
+          {authUser.user.role === "ADMIN" && (
+            <DropdownItem
+              style={{ color: "var(--AppMainColor)" }}
+              key="bannedLodges"
+              variant="bordered"
+              textValue={t("bannedLodges")}
+              startContent={<NbHammerIcon />}
+              onClick={() => {
+                startTransition(() => {
+                  navigate("/lodges/bannedLodges");
+                });
+              }}
+            >
+              {t("bannedLodges")}
+            </DropdownItem>
+          )}
           <DropdownItem
             style={{ color: "var(--errorRed)" }}
             key="logout"

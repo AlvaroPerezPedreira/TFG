@@ -27,4 +27,7 @@ public interface LodgeDao extends JpaRepository<Lodge, Long> {
     Optional<Lodge> findByEmail(@Param("email") String email);
 
     List<Lodge> findByUserId(Long userId);
+
+    @Query("SELECT l FROM Lodge l WHERE l.is_banned = true")
+    Page<Lodge> findAllBannedLodges(Pageable pageable);
 }

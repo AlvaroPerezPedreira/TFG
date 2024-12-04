@@ -131,9 +131,9 @@ public class LodgeServiceImpl implements LodgeService {
 
         Optional<User> owner = userDao.findById(userId);
 
-        // if (lodge.getUser() != owner.get()) {
-        // throw new PermissionException();
-        // }
+        if (lodge.getUser() != owner.get()) {
+            throw new PermissionException();
+        }
 
         lodge.setLodge_name(lodgeName);
         lodge.setLodge_description(lodgeDescription);
@@ -216,4 +216,38 @@ public class LodgeServiceImpl implements LodgeService {
 
         lodge.setIs_closed(false);
     }
+
+    @Override
+    public void banLodge(User admin, String bannedLodgeEmail) throws InstanceNotFoundException, PermissionException {
+        if (admin.getRole() != User.RoleType.ADMIN) {
+            throw new PermissionException();
+        }
+        Lodge bannedLodge = lodgeDao.findByEmail(bannedLodgeEmail)
+                .orElseThrow(() -> new InstanceNotFoundException("project.entities.lodge", bannedLodgeEmail));
+
+        bannedLodge.setIs_banned(true);
+    }
+
+    @Override
+    public void unbanLodge(User admin, String bannedLodgeEmail) throws InstanceNotFoundException, PermissionException {
+        if (admin.getRole() != User.RoleType.ADMIN) {
+            throw new PermissionException();
+        }
+        Lodge bannedLodge = lodgeDao.findByEmail(bannedLodgeEmail)
+                .orElseThrow(() -> new InstanceNotFoundException("project.entities.lodge", bannedLodgeEmail));
+
+        bannedLodge.setIs_banned(false);
+    }
+
+    @Override
+    public Page<Lodge> findAllBannedLodges(User admin, int page, int size) throws PermissionException {
+        if (admin.getRole() != User.RoleType.ADMIN) {
+            throw new PermissionException();
+        }
+
+        PageRequest pageRequest = PageRequest.of(page, size, Sort.by(Sort.Direction.ASC, "id"));
+
+        return lodgeDao.findAllBannedLodges(pageRequest);
+    }
+
 }

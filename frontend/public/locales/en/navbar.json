@@ -10,5 +10,6 @@
     "createLodge2": "new lodge",
     "bannedUsers": "Banned users",
     "myLodges": "My lodges",
-    "openLodge": "Open"
+    "openLodge": "Open",
+    "bannedLodges": "Banned lodges"
 }

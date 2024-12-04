@@ -14,7 +14,7 @@ const Home = () => {
   const { getLodges } = useGetLodges();
 
   useEffect(() => {
-    getLodges(0, 24);
+    getLodges(0, 48);
   }, []);
 
   return (

@@ -9,5 +9,7 @@
     "createLodge1": "Registrar un",
     "createLodge2": "nuevo alojamiento",
     "bannedUsers": "Usuarios baneados",
-    "myLodges": "Mis alojamientos"
+    "myLodges": "Mis alojamientos",
+    "bannedLodges": "Alojamientos baneados"
+}
 }

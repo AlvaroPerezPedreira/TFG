@@ -23,6 +23,7 @@ import com.tfg.TFG.model.services.exceptions.InvalidEmailException;
 import com.tfg.TFG.model.services.exceptions.PermissionException;
 import com.tfg.TFG.rest.dtos.lodgeDtos.*;
 import com.tfg.TFG.rest.dtos.userDtos.AuthenticatedUserDto;
+import com.tfg.TFG.rest.dtos.userDtos.UserConversor;
 import com.tfg.TFG.rest.dtos.userDtos.UserDto;
 
 /**
@@ -179,5 +180,43 @@ public class LodgeController {
                 lodgeDto.getCheck_out(), lodgeDto.featuresToList(), lodgeDto.imagesToList());
 
         return (LodgeConversor.toDto(lodge));
+    }
+
+    @PostMapping("/banLodge/{email}")
+    @ResponseStatus(HttpStatus.OK)
+    public void banLodge(@RequestAttribute Long userId, @PathVariable String email)
+            throws InstanceNotFoundException, PermissionException {
+
+        System.out.println("ban lodge");
+
+        User admin = userService.findById(userId);
+
+        lodgeService.banLodge(admin, email);
+    }
+
+    @PostMapping("/unbanLodge/{email}")
+    @ResponseStatus(HttpStatus.OK)
+    public void unbanLodge(@RequestAttribute Long userId, @PathVariable String email)
+            throws InstanceNotFoundException, PermissionException {
+
+        System.out.println("unban lodge");
+
+        User admin = userService.findById(userId);
+
+        lodgeService.unbanLodge(admin, email);
+    }
+
+    @GetMapping("/findAllBannedLodges")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<Page<LodgeDto>> findAllBannedLodges(@RequestAttribute Long userId)
+            throws InstanceNotFoundException, PermissionException {
+
+        System.out.println("Find all banned lodges");
+
+        User admin = userService.findById(userId);
+
+        Page<LodgeDto> lodges = lodgeService.findAllBannedLodges(admin, 0, 24).map(LodgeConversor::toDto);
+
+        return ResponseEntity.ok(lodges);
     }
 }

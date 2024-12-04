@@ -1,0 +1,39 @@
+.bannedLodges-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+    margin: 0 auto;
+    max-width: 1200px;
+    background-color: var(--main-background);
+    min-height: 100vh;
+}
+
+.bannedLodges-container > * {
+    width: 100%;
+    max-width: 100%;
+}
+
+.bannedLodges-titleContainer {
+    display: flex;
+    justify-content: flex-start; /* Alinear a la derecha */
+    margin: 20px 0; /* Margen superior e inferior */
+}
+  
+.bannedLodges-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--text-color); 
+}
+  
+.bannedLodges-cardEmail {
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.bannedLodges-cardEmailData {
+    font-size: 0.9rem;
+    font-weight: normal;
+    color: var(--AppMainColor);
+}
