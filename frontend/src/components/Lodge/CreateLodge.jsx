@@ -11,6 +11,7 @@ import { Divider } from "@nextui-org/divider";
 import LodgeDropZone from "./CreateLodgeComponents/LodgeDropZone";
 import useCreateLodge from "../../hooks/useCreateLodge";
 import { useNavigate } from "react-router-dom";
+import Footer from "../Footer";
 
 export default function CreateLodge() {
   const [t, i18n] = useTranslation(["createLodge"]);

@@ -1,21 +1,19 @@
-import "./styles/home.css";
+import "./styles/contactus.css";
+import React from "react";
 import { Suspense } from "react";
 import AppNavbar from "./AppNavbar";
-import SearchBar from "./GlobalComponents/SearchBar";
 import Footer from "./Footer";
 
-const Search = () => {
+export default function Policy() {
   return (
     <>
       <Suspense fallback="loading">
         <AppNavbar />
-        <div className="home-container">
-          <SearchBar />
+        <div className="contact-container">
+          <span>Privacy Policy</span>
         </div>
         <Footer />
       </Suspense>
     </>
   );
-};
-
-export default Search;
+}

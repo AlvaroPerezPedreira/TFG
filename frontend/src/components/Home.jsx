@@ -1,12 +1,13 @@
 import React, { Suspense, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import "./styles/home.css";
+import "./styles/footer.css";
 import SearchBar from "./GlobalComponents/SearchBar";
 import LodgeBento from "./Lodge/LodgeComponents/LodgeBento";
 import { useLodgeStore } from "../store/useLodgeStore";
 import useGetLodges from "../hooks/useGetLodges";
 import LodgeCard from "./Lodge/LodgeComponents/LodgeCard";
 import AppNavbar from "./AppNavbar";
+import Footer from "./Footer";
 
 const Home = () => {
   const [t] = useTranslation(["home"]);
@@ -50,6 +51,7 @@ const Home = () => {
           </div>
           <br />
         </div>
+        <Footer />
       </Suspense>
     </>
   );

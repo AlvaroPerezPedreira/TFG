@@ -3,7 +3,7 @@
     "updProfile": "Update profile",
     "signed": "Signed in as",
     "contact": "Contact us",
-    "about": "About",
+    "about": "About us",
     "search": "Search",
     "home": "Home",
     "createLodge1": "Register a brand",
@@ -11,5 +11,8 @@
     "bannedUsers": "Banned users",
     "myLodges": "My lodges",
     "openLodge": "Open",
-    "bannedLodges": "Banned lodges"
+    "bannedLodges": "Banned lodges",
+    "rights": "Final Degree Project - Universidad de la Coruña",
+    "rights2": "Software Engineering © 2024. All rights reserved",
+    "policy": "Privacy policy"
 }

@@ -18,6 +18,8 @@ import BannedUsers from "./components/User/BannedUsers";
 import MyLodges from "./components/Lodge/MyLodges";
 import BannedLodges from "./components/Lodge/BannedLodges";
 import UpdateLodge from "./components/Lodge/UpdateLodge";
+import AboutUs from "./components/AboutUs";
+import Policy from "./components/Policy";
 
 function App() {
   const { authUser } = useAuthContext();
@@ -43,13 +45,15 @@ function App() {
         <Route path="/lodge/:email" element={<LodgeDetails />} />
         <Route path="/lodgeApi/:email" element={<LodgeApiDetails />} />
         <Route path="/lodges/:destination" element={<LodgeSearch />} />
-        <Route path="/contact" element={<ContactUs />} />
         <Route path="/lodge/createLodge" element={<CreateLodge />} />
         <Route path="/searchLodges" element={<Search />} />
         <Route path="/users/bannedUsers" element={<BannedUsers />} />
         <Route path="/lodge/myLodges" element={<MyLodges />} />
         <Route path="/lodge/updateLodge/:email" element={<UpdateLodge />} />
         <Route path="/lodges/bannedLodges" element={<BannedLodges />} />
+        <Route path="/contact" element={<ContactUs />} />
+        <Route path="/about" element={<AboutUs />} />
+        <Route path="/policy" element={<Policy />} />
         <Route path="/test" element={<TestPage />} />
       </Routes>
     </>

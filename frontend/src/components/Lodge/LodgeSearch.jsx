@@ -13,6 +13,7 @@ import {
   PaginationCursor,
 } from "@nextui-org/pagination";
 import LodgeSearchPagination from "./LodgeComponents/LodgeSearchPagination";
+import Footer from "../Footer";
 
 export default function LodgeSearch() {
   const { destination } = useParams();
@@ -91,6 +92,7 @@ export default function LodgeSearch() {
           <LodgeSearchPagination pageN={pageN} setPageN={setPageN} />
         </div>
       </div>
+      <Footer />
     </Suspense>
   );
 }

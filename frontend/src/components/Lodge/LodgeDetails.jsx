@@ -18,6 +18,7 @@ import { useAuthContext } from "../../context/AuthContext";
 import { useBannedLodgesStore } from "../../store/useBannedLodgesStore";
 import useBanLodge from "../../hooks/useBanLodge";
 import LodgeBanIcon from "../../icons/LodgeBanIcon";
+import Footer from "../Footer";
 
 export default function LodgeDetails() {
   const [lodge, setLodge] = useState(null);
@@ -169,7 +170,7 @@ export default function LodgeDetails() {
           )}
         </div>
       </div>
-      <></>
+      <Footer />
     </Suspense>
   );
 }

@@ -2,6 +2,7 @@ import "./styles/contactus.css";
 import React from "react";
 import { Suspense } from "react";
 import AppNavbar from "./AppNavbar";
+import Footer from "./Footer";
 
 export default function ContactUs() {
   return (
@@ -11,6 +12,7 @@ export default function ContactUs() {
         <div className="contact-container">
           <span>Contact us</span>
         </div>
+        <Footer />
       </Suspense>
     </>
   );

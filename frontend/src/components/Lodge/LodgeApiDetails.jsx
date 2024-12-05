@@ -12,6 +12,7 @@ import EmblaCarousel from "./LodgeComponents/EmblaCarousel";
 import UserLink from "./LodgeComponents/UserLink";
 import LodgeApiAccordion from "./LodgeComponents/LodgeApiAccordion";
 import AppNavbar from "../AppNavbar";
+import Footer from "../Footer";
 
 export default function LodgeApiDetails() {
   const [t, i18n] = useTranslation(["lodgeApiDetails"]);
@@ -163,6 +164,7 @@ export default function LodgeApiDetails() {
           </div>
         </div>
       </div>
+      <Footer />
     </Suspense>
   );
 }

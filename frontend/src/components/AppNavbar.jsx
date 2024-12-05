@@ -30,7 +30,7 @@ const AppNavbar = () => {
       navigate("/");
     });
   };
-  
+
   return (
     <Suspense fallback="loading">
       <Navbar maxWidth="full" className="navbar-container">
