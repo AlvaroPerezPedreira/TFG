@@ -12,6 +12,8 @@ import {
 } from "@nextui-org/navbar";
 import { useThemeContext } from "../context/ThemeContext";
 import { FbIcon, IgIcon, TwtIcon } from "../icons/SocialIcons";
+import { Button } from "@nextui-org/button";
+import toast, { Toaster } from "react-hot-toast";
 
 const Footer = () => {
   const [t] = useTranslation(["navbar"]);
@@ -19,8 +21,57 @@ const Footer = () => {
   const location = useLocation();
   const { dark } = useThemeContext();
 
+  const handleClick = (social) => () => {
+    if (social === "fb") {
+      toast("Facebook!", {
+        icon: <FbIcon />,
+        duration: 1000,
+        style: {
+          borderRadius: "10px",
+          backgroundColor: "var(--main-background)",
+          border: "1px solid var(--inverted-background-color)",
+          color: "var(--AppMainColor)",
+        },
+      });
+    } else if (social === "ig") {
+      toast("Instagram!", {
+        icon: <IgIcon />,
+        duration: 1000,
+        style: {
+          borderRadius: "10px",
+          backgroundColor: "var(--main-background)",
+          border: "1px solid var(--inverted-background-color)",
+          color: "var(--AppMainColor)",
+        },
+      });
+    } else if (social === "twt") {
+      toast("Twitter!", {
+        icon: <TwtIcon />,
+        duration: 1000,
+        style: {
+          borderRadius: "10px",
+          backgroundColor: "var(--main-background)",
+          border: "1px solid var(--inverted-background-color)",
+          color: "var(--AppMainColor)",
+        },
+      });
+    } else {
+      toast("Something went wrong", {
+        icon: "⚠️",
+        duration: 1000,
+        style: {
+          borderRadius: "10px",
+          backgroundColor: "var(--main-background)",
+          border: "1px solid var(--inverted-background-color)",
+          color: "var(--AppMainColor)",
+        },
+      });
+    }
+  };
+
   return (
     <Suspense fallback="loading">
+      <Toaster position="top-center" reverseOrder={false} />
       <Navbar maxWidth="full" className="footer-container">
         <NavbarBrand>
           <div className="footer-title">
@@ -59,9 +110,15 @@ const Footer = () => {
           </NavbarItem>
         </NavbarContent>
         <div className="footer-icons-container">
-          <FbIcon />
-          <IgIcon />
-          <TwtIcon />
+          <Button isIconOnly variant="" onClick={handleClick("fb")}>
+            <FbIcon />
+          </Button>
+          <Button isIconOnly variant="" onClick={handleClick("ig")}>
+            <IgIcon />
+          </Button>
+          <Button isIconOnly variant="" onClick={handleClick("twt")}>
+            <TwtIcon />
+          </Button>
         </div>
       </Navbar>
     </Suspense>
