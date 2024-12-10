@@ -1,9 +1,9 @@
 DROP TABLE IF EXISTS Lodge_Feature;
 DROP TABLE IF EXISTS Feature;
 DROP TABLE IF EXISTS Lodge_Image;
+DROP TABLE IF EXISTS Booking;
 DROP TABLE IF EXISTS Lodge;
 DROP TABLE IF EXISTS User;
-
 
 CREATE TABLE User (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
@@ -64,4 +64,20 @@ CREATE TABLE Lodge_Image (
     image_url VARCHAR(255) NOT NULL,
     lodge_id BIGINT NOT NULL,
     FOREIGN KEY (lodge_id) REFERENCES Lodge(id) ON DELETE CASCADE
+);
+
+CREATE TABLE Booking (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_id BIGINT NOT NULL,
+    lodge_id BIGINT NOT NULL,
+    check_in VARCHAR(255) NOT NULL,
+    check_out VARCHAR(255) NOT NULL,
+    arrival_time VARCHAR(255) NOT NULL,
+    departure_time VARCHAR(255) NOT NULL,
+    booking_date VARCHAR(255) NOT NULL,
+    total_price DECIMAL(10,2) NOT NULL,
+    is_reviewed TINYINT NOT NULL,
+    is_cancelled TINYINT NOT NULL,
+    FOREIGN KEY (lodge_id) REFERENCES Lodge(id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES User(id) ON DELETE CASCADE
 );
