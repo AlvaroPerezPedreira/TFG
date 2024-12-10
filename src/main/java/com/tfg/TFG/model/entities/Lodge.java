@@ -185,11 +185,11 @@ public class Lodge {
     }
 
     // Available rooms
-    public Integer getAvailable_rooms() {
+    public int getAvailable_rooms() {
         return available_rooms;
     }
 
-    public void setAvailable_rooms(Integer available_rooms) {
+    public void setAvailable_rooms(int available_rooms) {
         this.available_rooms = available_rooms;
     }
 
