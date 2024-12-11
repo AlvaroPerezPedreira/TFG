@@ -1,64 +1,50 @@
-package com.tfg.TFG.model.entities;
+package com.tfg.TFG.rest.dtos.bookingDtos;
 
 import java.util.List;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
 
-@Entity
-@Table(name = "Booking")
-public class Booking {
+import com.tfg.TFG.rest.dtos.lodgeDtos.FeatureDto;
+import com.tfg.TFG.rest.dtos.lodgeDtos.LodgeDto;
+import com.tfg.TFG.rest.dtos.lodgeDtos.Lodge_ImageDto;
+import com.tfg.TFG.rest.dtos.userDtos.UserDto;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class BookingDto {
     private Long id;
-
-    @Column(nullable = false)
     private String check_in;
-
-    @Column(nullable = false)
     private String check_out;
-
-    @Column(nullable = false)
     private String arrival_time;
-
-    @Column(nullable = false)
     private String departure_time;
-
-    @Column(nullable = false)
     private String booking_date;
-
-    @Column(nullable = false)
     private double total_price;
-
-    @Column(nullable = false)
     private Boolean is_reviewed;
-
-    @Column(nullable = false)
     private Boolean is_cancelled;
+    private UserDto user;
+    private String lodgeEmail;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "lodge_id", nullable = false)
-    private Lodge lodge;
-
-    public Booking() {
+    public interface AllValidations {
     }
 
-    public Booking(String check_in, String check_out, String arrival_time, String departure_time, double total_price,
-            User user, Lodge lodge) {
+    public interface UpdateValidations {
+    }
+
+    public BookingDto() {
+    }
+
+    public BookingDto(String check_in, String check_out, String arrival_time, String departure_time,
+            String booking_date,
+            double total_price, Boolean is_reviewed, Boolean is_cancelled, double price_per_night, UserDto user,
+            String lodgeEmail) {
         this.check_in = check_in;
         this.check_out = check_out;
         this.arrival_time = arrival_time;
         this.departure_time = departure_time;
+        this.booking_date = booking_date;
         this.total_price = total_price;
+        this.is_reviewed = is_reviewed;
+        this.is_cancelled = is_cancelled;
         this.user = user;
-        this.lodge = lodge;
+        this.lodgeEmail = lodgeEmail;
     }
 
-    // Id
     public Long getId() {
         return id;
     }
@@ -67,7 +53,6 @@ public class Booking {
         this.id = id;
     }
 
-    // Check_in
     public String getCheck_in() {
         return check_in;
     }
@@ -76,7 +61,6 @@ public class Booking {
         this.check_in = check_in;
     }
 
-    // Check_out
     public String getCheck_out() {
         return check_out;
     }
@@ -85,7 +69,6 @@ public class Booking {
         this.check_out = check_out;
     }
 
-    // Arrival_time
     public String getArrival_time() {
         return arrival_time;
     }
@@ -94,7 +77,6 @@ public class Booking {
         this.arrival_time = arrival_time;
     }
 
-    // Departure_time
     public String getDeparture_time() {
         return departure_time;
     }
@@ -103,7 +85,6 @@ public class Booking {
         this.departure_time = departure_time;
     }
 
-    // Booking_date
     public String getBooking_date() {
         return booking_date;
     }
@@ -112,7 +93,6 @@ public class Booking {
         this.booking_date = booking_date;
     }
 
-    // Total_price
     public double getTotal_price() {
         return total_price;
     }
@@ -121,7 +101,6 @@ public class Booking {
         this.total_price = total_price;
     }
 
-    // Is_reviewed
     public Boolean getIs_reviewed() {
         return is_reviewed;
     }
@@ -130,7 +109,6 @@ public class Booking {
         this.is_reviewed = is_reviewed;
     }
 
-    // Is_canceled
     public Boolean getIs_cancelled() {
         return is_cancelled;
     }
@@ -139,21 +117,19 @@ public class Booking {
         this.is_cancelled = is_cancelled;
     }
 
-    // User
-    public User getUser() {
+    public UserDto getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(UserDto user) {
         this.user = user;
     }
 
-    // Lodge
-    public Lodge getLodge() {
-        return lodge;
+    public String getLodgeEmail() {
+        return lodgeEmail;
     }
 
-    public void setLodge(Lodge lodge) {
-        this.lodge = lodge;
+    public void setLodgeEmail(String lodgeEmail) {
+        this.lodgeEmail = lodgeEmail;
     }
 }

@@ -104,7 +104,7 @@ VALUES
     ('MarsellaLodge@example.com', 'Marsella Lodge', 'Marsella Lodge description', '404 Rue de la République, Marseille', '123456789', 'Marsella', 'France', 5, 150.00, '14:00', '11:00', 0, 0, 0, 1),
     ('NYLodge@example.com', 'New York Lodge', 'New York Lodge description', '505 5th Ave, New York, NY', '123456789', 'New York', 'United States of America', 10, 100.00, '14:00', '11:00', 0, 0, 0, 1),
     ('MiamiLodge@example.com', 'Miami Lodge', 'Miami Lodge description', '606 Ocean Dr, Miami Beach, FL', '123456789', 'Miami', 'United States of America', 10, 160.00, '14:00', '11:00', 0, 0, 0, 1),
-    ('MadridLodge@example.com', 'Madrid Lodge', 'Madrid Lodge description', '707 Gran Vía, Madrid', '123456789', 'Madrid', 'Spain', 15, 200.00, '14:00', '11:00', 0, 0, 0, 1),
+    ('MadridLodge@example.com', 'Madrid Lodge', 'Madrid Lodge description', '707 Gran Vía, Madrid', '123456789', 'Madrid', 'Spain', 3, 200.00, '14:00', '11:00', 0, 0, 0, 1),
     ('MilanLodge@example.com', 'Milan Lodge', 'Milan Lodge description', '808 Via Montenapoleone, Milan', '123456789', 'Milan', 'Italy', 20, 220.00, '14:00', '11:00', 0, 0, 0, 1),
     ('LyonLodge@example.com', 'Lyon Lodge', 'Lyon Lodge description', '909 Rue de la Liberté, Lyon', '123456789', 'Lyon', 'France', 5, 75.00, '14:00', '11:00', 0, 0, 0, 1),
     ('NizaLodge@example.com', 'Niza Lodge', 'Niza Lodge description', '1010 Promenade des Anglais, Nice', '123456789', 'Niza', 'France', 5, 80.00, '14:00', '11:00', 0, 0, 0, 1),
@@ -125,7 +125,10 @@ VALUES
 INSERT INTO Booking(user_id, lodge_id, check_in, check_out, arrival_time, departure_time, booking_date, total_price, is_reviewed, is_cancelled)
 VALUES
     (2, 1, '14:00', '11:00', '05-12-2022', '12-12-2022', '01-12-2022', 350, 0, 0),
-    (2, 2, '14:00', '11:00', '05-12-2022', '12-12-2022', '01-12-2022', 770, 1, 0);
+    (2, 2, '14:00', '11:00', '05-12-2022', '12-12-2022', '01-12-2022', 770, 1, 0),
+    (2, 10, '14:00', '11:00', '01-01-2025', '31-12-2025', '01-12-2023', 350, 0, 0),
+    (2, 10, '14:00', '11:00', '01-01-2025', '31-12-2025', '01-12-2023', 350, 0, 0),
+    (2, 10, '14:00', '11:00', '01-01-2025', '31-12-2025', '01-12-2023', 350, 0, 0);
 
 INSERT INTO Lodge_Feature (lodge_id, feature_id)
 VALUES
