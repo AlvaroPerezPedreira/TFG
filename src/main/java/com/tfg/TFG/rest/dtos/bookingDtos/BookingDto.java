@@ -17,6 +17,7 @@ public class BookingDto {
     private double total_price;
     private Boolean is_reviewed;
     private Boolean is_cancelled;
+    private Boolean is_api;
     private UserDto user;
     private String lodgeEmail;
 
@@ -31,7 +32,8 @@ public class BookingDto {
 
     public BookingDto(String check_in, String check_out, String arrival_time, String departure_time,
             String booking_date,
-            double total_price, Boolean is_reviewed, Boolean is_cancelled, double price_per_night, UserDto user,
+            double total_price, Boolean is_reviewed, Boolean is_cancelled, Boolean is_api, double price_per_night,
+            UserDto user,
             String lodgeEmail) {
         this.check_in = check_in;
         this.check_out = check_out;
@@ -41,6 +43,7 @@ public class BookingDto {
         this.total_price = total_price;
         this.is_reviewed = is_reviewed;
         this.is_cancelled = is_cancelled;
+        this.is_api = is_api;
         this.user = user;
         this.lodgeEmail = lodgeEmail;
     }
@@ -115,6 +118,14 @@ public class BookingDto {
 
     public void setIs_cancelled(Boolean is_cancelled) {
         this.is_cancelled = is_cancelled;
+    }
+
+    public Boolean getIs_api() {
+        return is_api;
+    }
+
+    public void setIs_api(Boolean is_api) {
+        this.is_api = is_api;
     }
 
     public UserDto getUser() {

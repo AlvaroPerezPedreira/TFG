@@ -65,7 +65,8 @@ public class BookingController {
 
         Booking booking = bookingService.createBooking(userId, bookingDto.getLodgeEmail(), bookingDto.getCheck_in(),
                 bookingDto.getCheck_out(),
-                bookingDto.getArrival_time(), bookingDto.getDeparture_time(), bookingDto.getTotal_price());
+                bookingDto.getArrival_time(), bookingDto.getDeparture_time(), bookingDto.getTotal_price(),
+                bookingDto.getIs_api());
 
         return ResponseEntity.ok(BookingConversor.toDto(booking));
     }

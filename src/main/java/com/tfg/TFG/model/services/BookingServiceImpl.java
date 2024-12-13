@@ -46,13 +46,13 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public Booking createBooking(Long userId, String lodgeEmail, String checkIn, String checkOut, String arrivalTime,
-            String departureTime, double totalPrice) throws InstanceNotFoundException {
+            String departureTime, double totalPrice, Boolean is_api) throws InstanceNotFoundException {
         User user = userDao.findById(userId)
                 .orElseThrow(() -> new InstanceNotFoundException(userId.toString(), User.class.getName()));
         Lodge lodge = lodgeDao.findByEmail(lodgeEmail)
                 .orElseThrow(() -> new InstanceNotFoundException(lodgeEmail, Lodge.class.getName()));
 
-        Booking booking = new Booking(checkIn, checkOut, arrivalTime, departureTime, totalPrice, user, lodge);
+        Booking booking = new Booking(checkIn, checkOut, arrivalTime, departureTime, totalPrice, is_api, user, lodge);
         booking.setIs_cancelled(false);
         booking.setIs_reviewed(false);
 

@@ -20,6 +20,7 @@ import BannedLodges from "./components/Lodge/BannedLodges";
 import UpdateLodge from "./components/Lodge/UpdateLodge";
 import AboutUs from "./components/AboutUs";
 import Policy from "./components/Policy";
+import MyBookings from "./components/Booking/MyBookings";
 
 function App() {
   const { authUser } = useAuthContext();
@@ -51,6 +52,7 @@ function App() {
         <Route path="/lodge/myLodges" element={<MyLodges />} />
         <Route path="/lodge/updateLodge/:email" element={<UpdateLodge />} />
         <Route path="/lodges/bannedLodges" element={<BannedLodges />} />
+        <Route path="/bookings/myBookings" element={<MyBookings />} />
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/policy" element={<Policy />} />

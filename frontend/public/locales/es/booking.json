@@ -1,0 +1,12 @@
+{
+    "myBookingsTitle": "Mis reservas",
+    "cancel": "Cancelar",
+    "noBookings": "Aún no has realizado ninguna reserva",
+    "arrivalTime": "Fecha de llegada",
+    "departureTime": "Fecha de salida",
+    "checkIn": "Hora de check in",
+    "checkOut": "Hora de check out",
+    "review": "Valorar",
+    "bookingDate": "Fecha de confirmación",
+    "price": "Precio"
+}

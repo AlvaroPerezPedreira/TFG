@@ -104,3 +104,8 @@ export function handleTimeChange2(time, type) {
     return {hour, minute};
   }
 }
+
+export function convertToISODate(date) {
+  const [day, month, year] = date.split("-");
+  return new Date(`${year}-${month}-${day}`);
+}

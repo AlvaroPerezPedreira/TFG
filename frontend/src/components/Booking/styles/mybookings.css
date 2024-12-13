@@ -1,0 +1,34 @@
+.myBookings-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+    margin: 0 auto;
+    max-width: 1200px;
+    background-color: var(--main-background);
+    min-height: 100vh;
+}
+
+.myBookings-container > * {
+    width: 100%;
+    max-width: 100%;
+}
+
+.myBookings-titleContainer {
+    display: flex;
+    justify-content: flex-start; /* Alinear a la derecha */
+    margin: 20px 0; /* Margen superior e inferior */
+}
+  
+.myBookings-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--text-color); 
+}
+
+.myBookings-noBookings {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
+    margin-top: 20px;
+}

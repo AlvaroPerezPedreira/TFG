@@ -78,6 +78,7 @@ CREATE TABLE Booking (
     total_price DECIMAL(10,2) NOT NULL,
     is_reviewed TINYINT NOT NULL,
     is_cancelled TINYINT NOT NULL,
+    is_api TINYINT NOT NULL,
     FOREIGN KEY (lodge_id) REFERENCES Lodge(id) ON DELETE CASCADE,
     FOREIGN KEY (user_id) REFERENCES User(id) ON DELETE CASCADE
 );

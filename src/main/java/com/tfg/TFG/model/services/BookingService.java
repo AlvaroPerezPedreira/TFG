@@ -14,7 +14,7 @@ import com.tfg.TFG.model.services.exceptions.PermissionException;
 
 public interface BookingService {
     Booking createBooking(Long userId, String lodgeEmail, String checkIn, String checkOut, String arrivalTime,
-            String departureTime, double totalPrice) throws InstanceNotFoundException;
+            String departureTime, double totalPrice, Boolean is_api) throws InstanceNotFoundException;
 
     List<Booking> getBookingsByUserId(Long userId) throws InstanceNotFoundException;
 

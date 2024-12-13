@@ -17,6 +17,7 @@ import {
   LogoutIcon,
   NbHammerIcon,
   NbLodgesIcon,
+  NbBookingIcon,
 } from "../../icons/UserDropdownIcons";
 
 export default function UserDropdown() {
@@ -92,7 +93,7 @@ export default function UserDropdown() {
             style={{ color: "var(--AppMainColor)" }}
             key="myLodges"
             variant="bordered"
-            textValue={t("createLodge1")}
+            textValue={t("myLodges")}
             startContent={<NbLodgesIcon />}
             onClick={() => {
               startTransition(() => {
@@ -101,6 +102,20 @@ export default function UserDropdown() {
             }}
           >
             {t("myLodges")}
+          </DropdownItem>
+          <DropdownItem
+            style={{ color: "var(--AppMainColor)" }}
+            key="myBookings"
+            variant="bordered"
+            textValue={t("myBookings")}
+            startContent={<NbBookingIcon />}
+            onClick={() => {
+              startTransition(() => {
+                navigate("/bookings/myBookings");
+              });
+            }}
+          >
+            {t("myBookings")}
           </DropdownItem>
           <DropdownItem
             style={{ color: "var(--AppMainColor)" }}

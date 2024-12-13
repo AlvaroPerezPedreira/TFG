@@ -36,6 +36,9 @@ public class Booking {
     @Column(nullable = false)
     private Boolean is_cancelled;
 
+    @Column(nullable = false)
+    private Boolean is_api;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
@@ -48,12 +51,14 @@ public class Booking {
     }
 
     public Booking(String check_in, String check_out, String arrival_time, String departure_time, double total_price,
+            Boolean is_api,
             User user, Lodge lodge) {
         this.check_in = check_in;
         this.check_out = check_out;
         this.arrival_time = arrival_time;
         this.departure_time = departure_time;
         this.total_price = total_price;
+        this.is_api = is_api;
         this.user = user;
         this.lodge = lodge;
     }
@@ -137,6 +142,15 @@ public class Booking {
 
     public void setIs_cancelled(Boolean is_cancelled) {
         this.is_cancelled = is_cancelled;
+    }
+
+    // Is_api
+    public Boolean getIs_api() {
+        return is_api;
+    }
+
+    public void setIs_api(Boolean is_api) {
+        this.is_api = is_api;
     }
 
     // User
