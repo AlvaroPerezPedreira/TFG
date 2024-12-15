@@ -19,12 +19,14 @@ import { useBannedLodgesStore } from "../../store/useBannedLodgesStore";
 import useBanLodge from "../../hooks/useBanLodge";
 import LodgeBanIcon from "../../icons/LodgeBanIcon";
 import Footer from "../Footer";
+import useBookings from "../../hooks/useBookings";
 
 export default function LodgeDetails() {
   const [lodge, setLodge] = useState(null);
   const [checkIn, setCheckIn] = useState(null);
   const [checkOut, setCheckOut] = useState(null);
-  const [availableRooms, setAvailableRooms] = useState(0);
+  const [availability, setAvailability] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
   const { email } = useParams();
   const { getLodge } = useGetLodge();
@@ -32,7 +34,8 @@ export default function LodgeDetails() {
   const { authUser } = useAuthContext();
   const { addLodge, removeLodge } = useBannedLodgesStore();
   const { banLodge, unbanLodge } = useBanLodge();
-
+  const { getAvailability } = useBookings();
+  const token = JSON.parse(localStorage.getItem("authUser")).serviceToken;
   const [t, i18n] = useTranslation(["lodgeDetails"]);
   const currentLanguage = i18n.language;
 
@@ -46,15 +49,21 @@ export default function LodgeDetails() {
     getLodgeAux();
   }, []);
 
-  console.log(lodge);
-
   const handleDateChangeAux = (dates) => {
     handleDateChange2(dates, setCheckIn, setCheckOut);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(checkIn, checkOut);
+    console.log(email, checkIn, checkOut);
+    getAvailability({
+      token,
+      setAvailability,
+      lodgeEmail: email,
+      checkIn,
+      checkOut,
+      setErrorMsg,
+    });
   };
 
   const handleClick = async (e) => {
@@ -75,6 +84,14 @@ export default function LodgeDetails() {
       }
     });
   };
+
+  const handleBooking = async (e) => {
+    e.preventDefault();
+    console.log("Booking");
+  };
+
+  console.log(availability);
+  console.log(errorMsg);
 
   return (
     <Suspense fallback="loading">
@@ -125,9 +142,6 @@ export default function LodgeDetails() {
             <span className="lodgeDetails-rooms">
               {t("totalRooms")}: {lodge?.available_rooms}
             </span>
-            <span className="lodgeDetails-rooms">
-              {t("availableRooms")}: {availableRooms}
-            </span>
             <form
               className="lodgeDetails-checkAvailability"
               onSubmit={handleSubmit}
@@ -152,9 +166,23 @@ export default function LodgeDetails() {
                 </Button>
               </div>
             </form>
+            <div className="lodgeDetails-bookingSection">
+              {availability ? (
+                <Button
+                  className="bg-[#006FEE] dark:bg-[#FFDB58] text-black"
+                  type="submit"
+                  radius="none"
+                  children={t("bookButton")}
+                  disable={!availability}
+                  onClick={handleBooking}
+                />
+              ) : (
+                <div className="lodgeDetails-errorMsg">{errorMsg}</div>
+              )}
+            </div>
           </div>
         </div>
-        <div className="updProfile-button-container">
+        <div className="lodgeDetails-banButton-container">
           {authUser.user.role === "ADMIN" && (
             <Button
               children={

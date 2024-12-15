@@ -19,5 +19,8 @@
     "stay_duration": "Fechas de Check-in y Check-out",
     "banLodge": "Banear alojamiento",
     "unbanLodge": "Desbanear alojamiento",
-    "name": "Nombre"
+    "name": "Nombre",
+    "bookButton": "Reservar",
+    "errorAvailability": "Hubo un error al verificar la disponibilidad",
+    "noAvailability": "No hay disponibilidad para las fechas seleccionadas"
 }

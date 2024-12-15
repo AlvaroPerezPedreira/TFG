@@ -81,6 +81,10 @@ public class BookingServiceImpl implements BookingService {
         LocalDate newArrival = parseDate(ArrivalTime);
         LocalDate newDeparture = parseDate(DepartureTime);
 
+        if (newArrival.isBefore(LocalDate.now())) {
+            return false;
+        }
+
         int count = 0;
 
         for (Booking booking : bookings) {

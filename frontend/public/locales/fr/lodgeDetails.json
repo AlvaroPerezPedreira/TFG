@@ -19,5 +19,8 @@
     "stay_duration": "Dates d'enregistrement et de départ",
     "banLodge": "Bannir hébergement",
     "unbanLodge": "Réhabilitier hébergement",
-    "name": "Nom"
+    "name": "Nom",
+    "bookButton": "Réserver",
+    "errorAvailability": "Une erreur s'est produite lors de la vérification de la disponibilité",
+    "noAvailability": "Il n'y a pas de disponibilité pour les dates sélectionnées"
 }

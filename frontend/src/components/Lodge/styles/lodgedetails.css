@@ -104,6 +104,17 @@ font-size: 14;
     align-items: center;      
 }
 
-.updProfile-button-container {
+.lodgeDetails-banButton-container {
     margin-bottom: 15px;
+}
+
+.lodgeDetails-bookingSection {
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.lodgeDetails-errorMsg {
+    color: var(--errorRed);
+    margin-top: 10px;
 }

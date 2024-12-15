@@ -36,7 +36,7 @@ export default function LodgeAccordion({ lodge }) {
       >
         {t("euro")}:{" "}
         <span style={{ color: "var(--AppMainColor)" }}>
-          {lodge?.price_per_night.toFixed} €
+          {lodge?.price_per_night?.toFixed} €
         </span>{" "}
         <br />
         {t("dollar")}:{" "}

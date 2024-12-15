@@ -19,5 +19,8 @@
     "stay_duration": "Check-in and Check-out dates",
     "banLodge": "Ban lodge",
     "unbanLodge": "Unban lodge",
-    "name": "Name"
+    "name": "Name",
+    "bookButton": "Book",
+    "errorAvailability": "There was an error checking availability",
+    "noAvailability": "There is no availability for the selected dates"
 }
