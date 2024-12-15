@@ -32,5 +32,6 @@
     "noRooms": "No rooms available for your travel dates",
     "timezone": "Lodge timezone",
     "timezone2": "Timezone",
-    "noDescription": "No description available"
+    "noDescription": "No description available",
+    "openMaps": "View on Google Maps"
 }

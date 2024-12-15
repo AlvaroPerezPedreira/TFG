@@ -31,5 +31,6 @@
     "departure": "Date de départ",
     "noRooms": "Aucune chambre disponible pour vos dates de voyage",
     "timezone": "Fuseau horaire du lodge",
-    "timezone2": "Aucune description disponible"
+    "timezone2": "Aucune description disponible",
+    "openMaps": "Voir sur Google Maps"
 }

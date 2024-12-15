@@ -32,5 +32,6 @@
     "noRooms": "No hay habitaciones disponibles para sus fechas de viaje",
     "timezone": "Zona horaria del lodge",
     "timezone2": "Zona horaria",
-    "noDescription": "No hay descripción disponible"
+    "noDescription": "No hay descripción disponible",
+    "openMaps": "Ver en Google Maps"
 }

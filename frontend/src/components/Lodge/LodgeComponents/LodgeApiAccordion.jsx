@@ -71,6 +71,15 @@ export default function LodgeApiAccordion({ email, lodge, lodgeCheckInOut }) {
             indicator={<IndicatorIcon color={dark ? "white" : "black"} />}
             title={t("coordinates")}
           >
+            {" "}
+            <Link
+              href={`https://www.google.com/maps?q=${lodge?.location.latitude},${lodge?.location.longitude}`}
+              size="sm"
+              isExternal
+            >
+              {t("openMaps")}
+            </Link>
+            <br />
             {t("lat")}:{" "}
             <span style={{ color: "var(--AppMainColor)" }}>
               {lodge?.location.latitude}
