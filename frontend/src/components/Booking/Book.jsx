@@ -31,6 +31,7 @@ export default function Book() {
     name: "",
     focus: "",
   });
+  const [errors, setErrors] = useState([]);
 
   const { email } = useParams();
   const location = useLocation();
@@ -53,8 +54,29 @@ export default function Book() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // useBooking
-    console.log("Booked", lodge, email, checkIn, checkOut);
+    setErrors([]);
+    const newErrors = [];
+
+    if (state.number.length !== 16) {
+      newErrors.push(t("cardNumberError"));
+    }
+    if (state.cvc.length !== 3) {
+      newErrors.push(t("cvcError"));
+    }
+    if (state.expiry.length !== 4) {
+      newErrors.push(t("expireDateError"));
+    }
+
+    if (state.name.trim() === "") {
+      newErrors.push(t("nameError"));
+    }
+
+    if (newErrors.length > 0) {
+      setErrors(newErrors); // Actualiza el estado con los errores
+    } else {
+      // Si todo está bien, se puede proceder con la lógica de la reserva
+      console.log("Booked", lodge, email, checkIn, checkOut);
+    }
   };
 
   const handleInputChange = (evt) => {
@@ -195,6 +217,7 @@ export default function Book() {
               value={state.number}
               onChange={handleInputChange}
               onFocus={handleInputFocus}
+              isRequired
             />
             <Input
               name="name"
@@ -205,6 +228,7 @@ export default function Book() {
               value={state.name}
               onChange={handleInputChange}
               onFocus={handleInputFocus}
+              isRequired
             />
             <div className="book-paymentThirdInputs">
               <Input
@@ -216,6 +240,7 @@ export default function Book() {
                 onChange={handleInputChange}
                 onFocus={handleInputFocus}
                 size="sm"
+                isRequired
               />
               <InputOtp
                 name="cvc"
@@ -227,10 +252,20 @@ export default function Book() {
                 onChange={handleInputChange}
                 onFocus={handleInputFocus}
                 size="md"
+                isRequired
               />
             </div>
           </div>
         </div>
+        {errors.length > 0 && (
+          <div className="error-messages">
+            {errors.map((error, index) => (
+              <div key={index} className="error-message">
+                {error}
+              </div>
+            ))}
+          </div>
+        )}
         <div className="book-buttonContainer">
           <Button
             className="bg-[#006FEE] dark:bg-[#FFDB58] text-black w-full"

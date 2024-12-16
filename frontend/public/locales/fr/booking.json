@@ -23,5 +23,9 @@
     "cardNumber": "Numéro de carte",
     "cardName": "Nom du titulaire de la carte",
     "expireDate": "Date d'expiration",
-    "cvc": "CVC"
+    "cvc": "CVC",
+    "cardNumberError": "Le numéro de carte doit comporter 16 chiffres",
+    "cvcError": "Le CVC doit comporter 3 chiffres",
+    "expireDateError": "La date d'expiration doit comporter 4 chiffres",
+    "nameError": "Le nom ne peut pas être vide"
 }

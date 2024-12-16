@@ -23,5 +23,9 @@
     "cardNumber": "Card number",
     "cardName": "Card holder name",
     "expireDate": "Expiration date",
-    "cvc": "CVC"
+    "cvc": "CVC",
+    "cardNumberError": "The card number must be 16 digits",
+    "cvcError": "The CVC must be 3 digits",
+    "expireDateError": "The expiration date must be 4 digits",
+    "nameError": "Name cannot be empty"
 }
