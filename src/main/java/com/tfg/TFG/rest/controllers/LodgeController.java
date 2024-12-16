@@ -12,19 +12,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 
-import com.tfg.TFG.model.common.exceptions.DuplicateInstanceException;
 import com.tfg.TFG.model.common.exceptions.InstanceNotFoundException;
 import com.tfg.TFG.model.entities.Lodge;
 import com.tfg.TFG.model.entities.User;
 import com.tfg.TFG.model.services.LodgeService;
 import com.tfg.TFG.model.services.UserService;
-import com.tfg.TFG.model.services.exceptions.InvalidBirthdateException;
-import com.tfg.TFG.model.services.exceptions.InvalidEmailException;
+
 import com.tfg.TFG.model.services.exceptions.PermissionException;
 import com.tfg.TFG.rest.dtos.lodgeDtos.*;
-import com.tfg.TFG.rest.dtos.userDtos.AuthenticatedUserDto;
-import com.tfg.TFG.rest.dtos.userDtos.UserConversor;
-import com.tfg.TFG.rest.dtos.userDtos.UserDto;
 
 /**
  * The Class LodgeController.

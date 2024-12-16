@@ -1,10 +1,5 @@
 package com.tfg.TFG.rest.dtos.bookingDtos;
 
-import java.util.List;
-
-import com.tfg.TFG.rest.dtos.lodgeDtos.FeatureDto;
-import com.tfg.TFG.rest.dtos.lodgeDtos.LodgeDto;
-import com.tfg.TFG.rest.dtos.lodgeDtos.Lodge_ImageDto;
 import com.tfg.TFG.rest.dtos.userDtos.UserDto;
 
 public class BookingDto {

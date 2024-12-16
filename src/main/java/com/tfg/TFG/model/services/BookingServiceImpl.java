@@ -1,24 +1,15 @@
 package com.tfg.TFG.model.services;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tfg.TFG.model.common.exceptions.InstanceNotFoundException;
 import com.tfg.TFG.model.entities.*;
-import com.tfg.TFG.model.services.exceptions.PermissionException;
 
 @Service
 @Transactional
@@ -28,12 +19,6 @@ public class BookingServiceImpl implements BookingService {
 
     @Autowired
     private UserDao userDao;
-
-    @Autowired
-    private FeatureDao featureDao;
-
-    @Autowired
-    private Lodge_ImageDao imageDao;
 
     @Autowired
     private BookingDao bookingDao;

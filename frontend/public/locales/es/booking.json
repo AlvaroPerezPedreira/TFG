@@ -8,5 +8,20 @@
     "checkOut": "Hora de check out",
     "review": "Valorar",
     "bookingDate": "Fecha de confirmación",
-    "price": "Precio"
+    "price": "Precio",
+    "bookLodge": "Finaliza tu reserva de alojamiento",
+    "bookLodgeButton": "Confirmar reserva",
+    "lodgeName": "Nombre del alojamiento",
+    "lodgeEmail": "Email del alojamiento",
+    "pricePerNight": "Precio por noche",
+    "address": "Dirección",
+    "arrivalDate": "Fecha de llegada",
+    "departureDate": "Fecha de salida",
+    "totalDays": "Días totales",
+    "days": "días",
+    "totalPrice": "Precio total",
+    "cardNumber": "Número de tarjeta",
+    "cardName": "Nombre del titular de la tarjeta",
+    "expireDate": "Fecha de expiración",
+    "cvc": "CVC"
 }

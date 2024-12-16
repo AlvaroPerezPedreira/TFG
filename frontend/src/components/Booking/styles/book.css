@@ -1,0 +1,101 @@
+.book-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+    margin: 0 auto;
+    max-width: 1200px;
+    color: var(--text-color);
+}
+
+.book-container > * {
+    width: 100%;
+    max-width: 100%;
+}
+
+.book-header-container {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 20px;
+    color: var(--AppMainColor);
+    padding: 10px;
+    display: inline-block;
+}
+
+.book-lodgeFirstInputs {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 60%;
+    margin: 0 auto;
+}
+  
+.book-lodgeSecondInputs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    width: 60%;
+    margin: 1rem auto;
+}
+
+.book-bookFirstInputs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    width: 60%;
+    margin: 1rem auto;
+}
+
+.book-bookSecondInputs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    width: 60%;
+    margin: 1rem auto;
+}
+
+.book-bookPaymentFirstInputs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 1rem auto;
+    width: 60%;
+}
+
+.book-bookPaymentSecondInputs {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 60%;
+    margin: 0 auto;
+}
+
+.book-paymentThirdInputs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin: 1rem auto;
+}
+
+.book-buttonContainer {
+    display: flex;
+    justify-content: center;
+    width: 30%;
+    margin-top: 30px;
+    margin: 30px auto;
+}
+
+/* Dividers */
+.book-horizontalDivider {
+    height: 1px;
+    background-color: var(--AppMainColor);
+    width: 70%;
+    margin: 20px 0;
+}
+ 
+@media (max-width: 768px) {
+    .book-lodgeSecondInputs {
+      grid-template-columns: 1fr; /* Cambia a una sola columna */
+    }
+  }

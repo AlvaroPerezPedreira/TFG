@@ -20,6 +20,7 @@ import useBanLodge from "../../hooks/useBanLodge";
 import LodgeBanIcon from "../../icons/LodgeBanIcon";
 import Footer from "../Footer";
 import useBookings from "../../hooks/useBookings";
+import { useNavigate } from "react-router-dom";
 
 export default function LodgeDetails() {
   const [lodge, setLodge] = useState(null);
@@ -38,6 +39,7 @@ export default function LodgeDetails() {
   const token = JSON.parse(localStorage.getItem("authUser")).serviceToken;
   const [t, i18n] = useTranslation(["lodgeDetails"]);
   const currentLanguage = i18n.language;
+  let navigate = useNavigate();
 
   const OPTIONS = { loop: true };
 
@@ -87,7 +89,13 @@ export default function LodgeDetails() {
 
   const handleBooking = async (e) => {
     e.preventDefault();
-    console.log("Booking");
+    startTransition(() => {
+      const queryParams = new URLSearchParams({
+        checkIn,
+        checkOut,
+      });
+      navigate(`/bookLodge/${email}?${queryParams.toString()}`);
+    });
   };
 
   console.log(availability);

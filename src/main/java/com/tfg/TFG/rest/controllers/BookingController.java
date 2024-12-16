@@ -1,34 +1,21 @@
 package com.tfg.TFG.rest.controllers;
 
-import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import org.springframework.data.domain.Page;
-import org.springframework.http.HttpStatus;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 
-import com.tfg.TFG.model.common.exceptions.DuplicateInstanceException;
 import com.tfg.TFG.model.common.exceptions.InstanceNotFoundException;
 import com.tfg.TFG.model.entities.Booking;
-import com.tfg.TFG.model.entities.Lodge;
-import com.tfg.TFG.model.entities.User;
+
 import com.tfg.TFG.model.services.BookingService;
-import com.tfg.TFG.model.services.LodgeService;
-import com.tfg.TFG.model.services.UserService;
-import com.tfg.TFG.model.services.exceptions.InvalidBirthdateException;
-import com.tfg.TFG.model.services.exceptions.InvalidEmailException;
-import com.tfg.TFG.model.services.exceptions.PermissionException;
+
 import com.tfg.TFG.rest.dtos.bookingDtos.BookingConversor;
 import com.tfg.TFG.rest.dtos.bookingDtos.BookingDto;
-import com.tfg.TFG.rest.dtos.lodgeDtos.*;
-import com.tfg.TFG.rest.dtos.userDtos.AuthenticatedUserDto;
-import com.tfg.TFG.rest.dtos.userDtos.UserConversor;
-import com.tfg.TFG.rest.dtos.userDtos.UserDto;
 
 /**
  * The Class LodgeController.
@@ -36,12 +23,6 @@ import com.tfg.TFG.rest.dtos.userDtos.UserDto;
 @RestController
 @RequestMapping("/api/bookings")
 public class BookingController {
-    /** The user service. */
-    @Autowired
-    private LodgeService lodgeService;
-
-    @Autowired
-    private UserService userService;
 
     @Autowired
     private BookingService bookingService;

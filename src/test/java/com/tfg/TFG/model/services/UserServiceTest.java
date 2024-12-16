@@ -5,7 +5,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.tfg.TFG.model.entities.UserDao;
 import com.tfg.TFG.model.services.exceptions.BannedUserException;
 import com.tfg.TFG.model.services.exceptions.IncorrectLoginException;
 import com.tfg.TFG.model.services.exceptions.IncorrectPasswordException;
@@ -28,10 +27,6 @@ import jakarta.transaction.Transactional;
 @ActiveProfiles("test")
 @Transactional
 public class UserServiceTest {
-
-        @Autowired
-        private UserDao userDao;
-
         @Autowired
         private UserService userService;
 

@@ -109,3 +109,41 @@ export function convertToISODate(date) {
   const [day, month, year] = date.split("-");
   return new Date(`${year}-${month}-${day}`);
 }
+
+export function convertToDate(dateStr) {
+  const [day, month, year] = dateStr.split('-');
+  return new CalendarDate(parseInt(year), parseInt(month) - 1, parseInt(day)); // Mes - 1 porque CalendarDate usa base 0 para los meses
+}
+
+export function getTotalDays(arrivalDate, departureDate) {
+  // Convertir las fechas al formato 'yyyy-mm-dd' si es necesario
+  const formattedArrival = formatDate(arrivalDate);
+  const formattedDeparture = formatDate(departureDate);
+
+  const arrival = new Date(formattedArrival);
+  const departure = new Date(formattedDeparture);
+
+  // Verificar si las fechas son válidas
+  if (isNaN(arrival.getTime()) || isNaN(departure.getTime())) {
+    console.error("Fecha no válida");
+    return NaN;
+  }
+
+  const diffTime = departure - arrival;
+  const totalDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+  return totalDays;
+}
+
+// Función para formatear la fecha en 'yyyy-mm-dd'
+function formatDate(date) {
+  const parts = date.split('-');
+  return `${parts[2]}-${parts[1]}-${parts[0]}`;  // Convertir 'dd-mm-yyyy' a 'yyyy-mm-dd'
+}
+
+
+
+
+
+
+

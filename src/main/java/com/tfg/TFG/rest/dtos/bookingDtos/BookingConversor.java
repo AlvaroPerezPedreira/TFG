@@ -1,13 +1,9 @@
 package com.tfg.TFG.rest.dtos.bookingDtos;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.tfg.TFG.model.common.exceptions.InstanceNotFoundException;
 import com.tfg.TFG.model.entities.Booking;
 import com.tfg.TFG.model.entities.Lodge;
-import com.tfg.TFG.model.entities.Lodge.LodgeProvider;
 import com.tfg.TFG.model.services.LodgeService;
-import com.tfg.TFG.rest.dtos.lodgeDtos.LodgeConversor;
 import com.tfg.TFG.rest.dtos.userDtos.UserConversor;
 
 public class BookingConversor {
