@@ -64,7 +64,51 @@ const useBookings = () => {
     }
   };
 
-  return { getMyBookings, getAvailability };
+  const bookLodge = async ({
+    token,
+    checkIn,
+    checkOut,
+    arrivalTime,
+    departureTime,
+    totalPrice,
+    lodgeEmail,
+    isApi,
+  }) => {
+    const data = {
+      check_in: checkIn,
+      check_out: checkOut,
+      arrival_time: arrivalTime,
+      departure_time: departureTime,
+      total_price: totalPrice,
+      lodgeEmail: lodgeEmail,
+      is_api: isApi,
+    };
+
+    try {
+      const response = await fetch(
+        `http://localhost:8080/api/bookings/createBooking`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(data),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`);
+      }
+
+      const finalData = await response.json();
+      console.log("Booking created:", finalData);
+    } catch (error) {
+      console.error("Error booking lodge:", error);
+    }
+  };
+
+  return { bookLodge, getMyBookings, getAvailability };
 };
 
 export default useBookings;

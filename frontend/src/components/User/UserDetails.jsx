@@ -178,7 +178,7 @@ function UserDetails() {
                   variant="bordered"
                   startContent={<UserIcon />}
                   color="danger"
-                  onClick={handleClick}
+                  onPress={handleClick}
                 />
               )}
             </div>

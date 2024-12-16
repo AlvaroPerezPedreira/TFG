@@ -37,7 +37,7 @@ export default function FlagDropdown() {
         <DropdownMenu aria-label="Static Actions">
           <DropdownItem
             key="ES_FLAG"
-            onClick={() => {
+            onPress={() => {
               i18n.changeLanguage("es");
             }}
             textValue={t("es")}
@@ -49,7 +49,7 @@ export default function FlagDropdown() {
           </DropdownItem>
           <DropdownItem
             key="EN_FLAG"
-            onClick={() => {
+            onPress={() => {
               i18n.changeLanguage("en");
             }}
             textValue={t("en")}
@@ -61,7 +61,7 @@ export default function FlagDropdown() {
           </DropdownItem>
           <DropdownItem
             key="FR_FLAG"
-            onClick={() => {
+            onPress={() => {
               i18n.changeLanguage("fr");
             }}
             textValue={t("fr")}

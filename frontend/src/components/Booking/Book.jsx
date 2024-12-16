@@ -19,9 +19,13 @@ import { Divider } from "@nextui-org/divider";
 import { DateIcon } from "../../icons/MainAppIcons";
 import Cards from "react-credit-cards-2";
 import { InputOtp } from "@nextui-org/input-otp";
+import useBookings from "../../hooks/useBookings";
+import { useNavigate } from "react-router-dom";
 
 export default function Book() {
   const [t] = useTranslation(["booking"]);
+  const token = JSON.parse(localStorage.getItem("authUser")).serviceToken;
+  let navigate = useNavigate();
 
   const [lodge, setLodge] = useState(null);
   const [state, setState] = useState({
@@ -42,6 +46,7 @@ export default function Book() {
   const { dark, color } = useThemeContext();
 
   const { getLodge } = useGetLodge();
+  const { bookLodge } = useBookings();
 
   useEffect(() => {
     const getLodgeAux = async () => {
@@ -74,8 +79,19 @@ export default function Book() {
     if (newErrors.length > 0) {
       setErrors(newErrors); // Actualiza el estado con los errores
     } else {
-      // Si todo está bien, se puede proceder con la lógica de la reserva
-      console.log("Booked", lodge, email, checkIn, checkOut);
+      bookLodge({
+        token: token,
+        checkIn: lodge.check_in,
+        checkOut: lodge.check_out,
+        arrivalTime: checkIn,
+        departureTime: checkOut,
+        totalPrice: getTotalDays(checkIn, checkOut) * lodge.price_per_night,
+        lodgeEmail: email,
+        isApi: false,
+      });
+      startTransition(() => {
+        navigate("/");
+      });
     }
   };
 
@@ -231,9 +247,10 @@ export default function Book() {
               isRequired
             />
             <div className="book-paymentThirdInputs">
-              <Input
+              <InputOtp
                 name="expiry"
-                label={t("expireDate")}
+                description={t("expireDate")}
+                length={4}
                 variant="underlined"
                 color={color}
                 value={state.expiry}
@@ -244,14 +261,14 @@ export default function Book() {
               />
               <InputOtp
                 name="cvc"
-                label={t("cvc")}
+                description={t("cvc")}
                 length={3}
                 variant="underlined"
                 color={color}
                 value={state.cvc}
                 onChange={handleInputChange}
                 onFocus={handleInputFocus}
-                size="md"
+                size="sm"
                 isRequired
               />
             </div>

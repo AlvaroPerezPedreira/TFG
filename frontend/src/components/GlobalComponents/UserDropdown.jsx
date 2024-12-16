@@ -66,7 +66,7 @@ export default function UserDropdown() {
             textValue={t("home")}
             variant="bordered"
             startContent={<HomeIcon />}
-            onClick={() => {
+            onPress={() => {
               startTransition(() => {
                 navigate("/");
               });
@@ -80,7 +80,7 @@ export default function UserDropdown() {
             variant="bordered"
             textValue={t("createLodge1")}
             startContent={<CreateIcon />}
-            onClick={() => {
+            onPress={() => {
               startTransition(() => {
                 navigate("/lodge/createLodge");
               });
@@ -95,7 +95,7 @@ export default function UserDropdown() {
             variant="bordered"
             textValue={t("myLodges")}
             startContent={<NbLodgesIcon />}
-            onClick={() => {
+            onPress={() => {
               startTransition(() => {
                 navigate("/lodge/myLodges");
               });
@@ -109,7 +109,7 @@ export default function UserDropdown() {
             variant="bordered"
             textValue={t("myBookings")}
             startContent={<NbBookingIcon />}
-            onClick={() => {
+            onPress={() => {
               startTransition(() => {
                 navigate("/bookings/myBookings");
               });
@@ -123,7 +123,7 @@ export default function UserDropdown() {
             textValue={t("updProfile")}
             variant="bordered"
             startContent={<EditIcon />}
-            onClick={() => {
+            onPress={() => {
               startTransition(() => {
                 navigate("/updateProfile");
               });
@@ -138,7 +138,7 @@ export default function UserDropdown() {
               variant="bordered"
               textValue={t("bannedUsers")}
               startContent={<NbHammerIcon />}
-              onClick={() => {
+              onPress={() => {
                 startTransition(() => {
                   navigate("/users/bannedUsers");
                 });
@@ -154,7 +154,7 @@ export default function UserDropdown() {
               variant="bordered"
               textValue={t("bannedLodges")}
               startContent={<NbHammerIcon />}
-              onClick={() => {
+              onPress={() => {
                 startTransition(() => {
                   navigate("/lodges/bannedLodges");
                 });
@@ -167,7 +167,7 @@ export default function UserDropdown() {
             style={{ color: "var(--errorRed)" }}
             key="logout"
             variant="bordered"
-            onClick={logOut}
+            onPress={logOut}
             startContent={<LogoutIcon />}
             textValue={t("logOut")}
           >

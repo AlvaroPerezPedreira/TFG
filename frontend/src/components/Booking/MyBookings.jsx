@@ -55,7 +55,7 @@ function MyBookings() {
                   <CardHeader className="font-bold text-xl pb-2 text-left text-pretty">
                     <h2 className="font-bold text-xl pb-2 text-left text-pretty">
                       <Link
-                        onClick={() => {
+                        onPress={() => {
                           startTransition(() => {
                             const queryParams = new URLSearchParams({
                               checkIn: booking.check_in,
@@ -133,7 +133,7 @@ function MyBookings() {
                         variant="bordered"
                         color="danger"
                         startContent={<CancelBookingIcon />}
-                        onClick={() => console.log("cancel")}
+                        onPress={() => console.log("cancel")}
                       />
                     )}
                     {(booking.is_cancelled || isOver) &&
@@ -143,7 +143,7 @@ function MyBookings() {
                           variant="bordered"
                           color={color}
                           startContent={<RateBookingIcon />}
-                          onClick={() => console.log("review")}
+                          onPress={() => console.log("review")}
                         />
                       )}
                   </CardFooter>

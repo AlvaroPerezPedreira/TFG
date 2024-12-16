@@ -57,7 +57,6 @@ export default function LodgeDetails() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(email, checkIn, checkOut);
     getAvailability({
       token,
       setAvailability,
@@ -97,9 +96,6 @@ export default function LodgeDetails() {
       navigate(`/bookLodge/${email}?${queryParams.toString()}`);
     });
   };
-
-  console.log(availability);
-  console.log(errorMsg);
 
   return (
     <Suspense fallback="loading">
@@ -182,7 +178,7 @@ export default function LodgeDetails() {
                   radius="none"
                   children={t("bookButton")}
                   disable={!availability}
-                  onClick={handleBooking}
+                  onPress={handleBooking}
                 />
               ) : (
                 <div className="lodgeDetails-errorMsg">{errorMsg}</div>
@@ -201,7 +197,7 @@ export default function LodgeDetails() {
               variant="bordered"
               startContent={<LodgeBanIcon />}
               color="danger"
-              onClick={handleClick}
+              onPress={handleClick}
             />
           )}
         </div>

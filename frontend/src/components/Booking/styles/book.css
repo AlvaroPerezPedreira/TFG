@@ -76,6 +76,7 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
     margin: 1rem auto;
+    color: var(--text-color);
 }
 
 .error-messages {
