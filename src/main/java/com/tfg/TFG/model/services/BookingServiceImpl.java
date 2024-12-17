@@ -34,20 +34,41 @@ public class BookingServiceImpl implements BookingService {
             String departureTime, double totalPrice, Boolean is_api) throws InstanceNotFoundException {
         User user = userDao.findById(userId)
                 .orElseThrow(() -> new InstanceNotFoundException(userId.toString(), User.class.getName()));
-        Lodge lodge = lodgeDao.findByEmail(lodgeEmail)
-                .orElseThrow(() -> new InstanceNotFoundException(lodgeEmail, Lodge.class.getName()));
 
-        Booking booking = new Booking(checkIn, checkOut, arrivalTime, departureTime, totalPrice, is_api, user, lodge);
-        booking.setIs_cancelled(false);
-        booking.setIs_reviewed(false);
+        if (!is_api) {
+            Lodge lodge = lodgeDao.findByEmail(lodgeEmail)
+                    .orElseThrow(() -> new InstanceNotFoundException(lodgeEmail, Lodge.class.getName()));
+            Booking booking = new Booking(checkIn, checkOut, arrivalTime, departureTime, totalPrice, lodgeEmail, is_api,
+                    user,
+                    lodge);
 
-        LocalDate currentDate = LocalDate.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        String bookingDate = currentDate.format(formatter);
+            booking.setIs_cancelled(false);
+            booking.setIs_reviewed(false);
 
-        booking.setBooking_date(bookingDate);
+            LocalDate currentDate = LocalDate.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+            String bookingDate = currentDate.format(formatter);
 
-        return bookingDao.save(booking);
+            booking.setBooking_date(bookingDate);
+
+            return bookingDao.save(booking);
+        } else {
+
+            Booking booking = new Booking(checkIn, checkOut, arrivalTime, departureTime, totalPrice, lodgeEmail, is_api,
+                    user,
+                    null);
+
+            booking.setIs_cancelled(false);
+            booking.setIs_reviewed(false);
+
+            LocalDate currentDate = LocalDate.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+            String bookingDate = currentDate.format(formatter);
+
+            booking.setBooking_date(bookingDate);
+
+            return bookingDao.save(booking);
+        }
     }
 
     @Override

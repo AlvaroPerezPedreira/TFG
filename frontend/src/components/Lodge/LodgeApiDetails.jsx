@@ -1,6 +1,6 @@
 import "./styles/lodgeapidetails.css";
 
-import React, { Suspense, useEffect, useState } from "react";
+import React, { startTransition, Suspense, useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import ApiLodgeFeatureList from "./LodgeComponents/ApiLodgeFeatureList";
@@ -13,6 +13,7 @@ import UserLink from "./LodgeComponents/UserLink";
 import LodgeApiAccordion from "./LodgeComponents/LodgeApiAccordion";
 import AppNavbar from "../AppNavbar";
 import Footer from "../Footer";
+import { useNavigate } from "react-router-dom";
 
 export default function LodgeApiDetails() {
   const [t, i18n] = useTranslation(["lodgeApiDetails"]);
@@ -33,6 +34,8 @@ export default function LodgeApiDetails() {
   const checkOut = searchParams.get("checkOut");
 
   const OPTIONS = { loop: true };
+
+  let navigate = useNavigate();
 
   useEffect(() => {
     const getLodgeAux = async () => {
@@ -57,6 +60,16 @@ export default function LodgeApiDetails() {
     getLodgeWithCheckInOutAux();
     getPhotosAux();
   }, []);
+
+  const handleBooking = async (e) => {
+    startTransition(() => {
+      const queryParams = new URLSearchParams({
+        checkIn,
+        checkOut,
+      });
+      navigate(`/bookApiLodge/${email}?${queryParams.toString()}`);
+    });
+  };
 
   return (
     <Suspense fallback="loading">
@@ -151,9 +164,9 @@ export default function LodgeApiDetails() {
                   className="bg-[#006FEE] dark:bg-[#FFDB58] text-black"
                   type="submit"
                   radius="none"
-                >
-                  {t("bookButton")}
-                </Button>
+                  children={t("bookButton")}
+                  onPress={handleBooking}
+                />
               ) : (
                 <span className="lodgeApiDetails-noRooms">
                   {t("noRooms")} <br />

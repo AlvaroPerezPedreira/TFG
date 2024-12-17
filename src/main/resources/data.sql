@@ -122,13 +122,13 @@ VALUES
     ('BannedLodge@example.com', 'Banned Lodge', 'Banned Lodge description', 'Banned Lodge Address', '123456789', 'Victoria', 'Spain', 15, 215.00, '14:00', '11:00', 0, 0, 1, 1);
 
 
-INSERT INTO Booking(user_id, lodge_id, check_in, check_out, arrival_time, departure_time, booking_date, total_price, is_reviewed, is_cancelled, is_api)
+INSERT INTO Booking(user_id, lodge_id, check_in, check_out, arrival_time, departure_time, booking_date, total_price, lodge_email, is_reviewed, is_cancelled, is_api)
 VALUES
-    (2, 1, '14:00', '11:00', '05-12-2022', '12-12-2022', '01-12-2022', 350, 0, 0, 0),
-    (2, 2, '14:00', '11:00', '05-12-2022', '12-12-2022', '01-12-2022', 770, 1, 0, 0),
-    (2, 10, '14:00', '11:00', '01-01-2025', '31-12-2025', '01-12-2023', 350, 0, 0, 0),
-    (2, 10, '14:00', '11:00', '01-01-2025', '31-12-2025', '01-12-2023', 350, 0, 0, 0),
-    (2, 10, '14:00', '11:00', '01-01-2025', '31-12-2025', '01-12-2023', 350, 0, 0, 0);
+    (2, 1, '14:00', '11:00', '05-12-2022', '12-12-2022', '01-12-2022', 350, 'ParisLodge@example.com', 0, 0, 0),
+    (2, 2, '14:00', '11:00', '05-12-2022', '12-12-2022', '01-12-2022', 770, 'LALodge@example.com', 1, 0, 0),
+    (2, 10, '14:00', '11:00', '01-01-2025', '31-12-2025', '01-12-2023', 350, 'MadridLodge@example.com', 0, 0, 0),
+    (2, 10, '14:00', '11:00', '01-01-2025', '31-12-2025', '01-12-2023', 350, 'MadridLodge@example.com', 0, 0, 0),
+    (2, 10, '14:00', '11:00', '01-01-2025', '31-12-2025', '01-12-2023', 350, 'MadridLodge@example.com', 0, 0, 0);
 
 INSERT INTO Lodge_Feature (lodge_id, feature_id)
 VALUES

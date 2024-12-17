@@ -29,6 +29,9 @@ public class Booking {
     private double total_price;
 
     @Column(nullable = false)
+    private String lodge_email;
+
+    @Column(nullable = false)
     private Boolean is_reviewed;
 
     @Column(nullable = false)
@@ -42,13 +45,14 @@ public class Booking {
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "lodge_id", nullable = false)
+    @JoinColumn(name = "lodge_id", nullable = true)
     private Lodge lodge;
 
     public Booking() {
     }
 
     public Booking(String check_in, String check_out, String arrival_time, String departure_time, double total_price,
+            String lodge_email,
             Boolean is_api,
             User user, Lodge lodge) {
         this.check_in = check_in;
@@ -56,6 +60,7 @@ public class Booking {
         this.arrival_time = arrival_time;
         this.departure_time = departure_time;
         this.total_price = total_price;
+        this.lodge_email = lodge_email;
         this.is_api = is_api;
         this.user = user;
         this.lodge = lodge;
@@ -122,6 +127,15 @@ public class Booking {
 
     public void setTotal_price(double total_price) {
         this.total_price = total_price;
+    }
+
+    // Lodge_email
+    public String getLodge_email() {
+        return lodge_email;
+    }
+
+    public void setLodge_email(String lodge_email) {
+        this.lodge_email = lodge_email;
     }
 
     // Is_reviewed

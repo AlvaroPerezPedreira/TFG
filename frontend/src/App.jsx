@@ -22,6 +22,7 @@ import AboutUs from "./components/AboutUs";
 import Policy from "./components/Policy";
 import MyBookings from "./components/Booking/MyBookings";
 import Book from "./components/Booking/Book";
+import BookApi from "./components/Booking/BookApi";
 
 function App() {
   const { authUser } = useAuthContext();
@@ -55,6 +56,7 @@ function App() {
         <Route path="/lodges/bannedLodges" element={<BannedLodges />} />
         <Route path="/bookings/myBookings" element={<MyBookings />} />
         <Route path="/bookLodge/:email" element={<Book />} />
+        <Route path="/bookApiLodge/:email" element={<BookApi />} />
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/policy" element={<Policy />} />

@@ -136,7 +136,7 @@ export function getTotalDays(arrivalDate, departureDate) {
 }
 
 // Función para formatear la fecha en 'yyyy-mm-dd'
-function formatDate(date) {
+export function formatDate(date) {
   const parts = date.split('-');
   return `${parts[2]}-${parts[1]}-${parts[0]}`;  // Convertir 'dd-mm-yyyy' a 'yyyy-mm-dd'
 }

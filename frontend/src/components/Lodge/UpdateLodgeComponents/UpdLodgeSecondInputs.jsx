@@ -59,7 +59,7 @@ export default function UpdLodgeSecondInputs({
             name="pricePerNight"
             placeholder={t("pricePerNight")}
             defaultValue={lodge?.price_per_night || ""}
-            label={lodge?.price_per_night ? t("rooms") : ""}
+            label={lodge?.price_per_night ? t("pricePerNight") : ""}
             variant="underlined"
             color={color}
             isRequired

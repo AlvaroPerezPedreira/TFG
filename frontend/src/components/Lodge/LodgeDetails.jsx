@@ -87,7 +87,6 @@ export default function LodgeDetails() {
   };
 
   const handleBooking = async (e) => {
-    e.preventDefault();
     startTransition(() => {
       const queryParams = new URLSearchParams({
         checkIn,

@@ -21,7 +21,7 @@ public class BookingConversor {
         bookingDto.setIs_cancelled(booking.getIs_cancelled());
         bookingDto.setIs_api(booking.getIs_api());
         bookingDto.setUser(UserConversor.toUserDto(booking.getUser()));
-        bookingDto.setLodgeEmail(booking.getLodge().getLodge_email());
+        bookingDto.setLodgeEmail(booking.getLodge_email());
 
         return bookingDto;
     }
@@ -35,14 +35,18 @@ public class BookingConversor {
         booking.setDeparture_time(bookingDto.getDeparture_time());
         booking.setBooking_date(bookingDto.getBooking_date());
         booking.setTotal_price(bookingDto.getTotal_price());
+        booking.setLodge_email(bookingDto.getLodgeEmail());
         booking.setIs_reviewed(bookingDto.getIs_reviewed());
         booking.setIs_cancelled(bookingDto.getIs_cancelled());
         booking.setIs_api(bookingDto.getIs_api());
         booking.setUser(UserConversor.toUser(bookingDto.getUser()));
 
-        Lodge lodge = lodgeService.findByEmail(bookingDto.getLodgeEmail());
-
-        booking.setLodge(lodge);
+        if (bookingDto.getIs_api()) {
+            booking.setLodge(null);
+        } else {
+            Lodge lodge = lodgeService.findByEmail(bookingDto.getLodgeEmail());
+            booking.setLodge(lodge);
+        }
 
         return booking;
     }

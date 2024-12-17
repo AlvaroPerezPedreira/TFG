@@ -84,6 +84,8 @@ const useBookings = () => {
       is_api: isApi,
     };
 
+    console.log(data);
+
     try {
       const response = await fetch(
         `http://localhost:8080/api/bookings/createBooking`,
