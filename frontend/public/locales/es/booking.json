@@ -27,5 +27,9 @@
     "cardNumberError": "El número de tarjeta debe tener 16 dígitos",
     "cvcError": "El CVC debe tener 3 dígitos",
     "expireDateError": "La fecha de expiración debe tener 4 dígitos",
-    "nameError": "El nombre no puede estar vacío"
+    "nameError": "El nombre no puede estar vacío",
+    "status": "Estado",
+    "cancelled": "cancelado",
+    "active": "activo",
+    "over": "concluida"
 }

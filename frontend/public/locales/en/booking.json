@@ -27,5 +27,9 @@
     "cardNumberError": "The card number must be 16 digits",
     "cvcError": "The CVC must be 3 digits",
     "expireDateError": "The expiration date must be 4 digits",
-    "nameError": "Name cannot be empty"
+    "nameError": "Name cannot be empty",
+    "status": "Status",
+    "cancelled": "cancelled",
+    "active": "active",
+    "over": "concluded"
 }

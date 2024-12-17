@@ -110,7 +110,28 @@ const useBookings = () => {
     }
   };
 
-  return { bookLodge, getMyBookings, getAvailability };
+  const cancelBooking = async ({ token, bookingId }) => {
+    try {
+      const response = await fetch(
+        `http://localhost:8080/api/bookings/cancelBooking/${bookingId}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`);
+      }
+    } catch (error) {
+      console.error("Error cancelling booking:", error);
+    }
+  };
+
+  return { bookLodge, getMyBookings, getAvailability, cancelBooking };
 };
 
 export default useBookings;

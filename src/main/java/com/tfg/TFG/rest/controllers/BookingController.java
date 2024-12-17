@@ -5,15 +5,16 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 
 import com.tfg.TFG.model.common.exceptions.InstanceNotFoundException;
 import com.tfg.TFG.model.entities.Booking;
-
+import com.tfg.TFG.model.entities.User;
 import com.tfg.TFG.model.services.BookingService;
-
+import com.tfg.TFG.model.services.UserService;
+import com.tfg.TFG.model.services.exceptions.PermissionException;
 import com.tfg.TFG.rest.dtos.bookingDtos.BookingConversor;
 import com.tfg.TFG.rest.dtos.bookingDtos.BookingDto;
 
@@ -26,6 +27,9 @@ public class BookingController {
 
     @Autowired
     private BookingService bookingService;
+
+    @Autowired
+    private UserService userService;
 
     @GetMapping("/myBookings")
     public ResponseEntity<List<BookingDto>> getMyBookings(@RequestAttribute Long userId)
@@ -58,5 +62,14 @@ public class BookingController {
         System.out.println("check availability");
 
         return bookingService.checkAvailability(lodgeEmail, check_in, check_out);
+    }
+
+    @PostMapping("/cancelBooking/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void cancelBooking(@RequestAttribute Long userId, @PathVariable Long id)
+            throws InstanceNotFoundException, PermissionException {
+        System.out.println("cancel booking");
+
+        bookingService.cancelBooking(userId, id);
     }
 }

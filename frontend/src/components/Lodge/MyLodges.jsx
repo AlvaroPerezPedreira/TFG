@@ -2,12 +2,6 @@ import "./styles/mylodges.css";
 import React, { startTransition, Suspense, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import AppNavbar from "../AppNavbar";
-import { useBannedUsersStore } from "../../store/useBannedUsersStore";
-import useBanUser from "../../hooks/useBanUser";
-import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/card";
-import { Avatar } from "@nextui-org/avatar";
-import { Button } from "@nextui-org/button";
-import { UserIcon } from "../../icons/UserIcon";
 import useGetLodges from "../../hooks/useGetLodges";
 import MyLodgesCard from "./LodgeComponents/MyLodgesCard";
 

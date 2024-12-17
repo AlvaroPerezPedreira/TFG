@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.tfg.TFG.model.common.exceptions.InstanceNotFoundException;
 import com.tfg.TFG.model.entities.*;
+import com.tfg.TFG.model.services.exceptions.PermissionException;
 
 @Service
 @Transactional
@@ -109,6 +110,22 @@ public class BookingServiceImpl implements BookingService {
         } else {
             return true;
         }
+    }
+
+    @Override
+    public void cancelBooking(Long userId, Long bookingId) throws InstanceNotFoundException, PermissionException {
+
+        User user = userDao.findById(userId)
+                .orElseThrow(() -> new InstanceNotFoundException(userId.toString(), User.class.getName()));
+
+        Booking booking = bookingDao.findById(bookingId)
+                .orElseThrow(() -> new InstanceNotFoundException(bookingId.toString(), Booking.class.getName()));
+
+        if (!booking.getUser().equals(user)) {
+            throw new PermissionException();
+        }
+
+        booking.setIs_cancelled(true);
     }
 
 }

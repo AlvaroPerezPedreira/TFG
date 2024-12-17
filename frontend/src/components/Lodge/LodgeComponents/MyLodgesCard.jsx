@@ -27,14 +27,12 @@ export default function MyLodgesCard({
   const [isLodgeClosed, setIsLodgeClosed] = useState(is_closed);
 
   const handleClick = async (e) => {
-    e.preventDefault();
     startTransition(() => {
       navigate(`/lodge/updateLodge/${lodge_email}`);
     });
   };
 
   const handleOpenClose = (e) => {
-    e.preventDefault();
     // Usamos startTransition para no bloquear la interfaz de usuario
     startTransition(() => {
       if (isLodgeClosed) {
@@ -75,7 +73,7 @@ export default function MyLodgesCard({
           variant="bordered"
           color={color}
           startContent={<EditIcon />}
-          onClick={handleClick}
+          onPress={handleClick}
         />
         {isLodgeClosed ? (
           <Button
@@ -83,7 +81,7 @@ export default function MyLodgesCard({
             variant="bordered"
             color="success"
             startContent={<ShieldOpenIcon />}
-            onClick={handleOpenClose}
+            onPress={handleOpenClose}
           />
         ) : (
           <Button
@@ -91,7 +89,7 @@ export default function MyLodgesCard({
             variant="bordered"
             color="danger"
             startContent={<ShieldCloseIcon />}
-            onClick={handleOpenClose}
+            onPress={handleOpenClose}
           />
         )}
       </CardFooter>
