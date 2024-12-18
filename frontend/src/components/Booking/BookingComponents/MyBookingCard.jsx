@@ -1,14 +1,30 @@
-import React, { startTransition, Suspense, useEffect, useState } from "react";
+import React, {
+  startTransition,
+  Suspense,
+  useCallback,
+  useEffect,
+  useState,
+} from "react";
 import { useTranslation } from "react-i18next";
 import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/card";
 import { useNavigate } from "react-router-dom";
 import { Link } from "@nextui-org/link";
 import { Button } from "@nextui-org/button";
-import CancelBookingIcon from "../../../icons/CancelBookingIcon";
+import {
+  CancelBookingIcon,
+  CancelBookingIcon2,
+} from "../../../icons/CancelBookingIcon";
 import RateBookingIcon from "../../../icons/RateBookingIcon";
 import { useThemeContext } from "../../../context/ThemeContext";
 import { convertToISODate } from "../../../Functions/calendarFunctions";
 import useBookings from "../../../hooks/useBookings";
+import {
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+} from "@nextui-org/modal";
 
 export default function MyBookingCard({ index, booking }) {
   let navigate = useNavigate();
@@ -24,11 +40,22 @@ export default function MyBookingCard({ index, booking }) {
   const departureDate = convertToISODate(booking.departure_time);
   const isOver = departureDate < new Date();
 
+  const useDisclosure = () => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const onOpen = useCallback(() => setIsOpen(true), []);
+    const onClose = useCallback(() => setIsOpen(false), []);
+    const onOpenChange = useCallback(() => setIsOpen((prev) => !prev), []);
+
+    return { isOpen, onOpen, onClose, onOpenChange };
+  };
+
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
   const handleCancel = (e) => {
     console.log("cancel");
     startTransition(() => {
-      cancelBooking({ token, bookingId: booking.id });
-      setIsBookingCancelled(true);
+      cancelBooking({ token, bookingId: booking.id, setIsBookingCancelled });
     });
   };
 
@@ -120,13 +147,49 @@ export default function MyBookingCard({ index, booking }) {
         </CardBody>
         <CardFooter className="flex justify-center mx-auto gap-5">
           {!isBookingCancelled && !isOver && (
-            <Button
-              children={t("cancel")}
-              variant="bordered"
-              color="danger"
-              startContent={<CancelBookingIcon />}
-              onPress={handleCancel}
-            />
+            <>
+              <Button
+                children={t("cancel")}
+                variant="bordered"
+                color="danger"
+                startContent={<CancelBookingIcon2 />}
+                onPress={onOpen}
+              />
+              <Modal
+                isOpen={isOpen}
+                onOpenChange={onOpenChange}
+                backdrop="blur"
+                size="sm"
+              >
+                <ModalContent>
+                  {(onClose) => (
+                    <>
+                      <ModalHeader className="flex flex-col gap-1">
+                        {t("confirmCancel")}
+                      </ModalHeader>
+                      <ModalBody>
+                        <div className="flex justify-between">
+                          <Button
+                            color="danger"
+                            variant="bordered"
+                            onPress={onClose}
+                            children={t("close")}
+                            startContent={<CancelBookingIcon />}
+                          />
+                          <Button
+                            color={color}
+                            children={t("confCancel")}
+                            variant="bordered"
+                            onPress={handleCancel}
+                            startContent={<CancelBookingIcon2 />}
+                          />
+                        </div>
+                      </ModalBody>
+                    </>
+                  )}
+                </ModalContent>
+              </Modal>
+            </>
           )}
           {(isBookingCancelled || isOver) &&
             !booking.is_reviewed &&

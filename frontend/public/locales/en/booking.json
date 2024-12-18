@@ -31,5 +31,8 @@
     "status": "Status",
     "cancelled": "cancelled",
     "active": "active",
-    "over": "concluded"
+    "over": "concluded",
+    "confirmCancel": "Are you sure to cancel your booking?",
+    "close": "Close",
+    "confCancel": "Cancel booking"
 }

@@ -3,15 +3,10 @@ import React, { startTransition, Suspense, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import AppNavbar from "../AppNavbar";
 import useBookings from "../../hooks/useBookings";
-import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/card";
 import { useNavigate } from "react-router-dom";
-import { Link } from "@nextui-org/link";
-import CancelBookingIcon from "../../icons/CancelBookingIcon";
-import { Button } from "@nextui-org/button";
-import { convertToISODate } from "../../Functions/calendarFunctions";
 import { useThemeContext } from "../../context/ThemeContext";
-import RateBookingIcon from "../../icons/RateBookingIcon";
 import MyBookingCard from "./BookingComponents/MyBookingCard";
+import toast, { Toaster } from "react-hot-toast";
 
 function MyBookings() {
   const [t] = useTranslation(["booking"]);
@@ -29,6 +24,7 @@ function MyBookings() {
 
   return (
     <Suspense fallback="loading">
+      <Toaster position="top-center" reverseOrder={false} />
       <AppNavbar />
       <div className="myBookings-container">
         <div className="myBookings-titleContainer">

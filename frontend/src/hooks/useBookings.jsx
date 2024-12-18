@@ -1,4 +1,6 @@
 import { useTranslation } from "react-i18next";
+import toast, { Toaster } from "react-hot-toast";
+import ForbiddenIcon from "../icons/ForbiddenIcon";
 
 const useBookings = () => {
   const [t, i18n] = useTranslation(["lodgeDetails"]);
@@ -110,7 +112,7 @@ const useBookings = () => {
     }
   };
 
-  const cancelBooking = async ({ token, bookingId }) => {
+  const cancelBooking = async ({ token, bookingId, setIsBookingCancelled }) => {
     try {
       const response = await fetch(
         `http://localhost:8080/api/bookings/cancelBooking/${bookingId}`,
@@ -124,9 +126,33 @@ const useBookings = () => {
       );
 
       if (!response.ok) {
-        throw new Error(`Error: ${response.status}`);
+        console.log("dsfasd");
+        setIsBookingCancelled(false);
+        toast(t("errorCancelBooking"), {
+          icon: <ForbiddenIcon />,
+          duration: 3000,
+          style: {
+            borderRadius: "10px",
+            backgroundColor: "var(--main-background)",
+            border: "1px solid var(--inverted-background-color)",
+            color: "var(--errorRed)",
+          },
+        });
+      } else {
+        setIsBookingCancelled(true);
       }
     } catch (error) {
+      setIsBookingCancelled(false);
+      toast(t("errorCancelBooking"), {
+        icon: <ForbiddenIcon />,
+        duration: 3000,
+        style: {
+          borderRadius: "10px",
+          backgroundColor: "var(--main-background)",
+          border: "1px solid var(--inverted-background-color)",
+          color: "var(--errorRed)",
+        },
+      });
       console.error("Error cancelling booking:", error);
     }
   };

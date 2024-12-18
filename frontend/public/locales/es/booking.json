@@ -31,5 +31,8 @@
     "status": "Estado",
     "cancelled": "cancelado",
     "active": "activo",
-    "over": "concluida"
+    "over": "concluida",
+    "confirmCancel": "¿Estás seguro de cancelar tu reserva?",
+    "close": "Cerrar",
+    "confCancel": "Cancelar reserva"
 }

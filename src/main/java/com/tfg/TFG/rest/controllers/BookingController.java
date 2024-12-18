@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -14,6 +15,7 @@ import com.tfg.TFG.model.entities.Booking;
 import com.tfg.TFG.model.entities.User;
 import com.tfg.TFG.model.services.BookingService;
 import com.tfg.TFG.model.services.UserService;
+import com.tfg.TFG.model.services.exceptions.CancelBookingException;
 import com.tfg.TFG.model.services.exceptions.PermissionException;
 import com.tfg.TFG.rest.dtos.bookingDtos.BookingConversor;
 import com.tfg.TFG.rest.dtos.bookingDtos.BookingDto;
@@ -67,9 +69,14 @@ public class BookingController {
     @PostMapping("/cancelBooking/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void cancelBooking(@RequestAttribute Long userId, @PathVariable Long id)
-            throws InstanceNotFoundException, PermissionException {
+            throws InstanceNotFoundException, PermissionException, CancelBookingException {
         System.out.println("cancel booking");
+        try {
+            bookingService.cancelBooking(userId, id);
 
-        bookingService.cancelBooking(userId, id);
+        } catch (CancelBookingException e) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+                    "Cancellation cannot be done with less than a week in advance", e);
+        }
     }
 }

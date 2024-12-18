@@ -22,5 +22,6 @@
     "name": "Nombre",
     "bookButton": "Reservar",
     "errorAvailability": "Hubo un error al verificar la disponibilidad",
-    "noAvailability": "No hay disponibilidad para las fechas seleccionadas"
+    "noAvailability": "No hay disponibilidad para las fechas seleccionadas",
+    "errorCancelBooking": "La cancelación se tiene que hacer con al menos una semana de antelación"
 }

@@ -22,5 +22,6 @@
     "name": "Name",
     "bookButton": "Book",
     "errorAvailability": "There was an error checking availability",
-    "noAvailability": "There is no availability for the selected dates"
+    "noAvailability": "There is no availability for the selected dates",
+    "errorCancelBooking": "Cancellation must be made at least one week in advance"
 }

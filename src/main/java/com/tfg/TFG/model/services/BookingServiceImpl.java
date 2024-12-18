@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.tfg.TFG.model.common.exceptions.InstanceNotFoundException;
 import com.tfg.TFG.model.entities.*;
+import com.tfg.TFG.model.services.exceptions.CancelBookingException;
 import com.tfg.TFG.model.services.exceptions.PermissionException;
 
 @Service
@@ -113,7 +114,8 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    public void cancelBooking(Long userId, Long bookingId) throws InstanceNotFoundException, PermissionException {
+    public void cancelBooking(Long userId, Long bookingId)
+            throws InstanceNotFoundException, PermissionException, CancelBookingException {
 
         User user = userDao.findById(userId)
                 .orElseThrow(() -> new InstanceNotFoundException(userId.toString(), User.class.getName()));
@@ -123,6 +125,14 @@ public class BookingServiceImpl implements BookingService {
 
         if (!booking.getUser().equals(user)) {
             throw new PermissionException();
+        }
+
+        LocalDate currentDate = LocalDate.now();
+        LocalDate arrivalDate = LocalDate.parse(booking.getArrival_time(), formatter);
+
+        // Cancelar con antelación de 1 semana
+        if (arrivalDate.minusWeeks(1).isBefore(currentDate)) {
+            throw new CancelBookingException();
         }
 
         booking.setIs_cancelled(true);
