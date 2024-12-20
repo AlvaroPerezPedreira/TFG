@@ -128,7 +128,24 @@ VALUES
     (2, 2, '14:00', '11:00', '05-12-2022', '12-12-2022', '01-12-2022', 770, 'LALodge@example.com', 1, 0, 0),
     (2, 10, '14:00', '11:00', '01-01-2025', '31-12-2025', '01-12-2023', 350, 'MadridLodge@example.com', 0, 0, 0),
     (2, 10, '14:00', '11:00', '01-01-2025', '31-12-2025', '01-12-2023', 350, 'MadridLodge@example.com', 0, 0, 0),
-    (2, 10, '14:00', '11:00', '01-01-2025', '31-12-2025', '01-12-2023', 350, 'MadridLodge@example.com', 0, 0, 0);
+    (2, 10, '14:00', '11:00', '01-01-2025', '31-12-2025', '01-12-2023', 350, 'MadridLodge@example.com', 0, 0, 0),
+
+    (2, 19, '14:00', '11:00', '01-01-2013', '10-01-2013', '01-01-2013', 350, 'BarcelonaLodge@example.com', 1, 0, 0),
+    (2, 19, '14:00', '11:00', '01-02-2013', '10-02-2013', '02-01-2013', 350, 'BarcelonaLodge@example.com', 1, 0, 0),
+    (2, 19, '14:00', '11:00', '01-03-2013', '10-03-2013', '03-01-2013', 350, 'BarcelonaLodge@example.com', 1, 0, 0),
+    (2, 19, '14:00', '11:00', '01-04-2013', '10-04-2013', '04-01-2013', 350, 'BarcelonaLodge@example.com', 1, 0, 0),
+    (2, 19, '14:00', '11:00', '01-05-2013', '10-05-2013', '05-01-2013', 350, 'BarcelonaLodge@example.com', 1, 0, 0);
+
+INSERT INTO Review(user_id, booking_id, review_lodgeEmail, review_date, review_text, rating, is_blocked)
+VALUES
+    (2, 2, 'LALodge@example.com', '13-12-2022', 'Great place to stay', 5, 0),
+
+    (2, 6, 'BarcelonaLodge@example.com', '11-01-2013', 'Great place to stay', 5, 0),
+    (2, 7, 'BarcelonaLodge@example.com', '11-01-2013', 'Not really good', 2, 0),
+    (2, 8, 'BarcelonaLodge@example.com', '11-01-2013', 'Mala educación de los empleados', 1, 0),
+    (2, 9, 'BarcelonaLodge@example.com', '11-01-2013', 'J´ai adoré mon séjour dans cet hébergement', 5, 0),
+    (2, 10, 'BarcelonaLodge@example.com', '11-01-2013', 'Average Barcelona hotel', 3, 0);
+
 
 INSERT INTO Lodge_Feature (lodge_id, feature_id)
 VALUES
