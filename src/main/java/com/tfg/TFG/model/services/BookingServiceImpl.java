@@ -25,6 +25,9 @@ public class BookingServiceImpl implements BookingService {
     @Autowired
     private BookingDao bookingDao;
 
+    @Autowired
+    private ReviewDao reviewDao;
+
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
     public static LocalDate parseDate(String dateStr) {
@@ -136,6 +139,36 @@ public class BookingServiceImpl implements BookingService {
         }
 
         booking.setIs_cancelled(true);
+    }
+
+    // Reviews
+
+    @Override
+    public Review createReview(Long userId, Long bookingId, String lodgeEmail, String reviewText, int rating)
+            throws InstanceNotFoundException, PermissionException {
+        User user = userDao.findById(userId)
+                .orElseThrow(() -> new InstanceNotFoundException(userId.toString(), User.class.getName()));
+
+        Booking booking = bookingDao.findById(bookingId)
+                .orElseThrow(() -> new InstanceNotFoundException(bookingId.toString(), Booking.class.getName()));
+
+        if (!booking.getUser().equals(user)) {
+            throw new PermissionException();
+        }
+
+        LocalDate currentDate = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        String reviewDate = currentDate.format(formatter);
+
+        Review review = new Review(lodgeEmail, reviewDate, reviewText, rating, user, booking);
+
+        review.setIs_blocked(false);
+
+        return reviewDao.save(review);
+    }
+
+    public List<Review> getReviewsByLodgeEmail(String lodgeEmail) {
+        return reviewDao.findByLodgeEmail(lodgeEmail);
     }
 
 }

@@ -1,52 +1,38 @@
-package com.tfg.TFG.model.entities;
+package com.tfg.TFG.rest.dtos.reviewDtos;
 
-import jakarta.persistence.*;
+import com.tfg.TFG.rest.dtos.bookingDtos.BookingDto;
+import com.tfg.TFG.rest.dtos.userDtos.UserDto;
 
-@Entity
-@Table(name = "Review")
-public class Review {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ReviewDto {
     private Long id;
-
-    @Column(nullable = false)
     private String review_lodgeEmail;
-
-    @Column(nullable = false)
     private String review_date;
-
-    @Column(nullable = false)
     private String review_text;
-
-    @Column(nullable = false)
     private int rating;
-
-    @Column(nullable = false)
     private Boolean is_blocked;
+    private UserDto user;
+    private BookingDto booking;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "booking_id", nullable = false)
-    private Booking booking;
-
-    public Review() {
+    public interface AllValidations {
     }
 
-    public Review(String review_lodgeEmail, String review_date, String review_text, int rating, User user,
-            Booking booking) {
+    public interface UpdateValidations {
+    }
+
+    public ReviewDto() {
+    }
+
+    public ReviewDto(String review_lodgeEmail, String review_date, String review_text, int rating, Boolean is_blocked,
+            UserDto user, BookingDto booking) {
         this.review_lodgeEmail = review_lodgeEmail;
         this.review_date = review_date;
         this.review_text = review_text;
         this.rating = rating;
+        this.is_blocked = is_blocked;
         this.user = user;
         this.booking = booking;
     }
 
-    // Id
     public Long getId() {
         return id;
     }
@@ -55,7 +41,6 @@ public class Review {
         this.id = id;
     }
 
-    // Review_lodgeEmail
     public String getReview_lodgeEmail() {
         return review_lodgeEmail;
     }
@@ -64,7 +49,6 @@ public class Review {
         this.review_lodgeEmail = review_lodgeEmail;
     }
 
-    // Review_date
     public String getReview_date() {
         return review_date;
     }
@@ -73,7 +57,6 @@ public class Review {
         this.review_date = review_date;
     }
 
-    // Review_text
     public String getReview_text() {
         return review_text;
     }
@@ -82,7 +65,6 @@ public class Review {
         this.review_text = review_text;
     }
 
-    // Rating
     public int getRating() {
         return rating;
     }
@@ -91,7 +73,6 @@ public class Review {
         this.rating = rating;
     }
 
-    // Is_blocked
     public Boolean getIs_blocked() {
         return is_blocked;
     }
@@ -100,21 +81,19 @@ public class Review {
         this.is_blocked = is_blocked;
     }
 
-    // User
-    public User getUser() {
+    public UserDto getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(UserDto user) {
         this.user = user;
     }
 
-    // Booking
-    public Booking getBooking() {
+    public BookingDto getBooking() {
         return booking;
     }
 
-    public void setBooking(Booking booking) {
+    public void setBooking(BookingDto booking) {
         this.booking = booking;
     }
 }

@@ -12,6 +12,7 @@ import org.springframework.validation.annotation.Validated;
 
 import com.tfg.TFG.model.common.exceptions.InstanceNotFoundException;
 import com.tfg.TFG.model.entities.Booking;
+import com.tfg.TFG.model.entities.Review;
 import com.tfg.TFG.model.entities.User;
 import com.tfg.TFG.model.services.BookingService;
 import com.tfg.TFG.model.services.UserService;
@@ -19,6 +20,8 @@ import com.tfg.TFG.model.services.exceptions.CancelBookingException;
 import com.tfg.TFG.model.services.exceptions.PermissionException;
 import com.tfg.TFG.rest.dtos.bookingDtos.BookingConversor;
 import com.tfg.TFG.rest.dtos.bookingDtos.BookingDto;
+import com.tfg.TFG.rest.dtos.reviewDtos.ReviewConversor;
+import com.tfg.TFG.rest.dtos.reviewDtos.ReviewDto;
 
 /**
  * The Class LodgeController.
@@ -29,9 +32,6 @@ public class BookingController {
 
     @Autowired
     private BookingService bookingService;
-
-    @Autowired
-    private UserService userService;
 
     @GetMapping("/myBookings")
     public ResponseEntity<List<BookingDto>> getMyBookings(@RequestAttribute Long userId)
@@ -78,5 +78,30 @@ public class BookingController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
                     "Cancellation cannot be done with less than a week in advance", e);
         }
+    }
+
+    // Reviews
+
+    @PostMapping("/reviewBooking/{id}")
+    public ResponseEntity<ReviewDto> reviewBooking(@RequestAttribute Long userId, @PathVariable Long id,
+            @Validated({ ReviewDto.AllValidations.class }) @RequestBody ReviewDto reviewDto)
+            throws InstanceNotFoundException, PermissionException {
+        System.out.println("review booking");
+
+        Review review = bookingService.createReview(userId, id, reviewDto.getReview_lodgeEmail(),
+                reviewDto.getReview_text(), reviewDto.getRating());
+
+        return ResponseEntity.ok(ReviewConversor.toDto(review));
+    }
+
+    @GetMapping("/getReviews/{lodgeEmail}")
+    public ResponseEntity<List<ReviewDto>> getReviews(@PathVariable String lodgeEmail)
+            throws InstanceNotFoundException {
+        System.out.println("get reviews");
+
+        List<ReviewDto> reviews = bookingService.getReviewsByLodgeEmail(lodgeEmail).stream().map(ReviewConversor::toDto)
+                .collect(Collectors.toList());
+
+        return ResponseEntity.ok(reviews);
     }
 }
