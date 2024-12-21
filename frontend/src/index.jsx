@@ -6,7 +6,9 @@ import { BrowserRouter } from "react-router-dom";
 import "./config/i18next.config";
 import { AuthContextProvider } from "./context/AuthContext";
 import { ThemeContextProvider } from "./context/ThemeContext";
+import process from "process";
 
+window.process = process;
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
