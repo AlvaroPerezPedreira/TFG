@@ -164,11 +164,19 @@ public class BookingServiceImpl implements BookingService {
 
         review.setIs_blocked(false);
 
+        booking.setIs_reviewed(true);
+
         return reviewDao.save(review);
     }
 
     public List<Review> getReviewsByLodgeEmail(String lodgeEmail) {
         return reviewDao.findByLodgeEmail(lodgeEmail);
+    }
+
+    @Override
+    public Booking getBookingById(Long id) throws InstanceNotFoundException {
+        return bookingDao.findById(id)
+                .orElseThrow(() -> new InstanceNotFoundException(id.toString(), Booking.class.getName()));
     }
 
 }

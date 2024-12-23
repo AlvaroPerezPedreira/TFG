@@ -59,6 +59,13 @@ export default function MyBookingCard({ index, booking }) {
     });
   };
 
+  const handleRate = (e) => {
+    console.log("rate");
+    startTransition(() => {
+      navigate(`/bookings/rateBooking/${booking.id}`);
+    });
+  };
+
   return (
     <>
       <Card key={index} isHOrerable className="py-4">
@@ -199,7 +206,7 @@ export default function MyBookingCard({ index, booking }) {
                 variant="bordered"
                 color={color}
                 startContent={<RateBookingIcon />}
-                onPress={() => console.log("review")}
+                onPress={handleRate}
               />
             )}
         </CardFooter>

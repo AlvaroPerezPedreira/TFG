@@ -23,4 +23,6 @@ public interface BookingService {
                         throws InstanceNotFoundException, PermissionException;
 
         List<Review> getReviewsByLodgeEmail(String lodgeEmail);
+
+        Booking getBookingById(Long id) throws InstanceNotFoundException;
 }

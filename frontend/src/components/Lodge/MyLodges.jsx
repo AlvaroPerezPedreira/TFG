@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import AppNavbar from "../AppNavbar";
 import useGetLodges from "../../hooks/useGetLodges";
 import MyLodgesCard from "./LodgeComponents/MyLodgesCard";
+import Footer from "../Footer";
 
 function MyLodges() {
   const [t] = useTranslation(["lodge"]);
@@ -51,6 +52,7 @@ function MyLodges() {
               ))}
           </div>
         </div>
+        <Footer />
       </Suspense>
     </>
   );

@@ -34,5 +34,10 @@
     "over": "concluded",
     "confirmCancel": "Are you sure to cancel your booking?",
     "close": "Close",
-    "confCancel": "Cancel booking"
+    "confCancel": "Cancel booking",
+    "rateBookingTitle": "Rate your stay",
+    "rateText": "Leave your comments here",
+    "rateLodgeEmail": "Email of the lodge",
+    "rateStars": "Your stay rating",
+    "submitReview": "Submit review"
 }

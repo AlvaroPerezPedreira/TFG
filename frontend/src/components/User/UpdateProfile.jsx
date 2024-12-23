@@ -20,6 +20,7 @@ import { Tooltip } from "@nextui-org/tooltip";
 import AppNavbar from "../AppNavbar";
 import { LockIcon } from "../../icons/MainAppIcons";
 import { useThemeContext } from "../../context/ThemeContext";
+import Footer from "../Footer";
 
 const Auth = () => {
   const { updateProfile } = useUpdateProfile();
@@ -144,6 +145,7 @@ const Auth = () => {
           </form>
         </div>
       </div>
+      <Footer />
     </Suspense>
   );
 };

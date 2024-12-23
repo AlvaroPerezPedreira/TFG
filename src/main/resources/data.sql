@@ -136,7 +136,7 @@ VALUES
     (2, 19, '14:00', '11:00', '01-04-2013', '10-04-2013', '04-01-2013', 350, 'BarcelonaLodge@example.com', 1, 0, 0),
     (2, 19, '14:00', '11:00', '01-05-2013', '10-05-2013', '05-01-2013', 350, 'BarcelonaLodge@example.com', 1, 0, 0);
 
-INSERT INTO Review(user_id, booking_id, review_lodgeEmail, review_date, review_text, rating, is_blocked)
+INSERT INTO Review(user_id, booking_id, review_lodge_email, review_date, review_text, rating, is_blocked)
 VALUES
     (2, 2, 'LALodge@example.com', '13-12-2022', 'Great place to stay', 5, 0),
 

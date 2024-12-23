@@ -104,9 +104,6 @@ const useBookings = () => {
       if (!response.ok) {
         throw new Error(`Error: ${response.status}`);
       }
-
-      const finalData = await response.json();
-      console.log("Booking created:", finalData);
     } catch (error) {
       console.error("Error booking lodge:", error);
     }
@@ -157,7 +154,72 @@ const useBookings = () => {
     }
   };
 
-  return { bookLodge, getMyBookings, getAvailability, cancelBooking };
+  const getTheBooking = async ({ token, setBooking, id }) => {
+    try {
+      const response = await fetch(
+        `http://localhost:8080/api/bookings/getTheBooking/${id}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`);
+      }
+
+      const finalData = await response.json();
+      setBooking(finalData);
+    } catch (error) {
+      console.error("Error getting the booking:", error);
+    }
+  };
+
+  const getRateBooking = async ({
+    token,
+    id,
+    lodgeEmail,
+    description,
+    rating,
+  }) => {
+    const data = {
+      review_lodgeEmail: lodgeEmail,
+      review_text: description,
+      rating: rating,
+    };
+    try {
+      const response = await fetch(
+        `http://localhost:8080/api/bookings/reviewBooking/${id}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(data),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`);
+      }
+      const finalData = await response.json();
+    } catch (error) {
+      console.error("Error getting the booking:", error);
+    }
+  };
+
+  return {
+    getRateBooking,
+    getTheBooking,
+    bookLodge,
+    getMyBookings,
+    getAvailability,
+    cancelBooking,
+  };
 };
 
 export default useBookings;

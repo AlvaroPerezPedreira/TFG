@@ -89,7 +89,7 @@ CREATE TABLE Review (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     user_id BIGINT NOT NULL,
     booking_id BIGINT NOT NULL,
-    review_lodgeEmail VARCHAR(255) NOT NULL,
+    review_lodge_email VARCHAR(255) NOT NULL,
     review_date VARCHAR(255) NOT NULL,
     review_text VARCHAR(255) NOT NULL,
     rating TINYINT NOT NULL,

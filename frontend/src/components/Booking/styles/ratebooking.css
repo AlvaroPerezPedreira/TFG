@@ -1,0 +1,75 @@
+.rateBooking-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+    margin: 0 auto;
+    max-width: 1200px;
+    background-color: var(--main-background);
+    min-height: 100vh;
+    margin-bottom: 20px;
+}
+
+.rateBooking-container > * {
+    width: 100%;
+    max-width: 100%;
+}
+
+.rateBooking-titleContainer {
+    display: flex;
+    justify-content: flex-start;
+    margin: 20px 0;
+}
+  
+.rateBooking-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--text-color); 
+}
+
+.rateBooking-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 40px;
+    margin: 0 auto;
+    max-width: 500px;
+    gap: 25px;
+    margin-top: 30px;
+    color: var(--text-color);
+    border: 1px solid var(--inverted-background-color);
+    border-radius: 16px;
+    height: auto;
+    min-height: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.rateBooking-rating {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    flex-wrap: no-wrap;
+  }
+  
+  .rateBooking-rating svg {
+    width: 30px !important;
+    height: 30px !important;
+  }
+  
+  .rateBooking-rating {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .rateBooking-ratingTitle {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--AppMainColor); /* Color principal de la aplicación */
+    text-align: left; /* Asegura que el título esté centrado */
+  }

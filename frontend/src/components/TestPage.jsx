@@ -8,7 +8,11 @@ import { useTranslation } from "react-i18next";
 const TestPage = () => {
   const [t, i18n] = useTranslation(["createLodge"]);
   let navigate = useNavigate();
+  const [rating, setRating] = useState(0);
 
+  const handleRating = (rate) => {
+    setRating(rate);
+  };
   return (
     <>
       <Suspense fallback="loading">

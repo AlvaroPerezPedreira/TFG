@@ -8,6 +8,6 @@ import org.springframework.data.repository.query.Param;
 
 public interface ReviewDao extends JpaRepository<Review, Long> {
 
-    @Query("SELECT r FROM Review r WHERE r.review_lodgeEmail = :lodgeEmail AND r.is_blocked = false")
+    @Query("SELECT r FROM Review r WHERE r.review_lodge_email = :lodgeEmail AND r.is_blocked = false")
     List<Review> findByLodgeEmail(@Param("lodgeEmail") String lodgeEmail);
 }

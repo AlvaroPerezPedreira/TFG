@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useThemeContext } from "../../context/ThemeContext";
 import MyBookingCard from "./BookingComponents/MyBookingCard";
 import toast, { Toaster } from "react-hot-toast";
+import Footer from "../Footer";
 
 function MyBookings() {
   const [t] = useTranslation(["booking"]);
@@ -49,6 +50,7 @@ function MyBookings() {
             ))}
         </div>
       </div>
+      <Footer />
     </Suspense>
   );
 }

@@ -34,5 +34,10 @@
     "over": "concluida",
     "confirmCancel": "¿Estás seguro de cancelar tu reserva?",
     "close": "Cerrar",
-    "confCancel": "Cancelar reserva"
+    "confCancel": "Cancelar reserva",
+    "rateBookingTitle": "Valora tu estancia",
+    "rateText": "Deja tus comentarios aquí",
+    "rateLodgeEmail": "Email del alojamiento",
+    "rateStars": "Calificación de tu estancia",
+    "submitReview": "Enviar reseña"
 }

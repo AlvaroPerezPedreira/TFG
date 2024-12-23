@@ -11,7 +11,7 @@ public class Review {
     private Long id;
 
     @Column(nullable = false)
-    private String review_lodgeEmail;
+    private String review_lodge_email;
 
     @Column(nullable = false)
     private String review_date;
@@ -38,7 +38,7 @@ public class Review {
 
     public Review(String review_lodgeEmail, String review_date, String review_text, int rating, User user,
             Booking booking) {
-        this.review_lodgeEmail = review_lodgeEmail;
+        this.review_lodge_email = review_lodgeEmail;
         this.review_date = review_date;
         this.review_text = review_text;
         this.rating = rating;
@@ -57,11 +57,11 @@ public class Review {
 
     // Review_lodgeEmail
     public String getReview_lodgeEmail() {
-        return review_lodgeEmail;
+        return review_lodge_email;
     }
 
     public void setReview_lodgeEmail(String review_lodgeEmail) {
-        this.review_lodgeEmail = review_lodgeEmail;
+        this.review_lodge_email = review_lodgeEmail;
     }
 
     // Review_date

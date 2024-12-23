@@ -104,4 +104,13 @@ public class BookingController {
 
         return ResponseEntity.ok(reviews);
     }
+
+    @GetMapping("/getTheBooking/{id}")
+    public ResponseEntity<BookingDto> getTheBooking(@PathVariable Long id) throws InstanceNotFoundException {
+        System.out.println("get the booking");
+
+        Booking booking = bookingService.getBookingById(id);
+
+        return ResponseEntity.ok(BookingConversor.toDto(booking));
+    }
 }
