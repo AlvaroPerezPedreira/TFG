@@ -39,5 +39,9 @@
     "rateText": "Laissez vos commentaires ici",
     "rateLodgeEmail": "E-mail de contact de l’hébergement",
     "rateStars": "Évaluation de votre séjour",
-    "submitReview": "Soumettre l'avis"
+    "submitReview": "Soumettre l'avis",
+    "viewReviewsTitle": "Voir les avis de l’hébergement",
+    "provider": "Provider",
+    "blockComment": "Bloquer le commentaire",
+    "noReviews": "Pas encore d'avis"
 }

@@ -33,5 +33,7 @@
     "timezone": "Zona horaria del lodge",
     "timezone2": "Zona horaria",
     "noDescription": "No hay descripción disponible",
-    "openMaps": "Ver en Google Maps"
+    "openMaps": "Ver en Google Maps",
+    "viewComments": "Ver reseñas",
+    "noComments": "Aún no hay reseñas"
 }

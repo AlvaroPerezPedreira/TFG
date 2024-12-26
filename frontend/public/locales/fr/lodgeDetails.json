@@ -23,5 +23,7 @@
     "bookButton": "Réserver",
     "errorAvailability": "Une erreur s'est produite lors de la vérification de la disponibilité",
     "noAvailability": "Il n'y a pas de disponibilité pour les dates sélectionnées",
-    "errorCancelBooking": "L'annulation doit être effectuée au moins une semaine à l'avance"
+    "errorCancelBooking": "L'annulation doit être effectuée au moins une semaine à l'avance",
+    "viewComments": "Voir les avis",
+    "noComments": "Pas encore d'avis"
 }

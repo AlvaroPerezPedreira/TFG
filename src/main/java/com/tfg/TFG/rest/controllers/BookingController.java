@@ -94,17 +94,6 @@ public class BookingController {
         return ResponseEntity.ok(ReviewConversor.toDto(review));
     }
 
-    @GetMapping("/getReviews/{lodgeEmail}")
-    public ResponseEntity<List<ReviewDto>> getReviews(@PathVariable String lodgeEmail)
-            throws InstanceNotFoundException {
-        System.out.println("get reviews");
-
-        List<ReviewDto> reviews = bookingService.getReviewsByLodgeEmail(lodgeEmail).stream().map(ReviewConversor::toDto)
-                .collect(Collectors.toList());
-
-        return ResponseEntity.ok(reviews);
-    }
-
     @GetMapping("/getTheBooking/{id}")
     public ResponseEntity<BookingDto> getTheBooking(@PathVariable Long id) throws InstanceNotFoundException {
         System.out.println("get the booking");
@@ -112,5 +101,23 @@ public class BookingController {
         Booking booking = bookingService.getBookingById(id);
 
         return ResponseEntity.ok(BookingConversor.toDto(booking));
+    }
+
+    @GetMapping("/hasReviews")
+    public Boolean hasReviews(@RequestParam String lodgeEmail) throws InstanceNotFoundException {
+        System.out.println("check availability");
+
+        return bookingService.hasReviews(lodgeEmail);
+    }
+
+    @GetMapping("/getReviews")
+    public ResponseEntity<List<ReviewDto>> getReviews(@RequestAttribute Long userId, @RequestParam String lodgeEmail)
+            throws InstanceNotFoundException {
+        System.out.println("get reviews");
+
+        List<ReviewDto> reviews = bookingService.getReviewsByLodgeEmail(lodgeEmail).stream().map(ReviewConversor::toDto)
+                .collect(Collectors.toList());
+
+        return ResponseEntity.ok(reviews);
     }
 }

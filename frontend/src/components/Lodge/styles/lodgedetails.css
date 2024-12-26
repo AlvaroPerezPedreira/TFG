@@ -32,7 +32,7 @@
 }
 
 .lodgeDetails-provider {
-font-size: 14;
+    font-size: 14;
 }
 
 .lodgeDetails-providerTitle {
@@ -47,6 +47,9 @@ font-size: 14;
 .lodgeDetails-userAvatar {
     margin-bottom: 10px;
     color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .lodgeDetails-address {
@@ -105,6 +108,7 @@ font-size: 14;
 }
 
 .lodgeDetails-banButton-container {
+    margin-top: 20px;
     margin-bottom: 15px;
 }
 

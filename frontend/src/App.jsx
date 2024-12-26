@@ -24,6 +24,8 @@ import MyBookings from "./components/Booking/MyBookings";
 import Book from "./components/Booking/Book";
 import BookApi from "./components/Booking/BookApi";
 import RateBooking from "./components/Booking/RateBooking";
+import ViewReviews from "./components/Booking/ViewReviews";
+import ViewApiReviews from "./components/Booking/ViewApiReviews";
 
 function App() {
   const { authUser } = useAuthContext();
@@ -59,6 +61,11 @@ function App() {
         <Route path="/bookLodge/:email" element={<Book />} />
         <Route path="/bookApiLodge/:email" element={<BookApi />} />
         <Route path="/bookings/rateBooking/:id" element={<RateBooking />} />
+        <Route path="/bookings/viewReviews/:email" element={<ViewReviews />} />
+        <Route
+          path="/bookings/viewApiReviews/:email"
+          element={<ViewApiReviews />}
+        />
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/policy" element={<Policy />} />

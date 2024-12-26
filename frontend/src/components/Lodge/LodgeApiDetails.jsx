@@ -14,6 +14,7 @@ import LodgeApiAccordion from "./LodgeComponents/LodgeApiAccordion";
 import AppNavbar from "../AppNavbar";
 import Footer from "../Footer";
 import { useNavigate } from "react-router-dom";
+import useBookings from "../../hooks/useBookings";
 
 export default function LodgeApiDetails() {
   const [t, i18n] = useTranslation(["lodgeApiDetails"]);
@@ -21,6 +22,8 @@ export default function LodgeApiDetails() {
   const [lodge, setLodge] = useState(null);
   const [lodgeCheckInOut, setLodgeCheckInOut] = useState(null);
   const [photos, setPhotos] = useState(null);
+  const [hasReviews, setHasReviews] = useState(false);
+  const { getHasReviews } = useBookings();
 
   const { getLodgeDetails, getLodgeDetailsCheckInOut, getLodgePhotos } =
     useApi();
@@ -54,6 +57,7 @@ export default function LodgeApiDetails() {
     const getPhotosAux = async () => {
       const photos = await getLodgePhotos({ hotel_id });
       setPhotos(photos);
+      getHasReviews({ lodgeEmail: email, setHasReviews });
     };
 
     getLodgeAux();
@@ -68,6 +72,16 @@ export default function LodgeApiDetails() {
         checkOut,
       });
       navigate(`/bookApiLodge/${email}?${queryParams.toString()}`);
+    });
+  };
+
+  const handleComments = () => {
+    startTransition(() => {
+      const queryParams = new URLSearchParams({
+        checkIn,
+        checkOut,
+      });
+      navigate(`/bookings/viewApiReviews/${email}?${queryParams.toString()}`);
     });
   };
 
@@ -89,6 +103,12 @@ export default function LodgeApiDetails() {
           </div>
           <div className="lodgeApiDetails-userAvatar">
             <UserLink user={null} />
+            <Button
+              className="bg-[#006FEE] dark:bg-[#FFDB58] text-black"
+              children={hasReviews ? t("viewComments") : t("noComments")}
+              onPress={handleComments}
+              isDisabled={!hasReviews}
+            />
           </div>
           <div className="lodgeApiDetails-row">
             <span className="lodgeApiDetails-address">

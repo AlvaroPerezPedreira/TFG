@@ -179,4 +179,9 @@ public class BookingServiceImpl implements BookingService {
                 .orElseThrow(() -> new InstanceNotFoundException(id.toString(), Booking.class.getName()));
     }
 
+    @Override
+    public Boolean hasReviews(String lodgeEmail) throws InstanceNotFoundException {
+        return reviewDao.findByLodgeEmail(lodgeEmail).size() > 0;
+    }
+
 }

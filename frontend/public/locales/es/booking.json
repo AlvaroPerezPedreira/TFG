@@ -39,5 +39,9 @@
     "rateText": "Deja tus comentarios aquí",
     "rateLodgeEmail": "Email del alojamiento",
     "rateStars": "Calificación de tu estancia",
-    "submitReview": "Enviar reseña"
+    "submitReview": "Enviar reseña",
+    "viewReviewsTitle": "Ver las reseñas del alojamiento",
+    "provider": "Provider",
+    "blockComment": "Bloquear comentario",
+    "noReviews": "Aún no hay reseñas"
 }

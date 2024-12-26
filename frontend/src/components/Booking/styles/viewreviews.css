@@ -1,0 +1,69 @@
+.viewReviews-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 86vh;
+    align-items: center;
+    padding: 0 20px;
+    margin: 0 auto;
+    max-width: 1200px;
+    background-color: var(--main-background);
+}
+  
+.viewReviews-container > * {
+    width: 100%;
+    max-width: 100%;
+}
+
+.viewReviews-titleContainer {
+    display: flex;
+    justify-content: flex-start;
+    margin: 20px 0;
+}
+  
+.viewReviews-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--text-color); 
+}
+
+.viewReviews-lodgeData {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .viewReviews-lodgeData-row {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+  }
+
+.viewReviews-lodgeData-name {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--AppMainColor);
+}
+
+.viewReviews-lodgeData-email {
+    font-size: 16px;
+    color: var(--AppMainColor);
+}
+
+.viewReviews-lodgeData-address {
+    font-size: 16px;
+    color: var(--text-color);
+}
+
+.star-container {
+    display: flex;
+    gap: 4px;
+}
+
+.viewReviews-reviewContainer {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
+  

@@ -25,4 +25,6 @@ public interface BookingService {
         List<Review> getReviewsByLodgeEmail(String lodgeEmail);
 
         Booking getBookingById(Long id) throws InstanceNotFoundException;
+
+        Boolean hasReviews(String lodgeEmail) throws InstanceNotFoundException;
 }

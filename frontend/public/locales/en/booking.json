@@ -39,5 +39,9 @@
     "rateText": "Leave your comments here",
     "rateLodgeEmail": "Email of the lodge",
     "rateStars": "Your stay rating",
-    "submitReview": "Submit review"
+    "submitReview": "Submit review",
+    "viewReviewsTitle": "View the lodge reviews",
+    "provider": "Provider",
+    "blockComment": "Block comment",
+    "noReviews": "No reviews yet"
 }

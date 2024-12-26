@@ -33,5 +33,7 @@
     "timezone": "Lodge timezone",
     "timezone2": "Timezone",
     "noDescription": "No description available",
-    "openMaps": "View on Google Maps"
+    "openMaps": "View on Google Maps",
+    "viewComments": "View reviews",
+    "noComments": "No reviews yet"
 }

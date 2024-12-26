@@ -32,5 +32,7 @@
     "noRooms": "Aucune chambre disponible pour vos dates de voyage",
     "timezone": "Fuseau horaire du lodge",
     "timezone2": "Aucune description disponible",
-    "openMaps": "Voir sur Google Maps"
+    "openMaps": "Voir sur Google Maps",
+    "viewComments": "Voir les avis",
+    "noComments": "Pas encore d'avis"
 }

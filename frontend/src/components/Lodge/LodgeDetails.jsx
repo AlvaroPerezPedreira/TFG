@@ -28,6 +28,7 @@ export default function LodgeDetails() {
   const [checkOut, setCheckOut] = useState(null);
   const [availability, setAvailability] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+  const [hasReviews, setHasReviews] = useState(false);
 
   const { email } = useParams();
   const { getLodge } = useGetLodge();
@@ -35,6 +36,7 @@ export default function LodgeDetails() {
   const { authUser } = useAuthContext();
   const { addLodge, removeLodge } = useBannedLodgesStore();
   const { banLodge, unbanLodge } = useBanLodge();
+  const { getHasReviews } = useBookings();
   const { getAvailability } = useBookings();
   const token = JSON.parse(localStorage.getItem("authUser")).serviceToken;
   const [t, i18n] = useTranslation(["lodgeDetails"]);
@@ -47,6 +49,7 @@ export default function LodgeDetails() {
     const getLodgeAux = async () => {
       const lodge = await getLodge(email);
       setLodge(lodge);
+      getHasReviews({ lodgeEmail: email, setHasReviews });
     };
     getLodgeAux();
   }, []);
@@ -96,6 +99,14 @@ export default function LodgeDetails() {
     });
   };
 
+  const handleComments = () => {
+    startTransition(() => {
+      navigate(`/bookings/viewReviews/${email}`);
+    });
+  };
+
+  console.log(hasReviews);
+
   return (
     <Suspense fallback="loading">
       <AppNavbar />
@@ -114,6 +125,12 @@ export default function LodgeDetails() {
           </div>
           <div className="lodgeDetails-userAvatar">
             <UserLink user={lodge?.user} />
+            <Button
+              className="bg-[#006FEE] dark:bg-[#FFDB58] text-black"
+              children={hasReviews ? t("viewComments") : t("noComments")}
+              onPress={handleComments}
+              isDisabled={!hasReviews}
+            />
           </div>
           <div className="lodgeDetails-row">
             <span className="lodgeDetails-address">{lodge?.lodge_address}</span>

@@ -212,6 +212,53 @@ const useBookings = () => {
     }
   };
 
+  const getHasReviews = async ({ setHasReviews, lodgeEmail }) => {
+    try {
+      const response = await fetch(
+        `http://localhost:8080/api/bookings/hasReviews?lodgeEmail=${lodgeEmail}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      const finalData = await response.json();
+
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`);
+      }
+      setHasReviews(finalData);
+    } catch (error) {
+      console.error("Error getting availability:", error);
+    }
+  };
+
+  const getReviews = async ({ setReviews, lodgeEmail, token }) => {
+    try {
+      const response = await fetch(
+        `http://localhost:8080/api/bookings/getReviews?lodgeEmail=${lodgeEmail}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      const finalData = await response.json();
+
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`);
+      }
+      setReviews(finalData);
+    } catch (error) {
+      console.error("Error getting reviews:", error);
+    }
+  };
+
   return {
     getRateBooking,
     getTheBooking,
@@ -219,6 +266,8 @@ const useBookings = () => {
     getMyBookings,
     getAvailability,
     cancelBooking,
+    getHasReviews,
+    getReviews,
   };
 };
 
