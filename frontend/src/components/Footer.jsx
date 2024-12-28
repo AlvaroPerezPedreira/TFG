@@ -84,7 +84,7 @@ const Footer = () => {
             <Link
               className="footer-link"
               underline="hover"
-              onClick={() => {
+              onPress={() => {
                 startTransition(() => {
                   navigate("/policy");
                 });
@@ -98,7 +98,7 @@ const Footer = () => {
             <Link
               className="footer-link"
               underline="hover"
-              onClick={() => {
+              onPress={() => {
                 startTransition(() => {
                   navigate("/about");
                 });
@@ -110,13 +110,13 @@ const Footer = () => {
           </NavbarItem>
         </NavbarContent>
         <div className="footer-icons-container">
-          <Button isIconOnly variant="" onClick={handleClick("fb")}>
+          <Button isIconOnly variant="" onPress={handleClick("fb")}>
             <FbIcon />
           </Button>
-          <Button isIconOnly variant="" onClick={handleClick("ig")}>
+          <Button isIconOnly variant="" onPress={handleClick("ig")}>
             <IgIcon />
           </Button>
-          <Button isIconOnly variant="" onClick={handleClick("twt")}>
+          <Button isIconOnly variant="" onPress={handleClick("twt")}>
             <TwtIcon />
           </Button>
         </div>

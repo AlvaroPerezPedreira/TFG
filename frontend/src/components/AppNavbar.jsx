@@ -63,7 +63,7 @@ const AppNavbar = () => {
             <Link
               className="navbar-link"
               underline="hover"
-              onClick={() => {
+              onPress={() => {
                 startTransition(() => {
                   navigate("/");
                 });
@@ -83,7 +83,7 @@ const AppNavbar = () => {
             <Link
               className="navbar-link"
               underline="hover"
-              onClick={() => {
+              onPress={() => {
                 startTransition(() => {
                   navigate("/searchLodges");
                 });
@@ -96,20 +96,6 @@ const AppNavbar = () => {
               </div>
             </Link>
           </NavbarItem>
-          <NavbarItem className="navbar-links" isActive={isActivePage("/test")}>
-            <Link
-              className="navbar-link"
-              underline="hover"
-              onClick={() => {
-                startTransition(() => {
-                  navigate("/test");
-                });
-              }}
-              size="md"
-            >
-              Test
-            </Link>
-          </NavbarItem>
           <NavbarItem
             isActive={isActivePage("/contact")}
             className="navbar-links"
@@ -118,7 +104,7 @@ const AppNavbar = () => {
               className="navbar-link"
               underline="hover"
               size="md"
-              onClick={() => {
+              onPress={() => {
                 startTransition(() => {
                   navigate("/contact");
                 });
