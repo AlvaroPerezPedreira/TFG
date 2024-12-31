@@ -68,3 +68,25 @@
   margin-bottom: 15px;
   color: var(--text-color);
 }
+
+/* About us */
+
+.about-content {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  max-width: 700px;
+  padding: 20px;
+  background-color: var(--main-background);
+  border: 2px solid var(--AppMainColor);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.about-section {
+  color: var(--text-color);
+  margin-bottom: 25px;
+}
+
+.about-section-last {
+  color: var(--text-color);
+}

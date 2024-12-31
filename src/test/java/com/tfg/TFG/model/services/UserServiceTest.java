@@ -46,6 +46,17 @@ public class UserServiceTest {
         }
 
         @Test
+        public void testSignUpAndLogin()
+                        throws DuplicateInstanceException, InstanceNotFoundException, InvalidEmailException,
+                        InvalidBirthdateException, IncorrectLoginException, BannedUserException {
+                User user = createUser5Args("user1");
+                userService.signUp(user);
+                User loggedUser = userService.login(user.getEmail(), "password");
+                assertEquals(user, loggedUser);
+                assertEquals(User.RoleType.USER, loggedUser.getRole());
+        }
+
+        @Test
         public void testUserAlreadyExists()
                         throws DuplicateInstanceException, InvalidEmailException, InvalidBirthdateException {
                 User user = createUser5Args("user2");
