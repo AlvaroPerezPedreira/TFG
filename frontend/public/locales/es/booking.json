@@ -43,5 +43,6 @@
     "viewReviewsTitle": "Ver las reseñas del alojamiento",
     "provider": "Provider",
     "blockComment": "Bloquear comentario",
-    "noReviews": "Aún no hay reseñas"
+    "noReviews": "Aún no hay reseñas",
+    "blockedComment": "Comentario bloqueado"
 }

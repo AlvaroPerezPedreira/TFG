@@ -33,6 +33,9 @@ public class BookingController {
     @Autowired
     private BookingService bookingService;
 
+    @Autowired
+    private UserService userService;
+
     @GetMapping("/myBookings")
     public ResponseEntity<List<BookingDto>> getMyBookings(@RequestAttribute Long userId)
             throws InstanceNotFoundException {
@@ -119,5 +122,16 @@ public class BookingController {
                 .collect(Collectors.toList());
 
         return ResponseEntity.ok(reviews);
+    }
+
+    @PostMapping("/banReview/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void banReview(@RequestAttribute Long userId, @PathVariable Long id)
+            throws InstanceNotFoundException, PermissionException {
+        System.out.println("ban review");
+
+        User admin = userService.findById(userId);
+
+        bookingService.banReview(admin, id);
     }
 }

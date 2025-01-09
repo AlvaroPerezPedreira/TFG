@@ -5,6 +5,7 @@ import java.util.List;
 import com.tfg.TFG.model.common.exceptions.InstanceNotFoundException;
 import com.tfg.TFG.model.entities.Booking;
 import com.tfg.TFG.model.entities.Review;
+import com.tfg.TFG.model.entities.User;
 import com.tfg.TFG.model.services.exceptions.CancelBookingException;
 import com.tfg.TFG.model.services.exceptions.PermissionException;
 
@@ -27,4 +28,6 @@ public interface BookingService {
         Booking getBookingById(Long id) throws InstanceNotFoundException;
 
         Boolean hasReviews(String lodgeEmail) throws InstanceNotFoundException;
+
+        void banReview(User admin, Long reviewId) throws InstanceNotFoundException, PermissionException;
 }

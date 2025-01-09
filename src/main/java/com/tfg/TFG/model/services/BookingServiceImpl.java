@@ -184,4 +184,15 @@ public class BookingServiceImpl implements BookingService {
         return reviewDao.findByLodgeEmail(lodgeEmail).size() > 0;
     }
 
+    @Override
+    public void banReview(User admin, Long reviewId) throws InstanceNotFoundException, PermissionException {
+        if (admin.getRole() != User.RoleType.ADMIN) {
+            throw new PermissionException();
+        }
+        Review bannedReview = reviewDao.findById(reviewId)
+                .orElseThrow(() -> new InstanceNotFoundException(reviewId.toString(), Review.class.getName()));
+
+        bannedReview.setIs_blocked(true);
+    }
+
 }

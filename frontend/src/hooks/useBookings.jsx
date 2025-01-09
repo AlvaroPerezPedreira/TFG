@@ -259,6 +259,27 @@ const useBookings = () => {
     }
   };
 
+  const banReview = async ({ token, reviewId }) => {
+    try {
+      const response = await fetch(
+        `http://localhost:8080/api/bookings/banReview/${reviewId}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`);
+      }
+    } catch (error) {
+      console.error("Error banning review:", error);
+    }
+  };
+
   return {
     getRateBooking,
     getTheBooking,
@@ -268,6 +289,7 @@ const useBookings = () => {
     cancelBooking,
     getHasReviews,
     getReviews,
+    banReview,
   };
 };
 

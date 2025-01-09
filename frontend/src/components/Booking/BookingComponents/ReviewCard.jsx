@@ -1,4 +1,4 @@
-import React, { startTransition } from "react";
+import React, { startTransition, useState } from "react";
 import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/card";
 import { Button } from "@nextui-org/button";
 import { Avatar } from "@nextui-org/avatar";
@@ -9,11 +9,15 @@ import { useAuthContext } from "../../../context/AuthContext";
 import CloseIcon from "../../../icons/CloseIcon";
 import { useTranslation } from "react-i18next";
 import StarReviewIcon from "../../../icons/StarReviewIcon";
+import useBookings from "../../../hooks/useBookings";
 
 export default function ReviewCard({ review }) {
   let navigate = useNavigate();
   const { authUser } = useAuthContext();
   const [t, i18n] = useTranslation(["booking"]);
+  const token = JSON.parse(localStorage.getItem("authUser")).serviceToken;
+  const { banReview } = useBookings();
+  const [isBlocked, setIsBlocked] = useState(false);
 
   if (!review || !review.user) {
     return <div>Loading...</div>; // O un mensaje de error si los datos no están disponibles
@@ -21,6 +25,8 @@ export default function ReviewCard({ review }) {
 
   const handleBlock = () => {
     console.log("block comment");
+    banReview({ token, reviewId: review.id });
+    setIsBlocked(true);
   };
 
   return (
@@ -34,7 +40,7 @@ export default function ReviewCard({ review }) {
             description={
               review.user.email ? (
                 <Link
-                  onClick={() => {
+                  onPress={() => {
                     startTransition(() => {
                       navigate(`/users/${review.user.email}`);
                     });
@@ -61,15 +67,23 @@ export default function ReviewCard({ review }) {
           </span>
         </CardBody>
         <CardFooter className="flex justify-center mx-auto gap-5">
-          {authUser.user.role === "ADMIN" && (
-            <Button
-              children={t("blockComment")}
-              variant="bordered"
-              startContent={<CloseIcon />}
-              color="danger"
-              onPress={handleBlock}
-            />
-          )}
+          {authUser.user.role === "ADMIN" &&
+            (!isBlocked ? (
+              <Button
+                children={t("blockComment")}
+                variant="bordered"
+                startContent={<CloseIcon />}
+                color="danger"
+                onPress={handleBlock}
+              />
+            ) : (
+              <Button
+                children={t("blockedComment")}
+                variant="bordered"
+                color="danger"
+                isDisabled
+              />
+            ))}
         </CardFooter>
       </Card>
     </>

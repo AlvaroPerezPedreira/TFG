@@ -43,5 +43,6 @@
     "viewReviewsTitle": "View the lodge reviews",
     "provider": "Provider",
     "blockComment": "Block comment",
-    "noReviews": "No reviews yet"
+    "noReviews": "No reviews yet",
+    "blockedComment": "Review blocked"
 }

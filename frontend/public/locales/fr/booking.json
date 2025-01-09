@@ -43,5 +43,6 @@
     "viewReviewsTitle": "Voir les avis de l’hébergement",
     "provider": "Provider",
     "blockComment": "Bloquer le commentaire",
-    "noReviews": "Pas encore d'avis"
+    "noReviews": "Pas encore d'avis",
+    "blockedComment": "Commentaire bloqué"
 }
