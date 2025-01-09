@@ -50,7 +50,7 @@ const useBookings = () => {
       );
 
       const finalData = await response.json();
-
+      console.log(checkIn, checkOut);
       if (!response.ok) {
         setErrorMsg(t("errorAvailability"));
         throw new Error(`Error: ${response.status}`);

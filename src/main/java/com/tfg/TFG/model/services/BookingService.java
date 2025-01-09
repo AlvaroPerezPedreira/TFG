@@ -15,7 +15,8 @@ public interface BookingService {
 
         List<Booking> getBookingsByUserId(Long userId) throws InstanceNotFoundException;
 
-        Boolean checkAvailability(String lodgeEmail, String checkIn, String checkOut) throws InstanceNotFoundException;
+        Boolean checkAvailability(String lodgeEmail, String ArrivalTime, String DepartureTime)
+                        throws InstanceNotFoundException;
 
         void cancelBooking(Long userId, Long bookingId)
                         throws InstanceNotFoundException, PermissionException, CancelBookingException;
