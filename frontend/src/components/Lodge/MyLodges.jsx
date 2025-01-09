@@ -26,16 +26,20 @@ function MyLodges() {
           <div className="myLodges-titleContainer">
             <span className="myLodges-title">{t("myLodgesTitle")}</span>
           </div>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
-              gap: "20px",
-              marginTop: "20px",
-            }}
-          >
-            {Array.isArray(lodges) &&
-              lodges.map((lodge, index) => (
+          {lodges.length === 0 ? (
+            <div className="myLodges-noLodgesMessage">
+              {t("noLodgesMessage")}
+            </div>
+          ) : (
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
+                gap: "20px",
+                marginTop: "20px",
+              }}
+            >
+              {lodges.map((lodge, index) => (
                 <MyLodgesCard
                   key={index}
                   lodge_email={lodge.lodge_email}
@@ -50,7 +54,8 @@ function MyLodges() {
                   }
                 />
               ))}
-          </div>
+            </div>
+          )}
         </div>
         <Footer />
       </Suspense>

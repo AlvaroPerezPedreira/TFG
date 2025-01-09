@@ -4,5 +4,6 @@
     "myLodgesTitle": "Gestiona tus alojamientos",
     "editLodge": "Editar",
     "closeLodge": "Cerrar",
-    "openLodge": "Abrir"
+    "openLodge": "Abrir",
+    "noLodgesMessage": "Todavía no has subido ningún alojamiento"
 }

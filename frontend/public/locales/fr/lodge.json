@@ -4,5 +4,6 @@
     "myLodgesTitle": "Gérez vos hébergements",
     "editLodge": "Modifier",
     "closeLodge": "Fermer",
-    "openLodge": "Ouvrir"
+    "openLodge": "Ouvrir",
+    "noLodgesMessage": "Vous n'avez pas encore téléchargé d'hébergement"
 }

@@ -4,5 +4,6 @@
     "myLodgesTitle": "Manage your lodges",
     "editLodge": "Edit",
     "closeLodge": "Close",
-    "openLodge": "Open"
+    "openLodge": "Open",
+    "noLodgesMessage": "You haven’t uploaded any lodges yet"
 }
