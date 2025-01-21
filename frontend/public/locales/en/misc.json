@@ -47,5 +47,12 @@
     "aboutSection5.1": "At ",
     "aboutSection5.2": ", we care about user experience. That's why, in addition to offering a friendly and accessible interface, we've integrated features like internationalization in three languages (Spanish, English, and French) and a theme selection system (light or dark), adapting to your preferences and lighting conditions.",
     "aboutSection6": "Our commitment to quality and innovation is also reflected in the integration with a real web service that expands search options and makes it easier to access a greater variety of lodges, optimizing your time and ensuring you find the best option for your trip.",
-    "aboutSection7": " is more than just a lodge platform, it's your trusted companion to make your travel experience as comfortable and enriching as possible. We're here to help you make every moment of your journey, from planning to review, memorable."
+    "aboutSection7": " is more than just a lodge platform, it's your trusted companion to make your travel experience as comfortable and enriching as possible. We're here to help you make every moment of your journey, from planning to review, memorable.",
+    "contactTitle": "Contact DeepDive",
+    "email": "Email (read-only)",
+    "emailContent": "Write your message",
+    "emailContentPlaceholder": "Write your message here...",
+    "contactButton": "Send",
+    "emailSuccess": "Email sent successfully!",
+    "emailError": "There was a problem sending the email. Please try again."
 }

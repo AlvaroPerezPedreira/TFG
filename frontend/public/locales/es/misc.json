@@ -47,5 +47,12 @@
     "aboutSection5.1": "En ",
     "aboutSection5.2": ", nos importa la experiencia del usuario. Por eso, además de contar con una interfaz amigable y accesible, hemos integrado funcionalidades como la internacionalización en tres idiomas (español, inglés y francés) y un sistema de selección de tema claro u oscuro, adaptándose a tus preferencias y condiciones de luz.",
     "aboutSection6": "Nuestro compromiso con la calidad y la innovación también se refleja en la integración con un servicio web real que amplía las opciones de búsqueda y facilita el acceso a una mayor variedad de alojamientos, optimizando tu tiempo y asegurando que encuentres la mejor opción para tu viaje.",
-    "aboutSection7": " es más que una plataforma de alojamiento, es tu compañero de confianza para que tu experiencia de viaje sea lo más cómoda y enriquecedora posible. Estamos aquí para ayudarte a que cada momento de tu viaje, desde la planificación hasta la valoración, sea memorable."
+    "aboutSection7": " es más que una plataforma de alojamiento, es tu compañero de confianza para que tu experiencia de viaje sea lo más cómoda y enriquecedora posible. Estamos aquí para ayudarte a que cada momento de tu viaje, desde la planificación hasta la valoración, sea memorable.",
+    "contactTitle": "Contacta a DeepDive",
+    "email": "Correo electrónico (solo lectura)",
+    "emailContent": "Escribe tu mensaje",
+    "emailContentPlaceholder": "Escribe tu mensaje aquí...",
+    "contactButton": "Enviar",
+    "emailSuccess": "Correo enviado con éxito!",
+    "emailError": "Hubo un problema al enviar el correo. Inténtalo de nuevo."
 }
