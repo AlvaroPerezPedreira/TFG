@@ -172,7 +172,9 @@ export default function MyBookingCard({ index, booking }) {
                   {(onClose) => (
                     <>
                       <ModalHeader className="flex flex-col gap-1">
-                        {t("confirmCancel")}
+                        <span style={{ color: "var(--text-color)" }}>
+                          {t("confirmCancel")}
+                        </span>
                       </ModalHeader>
                       <ModalBody>
                         <div className="flex justify-between">

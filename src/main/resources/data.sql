@@ -1,13 +1,13 @@
 --Usuarios
 INSERT INTO User (email, password, role, username, name, lastname, phone, birthdate, country, gender, address, passport, avatar, status) 
 VALUES 
-    ('a@udc.es', '$2a$10$hmGUL85rQGco4zBJgP6uzeeBSUi5Teq8b7so0cPGujgqrUppWjtBW', 0, 'aUsername', 'John', 'Doe', '981525252', '01-01-2000', 'Spain', 'male', 'aAddress', '123456789', 'a@udc.es_apriliars660.jpg', 0),
-    ('b@udc.es', '$2a$10$hmGUL85rQGco4zBJgP6uzeeBSUi5Teq8b7so0cPGujgqrUppWjtBW', 0, 'b', null, null, null, '01-01-1999', null, 'female', null, null, 'Default_Avatar.png', 0),
-    ('admin@udc.es', '$2a$10$hmGUL85rQGco4zBJgP6uzeeBSUi5Teq8b7so0cPGujgqrUppWjtBW', 1, 'b', null, null, null, '01-01-2000', null, 'male', null, null, 'Default_Avatar.png', 0),
+    ('alvaro@udc.es', '$2a$10$hmGUL85rQGco4zBJgP6uzeeBSUi5Teq8b7so0cPGujgqrUppWjtBW', 0, 'Alvaro111', 'Alvaro', 'Martinez', '981525252', '01-01-2000', 'Spain', 'male', 'aAddress', '123456789', 'a@udc.es_apriliars660.jpg', 0),
+    ('pablo@udc.es', '$2a$10$hmGUL85rQGco4zBJgP6uzeeBSUi5Teq8b7so0cPGujgqrUppWjtBW', 0, 'Pablo123', null, null, null, '01-01-1999', null, 'female', null, null, 'Default_Avatar.png', 0),
+    ('admin@udc.es', '$2a$10$hmGUL85rQGco4zBJgP6uzeeBSUi5Teq8b7so0cPGujgqrUppWjtBW', 1, 'Admin_01', null, null, null, '01-01-2000', null, 'male', null, null, 'Default_Avatar.png', 0),
     ('LodgeOwner@apibooking.com', '$2a$10$hmGUL85rQGco4zBJgP6uzeeBSUi5Teq8b7so0cPGujgqrUppWjtBW', 0, 'BookingOwner', 'Gleen', 'D. Fogel', '912768614', '03-04-1966', 'United States of America', 'male', '1234 Main St, Springfield, IL', '123456789', 'LodgeOwner@apibooking.com_BookingImg.jpg', 0),
-    ('banned1@udc.es','$2a$10$hmGUL85rQGco4zBJgP6uzeeBSUi5Teq8b7so0cPGujgqrUppWjtBW', 0, 'BannedUser1', 'Adolfo', 'Rodriguez', null, '01-01-2000', null, 'female', null, null, 'a@udc.es_apriliars660.jpg', 1),
-    ('banned2@udc.es','$2a$10$hmGUL85rQGco4zBJgP6uzeeBSUi5Teq8b7so0cPGujgqrUppWjtBW', 0, 'BannedUser2', 'Carlos', 'Suarez', null, '01-01-2000', null, 'female', null, null, 'b@udc.es_mustang.jpg', 1),
-    ('banned3@udc.es','$2a$10$hmGUL85rQGco4zBJgP6uzeeBSUi5Teq8b7so0cPGujgqrUppWjtBW', 0, 'BannedUser3', 'Miguel', 'Mato', null, '01-01-2000', null, 'female', null, null, 'Default_Avatar.png', 1)
+    ('adolfoban@udc.es','$2a$10$hmGUL85rQGco4zBJgP6uzeeBSUi5Teq8b7so0cPGujgqrUppWjtBW', 0, 'AdolfoBan', 'Adolfo', 'Rodriguez', null, '01-01-2000', null, 'female', null, null, 'a@udc.es_apriliars660.jpg', 1),
+    ('carlosban@udc.es','$2a$10$hmGUL85rQGco4zBJgP6uzeeBSUi5Teq8b7so0cPGujgqrUppWjtBW', 0, 'CarlosBan', 'Carlos', 'Suarez', null, '01-01-2000', null, 'female', null, null, 'b@udc.es_mustang.jpg', 1),
+    ('miguelban@udc.es','$2a$10$hmGUL85rQGco4zBJgP6uzeeBSUi5Teq8b7so0cPGujgqrUppWjtBW', 0, 'MiguelBan', 'Miguel', 'Mato', null, '01-01-2000', null, 'female', null, null, 'Default_Avatar.png', 1)
 ;
 
 
