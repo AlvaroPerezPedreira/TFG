@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.data.domain.Page;
 
 import com.tfg.TFG.model.entities.User.RoleType;
 
@@ -433,4 +434,55 @@ public class LodgeServiceTest {
                 assertEquals(3 + 1, lodgeService.findAllBannedLodges(user2, 0, 10).getTotalElements());
         }
 
+        @Test
+        public void testCreateLodge2()
+                        throws InstanceNotFoundException, DuplicateInstanceException, InvalidEmailException,
+                        InvalidBirthdateException {
+                List<Long> featureIds = new ArrayList<>(Arrays.asList(1L, 2L, 6L));
+                List<String> imageUrls = new ArrayList<>(Arrays.asList("url1", "url2", "url3"));
+
+                assertThrows(InstanceNotFoundException.class,
+                                () -> lodgeService.createLodge(190L, "Lodge1@udc.es", "Lodge1", "Description",
+                                                "Address",
+                                                "981981981", "City", "Country", 5, 50, "12:00", "10:00", featureIds,
+                                                imageUrls));
+        }
+
+        @Test
+        public void testGetLodges() throws InstanceNotFoundException, DuplicateInstanceException, InvalidEmailException,
+                        InvalidBirthdateException {
+                Page<Lodge> lodges = lodgeService.getLodges(0, 30);
+                assertEquals(30, lodges.getSize());
+        }
+
+        @Test
+        public void testFindByEmailException() throws InstanceNotFoundException {
+                assertThrows(InstanceNotFoundException.class, () -> lodgeService.findByEmail("holanoexisto@udc.es"));
+        }
+
+        @Test
+        public void testFindByUserId()
+                        throws InstanceNotFoundException, DuplicateInstanceException, InvalidEmailException,
+                        InvalidBirthdateException {
+                User user = createUser5Args("user1");
+                userService.signUp(user);
+                List<Long> featureIds = new ArrayList<>(Arrays.asList(1L, 2L, 6L));
+                List<String> imageUrls = new ArrayList<>(Arrays.asList("url1", "url2", "url3"));
+                Lodge lodge = lodgeService.createLodge(user.getId(), "Lodge1@udc.es", "Lodge1", "Description",
+                                "Address",
+                                "981981981", "City", "Country", 5, 50, "12:00", "10:00", featureIds, imageUrls);
+
+                assertEquals(1, lodgeService.getLodgesByUserId(user.getId()).size());
+        }
+
+        @Test
+        public void testFindAllBannedLodges2()
+                        throws InstanceNotFoundException, DuplicateInstanceException, InvalidEmailException,
+                        InvalidBirthdateException, PermissionException {
+
+                User user = createUser5Args("user1");
+                userService.signUp(user);
+
+                assertThrows(PermissionException.class, () -> lodgeService.findAllBannedLodges(user, 0, 10));
+        }
 }

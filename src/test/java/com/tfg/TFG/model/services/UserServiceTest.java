@@ -14,6 +14,7 @@ import com.tfg.TFG.model.services.exceptions.PermissionException;
 import com.tfg.TFG.model.common.exceptions.DuplicateInstanceException;
 import com.tfg.TFG.model.common.exceptions.InstanceNotFoundException;
 import com.tfg.TFG.model.entities.User;
+import com.tfg.TFG.model.entities.User.StatusType;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
@@ -170,4 +171,63 @@ public class UserServiceTest {
                                 () -> userService.signUp(
                                                 new User("a@udc.es", "password", "username", "01-01-2022", "male")));
         }
+
+        @Test
+        public void testUnbanUser() throws DuplicateInstanceException, InvalidEmailException,
+                        InvalidBirthdateException, BannedUserException, InstanceNotFoundException, PermissionException {
+                User user = createUser5Args("user9");
+                userService.signUp(user);
+                User admin = userService.findByEmail("admin@udc.es");
+
+                userService.banUser(admin, user.getEmail());
+
+                userService.unbanUser(admin, user.getEmail());
+
+                assertEquals(StatusType.ACTIVE, user.getStatus());
+        }
+
+        @Test
+        public void testUnbanUser2() throws DuplicateInstanceException, InvalidEmailException,
+                        InvalidBirthdateException, BannedUserException, InstanceNotFoundException, PermissionException {
+                User user = createUser5Args("user9");
+                userService.signUp(user);
+                User admin = userService.findByEmail("admin@udc.es");
+
+                userService.banUser(admin, user.getEmail());
+
+                assertThrows(PermissionException.class, () -> userService.unbanUser(user, user.getEmail()));
+        }
+
+        @Test
+        public void testBanUser2() throws DuplicateInstanceException, InvalidEmailException,
+                        InvalidBirthdateException, BannedUserException, InstanceNotFoundException, PermissionException {
+                User user = createUser5Args("user9");
+                userService.signUp(user);
+                User admin = userService.findByEmail("admin@udc.es");
+
+                assertThrows(PermissionException.class, () -> userService.banUser(user, user.getEmail()));
+        }
+
+        @Test
+        public void testGetBannedUsers() throws DuplicateInstanceException, InvalidEmailException,
+                        InvalidBirthdateException, BannedUserException, InstanceNotFoundException, PermissionException {
+                User user = createUser5Args("user9");
+                userService.signUp(user);
+                User admin = userService.findByEmail("admin@udc.es");
+
+                userService.banUser(admin, user.getEmail());
+                userService.unbanUser(admin, user.getEmail());
+
+                assertEquals(false, userService.findAllBannedUsers(admin, 10, 10).getContent().contains(user));
+        }
+
+        @Test
+        public void testGetBannedUsers2() throws DuplicateInstanceException, InvalidEmailException,
+                        InvalidBirthdateException, BannedUserException, InstanceNotFoundException, PermissionException {
+                User user = createUser5Args("user9");
+                userService.signUp(user);
+
+                assertThrows(PermissionException.class, () -> userService.findAllBannedUsers(user, 10, 10));
+        }
+
 }
