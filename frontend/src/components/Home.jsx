@@ -45,7 +45,11 @@ const Home = () => {
                 lodge_name={lodge.lodge_name}
                 price_per_night={lodge.price_per_night}
                 lodge_provider={lodge.lodge_provider}
-                image_url={`http://localhost:8080/images/${lodge.images[0].image_url}`}
+                image_url={
+                  lodge.images && lodge.images.length > 0
+                    ? `http://localhost:8080/images/${lodge.images[0].image_url}`
+                    : "http://localhost:8080/images/Default_LodgeImage.jpg"
+                }
               />
             ))}
           </div>

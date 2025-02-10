@@ -71,8 +71,6 @@ export default function LodgeDetails() {
   };
 
   const handleClick = async (e) => {
-    e.preventDefault();
-
     // Usamos startTransition para no bloquear la UI al cambiar el estado
     startTransition(async () => {
       if (lodge.is_banned === false) {

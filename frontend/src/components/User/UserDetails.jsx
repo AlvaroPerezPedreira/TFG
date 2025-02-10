@@ -32,8 +32,6 @@ function UserDetails() {
   }, [email]);
 
   const handleClick = async (e) => {
-    e.preventDefault();
-
     // Usamos startTransition para no bloquear la UI al cambiar el estado
     startTransition(async () => {
       if (user.status === "ACTIVE") {
